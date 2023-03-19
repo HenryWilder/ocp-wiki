@@ -1,0 +1,30 @@
+---
+import Tooltip from './Tooltip.astro';
+export enum EntryVisibility {
+    Normal,
+    Secret,
+    Censored,
+    Hidden
+}
+interface Props {
+    visibility: EntryVisibility;
+    name: string;
+    title: string;
+    path: string;
+}
+const { visibility, name, title, path } = Astro.props;
+const objectTitleVisibility = (normal: any, secret: any, censored: any) => {
+    switch (visibility) {
+        case EntryVisibility.Normal: return normal;
+        case EntryVisibility.Secret: return secret;
+        case EntryVisibility.Censored: return censored;
+        default: return;
+    }
+}
+---
+{(visibility!=EntryVisibility.Hidden)&&(<li><a>{name}</a> - {
+    objectTitleVisibility(
+        title,
+        <r type="secret">{title}</r>,
+        <Tooltip category="Anomalous Object" name={name} tagline={title} path={path} linkText="Read document"><r>{title}</r></Tooltip>)
+}</li>)}

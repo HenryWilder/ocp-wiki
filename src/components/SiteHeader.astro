@@ -1,0 +1,38 @@
+---
+import Dropdown from './Dropdown.astro';
+---
+
+<header class="header-outer">
+    <div class="header-inner">
+        <div id="banner">
+            <div id="banner-content">
+                <a href="/index.html" class="header-logo" style="height:fit-content">
+                    <img src="/resource/logo-01.svg">
+                </a>
+                <div id="banner-titlebox">
+                    <a id="banner-title" href="/index.html">OCP Federation</a>
+                    <div id="banner-description">Obscure, Classify, Preserve</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <ul id="link-list">
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Info</a>
+                <div class="dropdown-content">
+                    <a href="/info/containment-classes.html">Containment Classes</a>
+                    <a href="/info/containment-sites.html">Federation Sites</a>
+                    <a href="/info/task-forces.html">Task Forces</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">About</a>
+                <div class="dropdown-content">
+                    <a href="/author-list.html">Authors</a>
+                    <a style="color:black" href="/corkboard.html">Corkboard [WIP]</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,37 @@
+---
+import favicon from '../../public/favicon.svg';
+import styles from '../styles/index.css';
+
+interface Props {
+    url: string;
+    title: string;
+    desc: string;
+    thumb?: string;
+    secureurl?: string;
+}
+
+const {
+    url,
+    title,
+    desc,
+    thumb = "/images/thumbnail0",
+    secureurl = "https://i.ibb.co/Nrx3mCT/ocp-wiki-thumb.png"
+} = Astro.props;
+---
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={thumb} />
+<meta property="og:image:secure_url" content={secureurl} />
+<meta property="og:description" content={desc} />
+<meta name="theme-color" content="darkorange">
+<meta name="twitter:card" content="summary_large_image">
+
+<title>{title} - OCP Federation</title>
+<meta name="keywords" content="OCP, obscure, catalog, preserve, obscure catalog preserve, anomaly, indie, story, stories, collection, organization, fictional, alternate universe, AU, interactive, wiki, ocp wiki" />
+<meta name="description" content={desc}>
+<script src="/index.js"></script>

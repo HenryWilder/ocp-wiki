@@ -1,0 +1,9 @@
+[
+    { "id":"s-class",     "name":"S Class",  "tagline":"Essentially the dictator. Luckily Annie is a benevolent entity" },
+    { "id":"a-class",     "name":"A Class",  "tagline":"High ranking individual with great influence and access to resources" },
+    { "id":"b-class",     "name":"B Class",  "tagline":"Those who work directly under A class citizens or relay orders" },
+    { "id":"c-class",     "name":"C Class",  "tagline":"Standard citizenship" },
+    { "id":"d-class",     "name":"D Class",  "tagline":"Criminals and prisoners" },
+    { "id":"f-class",     "name":"F Class",  "tagline":"Individuals who have caused great pain or damage" },
+    { "id":"fplus-class", "name":"F+ Class", "tagline":"F class citizens who are used to fulfill a specific role that a higher ranking citizen can/should not" }
+]

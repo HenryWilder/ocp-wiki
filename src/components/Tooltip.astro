@@ -1,0 +1,32 @@
+---
+interface Props {
+    category: string;
+    name: string;
+    tagline: string;
+    path?: string;
+    linkText?: string;
+    notes?: string|string[]
+}
+const { category, name, tagline, path, linkText, notes } = Astro.props;
+---
+<span class="tooltip-holder">
+    <slot />
+    <span class="tooltip-content">
+        <div class="tooltip-bubble">
+            <div class="comment-name">{category}</div>
+            <h3>{name}</h3>
+            {tagline}
+            <a href={path}>{linkText}</a>
+        </div>
+        <div class="tooltip-bubble tooltip-note">
+            <div class="comment-name">Notes:</div>
+            {
+                !!notes
+                    ? Array.isArray(notes)
+                        ? notes.map((note) => <div class="tooltip-bubble tooltip-note">{note}</div>)
+                        : notes
+                    : null
+            }
+        </div>
+    </span>
+</span>

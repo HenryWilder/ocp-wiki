@@ -1,0 +1,52 @@
+[
+    {
+        "id":"interview-log-000-1",
+        "objectNumber":"000",
+        "interviewNumber":"1",
+        "interviewerTitle":"Jr RSR",
+        "subjectName":"OCP-000",
+        "topic":"Reason for hostility",
+        "interview":{
+            "members":[
+                {"name":"Interviewer","color":"#840"},
+                {"name":"Subject","color":"#900"}
+            ],
+            "body":[
+                { "speaker":"0", "content":"Why are you hostile?" },
+                { "content":"various growls and vocalizations of grumpiness" },
+                { "speaker":"0", "content":"Please calm down. There is no need for hostility." },
+                { "speaker":"1", "content":"<r>I'm going to eat your lunch money and then fold your laundry with my baby hands</r>" },
+                { "content":"interviewer is silent" },
+                { "speaker":"0", "content":"I think we're done here." }
+            ]
+        },
+        "notes":"I'm pretending to write something down<br><br>blah blah blah blah<br><br>Are they still watching?<br><br>This <r>thing</r> freaks me out. I don't wanna have to work with it anymore. I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore..."
+    },
+    {
+        "id":"interview-log-020-1",
+        "objectNumber":"020",
+        "interviewNumber":"1",
+        "interviewerName":"<span class=\"z5-9\">Z5-9</span>",
+        "subjectName": "OCP-020",
+        "topic":"",
+        "interview":{
+            "members":[
+                {"name":"Interviewer","color":"#840"},
+                {"name":"Subject","color":"#900"}
+            ],
+            "body":[
+                { "content":"subject turns off a light in an empty house; the occupants have left for dinner"},
+                { "content":"subject sighs"},
+                { "speaker":"1", "content":"We aren't made of money, guys..."},
+                { "speaker":"0", "content":"Excuse me, sir?"},
+                { "content":"subject turns to face the interviewer"},
+                { "speaker":"0", "content":"I was wondering if you'd be willing to answer some questions?"},
+                { "content":"interviewer is cut off as the subject pulls the interviewer into a hug"},
+                { "speaker":"0", "content":"Um... sir? I uh... um."},
+                { "content":"subject continues to embrace the interviewer for several minutes, during which the interviewer begins to cry."},
+                { "speaker":"1", "content":"My name is 'Father', and I'm very proud of you, <r>Crash</r>."}
+            ]
+        },
+        "notes":"Oh yeah, -9 had his eye cut out by his bio-dad and that guy's like the worst sonova bitch I've seen in a while. Well I'm too lazy to send in anyone else, so I guess I'll leave it at that."
+    }
+]

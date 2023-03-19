@@ -1,0 +1,10 @@
+[
+    {"id":"reality-bender-0",      "name":"Type 0",      "color":"white",       "tagline":"Baseline",                                               "desc":"Considered the baseline, no notable power"},
+    {"id":"reality-bender-blue",   "name":"Type Blue",   "color":"cyan",        "tagline":"Subconscious probability manipulator",                   "desc":"Have limited, subconscious manipulation of probability, usually as a result of superstition"},
+    {"id":"reality-bender-green",  "name":"Type Green",  "color":"lime",        "tagline":"Extraordinary reality bending in the present",           "desc":"Extraordinary control, conscious or unconscious, able to bend the present reality"},
+    {"id":"reality-bender-yellow", "name":"Type Yellow", "color":"yellow",      "tagline":"Limited ability to manipulate immediate/distant future", "desc":"Able to manipulate either the immediate moment or the distant future with limited effect"},
+    {"id":"reality-bender-orange", "name":"Type Orange", "color":"orange",      "tagline":"Absolute control over present and future reality",       "desc":"Able to manipulate the present and future with absolute control"},
+    {"id":"reality-bender-red",    "name":"Type Red",    "color":"red",         "tagline":"Absolute control of past, present, and future reality",  "desc":"Able to manipulate the past in any capacity"},
+    {"id":"reality-bender-violet", "name":"Type Violet", "color":"magenta",     "tagline":"The author",                                             "desc":"The author"},
+    {"id":"reality-bender-black",  "name":"Type Black",  "color":"transparent", "tagline":"OCP-636",                                                "desc":"OCP-636"}
+]

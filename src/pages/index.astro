@@ -1,15 +1,21 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import OCPListEntry from '../components/OCPListEntry.astro';
+import { EntryVisibility } from '../components/OCPListEntry.astro';
+import objects from '../../public/data/objects.json'
+export interface ObjectEntry {
+	id: string,
+	path: string,
+	name: string,
+	title: string,
+	notes?: string|string[]
+}
+const objectList: ObjectEntry[] = objects;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<ArticleLayout url="./index" title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
+<ul>
+	{objectList.map((item) => <OCPListEntry visibility={EntryVisibility.Normal} name={item.name} title={item.title} path={item.path} />)}
+</ul>
+</ArticleLayout>
