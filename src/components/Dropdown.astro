@@ -1,6 +1,14 @@
 ---
-const { maintext } = Astro.props;
+interface Link {
+    name: string;
+    path: string;
+}
+interface Props {
+    category: string,
+    items: Link[]
+}
+const { category, items } = Astro.props;
 ---
 <div>
-    
+
 </div>

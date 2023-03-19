@@ -1,0 +1,38 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-y: scroll;
+    position: relative;
+    top: 0;
+    height: fit-content
+}
+
+/* Link list is the nav links */
+article, #link-list, #banner-content {
+    margin: auto;
+    max-width: 7.5in;
+}
+article {
+    padding-bottom: 0.5in;
+}
+@media (max-width: 7.625in) {
+    article, #link-list, #banner-content {
+        margin: auto;
+        max-width: 100%;
+        padding: 0 0.125in;
+    }
+    article {
+        padding-bottom: 0.125in;
+    }
+}
+
+footer {
+    margin: auto;
+    width: fit-content;
+    height: 5em;
+}

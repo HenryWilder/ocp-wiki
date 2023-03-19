@@ -1,0 +1,31 @@
+---
+import ArticleLayout from "./ArticleLayout.astro";
+import type { ObjectEntry } from "../pages/index.astro";
+interface Props {
+  url: string;
+  ocpNumber: string;
+  /**
+   * In case ocpNumber is unsafe
+   */
+  ocpId?: string;
+  ocpName: string;
+  containmentClass: string;
+  containmentClassPrev?: string;
+}
+import objects from "../../public/data/objects.json";
+const objectList: ObjectEntry[] = objects;
+const index: number = objectList.findIndex((element) => element.id == ocpId);
+const prev: ObjectEntry = objectList.at(index - 1) ?? objectList[0];
+const next: ObjectEntry = objectList.at(index + 1) ?? objectList[0];
+const { url, ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
+---
+<ArticleLayout url={url} title={"OCP-"+ocpNumber} desc={{ocpName}+" ("+containmentClass+")"}>
+    <p><b>{ocpNumber}:</b> ({ocpName}){!!containmentClassPrev&&(" (previously "+containmentClassPrev+")")}</p>
+    <slot name="pre" />
+    <h2>Optimal Containment Protocols:</h2>
+    <slot name="protocol" />
+    <h2>Description:</h2>
+    <slot name="desc" />
+    <slot name="post" />
+    <section style="padding: 0.5ch 2ch">&laquo; <a href={prev.path}>{prev.name??""}</a> prev &bull; next <a href={next.path}>{next.name}</a> &raquo;</section>
+</ArticleLayout>

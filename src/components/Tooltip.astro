@@ -14,7 +14,7 @@ const { category, name, tagline, path, linkText, notes } = Astro.props;
     <span class="tooltip-content">
         <div class="tooltip-bubble">
             <div class="comment-name">{category}</div>
-            <h3>{name}</h3>
+            <h3 set:html={name}></h3>
             {tagline}
             <a href={path}>{linkText}</a>
         </div>

@@ -9,9 +9,9 @@ interface Props {
 const { url, title, name = title, desc } = Astro.props;
 ---
 <BaseLayout url={url} title={title} desc={desc}>
-    <h1>{name}</h1>
-    <hr>
     <article>
+      <h1>{name}</h1>
+      <hr>
       <slot /> <!-- your content is injected here -->
     </article>
 </BaseLayout>

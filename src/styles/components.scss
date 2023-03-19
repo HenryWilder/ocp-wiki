@@ -1,0 +1,84 @@
+.comment {
+    background-color: #fff2cc;
+    border: 1px dashed #bf9000;
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.comment-name {
+    font-size: 10pt;
+    color: #666;
+}
+
+.update {
+    background-color: #eee;
+    border: 1px solid gray;
+    padding: 10px;
+    padding-top: 0;
+    border-radius: 1px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    h3 {
+        text-align: center;
+    }
+}
+
+ul.card-list {
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 1px 20px rgba(0,0,0,0.25);
+    border-radius: 2ch;
+    padding: 2ch;
+    list-style-position: inside;
+}
+
+.warning {
+    background-color: #eee;
+    border: 2px dashed #999;
+    font-weight: bold;
+    font-family: Courier;
+    text-align: center;
+    padding: 2ch 0;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    span {
+        font-size: 24px;
+    }
+}
+
+.stamp-of-incompletion {
+    color: white;
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0.25in 0;
+}
+
+@media print {
+    .card-list {
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 7.625in) {
+    .card-list {
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        ul {
+            list-style-type: "";
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
+}

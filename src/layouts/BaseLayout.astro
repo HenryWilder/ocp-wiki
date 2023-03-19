@@ -1,5 +1,6 @@
 ---
 import Meta from '../components/Meta.astro';
+import SiteHeader from '../components/SiteHeader.astro'
 interface Props {
   url: string;
   title: string;
@@ -12,6 +13,7 @@ const { url, title, desc } = Astro.props
     <Meta title={title} url={url} desc={desc} />
   </head>
   <body>
+    <SiteHeader />
     <slot />
   </body>
 </html>

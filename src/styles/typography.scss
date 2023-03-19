@@ -1,0 +1,181 @@
+html {
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+h1, h2, h3, h4 {
+    font-weight: bold;
+}
+
+/* Title */
+h1 {
+    color: darkorange;
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 19px;
+}
+.update>h2 {
+    text-align: center;
+    font-size: 17px;
+}
+
+h3, h4 {
+    font-size: 14px;
+}
+
+r {
+    position: relative;
+    display: inline-block;
+    &::after {
+        content:"";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #222;
+        border-radius: 3px;
+        color: transparent;
+        transition: 0.5s;
+        cursor: not-allowed;
+    }
+    &:not([type="secret"]) {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+    &:hover::after {
+        border-radius: 0px;
+        background-color: black;
+    }
+    
+    /* Read on hover */
+    &[type="secret"] {
+        &::after {
+            background-color: rgba(0,0,0,0.9);
+            margin: 0 -2.5px;
+            padding: 0 2.5px;
+            user-select: text;
+            cursor: auto;
+
+            /* Use blurring instead if supported */
+            @supports (backdrop-filter: blur(4px)) {
+                backdrop-filter: blur(4px);
+                background-color: rgba(0,0,0,0.15);
+            }
+        }
+
+        &:hover::after {
+            backdrop-filter: blur(0px);
+            border-radius: 3px;
+            background-color: rgba(0,0,0,0.0);
+            border: 1px dashed #444;
+            color: black;
+            pointer-events: none;
+        }
+    }
+    /* Multi-line redaction */
+    &[class="multiline"] {
+        display: block;
+    }
+}
+.redacted-date-group:hover r::after {
+    border-radius: 0px;
+    background-color: black;
+}
+
+ul.card-list {
+    a, footer a {
+        color: darkorange;
+        font-weight: bold;
+        text-decoration: unset;
+        &:visited {
+            color: chocolate;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    li {
+        list-style-type: "⬥  ";
+    }
+}
+
+.jumble {
+    font: inherit;
+}
+
+a.reference {
+    text-decoration: none;
+    color: inherit;
+    padding: 0px 0px;
+    margin: -1px -1px;
+    font-weight: inherit;
+    border: 1px dotted transparent;
+    border-bottom: 1px dotted;
+    transition: 150ms;
+    transition-timing-function: linear;
+
+    /* To make it easier to identify for removal */
+    color: magenta;
+
+    &:hover {
+        border: 1px solid transparent;
+        padding: 0px 2px;
+        margin: -1px -3px;
+        border-radius: 5px;
+    }
+}
+
+.transparent {
+    color: transparent;
+    @media print {
+        color: #fff; // If it's transparent, the printer seems to try printing it as a very light gray
+    }
+}
+
+@media print {
+    .jumble {
+        visibility: hidden;
+        position: relative;
+        &:after {
+            visibility: visible;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "???";
+        }
+    }
+    r {
+        background-color: #222;
+        border-radius: 0;
+        -webkit-print-color-adjust: exact; /*Chrome, Safari */
+        color-adjust: exact; /*Firefox*/
+        &[type="secret"] {
+            background-color: #eee;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    a {
+        text-decoration: none !important;
+    }
+    .reference {
+        border-color: transparent !important;
+    }
+
+    /* I don't want printed stuff to have shadows */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+}

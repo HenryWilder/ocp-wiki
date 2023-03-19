@@ -1,0 +1,42 @@
+.containment-class {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: black;
+    padding: 1px 8px;
+    border-radius: 16px;
+    display: inline-block;
+    transition: 250ms;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-print-color-adjust: exact; /*Chrome, Safari */
+    color-adjust: exact; /*Firefox*/
+    &:hover {
+        background-color: #eee;
+        border-color: #ccc;
+    }
+}
+
+.catastrophic,
+.esau,
+.yaaqov {
+    background-color: #000;
+    border-color: #000;
+    &:hover {
+        background-color: #111;
+        border-color: #000;
+    }
+}
+
+.catastrophic { color: #f00; }
+.esau { color: #f0f; }
+.yaaqov { color: #8e7cc3; }
+
+.apollyon {
+    background-color: #f00;
+    border-color: #f00;
+    color: #000;
+    &:hover {
+        background-color: #f22;
+        border-color: maroon;
+    }
+}

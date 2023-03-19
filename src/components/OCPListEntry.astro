@@ -22,9 +22,9 @@ const objectTitleVisibility = (normal: any, secret: any, censored: any) => {
     }
 }
 ---
-{(visibility!=EntryVisibility.Hidden)&&(<li><a>{name}</a> - {
+{(visibility!=EntryVisibility.Hidden)&&(<li><a href={path} set:html={name}></a> - {
     objectTitleVisibility(
         title,
         <r type="secret">{title}</r>,
-        <Tooltip category="Anomalous Object" name={name} tagline={title} path={path} linkText="Read document"><r>{title}</r></Tooltip>)
+        <Tooltip category="Anomalous Object" name={name} tagline="Item removed for being disturbing"><r>{title}</r></Tooltip>)
 }</li>)}

@@ -1,0 +1,24 @@
+---
+import Tooltip from "./Tooltip.astro";
+import containmentClasses from "../../public/data/containment-classes.json";
+interface IContainmentClass {
+    id: string,
+    name: string,
+    tagline: string,
+    desc: string
+}
+const containmentClassList: IContainmentClass[] = containmentClasses;
+interface Props {
+    classId: string
+}
+const { classId } = Astro.props;
+const compContainmentClass: IContainmentClass =
+    containmentClassList.find(classElement => classElement.id == classId)
+    ?? { id:"", name:"ERROR", tagline:"Could not load containment class", desc:"" };
+---
+<Tooltip category="Containment Class" name={compContainmentClass.name} tagline={compContainmentClass.tagline} >
+    <div class="containment-class">
+        <div>
+        </div>
+    </div>
+</Tooltip>
