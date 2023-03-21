@@ -1,30 +1,21 @@
 ---
 import Tooltip from './Tooltip.astro';
-export enum EntryVisibility {
-    Normal,
-    Secret,
-    Censored,
-    Hidden
-}
+import type { IObjectEntry } from '../scripts/interfaces';
 interface Props {
-    visibility: EntryVisibility;
-    name: string;
-    title: string;
-    path: string;
+    anomalyInfo: IObjectEntry
 }
-const { visibility, name, title, path } = Astro.props;
-const objectTitleVisibility = (normal: any, secret: any, censored: any) => {
-    switch (visibility) {
-        case EntryVisibility.Normal: return normal;
-        case EntryVisibility.Secret: return secret;
-        case EntryVisibility.Censored: return censored;
-        default: return;
+const { anomalyInfo } = Astro.props;
+const objectTitleVisibility = (if_normal: any, is_wip: any, if_censored: any) => {
+    switch (anomalyInfo.vis) {
+        case "wip": return is_wip;
+        case "censor": return if_censored;
+        default: return if_normal;
     }
 }
 ---
-{(visibility!=EntryVisibility.Hidden)&&(<li><a href={path} set:html={name}></a> - {
+{(anomalyInfo.vis!="hide")&&(<li><a href={anomalyInfo.path} set:html={anomalyInfo.name}></a>&#9;- {
     objectTitleVisibility(
-        title,
-        <r type="secret">{title}</r>,
-        <Tooltip category="Anomalous Object" name={name} tagline="Item removed for being disturbing"><r>{title}</r></Tooltip>)
+        anomalyInfo.title,
+        <r type="secret">{anomalyInfo.title}</r>,
+        <Tooltip category="Anomalous Object" name={anomalyInfo.name} tagline="Item removed for being disturbing"><r>{anomalyInfo.title}</r></Tooltip>)
 }</li>)}

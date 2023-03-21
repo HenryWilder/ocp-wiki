@@ -1,0 +1,10 @@
+---
+interface Props {
+    notes: string[];
+}
+const { notes } = Astro.props;
+---
+<div class="tooltip-bubble tooltip-note">
+    <div class="comment-name">Notes:</div>
+    {notes.map((note) => <div class="tooltip-bubble tooltip-note">{note}</div>)}
+</div>

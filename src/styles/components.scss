@@ -82,3 +82,29 @@ ul.card-list {
         }
     }
 }
+
+.author-card {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    padding: unset;
+    padding-left: 96px;
+    height: 64px;
+    img {
+        position: absolute;
+        top:0;
+        left:0;
+        height: 100%;
+    }
+    .text {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(80px, -50%);
+        h2 {
+            color: darkorange;
+            font-weight: bold;
+        }
+    }
+}

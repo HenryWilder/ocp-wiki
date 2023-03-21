@@ -1,4 +1,7 @@
 ---
+import TooltipNoteSingle from './TooltipNoteSingle.astro';
+import TooltipNoteMulti from './TooltipNoteMulti.astro';
+
 interface Props {
     category: string;
     name: string;
@@ -9,24 +12,19 @@ interface Props {
 }
 const { category, name, tagline, path, linkText, notes } = Astro.props;
 ---
-<span class="tooltip-holder">
+<span class="tooltip">
     <slot />
-    <span class="tooltip-content">
+    <span class="tooltiptext">
         <div class="tooltip-bubble">
             <div class="comment-name">{category}</div>
             <h3 set:html={name}></h3>
             {tagline}
-            <a href={path}>{linkText}</a>
+            {(!!linkText)??(<a href={path}>{linkText}</a>)}
         </div>
-        <div class="tooltip-bubble tooltip-note">
-            <div class="comment-name">Notes:</div>
-            {
-                !!notes
-                    ? Array.isArray(notes)
-                        ? notes.map((note) => <div class="tooltip-bubble tooltip-note">{note}</div>)
-                        : notes
-                    : null
-            }
-        </div>
+        {
+            !!notes &&(Array.isArray(notes)
+                ? <TooltipNoteMulti notes={notes} />
+                : <TooltipNoteSingle note={notes} />)
+        }
     </span>
 </span>

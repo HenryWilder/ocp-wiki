@@ -2,7 +2,7 @@
     {
         "name":"Henry Wilder",
         "path":"/authors/henry-wilder.html",
-        "iconPath":"/resource/icon-henry_wilder.png",
+        "iconPath":"/author-icon/icon-henry_wilder.png",
         "entries":[
             "ocp-ERR",
             "ocp-000",
@@ -14,7 +14,7 @@
     {
         "name":"Uniconwizard",
         "path":"/authors/uniconwizard.html",
-        "iconPath":"/resource/icon-uniconwizard.png",
+        "iconPath":"/author-icon/icon-uniconwizard.png",
         "entries":[
             "ocp-001",
             "ocp-002",

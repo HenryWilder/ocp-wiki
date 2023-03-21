@@ -1,12 +1,7 @@
 ---
 import Tooltip from "./Tooltip.astro";
 import containmentClasses from "../../public/data/containment-classes.json";
-interface IContainmentClass {
-    id: string,
-    name: string,
-    tagline: string,
-    desc: string
-}
+import type { IContainmentClass } from "../scripts/interfaces";
 const containmentClassList: IContainmentClass[] = containmentClasses;
 interface Props {
     classId: string
@@ -17,8 +12,5 @@ const compContainmentClass: IContainmentClass =
     ?? { id:"", name:"ERROR", tagline:"Could not load containment class", desc:"" };
 ---
 <Tooltip category="Containment Class" name={compContainmentClass.name} tagline={compContainmentClass.tagline} >
-    <div class="containment-class">
-        <div>
-        </div>
-    </div>
+    <div class="containment-class"><slot /></div>
 </Tooltip>

@@ -1,6 +1,6 @@
 ---
 import ArticleLayout from "./ArticleLayout.astro";
-import type { ObjectEntry } from "../pages/index.astro";
+import type { IObjectEntry } from "../scripts/interfaces";
 interface Props {
   url: string;
   ocpNumber: string;
@@ -13,10 +13,10 @@ interface Props {
   containmentClassPrev?: string;
 }
 import objects from "../../public/data/objects.json";
-const objectList: ObjectEntry[] = objects;
+const objectList: IObjectEntry[] = objects;
 const index: number = objectList.findIndex((element) => element.id == ocpId);
-const prev: ObjectEntry = objectList.at(index - 1) ?? objectList[0];
-const next: ObjectEntry = objectList.at(index + 1) ?? objectList[0];
+const prev: IObjectEntry = objectList.at(index - 1) ?? objectList[0];
+const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
 const { url, ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
 ---
 <ArticleLayout url={url} title={"OCP-"+ocpNumber} desc={{ocpName}+" ("+containmentClass+")"}>

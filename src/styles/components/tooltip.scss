@@ -1,0 +1,108 @@
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline;
+
+    &:not(.containment-class) {
+        border-bottom: 1px dotted;
+        transition: 100ms;
+        cursor: default;
+
+        &:hover {
+            border-bottom: 1px dotted transparent;
+            background-color: yellow;
+        }
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    &:hover .tooltiptext {
+        visibility: visible;
+        opacity: 100%;
+        transition: 400ms;
+    }
+
+    /* Tooltip text */
+    .tooltiptext {
+        visibility: hidden;
+        opacity: 0;
+    
+        position: absolute;
+        z-index: 1;
+        font-size: 16px;
+        display:grid;
+        gap: 1ch;
+        left: 0;
+
+        transition: 150ms;
+        transition-timing-function: ease-in-out;
+
+        h3 {
+            margin: 0.5rem;
+        }
+        
+        a {
+            border: 1px solid blue;
+            padding: 0 2px;
+            color: blue;
+            transition: 100ms;
+            transition-timing-function: ease-in-out;
+            border-radius: 3px;
+            line-height: 2rem;
+
+            &:hover {
+                color: white;
+                background-color: blue;
+            }
+        }
+        
+        @media (max-width: 7.625in) {
+            position:fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        @media (min-width: 7.626in) {
+            /* Don't take up the screen width if the screen is wide */
+            width: 300px;
+        }
+}
+
+    .tooltip-bubble {
+        backdrop-filter: blur(5px);
+        background-color: rgba(255,255,255,0.8);
+        /* box-shadow: 0 0 8px rgba(0,0,0,0.2); */
+        border: 1px solid #aaa;
+        border-radius: 1ch;
+        padding: 5px 3px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        color: #000;
+        text-align: center;
+        line-height: normal;
+        cursor: default;
+    }
+}
+
+.tooltip-note {
+    background-color: rgba(238,238,238, 0.9) !important;
+    border-radius: 1ch !important;
+}
+
+/* Positioning depending on where on the screen the element is (decided by script) */
+@media (min-width: 7.626in) {
+    .tooltiptext-below .tooltip-bubble:not(.tooltip-note) {
+        top: 100%;
+        left: 0%;
+    }
+    .tooltiptext-above .tooltip-bubble:not(.tooltip-note) {
+        bottom: 100%;
+        left: 0%;
+    }
+    .tooltiptext-left .tooltip-bubble:not(.tooltip-note) {
+        top: 0%;
+        right: 100%;
+    }
+    .tooltiptext-right .tooltip-bubble:not(.tooltip-note) {
+        top: 0%;
+        left: 100%;
+    }
+}

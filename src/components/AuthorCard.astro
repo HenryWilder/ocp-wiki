@@ -1,0 +1,17 @@
+---
+import type { IAuthor } from '../scripts/interfaces';
+interface Props {
+    authorData: IAuthor
+}
+const { authorData } = Astro.props;
+const entryCount = authorData.entries.length;
+---
+<a href={authorData.path}>
+    <section class="card author-card">
+        <img src={authorData.iconPath} />
+        <div class="text">
+            <h2>{authorData.name}</h2>
+            {entryCount} entries
+        </div>
+    </section>
+</a>

@@ -9,24 +9,25 @@ body {
     overflow-y: scroll;
     position: relative;
     top: 0;
-    height: fit-content
+    height: fit-content;
 }
 
 /* Link list is the nav links */
 article, #link-list, #banner-content {
     margin: auto;
     max-width: 7.5in;
-}
-article {
-    padding-bottom: 0.5in;
-}
-@media (max-width: 7.625in) {
-    article, #link-list, #banner-content {
+
+    @media (max-width: 7.625in) {
         margin: auto;
         max-width: 100%;
         padding: 0 0.125in;
     }
-    article {
+}
+
+article {
+    padding-bottom: 0.5in;
+    
+    @media (max-width: 7.625in) {
         padding-bottom: 0.125in;
     }
 }

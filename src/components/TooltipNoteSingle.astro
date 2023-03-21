@@ -1,0 +1,10 @@
+---
+interface Props {
+    note: string;
+}
+const { note } = Astro.props;
+---
+<div class="tooltip-bubble tooltip-note">
+    <div class="comment-name">Note:</div>
+    <div>{note}</div>
+</div>

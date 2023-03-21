@@ -1,20 +1,17 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
 import OCPListEntry from '../components/OCPListEntry.astro';
-import { EntryVisibility } from '../components/OCPListEntry.astro';
-import objects from '../../public/data/objects.json'
-export interface ObjectEntry {
-	id: string,
-	path: string,
-	name: string,
-	title: string,
-	notes?: string|string[]
-}
-const objectList: ObjectEntry[] = objects;
+import objects from '../../public/data/objects.json';
+import type { IObjectEntry } from '../scripts/interfaces';
+import AuthorCard from '../components/AuthorCard.astro';
+import type { IAuthor } from '../scripts/interfaces';
+import authors from '../../public/data/authors.json';
+const authorList: IAuthor[] = authors;
+const objectList: IObjectEntry[] = objects;
 ---
 
-<ArticleLayout url="./index" title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
-<ul class="card-list">
-	 {objectList.map((item) => <OCPListEntry visibility={EntryVisibility.Normal} name={item.name} title={item.title} path={item.path} />)}
+<ArticleLayout url="author-list" title="Authors" name="Author List" desc="Obscure, Classify, Preserve">
+<ul>
+	{authorList.map(author => <AuthorCard authorData={author} />)}
 </ul>
 </ArticleLayout>
