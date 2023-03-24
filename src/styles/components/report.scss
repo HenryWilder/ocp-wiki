@@ -41,6 +41,11 @@
     @media (max-width: ($width + 0.5in)) {
         width: 100%;
     }
+
+    .test-log-label {
+        text-align: center;
+        font-weight: bold;
+    }
 }
 
 /* Interview log */
