@@ -13,7 +13,7 @@ const objectTitleVisibility = (if_normal: any, is_wip: any, if_censored: any) =>
     }
 }
 ---
-{(anomalyInfo.vis!="hide")&&(<li><a href={anomalyInfo.path} set:html={anomalyInfo.name}></a>&#9;- {
+{(anomalyInfo.vis!="hide") && (<li><a href={anomalyInfo.path} set:html={anomalyInfo.name}></a>&#9;- {
     objectTitleVisibility(
         anomalyInfo.title,
         <r type="secret">{anomalyInfo.title}</r>,

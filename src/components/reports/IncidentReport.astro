@@ -9,11 +9,8 @@ const { item } = Astro.props;
 ---
 <table class="report incident-report" id={item.id}>
     <tbody>
-        <tr>
-            <th colspan="2">
-                INCIDENT REPORT {item.objectNumber ?? <r>*****</r>} {item.instance}
-            </th>
-        </tr>
+        <tr><th colspan="2">INCIDENT REPORT {item.objectNumber ?? <r>*****</r>} {item.instance}</th></tr>
+
         <tr>
             <td style="width:50%"><b>Date:</b> {item.date ?? <RedactedDate />}</td>
             <td><b>Incident Type:</b> {item.incidentType ?? <r>*****</r>}</td>
@@ -26,23 +23,14 @@ const { item } = Astro.props;
             <td><b>Location:</b> {item.location ?? <r>*****</r>}</td>
             <td><b>Object:</b> OCP-{item.object ?? <r>****</r>}</td>
         </tr>
-        <tr>
-            <th colspan="2">DESCRIPTION OF INCIDENT</th>
-        </tr>
-        <tr>
-            <td colspan="2" set:html={item.description??"n/a"}></td>
-        </tr>
-        <tr>
-            <th colspan="2">WITNESS EXPLANATION</th>
-        </tr>
-        <tr>
-            <td colspan="2" set:html={item.witnessExplanation??"n/a"}></td>
-        </tr>
-        <tr>
-            <th colspan="2">FOLLOW UP</th>
-        </tr>
-        <tr>
-            <td colspan="2" set:html={item.followup??"n/a"}></td>
-        </tr>
+
+        <tr><th colspan="2">DESCRIPTION OF INCIDENT</th></tr>
+        <tr><td colspan="2" set:html={item.description ?? "n/a"}></td></tr>
+
+        <tr><th colspan="2">WITNESS EXPLANATION</th></tr>
+        <tr><td colspan="2" set:html={item.witnessExplanation ?? "n/a"}></td></tr>
+
+        <tr><th colspan="2">FOLLOW UP</th></tr>
+        <tr><td colspan="2" set:html={item.followup ?? "n/a"}></td></tr>
     </tbody>
 </table>
