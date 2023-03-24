@@ -1,9 +1,9 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
 import OCPListEntry from '../components/OCPListEntry.astro';
-import { EntryVisibilityEnum } from '../scripts/interfaces';
+import { EntryVisibilityEnum } from '../scripts/index';
+import type { IObjectEntry } from '../scripts/index';
 import objects from '../../public/data/objects.json'
-import type { IObjectEntry } from '../scripts/interfaces';
 const objectList: IObjectEntry[] = objects;
 ---
 

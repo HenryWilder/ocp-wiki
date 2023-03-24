@@ -14,7 +14,7 @@ interface Props {
 }
 const { url, ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
 import objects from "../../public/data/objects.json";
-import ContainmentClass from "../components/Tooltips/ContainmentClass.astro";
+import ContainmentClass from "../components/tooltip-types/ContainmentClass.astro";
 const objectList: IObjectEntry[] = objects;
 const index: number = objectList.findIndex((element) => element.id == ocpId);
 const prev: IObjectEntry = objectList.at(index - 1) ?? objectList[0];
