@@ -92,21 +92,19 @@ r {
     background-color: black;
 }
 
-ul.card-list {
-    a, footer a {
-        color: darkorange;
-        font-weight: bold;
-        text-decoration: unset;
-        &:visited {
-            color: chocolate;
-        }
-        &:hover {
-            text-decoration: underline;
-        }
+ul.card-list a, footer a {
+    color: darkorange;
+    font-weight: bold;
+    text-decoration: unset;
+    &:visited {
+        color: chocolate;
     }
-    li {
-        list-style-type: "⬥  ";
+    &:hover {
+        text-decoration: underline;
     }
+}
+ul.card-list li {
+    list-style-type: "⬥  ";
 }
 
 .jumble {

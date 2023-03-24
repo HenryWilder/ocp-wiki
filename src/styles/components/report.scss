@@ -1,0 +1,95 @@
+/* Shared */
+.report {
+    -webkit-print-color-adjust: exact; /*Chrome, Safari */
+    color-adjust: exact; /*Firefox*/
+    
+    border-collapse: collapse;
+
+    tr, td, th {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 0.069in;
+        font-size: 12pt;
+    }
+
+    tr, td {
+        background-color: white;
+        font-weight: normal;
+    }
+
+    th {
+        background-color: #ccc;
+        font-weight: bold;
+    }
+}
+
+/* Incident report */
+.incident-report {
+    $width: 7.69in;
+    width: $width;
+
+    @media (max-width: ($width + 0.5in)) {
+        width: 100%;
+    }
+}
+
+/* Test log */
+.test-log {
+    $width: 6.19in;
+    width: $width;
+    
+    @media (max-width: ($width + 0.5in)) {
+        width: 100%;
+    }
+}
+
+/* Interview log */
+.interview-log {
+    $width: 7.19in;
+    width: $width;
+
+    @media (max-width: ($width + 0.5in)) {
+        width: 100%;
+    }
+
+    .speakerless {
+        color: #555;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+/* Notepad */
+.notepad {
+    display: block;
+    overflow: hidden;
+
+    font-family: "Nothing You Could Do", "Monotype Corsiva", "Bradley Hand ITC", sans-serif;
+    font-style: normal;
+    font-size: 24px;
+
+    background-attachment: scroll;
+    background-clip: border-box;
+    background: transparent linear-gradient(to top, #6d9eeb 0%, #fff2cc 8%);
+    background-origin: padding-box;
+    background-position: 0px 4px;
+    background-repeat: repeat;
+    background-size: 100% 1.15rem;
+
+    padding: 10px 10px;
+    border: 1px dotted #ccc;
+    line-height: 1.15rem;
+
+    -webkit-print-color-adjust: exact; /*Chrome, Safari */
+    color-adjust: exact; /*Firefox*/
+    
+    /* The homepage unordered list style seems to keep overriding the notepad ul style. Not sure why. */
+    p, ul {
+        line-height: 1.15rem;
+        margin: 0;
+    }
+
+    @media print {
+        background-image: linear-gradient(to top, #6d9eeb 0%, white 8%);
+    }
+}

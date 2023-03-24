@@ -1,6 +1,6 @@
 ---
 import ArticleLayout from "./ArticleLayout.astro";
-import type { IObjectEntry } from "../scripts/interfaces";
+import type { IObjectEntry } from "../scripts/index";
 interface Props {
   url: string;
   ocpNumber: string;
@@ -12,20 +12,23 @@ interface Props {
   containmentClass: string;
   containmentClassPrev?: string;
 }
+const { url, ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
 import objects from "../../public/data/objects.json";
+import ContainmentClass from "../components/ContainmentClass.astro";
 const objectList: IObjectEntry[] = objects;
 const index: number = objectList.findIndex((element) => element.id == ocpId);
 const prev: IObjectEntry = objectList.at(index - 1) ?? objectList[0];
 const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
-const { url, ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
 ---
-<ArticleLayout url={url} title={"OCP-"+ocpNumber} desc={{ocpName}+" ("+containmentClass+")"}>
-    <p><b>{ocpNumber}:</b> ({ocpName}){!!containmentClassPrev&&(" (previously "+containmentClassPrev+")")}</p>
-    <slot name="pre" />
-    <h2>Optimal Containment Protocols:</h2>
-    <slot name="protocol" />
-    <h2>Description:</h2>
-    <slot name="desc" />
-    <slot name="post" />
-    <section style="padding: 0.5ch 2ch">&laquo; <a href={prev.path}>{prev.name??""}</a> prev &bull; next <a href={next.path}>{next.name}</a> &raquo;</section>
+<ArticleLayout url={url} title={"OCP-"+ocpNumber} desc={ocpName+" ("+containmentClass+")"}>
+  <div style="display: flex; flex-flow: row nowrap ">
+    <b>{ocpNumber}:&nbsp;</b>
+    (<ContainmentClass classId={containmentClass.toLowerCase()}>{containmentClass}</ContainmentClass>)
+  </div>
+  <slot />
+  <footer>
+    <section style="padding: 0.5ch 2ch;position:absolute;bottom:0">
+      &laquo; <a href={prev.path} set:html={prev.name}></a> prev &bull; next <a href={next.path} set:html={next.name}></a> &raquo;
+    </section>
+  </footer>
 </ArticleLayout>

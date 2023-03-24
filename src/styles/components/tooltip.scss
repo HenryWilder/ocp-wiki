@@ -14,13 +14,6 @@
         }
     }
 
-    /* Show the tooltip text when you mouse over the tooltip container */
-    &:hover .tooltiptext {
-        visibility: visible;
-        opacity: 100%;
-        transition: 400ms;
-    }
-
     /* Tooltip text */
     .tooltiptext {
         visibility: hidden;
@@ -65,7 +58,14 @@
             /* Don't take up the screen width if the screen is wide */
             width: 300px;
         }
-}
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    &:hover .tooltiptext {
+        visibility: visible;
+        opacity: 100%;
+        transition: 400ms;
+    }
 
     .tooltip-bubble {
         backdrop-filter: blur(5px);
