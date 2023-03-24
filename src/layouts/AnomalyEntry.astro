@@ -14,7 +14,7 @@ interface Props {
 }
 const { url, ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
 import objects from "../../public/data/objects.json";
-import ContainmentClass from "../components/ContainmentClass.astro";
+import ContainmentClass from "../components/Tooltips/ContainmentClass.astro";
 const objectList: IObjectEntry[] = objects;
 const index: number = objectList.findIndex((element) => element.id == ocpId);
 const prev: IObjectEntry = objectList.at(index - 1) ?? objectList[0];
@@ -23,6 +23,7 @@ const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
 <ArticleLayout url={url} title={"OCP-"+ocpNumber} desc={ocpName+" ("+containmentClass+")"}>
   <div style="display: flex; flex-flow: row nowrap ">
     <b>{ocpNumber}:&nbsp;</b>
+    {ocpName}
     (<ContainmentClass classId={containmentClass.toLowerCase()}>{containmentClass}</ContainmentClass>)
   </div>
   <slot />

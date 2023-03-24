@@ -1,7 +1,7 @@
 ---
 import Tooltip from "./Tooltip.astro";
-import containmentClasses from "../../public/data/containment-classes.json";
-import type { IContainmentClass } from "../scripts/index";
+import containmentClasses from "../../../public/data/containment-classes.json";
+import type { IContainmentClass } from "../../scripts/index";
 const containmentClassList: IContainmentClass[] = containmentClasses;
 interface Props {
     classId: string
