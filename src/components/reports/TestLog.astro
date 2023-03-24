@@ -8,9 +8,9 @@ const { item } = Astro.props;
 ---
 <table class="report test-log" id={item.id}>
     <tbody>
-        <tr>
-            <th colspan="3">TEST LOG {item.objectNumber ?? <r>????</r>} {item.instance}</th>
-        </tr>
+        <tr><th colspan="3">TEST LOG {item.objectNumber ?? <r>????</r>} {item.instance}</th></tr>
+
+        <!-- Side by side -->
         <tr>
             <td colspan="2"><b>Date:</b> {item.date ?? <r>*****</r>}</td>
             <td style="width:50%"><b>Researcher:</b> {item.rsrTitle ? (item.rsrTitle+" ") : ""}{item.researcher ?? <r>*****</r>}</td>
@@ -23,6 +23,8 @@ const { item } = Astro.props;
             <td colspan="2"><b>Location:</b> {item.location ?? <r>*****</r>}</td>
             <td><b>Approved By:</b> {item.aprvrTitle ? (item.aprvrTitle+" ") : ""}{item.approver ?? <r>*****</r>}</td>
         </tr>
+
+        <!-- Lower section -->
         <tr><th colspan="3">REQUEST</th></tr>
         <tr>
             <td class="test-log-label" style="width:1.19in">Goal</td>
@@ -32,6 +34,7 @@ const { item } = Astro.props;
             <td class="test-log-label">Procedure</td>
             <td colspan="2" set:html={item.procedure ?? "n/a"}></td>
         </tr>
+
         <tr><th colspan="3">REPORT</th></tr>
         <tr>
             <td class="test-log-label">Results</td>
