@@ -30,7 +30,7 @@ h3, h4 {
     font-size: 14px;
 }
 
-r {
+.redacted {
     position: relative;
     display: inline-block;
     &::after {
@@ -45,7 +45,7 @@ r {
         border-radius: 3px;
         color: transparent;
         transition: 0.5s;
-        cursor: not-allowed;
+        cursor: default;
     }
     &:not([type="secret"]) {
         -webkit-user-select: none; /* Safari */
@@ -56,9 +56,16 @@ r {
         border-radius: 0px;
         background-color: black;
     }
+
+    @media print {
+        background-color: #222;
+        border-radius: 0;
+        -webkit-print-color-adjust: exact; /*Chrome, Safari */
+        color-adjust: exact; /*Firefox*/
+    }
     
     /* Read on hover */
-    &[type="secret"] {
+    &.secret {
         &::after {
             background-color: rgba(0,0,0,0.9);
             margin: 0 -2.5px;
@@ -81,13 +88,18 @@ r {
             color: black;
             pointer-events: none;
         }
-    }
-    /* Multi-line redaction */
-    &[class="multiline"] {
-        display: block;
+
+        @media print {
+            &.secret {
+                background-color: #eee;
+                color: black;
+                margin: 0;
+                padding: 0;
+            }
+        }
     }
 }
-.redacted-date-group:hover r::after {
+.redacted-date-group:hover .redacted::after {
     border-radius: 0px;
     background-color: black;
 }
@@ -150,18 +162,6 @@ a.reference {
             top: 0;
             left: 0;
             content: "???";
-        }
-    }
-    r {
-        background-color: #222;
-        border-radius: 0;
-        -webkit-print-color-adjust: exact; /*Chrome, Safari */
-        color-adjust: exact; /*Firefox*/
-        &[type="secret"] {
-            background-color: #eee;
-            color: black;
-            margin: 0;
-            padding: 0;
         }
     }
     a {

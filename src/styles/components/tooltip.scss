@@ -48,15 +48,14 @@
             }
         }
         
-        @media (max-width: 7.625in) {
+        width: 300px;
+
+        // Take up the screen width if it is small enough
+        @media (max-width: $threshold-max-width) {
             position:fixed;
             bottom: 0;
             left: 0;
             right: 0;
-        }
-        @media (min-width: 7.626in) {
-            /* Don't take up the screen width if the screen is wide */
-            width: 300px;
         }
     }
 
@@ -88,7 +87,7 @@
 }
 
 /* Positioning depending on where on the screen the element is (decided by script) */
-@media (min-width: 7.626in) {
+@media (min-width: ($threshold-max-width + 1px)) {
     .tooltiptext-below .tooltip-bubble:not(.tooltip-note) {
         top: 100%;
         left: 0%;

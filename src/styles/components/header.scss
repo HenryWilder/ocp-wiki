@@ -16,6 +16,12 @@ header {
         filter: drop-shadow(1.5px 1.5px 2px rgba(0,0,0,0.75));
 
         .header-logo img {
+            user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            
             transition: 200ms;
         }
         
@@ -103,7 +109,7 @@ header {
 }
 
 
-@media (max-width: ($article-width + $horizontal-padding)) {
+@media (max-width: $threshold-max-width) {
     .card-list {
         box-shadow: none !important;
         ul {

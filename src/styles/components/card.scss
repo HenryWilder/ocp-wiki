@@ -1,3 +1,5 @@
+@use "../layout.scss";
+
 section {
     margin-bottom: 1em;
     background-color: white;
@@ -5,12 +7,12 @@ section {
     padding: 30px;
     border: 1px solid #aaa;
 
-    @media (max-width: 7.625in) {
+    @media (max-width: $threshold-max-width) {
         padding: 0.25in;
     }
     
     @media (max-width: 4.5in) {
-        padding: 0.125in;
+        padding: $horizontal-padding;
     }
 
     h2 {

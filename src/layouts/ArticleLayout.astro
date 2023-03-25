@@ -12,6 +12,10 @@ const { url, title, name = title, desc } = Astro.props;
     <article>
       <h1>{name}</h1>
       <hr>
+
       <slot />
+      <footer>
+        <slot name="footer" />
+      </footer>
     </article>
 </BaseLayout>

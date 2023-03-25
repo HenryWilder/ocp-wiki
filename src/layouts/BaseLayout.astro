@@ -13,11 +13,9 @@ const { url, title, desc } = Astro.props
     <Meta title={title} url={url} desc={desc} />
   </head>
   <body>
-    <div id="page-container">
-      <SiteHeader />
-      <div id="content-viewport">
-        <slot />
-      </div>
+    <SiteHeader />
+    <div id="content-viewport">
+      <slot />
     </div>
   </body>
 </html>
