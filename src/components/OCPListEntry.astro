@@ -1,6 +1,8 @@
 ---
 import Tooltip from './tooltip-types/Tooltip.astro';
 import type { IObjectEntry } from '../scripts/index';
+import Redacted from './Redacted.astro';
+import Blurred from './Blurred.astro';
 interface Props {
     anomalyInfo: IObjectEntry
 }
@@ -13,9 +15,9 @@ const objectTitleVisibility = (if_normal: any, is_wip: any, if_censored: any) =>
     }
 }
 ---
-{(anomalyInfo.vis!="hide") && (<li><a href={anomalyInfo.path} set:html={anomalyInfo.name}></a>&#9;- {
+{(anomalyInfo.vis!="hide") && (<li><a href={`./objects/${anomalyInfo.code}.html`} set:html={anomalyInfo.name}></a> <span aria-hidden="true">-</span> {
     objectTitleVisibility(
-        anomalyInfo.title,
-        <r type="secret">{anomalyInfo.title}</r>,
-        <Tooltip category="Anomalous Object" name={anomalyInfo.name} tagline="Item removed for being disturbing"><r>{anomalyInfo.title}</r></Tooltip>)
+        anomalyInfo.tagline,
+        <Blurred>{anomalyInfo.tagline}</Blurred>,
+        <Tooltip category="Anomalous Object" name={anomalyInfo.name} tagline="Item removed for being disturbing"><Redacted>{anomalyInfo.tagline}</Redacted></Tooltip>)
 }</li>)}

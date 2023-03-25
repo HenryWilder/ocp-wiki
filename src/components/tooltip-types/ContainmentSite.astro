@@ -1,0 +1,24 @@
+---
+import Tooltip from "./Tooltip.astro";
+
+// Containment site
+import type { IContainmentSite } from "../../scripts/index";
+import containmentSites from "../../../public/data/containment-sites.json";
+const containmentSiteList: IContainmentSite[] = containmentSites;
+
+interface Props { id: string; }
+const { id } = Astro.props;
+const tryInfo: IContainmentSite|undefined = containmentSiteList.find(element => element.id == id);
+if (tryInfo === undefined) throw new Error(`Cannot find "${id}" in containment-sites.json`);
+const info: IContainmentSite = tryInfo;
+---
+<Tooltip
+    addClass="containment-site"
+    category="Containment Site"
+    name={info.name}
+    tagline={info.tagline}
+    path="/info/containment-classes.html"
+    linkText="containment classes"
+>
+    <slot />
+</Tooltip>

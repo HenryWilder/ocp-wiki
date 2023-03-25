@@ -15,7 +15,7 @@ const { addClass = "", category, name, tagline, path, linkText, notes } = Astro.
 ---
 <span class={"tooltip "+addClass}>
     <slot />
-    <span class="tooltiptext">
+    <span class="tooltiptext" aria-label="tooltip">
         <div class="tooltip-bubble">
             <div class="comment-name">
                 {category}

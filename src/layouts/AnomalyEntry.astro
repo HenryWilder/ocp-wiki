@@ -30,7 +30,7 @@ const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
   
   <footer>
     <section style="padding: 0.5ch 2ch;position:absolute;bottom:0">
-      &laquo; <a href={prev.path} set:html={prev.name}></a> prev &bull; next <a href={next.path} set:html={next.name}></a> &raquo;
+      &laquo; <a href={`./objects/${prev.code}.html`} set:html={prev.name}></a> prev &bull; next <a href={`./objects/${next.code}.html`} set:html={next.name}></a> &raquo;
     </section>
   </footer>
 </ArticleLayout>

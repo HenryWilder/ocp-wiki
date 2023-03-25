@@ -1,0 +1,10 @@
+---
+interface Props {
+    name: string;
+}
+const { name } = Astro.props;
+const id = name
+    .toLowerCase()
+    .replaceAll(" ", "-");
+---
+<h2 id={id}>{name}:</h2>

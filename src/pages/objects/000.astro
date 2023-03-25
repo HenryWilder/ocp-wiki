@@ -1,75 +1,107 @@
 ---
+import Redacted from '../../components/Redacted.astro';
+import Blurred from '../../components/Blurred.astro';
 import IncidentReport from '../../components/reports/IncidentReport.astro';
 import InterviewLog from '../../components/reports/InterviewLog.astro';
 import TestLog from '../../components/reports/TestLog.astro';
 import AnomalyEntry from '../../layouts/AnomalyEntry.astro';
-const incident_report_000_1 = {
-    id: "incident-report-000-1",
-    objectNumber: "000",
-    instance: "1",
-    incidentType: "Containment Breach",
-    location: "Site-20",
-    object: "000",
-    description: "We have absolutely no idea what happened.",
-    witnessExplanation: "...So I'm sitting there, <r>mustard on my titties</r>, when this <r type=\"secret\">document</r> jumps me and starts emptying my pockets of all my candy wrappers! I have no <r type=\"secret\">bloody</r> clue why. Frankly, I don't even remember putting any candy wrappers in my pockets, but it was managing to pull them out anyway. I didn't wany those wrappers or anything, they're just trash, but I definitely didn't want it GETTING them so I started grabbing for em myself! That's when<div class=\"comment\"><div class=\"comment-name\">Note from Sr RSR <r>Lastname</r>:</div>At this moment, the witness started screming and pointing at an empty corner of the room. A security officer was asked to examine the space. Within moments, the guard vanished into a cloud of black smoke. His next of kin were told the cause of death was smoke inhalation followed by spontaneous physical dissolvement.For the record, can we please not let the interns write the cover stories anymore?</div>",
-    followup: "A janitor put a wet floor sign by the corner of the room."
-}
-const test_log_000_1 = {
-    id: "test-log-000-1",
-    objectNumber: "000",
-    instance: "1",
-    rsrTitle: "Jr RSR",
-    object: "000",
-    goal: "Study the object.",
-    procedure: "Get a piece of paper and write down what the object does.",
-    results: "Failed.",
-    comments: "It ate my paper :c"
-}
-const interview_log_000_1 = {
-    id: "interview-log-000-1",
-    objectNumber: "000",
-    instance: "1",
-    interviewerTitle: "Jr RSR",
-    subjectName: "OCP-000",
-    topic: "Reason for hostility",
-    interview: {
-        members:[
-            {name: "Interviewer", color: "#840"},
-            {name: "Subject", color: "#900"}
-        ],
-        body:[
-            { speaker: 0, content: "Why are you hostile?" },
-            { content: "various growls and vocalizations of grumpiness" },
-            { speaker: 0, content: "Please calm down. There is no need for hostility." },
-            { speaker: 1, content: "<r>I'm going to eat your lunch money and then fold your laundry with my baby hands</r>" },
-            { content: "interviewer is silent" },
-            { speaker: 0, content: "I think we're done here." }
-        ]
-    },
-    notes: "I'm pretending to write something down<br><br>blah blah blah blah<br><br>Are they still watching?<br><br>This <r>thing</r> freaks me out. I don't wanna have to work with it anymore. I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore..."
-}
+import Comment from '../../components/Comment.astro';
+import ArticleSegmentHeading from '../../components/ArticleSegmentHeading.astro';
 ---
 <AnomalyEntry url="./objects/000" ocpNumber="000" ocpName="A Website" containmentClass="Verj">
-    <h2>Optimal Containment Protocols:</h2>
+    <ArticleSegmentHeading name="Optimal Containment Protocols" />
         <p><s>OCP-000 is held at <span class="site-03">Site-03</span> in a shoebox.</s></p>
         <p>OCP-000 is to be posted on the OCP site in order to confirm the functional operation of the OCP database. No other protocols are needed at this time.</p>
         <div class="update">
             <h3>UPDATE:</h3>
-            <p>In the event of a containment breach involving <r type="secret">high casualties</r>, OCP-000 is to be <r>deleted until further notice</r>.</p>
+            <p>In the event of a containment breach involving <Blurred>high casualties</Blurred>, OCP-000 is to be <Redacted>deleted until further notice</Redacted>.</p>
         </div>
         <div class="comment">
-            <div class="comment-name">Comment from Dr. <r>Lastname</r>:</div>
+            <div class="comment-name">Comment from Dr. <Redacted>Lastname</Redacted>:</div>
             I had no idea there were even containment protocols for documents. Has <span class="z5-1">Annie</span> lost his mind?
         </div>
         <h2>Description:</h2>
-        <p><r type="secret" class="multiline">OCP-000 is a paper document regarding the task force <span class="mtf-k-nis">K-nis (Bloodhounds)</span>. Its origin is unknown, as it was never written by any past nor present researcher at the Federation.</r></p>
-        <p><r type="secret" class="multiline">What is known is that it mentions a hybrid between <span class="ocp-051">OCP-051</span> and a hitherto unknown OCP described as a bat.</r></p>
-        <p>OCP-000 is a test document uploaded to the OCP wiki as a test to make sure the formatting looks right. It is written in <r>HTML</r> and contains multiple tags.</p>
-        <h2>Test Logs:</h2>
-        <div id="test-log-000-1"></div>
-        <TestLog item={test_log_000_1}/>
-        <h2>Incident Reports:</h2>
-        <IncidentReport item={incident_report_000_1}/>
-        <h2>Interview Logs:</h2>
-        <InterviewLog item={interview_log_000_1}/>
+        <p><Blurred>OCP-000 is a paper document regarding the task force <span class="mtf-k-nis">K-nis (Bloodhounds)</span>. Its origin is unknown, as it was never written by any past nor present researcher at the Federation.</Blurred></p>
+        <p><Blurred>What is known is that it mentions a hybrid between <span class="ocp-051">OCP-051</span> and a hitherto unknown OCP described as a bat.</Blurred></p>
+        <p>OCP-000 is a test document uploaded to the OCP wiki as a test to make sure the formatting looks right. It is written in <Redacted>HTML</Redacted> and contains multiple tags.</p>
+        
+        <ArticleSegmentHeading name="Test Logs" />
+        <TestLog item={{
+            id: "test-log-000-1",
+            objectNumber: "000",
+            instance: "1",
+        }}>
+            <span slot="object">000</span>
+            <span slot="researcher">Jr RSR <Redacted>*******</Redacted></span>
+            <span slot="goal">Study the object.</span>
+            <span slot="procedure">Get a piece of paper and write down what the object does.</span>
+            <span slot="results">Failed.</span>
+            <span slot="comments">It ate my paper :c</span>
+        </TestLog>
+
+        <ArticleSegmentHeading name="Incident Reports" />
+        <IncidentReport item={{
+            id: "incident-report-000-1",
+            objectNumber: "000",
+            instance: "1"}}>
+            <span slot="incidentType">Containment Breach</span>
+            <span slot="location">Site-20</span>
+            <span slot="object">000</span>
+            <span slot="description">
+                We have absolutely no idea what happened.
+            </span>
+            <span slot="witnessExplanation">
+                ...So I'm sitting there, <Redacted>mustard on my titties</Redacted>, when this <Blurred>document</Blurred>
+                jumps me and starts emptying my pockets of all my candy wrappers! I have no <Blurred>bloody</Blurred> clue why.
+                Frankly, I don't even remember putting any candy wrappers in my pockets, but it was managing to pull them out anyway.
+                I didn't wany those wrappers or anything, they're just trash, but I definitely didn't want it GETTING them so I started grabbing for em myself!
+                That's when
+                <Comment>
+                    <span slot="name">Note from Sr RSR <Redacted>Lastname</Redacted>:</span>
+                    At this moment, the witness started screming and pointing at an empty corner of the room.
+                    A security officer was asked to examine the space. Within moments, the guard vanished into a cloud of black smoke.
+                    His next of kin were told the cause of death was smoke inhalation followed by spontaneous physical dissolvement.
+                    <br><br>
+                    For the record, can we please not let the interns write the cover stories anymore?
+                </Comment>
+            </span>
+            <span slot="followup">
+                A janitor put a wet floor sign by the corner of the room.
+            </span>
+        </IncidentReport>
+
+        <ArticleSegmentHeading name="Interview Logs" />
+        <InterviewLog item={{
+            id: "interview-log-000-1",
+            objectNumber: "000",
+            instance: "1",
+            interview: {
+                members:[
+                    {name: "Interviewer", color: "#840"},
+                    {name: "Subject", color: "#900"}
+                ],
+                body:[
+                    { speaker: 0, content: "Why are you hostile?" },
+                    { content: "various growls and vocalizations of grumpiness" },
+                    { speaker: 0, content: "Please calm down. There is no need for hostility." },
+                    { speaker: 1, content: "<Redacted>I'm going to eat your lunch money and then fold your laundry with my baby hands</Redacted>" },
+                    { content: "interviewer is silent" },
+                    { speaker: 0, content: "I think we're done here." }
+                ]
+            }
+        }}>
+            <span slot="interviewerName">Jr RSR <Redacted>*******</Redacted></span>
+            <span slot="subjectName">OCP-000</span>
+            <span slot="topic">Reason for hostility</span>
+            <span slot="notes">
+                I'm pretending to write something down
+                <br><br>
+                blah blah blah blah
+                <br><br>
+                Are they still watching?
+                <br><br>
+                This <Redacted>thing</Redacted> freaks me out. I don't wanna have to work with it anymore.
+                I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore...
+            </span>
+        </InterviewLog>
 </AnomalyEntry>

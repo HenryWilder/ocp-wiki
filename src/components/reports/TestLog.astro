@@ -1,5 +1,7 @@
 ---
 import type { ITestLog } from '../../scripts/index';
+import Redacted from '../Redacted.astro';
+import RedactedDate from '../RedactedDate.astro';
 
 interface Props {
     item: ITestLog
@@ -12,37 +14,37 @@ const { item } = Astro.props;
 
         <!-- Side by side -->
         <tr>
-            <td colspan="2"><b>Date:</b> {item.date ?? <r>*****</r>}</td>
-            <td style="width:50%"><b>Researcher:</b> {item.rsrTitle ? (item.rsrTitle+" ") : ""}{item.researcher ?? <r>*****</r>}</td>
+            <td colspan="2"><b>Date:</b> <slot name="date"><RedactedDate /></slot></td>
+            <td style="width:50%"><b>Researcher:</b> <slot name="researcher"><Redacted>*********</Redacted></slot></td>
         </tr>
         <tr>
-            <td colspan="2"><b>Time:</b> {item.time ?? <span><r>####</r>hrs</span>}</td>
-            <td><b>Object:</b> OCP-{item.object ?? <r>????</r>}</td>
+            <td colspan="2"><b>Time:</b> <slot name="time"><Redacted>####</Redacted>hrs</slot></td>
+            <td><b>Object:</b> OCP-<slot name="object"><Redacted>####</Redacted></slot></td>
         </tr>
         <tr>
-            <td colspan="2"><b>Location:</b> {item.location ?? <r>*****</r>}</td>
-            <td><b>Approved By:</b> {item.aprvrTitle ? (item.aprvrTitle+" ") : ""}{item.approver ?? <r>*****</r>}</td>
+            <td colspan="2"><b>Location:</b> <slot name="location"><Redacted>???????????</Redacted></slot></td>
+            <td><b>Approved By:</b> <slot name="approver"><Redacted>**********</Redacted></slot></td>
         </tr>
 
         <!-- Lower section -->
         <tr><th colspan="3">REQUEST</th></tr>
         <tr>
             <td class="test-log-label" style="width:1.19in">Goal</td>
-            <td colspan="2" set:html={item.goal ?? "n/a"}></td>
+            <td colspan="2"><slot name="goal">n/a</slot></td>
         </tr>
         <tr>
             <td class="test-log-label">Procedure</td>
-            <td colspan="2" set:html={item.procedure ?? "n/a"}></td>
+            <td colspan="2"><slot name="procedure">n/a</slot></td>
         </tr>
 
         <tr><th colspan="3">REPORT</th></tr>
         <tr>
             <td class="test-log-label">Results</td>
-            <td colspan="2" set:html={item.results ?? "n/a"}></td>
+            <td colspan="2"><slot name="results">n/a</slot></td>
         </tr>
         <tr>
             <td class="test-log-label">Comments</td>
-            <td colspan="2" set:html={item.comments ?? ""}></td>
+            <td colspan="2"><slot name="comments"></slot></td>
         </tr>
     </tbody>
 </table>

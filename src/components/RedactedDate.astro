@@ -3,8 +3,9 @@ interface Props {
     year?: number;
     month?: number;
     day?: number;
+    readAs?: string; // What should Aria read it as?
 }
-const { year, month, day } = Astro.props;
+const { year, month, day, readAs } = Astro.props;
 
 let yearStr: string|undefined = year?.toString();
 if (yearStr) while (yearStr.length < 4) yearStr = "0" + yearStr;
@@ -14,5 +15,10 @@ if (monthStr) while (monthStr.length < 2) monthStr = "0" + monthStr;
 
 let dayStr: string|undefined = day?.toString();
 if (dayStr) while (dayStr.length < 2) dayStr = "0" + dayStr;
+
 ---
-<span class="redacted-date-group">{yearStr ?? <r>0000</r>}|{monthStr ?? <r>00</r>}|{dayStr ?? <r>00</r>}</span>
+<span aria-label={readAs ?? "redacted date"}>
+    <span class="redacted-date-group" aria-hidden="true">
+        {yearStr ?? <r>0000</r>}|{monthStr ?? <r>00</r>}|{dayStr ?? <r>00</r>}
+    </span>
+</span>
