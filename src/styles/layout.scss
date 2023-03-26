@@ -138,58 +138,121 @@ body {
         }
     }
 
-    #content-viewport {
-        @include page-width-container-for-centered-stuff;
-        overflow-y: scroll;
-        overflow-x: hidden;
+    #viewport-with-aside {
+        display: flex;
+        flex-flow: row nowrap;
+
         width: 100vw;
-
-        &::-webkit-scrollbar {
-            width: 8px;
-            background-color: #ccc;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: #444;
-        }
-
+        height: 100dvh;
+        overflow: hidden;
         @media print {
             overflow: visible;
         }
-        
-        article {
-            @include centered-on-page;
-            margin-bottom: 0.5in;
 
-            // A relative element for sticky elements to stick to
-            .sticky-sticker {
-                position: relative;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
+        aside {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+            $aside-width: 3in;
+            width: $aside-width;
+            @media (max-width: ($article-width + $aside-width * 2 + 1in)) {
+                display: none;
+            }
+            @media print {
+                display: none;
+            }
+            margin: 10px;
+            border-radius: 1ch;
+            margin-top: calc(var(--banner-height) + var(--nav-height) + 10px);
 
-                .sticky-heading {
-                    $border-width: 1px;
-                    $widen: 10px;
-                    position: sticky;
-                    position: -webkit-sticky;
+            h2 {
+                margin: 1ch;
+            }
+
+            ul {
+                display: flex;
+                flex-flow: column;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                overflow-x: clip;
+                overflow-y: auto;
+
+                li {
+                    list-style: none;
+
+                    a {
+                        display: inline-block;
+                        padding: 1ch;
+                        width: 100%;
+                        font-weight: bold;
+                        background-color: transparent;
+                        &:hover {
+                            background-color: #ddd;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        #content-viewport {
+            @include page-width-container-for-centered-stuff;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            width: 100vw;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+                background-color: #ccc;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #444;
+            }
+
+            @media print {
+                overflow: visible;
+            }
+            
+            article {
+                @include centered-on-page;
+                margin-bottom: 0.5in;
+
+                // A relative element for sticky elements to stick to
+                .sticky-sticker {
+                    position: relative;
                     top: 0;
-                    border: $border-width solid #ccc;
-                    background-color: white;
-                    z-index: 29;
-                    width: 100%;
-                    border-radius: 5px;
-                    padding-left: ($widen - $border-width);
-                    padding-right: ($widen - $border-width);
-                    margin-left: ($widen * -1);
-                    margin-right: ($widen * -1);
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
 
-                    @media print {
-                        border: none;
-                        padding-left: 0;
-                        padding-right: 0;
-                        margin-left: 0;
-                        margin-right: 0;
+                    .sticky-heading {
+                        $border-width: 1px;
+                        $widen: 10px;
+                        position: sticky;
+                        position: -webkit-sticky;
+                        top: 0;
+                        border: $border-width solid #ccc;
+                        background-color: white;
+                        z-index: 1;
+                        width: 100%;
+                        border-radius: 5px;
+                        padding-left: ($widen - $border-width);
+                        padding-right: ($widen - $border-width);
+                        margin-left: ($widen * -1);
+                        margin-right: ($widen * -1);
+
+                        @media print {
+                            border: none;
+                            padding-left: 0;
+                            padding-right: 0;
+                            margin-left: 0;
+                            margin-right: 0;
+                        }
                     }
                 }
             }

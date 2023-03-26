@@ -4,7 +4,8 @@ import OCPListEntry from "../components/OCPListEntry.astro";
 
 ---
 <ArticleLayout url="search" title="Search" name="Search Results" desc="Obscure, Classify, Preserve">
-    <p><strong>Showing results for: </strong><span id="query-text"></span></p>
+    <p><strong>Showing results for: </strong>&quot;<span id="query-text"></span>&quot;</p>
+    <div class="comment-name">Found <span id="result-count"></span> results in <span id="result-time"></span>.</div>
 
     <ul class="card-list" id="search-results">
         <!-- Todo: Add clintside script to search through handwritten JSON of page keywords and references -->
@@ -14,14 +15,20 @@ import OCPListEntry from "../components/OCPListEntry.astro";
         import type { PageLink } from "../scripts/search";
         import { queryPages } from "../scripts/search";
         const query = location.search.substring(location.search.indexOf("=")+1);
+        document.querySelector("#query-text")!.outerHTML = query;
+
+        const timeStart: number = performance.now();
         const results: PageLink[] = queryPages(query);
+        const timeFinish: number = performance.now();
+        const searchTime: number = timeFinish - timeStart;
+        document.querySelector("#result-count")!.outerHTML = results.length.toString();
 
-        const queryText = document.querySelector("#query-text");
-        if (queryText === null) throw new Error("Cannot find query-text element");
-        queryText.outerHTML = query;
+        const timeSlot = document.querySelector("#result-time");
+        if (searchTime < 1000)
+            timeSlot!.outerHTML = searchTime.toFixed(2) + " milliseconds";
+        else
+            timeSlot!.outerHTML = (searchTime / 1000).toFixed(2) + " seconds";
 
-        const resultList = document.querySelector("#search-results");
-        if (resultList === null) throw new Error("Cannot find search-results element");
-        resultList.innerHTML = results.map((e) => `<a href="${e.path}">${e.name}</a>`).join("\n");
+        document.querySelector("#search-results")!.innerHTML = results.map((e) => `<a href="${e.path}">${e.name}</a> (${e.type})`).join("\n");
     </script>
 </ArticleLayout>

@@ -1,0 +1,16 @@
+---
+
+---
+<aside>
+    <h2>Jump to</h2>
+    <hr>
+    <ul id="document-outline">
+    </ul>
+
+    <script>
+      const sections: HTMLElement[] = [...(document.querySelectorAll(".article-segment-heading"))] as HTMLElement[];
+      document.querySelector("#document-outline")!.innerHTML =
+        sections.map(e => `<li><a href="#${e.id}">${e.title}</a></li>`)
+        .join("\n");
+    </script>
+  </aside>

@@ -19,6 +19,6 @@ if (dayStr) while (dayStr.length < 2) dayStr = "0" + dayStr;
 ---
 <span aria-label={readAs ?? "redacted date"}>
     <span class="redacted-date-group" aria-hidden="true">
-        {yearStr ?? <r>0000</r>}|{monthStr ?? <r>00</r>}|{dayStr ?? <r>00</r>}
+        {yearStr ?? <span class="redacted">0000</span>}|{monthStr ?? <span class="redacted">00</span>}|{dayStr ?? <span class="redacted">00</span>}
     </span>
 </span>

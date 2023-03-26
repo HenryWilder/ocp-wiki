@@ -1,5 +1,8 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import Meta from '../components/Meta.astro';
+import PageOutline from '../components/PageOutline.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
 interface Props {
   url: string;
   title: string;
@@ -8,14 +11,24 @@ interface Props {
 }
 const { url, title, name = title, desc } = Astro.props;
 ---
-<BaseLayout url={url} title={title} desc={desc}>
-    <article>
-      <h1>{name}</h1>
-      <hr>
+<html lang="en">
+  <head>
+    <Meta title={title} url={url} desc={desc} />
+  </head>
+  <body>
+    <SiteHeader />
+    <div id="viewport-with-aside">
+      <PageOutline />
 
-      <slot />
-      <footer>
-        <slot name="footer" />
-      </footer>
-    </article>
-</BaseLayout>
+      <div id="content-viewport">
+
+        <article>
+          <h1>{name}</h1>
+          <hr>
+          <slot />
+        </article>
+
+      </div>
+    </div>
+  </body>
+</html>

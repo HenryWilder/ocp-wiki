@@ -7,4 +7,5 @@ const id = name
     .toLowerCase()
     .replaceAll(" ", "-");
 ---
-<h2 id={id} class="sticky-heading">{name}:</h2>
+<span id={id} class="article-segment-heading" title={name}></span>
+<a href={"#"+id}><h2 class="sticky-heading">{name}:</h2></a>
