@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from "../layouts/ArticleLayout.astro";
+import OCPListEntry from "../components/OCPListEntry.astro";
 
 ---
 <ArticleLayout url="search" title="Search" name="Search Results" desc="Obscure, Classify, Preserve">
@@ -10,9 +11,10 @@ import ArticleLayout from "../layouts/ArticleLayout.astro";
     </ul>
 
     <script>
-        import queryPages from "../scripts/search";
+        import type { PageLink } from "../scripts/search";
+        import { queryPages } from "../scripts/search";
         const query = location.search.substring(location.search.indexOf("=")+1);
-        const results: string[] = queryPages(query);
+        const results: PageLink[] = queryPages(query);
 
         const queryText = document.querySelector("#query-text");
         if (queryText === null) throw new Error("Cannot find query-text element");
@@ -20,6 +22,6 @@ import ArticleLayout from "../layouts/ArticleLayout.astro";
 
         const resultList = document.querySelector("#search-results");
         if (resultList === null) throw new Error("Cannot find search-results element");
-        resultList.innerHTML = results.join("\n");
+        resultList.innerHTML = results.map((e) => `<a href="${e.path}">${e.name}</a>`).join("\n");
     </script>
 </ArticleLayout>

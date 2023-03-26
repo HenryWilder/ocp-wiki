@@ -1,3 +1,9 @@
 [
-    { "keyword":"000", "aliases":["0"], "pages":[""] }
+    {
+        "keyword":"000",
+        "aliases":["0"],
+        "pages":[
+            { "name":"OCP-000", "path":"objects/000.html" }
+        ]
+    }
 ]
