@@ -27,7 +27,9 @@ const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
     (<ContainmentClass classId={containmentClass.toLowerCase()}>{containmentClass}</ContainmentClass>)
   </div>
 
-  <slot />
+  <div class="sticky-sticker">
+    <slot />
+  </div>
 
   <footer>
     <section>

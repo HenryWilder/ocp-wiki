@@ -1,4 +1,4 @@
-$article-width: 7.5in;
+$article-width: 8in;
 $horizontal-padding: 0.125in;
 $threshold-max-width: ($article-width + $horizontal-padding);
 
@@ -43,6 +43,9 @@ body {
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    @media print {
+        overflow: visible;
+    }
 
     header {
         // Header should not show when printing.
@@ -91,7 +94,7 @@ body {
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: flex-start;
-                align-items: stretch;
+                align-items: center;
             }
     
             li a, .dropbtn {
@@ -138,12 +141,64 @@ body {
     #content-viewport {
         @include page-width-container-for-centered-stuff;
         overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100vw;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            background-color: #ccc;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #444;
+        }
+
+        @media print {
+            overflow: visible;
+        }
         
         article {
             @include centered-on-page;
             margin-bottom: 0.5in;
 
+            // A relative element for sticky elements to stick to
+            .sticky-sticker {
+                position: relative;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                .sticky-heading {
+                    $border-width: 1px;
+                    $widen: 10px;
+                    position: sticky;
+                    position: -webkit-sticky;
+                    top: 0;
+                    border: $border-width solid #ccc;
+                    background-color: white;
+                    z-index: 29;
+                    width: 100%;
+                    border-radius: 5px;
+                    padding-left: ($widen - $border-width);
+                    padding-right: ($widen - $border-width);
+                    margin-left: ($widen * -1);
+                    margin-right: ($widen * -1);
+
+                    @media print {
+                        border: none;
+                        padding-left: 0;
+                        padding-right: 0;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+
             footer {
+                @media print {
+                    display: none !important;
+                }
+
                 width: 100%;
                 height: 1in;
 

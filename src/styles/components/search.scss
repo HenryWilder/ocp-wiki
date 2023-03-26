@@ -1,0 +1,20 @@
+#searchbar {
+    font-family: monospace;
+    background-color: white;
+    border: 0;
+    padding-left: 1ch;
+    padding-right: 1ch;
+    border-radius: 999px;
+    width: 6rem;
+    transition: 0.6s;
+    &:focus, &:active {
+        width: 100%;
+        outline: 2px solid orange;
+    }
+}
+
+#search-button {
+    background-color: white;
+    border-radius: 999px;
+
+}
