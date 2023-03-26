@@ -1,0 +1,9 @@
+---
+interface Props {
+    hash: string;
+    outlineName: string;
+    depth: number;
+}
+const { hash, outlineName, depth } = Astro.props;
+---
+<span id={hash} class={"show-in-outline outline-depth"+depth} title={outlineName}></span>

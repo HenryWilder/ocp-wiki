@@ -200,6 +200,11 @@ body {
                         }
                     }
 
+                    &:not(.outline-depth0) a {
+                        padding: 0;
+                        padding-left: 1ch;
+                        font-weight: normal;
+                    }
                 }
             }
         }

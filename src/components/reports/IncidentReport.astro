@@ -1,5 +1,6 @@
 ---
 import type { IIncidentReport } from '../../scripts/index';
+import OutlineAnchor from '../OutlineAnchor.astro';
 import Redacted from '../Redacted.astro';
 import RedactedDate from '../RedactedDate.astro';
 
@@ -8,9 +9,10 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
+<OutlineAnchor hash={item.id} outlineName={`Incident Report ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}/>
 <table class="report incident-report" id={item.id}>
     <tbody>
-        <tr><th colspan="2">INCIDENT REPORT {item.objectNumber ?? <r>*****</r>} {item.instance}</th></tr>
+        <tr><th colspan="2">INCIDENT REPORT {item.objectNumber ?? <Redacted>*****</Redacted>} {item.instance}</th></tr>
 
         <tr>
             <td style="width:50%"><b>Date:</b> <slot name="date"><RedactedDate /></slot></td>
