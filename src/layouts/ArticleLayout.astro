@@ -26,6 +26,9 @@ const { url, title, name = title, desc } = Astro.props;
           <h1>{name}</h1>
           <hr>
           <slot />
+          <footer>
+            <slot name="footer"></slot>
+          </footer>
         </article>
 
       </div>

@@ -8,9 +8,12 @@
     </ul>
 
     <script>
-      const sections: HTMLElement[] = [...(document.querySelectorAll(".article-segment-heading"))] as HTMLElement[];
-      document.querySelector("#document-outline")!.innerHTML =
-        sections.map(e => `<li><a href="#${e.id}">${e.title}</a></li>`)
-        .join("\n");
+        const sections: HTMLElement[] = [...(document.querySelectorAll(".article-segment-heading"))] as HTMLElement[];
+        if (sections.length === 0) {
+            document.querySelector("aside")!.remove();
+        } else {
+            document.querySelector("#document-outline")!.innerHTML =
+            sections.map(e => `<li><a href="#${e.id}">${e.title}</a></li>`).join("\n");
+        }
     </script>
-  </aside>
+</aside>
