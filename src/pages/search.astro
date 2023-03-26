@@ -1,19 +1,25 @@
 ---
 import ArticleLayout from "../layouts/ArticleLayout.astro";
-import { queryPages } from "../scripts/search";
 
 ---
 <ArticleLayout url="search" title="Search" name="Search Results" desc="Obscure, Classify, Preserve">
     <p><strong>Showing results for: </strong><span id="query-text"></span></p>
-    <script is:inline src="/search"></script>
-    <script is:inline>
-        const query = location.search.substring(location.search.indexOf("=")+1);
-        console.log(queryPages(query));
-        const queryText = document.querySelector("#query-text");
-        if (queryText === null) throw new Error("Cannot find query-text element");
-        queryText.outerHTML = query
-    </script>
+
     <ul class="card-list" id="search-results">
         <!-- Todo: Add clintside script to search through handwritten JSON of page keywords and references -->
     </ul>
+
+    <script>
+        import queryPages from "../scripts/search";
+        const query = location.search.substring(location.search.indexOf("=")+1);
+        const results: string[] = queryPages(query);
+
+        const queryText = document.querySelector("#query-text");
+        if (queryText === null) throw new Error("Cannot find query-text element");
+        queryText.outerHTML = query;
+
+        const resultList = document.querySelector("#search-results");
+        if (resultList === null) throw new Error("Cannot find search-results element");
+        resultList.innerHTML = results.join("\n");
+    </script>
 </ArticleLayout>
