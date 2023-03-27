@@ -1,0 +1,17 @@
+---
+import Tooltip from "./Tooltip.astro";
+
+// Containment site
+import type { IObjectEntry } from "../../scripts/index";
+import objects from "../../../public/data/objects.json";
+const objectList: IObjectEntry[] = objects;
+
+interface Props { id: string; }
+const { id } = Astro.props;
+const tryInfo: IObjectEntry|undefined = objectList.find(element => element.id == id);
+if (tryInfo === undefined) throw new Error(`Cannot find "${id}" in objecst.json`);
+const info: IObjectEntry = tryInfo;
+---
+<Tooltip category="Anomalous Object" name={info.name} tagline={info.tagline} path={`/objects/${info.code}.html`} linkText="read document">
+    <slot />
+</Tooltip>

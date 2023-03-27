@@ -1,9 +1,9 @@
 [
-    { "name":"OCP-000", "path":"objects/000.html", "type":"object", "meta":["object","anomaly","0","000"] },
-    { "name":"OCP-001", "path":"objects/001.html", "type":"object", "meta":["object","anomaly","1","001"] },
-    { "name":"OCP-002", "path":"objects/002.html", "type":"object", "meta":["object","anomaly","2","002"] },
-    { "name":"OCP-003", "path":"objects/003.html", "type":"object", "meta":["object","anomaly","3","003"] },
-    { "name":"OCP-004", "path":"objects/004.html", "type":"object", "meta":["object","anomaly","4","004"] },
-    { "name":"OCP-005", "path":"objects/005.html", "type":"object", "meta":["object","anomaly","5","005"] },
-    { "name":"OCP-006", "path":"objects/006.html", "type":"object", "meta":["object","anomaly","6","006"] }
+    { "name":"OCP-000", "path":"objects/000.html", "type":"Anomalous Object", "meta":["object","anomaly","0","000"] },
+    { "name":"OCP-001", "path":"objects/001.html", "type":"Anomalous Object", "meta":["object","anomaly","1","001"] },
+    { "name":"OCP-002", "path":"objects/002.html", "type":"Anomalous Object", "meta":["object","anomaly","2","002"] },
+    { "name":"OCP-003", "path":"objects/003.html", "type":"Anomalous Object", "meta":["object","anomaly","3","003"] },
+    { "name":"OCP-004", "path":"objects/004.html", "type":"Anomalous Object", "meta":["object","anomaly","4","004"] },
+    { "name":"OCP-005", "path":"objects/005.html", "type":"Anomalous Object", "meta":["object","anomaly","5","005"] },
+    { "name":"OCP-006", "path":"objects/006.html", "type":"Anomalous Object", "meta":["object","anomaly","6","006"] }
 ]

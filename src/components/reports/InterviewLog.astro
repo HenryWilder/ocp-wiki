@@ -1,5 +1,6 @@
 ---
 import type { IInterviewLog } from '../../scripts';
+import OutlineAnchor from '../OutlineAnchor.astro';
 import Redacted from '../Redacted.astro';
 import InterviewSpeakerless from './InterviewSpeakerless.astro';
 import InterviewSpokenLine from './InterviewSpokenLine.astro';
@@ -9,9 +10,10 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
+<OutlineAnchor hash={item.id} outlineName={`Interview Log ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}/>
 <table class="report interview-log" id={item.id}>
     <tbody>
-        <tr><th>INTERVIEW LOG {item.objectNumber ?? <r>????</r>} {item.instance}</th></tr>
+        <tr><th>INTERVIEW LOG {item.objectNumber ?? <Redacted>????</Redacted>} {item.instance}</th></tr>
 
         <tr class="interview-body"><td>
             <b>Interviewer:</b> <slot name="interviewerName"><Redacted>***********</Redacted></slot><br>

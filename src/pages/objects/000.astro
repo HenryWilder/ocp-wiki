@@ -7,10 +7,12 @@ import TestLog from '../../components/reports/TestLog.astro';
 import AnomalyEntry from '../../layouts/AnomalyEntry.astro';
 import Comment from '../../components/Comment.astro';
 import ArticleSegmentHeading from '../../components/ArticleSegmentHeading.astro';
+import Tooltip from '../../components/tooltip-types/Tooltip.astro';
+import ContainmentSite from '../../components/tooltip-types/ContainmentSite.astro';
 ---
 <AnomalyEntry url="./objects/000" ocpNumber="000" ocpName="A Website" containmentClass="Verj">
     <ArticleSegmentHeading name="Optimal Containment Protocols" />
-        <p><s>OCP-000 is held at <span class="site-03">Site-03</span> in a shoebox.</s></p>
+        <p><s>OCP-000 is held at <ContainmentSite id="site-03">Site-03</ContainmentSite> in a shoebox.</s></p>
         <p>OCP-000 is to be posted on the OCP site in order to confirm the functional operation of the OCP database. No other protocols are needed at this time.</p>
         <div class="update">
             <h3>UPDATE:</h3>

@@ -1,0 +1,17 @@
+---
+import Tooltip from "./Tooltip.astro";
+
+// Containment site
+import type { ITaskForce } from "../../scripts/index";
+import taskForces from "../../../public/data/task-forces.json";
+const taskForceList: ITaskForce[] = taskForces;
+
+interface Props { id: string; }
+const { id } = Astro.props;
+const tryInfo: ITaskForce|undefined = taskForceList.find(element => element.id == id);
+if (tryInfo === undefined) throw new Error(`Cannot find "${id}" in task-forces.json`);
+const info: ITaskForce = tryInfo;
+---
+<Tooltip category="Mobile Task Force" name={info.name} tagline={info.tagline} path="/info/task-forces.html" linkText="see more">
+    <slot />
+</Tooltip>

@@ -1,5 +1,6 @@
 ---
 import type { ITestLog } from '../../scripts/index';
+import OutlineAnchor from '../OutlineAnchor.astro';
 import Redacted from '../Redacted.astro';
 import RedactedDate from '../RedactedDate.astro';
 
@@ -8,9 +9,10 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
+<OutlineAnchor hash={item.id} outlineName={`Test Log ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}/>
 <table class="report test-log" id={item.id}>
     <tbody>
-        <tr><th colspan="3">TEST LOG {item.objectNumber ?? <r>????</r>} {item.instance}</th></tr>
+        <tr><th colspan="3">TEST LOG {item.objectNumber ?? <Redacted>????</Redacted>} {item.instance}</th></tr>
 
         <!-- Side by side -->
         <tr>
