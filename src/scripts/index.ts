@@ -26,7 +26,7 @@ export interface IObjectEntry extends ITooltipBase {
 export interface IRealityBender extends ICardBase {
     color: string;
 }
-export interface IStaffMember extends ICardBase {}
+export interface IStaffMember extends ITooltipBase {}
 
 export interface IReportBase {
     id: string;

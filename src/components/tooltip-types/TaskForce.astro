@@ -12,6 +12,6 @@ const tryInfo: ITaskForce|undefined = taskForceList.find(element => element.id =
 if (tryInfo === undefined) throw new Error(`Cannot find "${id}" in task-forces.json`);
 const info: ITaskForce = tryInfo;
 ---
-<Tooltip category="Mobile Task Force" name={info.name} tagline={info.tagline} path="/info/task-forces.html" linkText="see more">
+<Tooltip category="Mobile Task Force" name={info.name} tagline={info.tagline} path={"/info/task-forces.html#"+id} linkText="see more">
     <slot />
 </Tooltip>

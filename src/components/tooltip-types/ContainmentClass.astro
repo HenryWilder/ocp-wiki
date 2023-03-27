@@ -4,11 +4,11 @@ import containmentClasses from "../../../public/data/containment-classes.json";
 import type { IContainmentClass } from "../../scripts/index";
 const containmentClassList: IContainmentClass[] = containmentClasses;
 interface Props {
-    classId: string
+    id: string
 }
-const { classId } = Astro.props;
+const { id } = Astro.props;
 const compContainmentClass: IContainmentClass =
-    containmentClassList.find(classElement => classElement.id == classId)
+    containmentClassList.find(classElement => classElement.id == id)
     ?? { id:"", name:"ERROR", tagline:"Could not load containment class", desc:"" };
 ---
 <Tooltip addClass="containment-class" category="Containment Class" name={compContainmentClass.name} tagline={compContainmentClass.tagline} path="/info/containment-classes.html" linkText="Containment classes">

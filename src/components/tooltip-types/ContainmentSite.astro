@@ -12,6 +12,6 @@ const tryInfo: IContainmentSite|undefined = containmentSiteList.find(element => 
 if (tryInfo === undefined) throw new Error(`Cannot find "${id}" in containment-sites.json`);
 const info: IContainmentSite = tryInfo;
 ---
-<Tooltip category="Containment Site" name={info.name} tagline={info.tagline} path="/info/containment-classes.html" linkText="containment classes">
+<Tooltip category="Containment Site" name={info.name} tagline={info.tagline} path={"/info/containment-classes.html#"+id} linkText="containment classes">
     <slot />
 </Tooltip>

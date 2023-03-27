@@ -9,10 +9,13 @@ import Comment from '../../components/Comment.astro';
 import ArticleSegmentHeading from '../../components/ArticleSegmentHeading.astro';
 import Tooltip from '../../components/tooltip-types/Tooltip.astro';
 import ContainmentSite from '../../components/tooltip-types/ContainmentSite.astro';
+import TaskForce from '../../components/tooltip-types/TaskForce.astro';
+import Anomaly from '../../components/tooltip-types/Anomaly.astro';
+
 ---
 <AnomalyEntry url="./objects/000" ocpNumber="000" ocpName="A Website" containmentClass="Verj">
     <ArticleSegmentHeading name="Optimal Containment Protocols" />
-        <p><s>OCP-000 is held at <ContainmentSite id="site-03">Site-03</ContainmentSite> in a shoebox.</s></p>
+        <p><s>OCP-000 is held at <ContainmentSite name="site-03">Site-03</ContainmentSite> in a shoebox.</s></p>
         <p>OCP-000 is to be posted on the OCP site in order to confirm the functional operation of the OCP database. No other protocols are needed at this time.</p>
         <div class="update">
             <h3>UPDATE:</h3>
@@ -20,11 +23,11 @@ import ContainmentSite from '../../components/tooltip-types/ContainmentSite.astr
         </div>
         <div class="comment">
             <div class="comment-name">Comment from Dr. <Redacted>Lastname</Redacted>:</div>
-            I had no idea there were even containment protocols for documents. Has <span class="z5-1">Annie</span> lost his mind?
+            I had no idea there were even containment protocols for documents. Has <Staff name="z5-1">Annie</Staff> lost his mind?
         </div>
         <ArticleSegmentHeading name="Description" />
-        <p><Blurred>OCP-000 is a paper document regarding the task force <span class="mtf-k-nis">K-nis (Bloodhounds)</span>. Its origin is unknown, as it was never written by any past nor present researcher at the Federation.</Blurred></p>
-        <p><Blurred>What is known is that it mentions a hybrid between <span class="ocp-051">OCP-051</span> and a hitherto unknown OCP described as a bat.</Blurred></p>
+        <p><Blurred>OCP-000 is a paper document regarding the task force <TaskForce name="mtf-k-nis">K-nis (Bloodhounds)</TaskForce>. Its origin is unknown, as it was never written by any past nor present researcher at the Federation.</Blurred></p>
+        <p><Blurred>What is known is that it mentions a hybrid between <Anomaly name="ocp-051">OCP-051</Anomaly> and a hitherto unknown OCP described as a bat.</Blurred></p>
         <p>OCP-000 is a test document uploaded to the OCP wiki as a test to make sure the formatting looks right. It is written in <Redacted>HTML</Redacted> and contains multiple tags.</p>
         
         <ArticleSegmentHeading name="Test Logs" />
