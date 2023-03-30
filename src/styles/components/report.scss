@@ -22,6 +22,37 @@
         font-weight: bold;
     }
 }
+summary.report {
+    list-style: none;
+    cursor: pointer;
+    background-color: #ccc;
+    transition: background-color 0.25s, box-shadow 0.25s;
+    &:hover {
+        background-color: #bbb;
+        box-shadow: 0 3px 4px rgba(0,0,0,0.15);
+    }
+    font-weight: bold;
+    font-size: 16px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 0.069in;
+    box-sizing: border-box;
+    position: sticky;
+    position: -webkit-sticky;
+}
+summary.report {
+    border-radius: 999px;
+}
+details[open] summary.report {
+    border-radius: 0px;
+}
+table.report {
+    &, tr:first-child {
+        &, td {
+            border-top: none;
+        }
+    }
+}
 
 /* Incident report */
 .incident-report {
