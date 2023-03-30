@@ -2,6 +2,10 @@ $article-width: 8in;
 $horizontal-padding: 0.125in;
 $threshold-max-width: ($article-width + $horizontal-padding);
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     --banner-height: 100px;
     @media (max-width: $threshold-max-width) {
@@ -14,7 +18,6 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 @mixin page-width-container-for-centered-stuff {
@@ -150,6 +153,7 @@ body {
         }
 
         aside.document-outline {
+            box-sizing: border-box;
             background-color: #eee;
             border: 1px solid #ccc;
             position: fixed;
@@ -167,7 +171,6 @@ body {
             margin: 10px;
             border-radius: 1ch;
             margin-top: calc(var(--banner-height) + var(--nav-height) + 10px);
-            overflow: clip;
 
             h2 {
                 margin: 1ch;
@@ -188,6 +191,7 @@ body {
                     list-style: none;
 
                     a {
+                        box-sizing: border-box;
                         display: inline-block;
                         padding: 1ch;
                         width: 100%;
