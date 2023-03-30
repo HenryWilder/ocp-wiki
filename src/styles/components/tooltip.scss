@@ -29,8 +29,10 @@
         transition: 150ms;
         transition-timing-function: ease-in-out;
 
-        h3 {
+        .tooltip-name {
             margin: 0.5rem;
+            display: block;
+            font-weight: bold;
         }
         
         a {
@@ -41,7 +43,6 @@
             transition-timing-function: ease-in-out;
             border-radius: 3px;
             line-height: 2rem;
-
             &:hover {
                 color: white;
                 background-color: blue;
@@ -67,6 +68,7 @@
     }
 
     .tooltip-bubble {
+        display: block;
         backdrop-filter: blur(5px);
         background-color: rgba(255,255,255,0.8);
         /* box-shadow: 0 0 8px rgba(0,0,0,0.2); */
@@ -84,24 +86,4 @@
 .tooltip-note {
     background-color: rgba(238,238,238, 0.9) !important;
     border-radius: 1ch !important;
-}
-
-/* Positioning depending on where on the screen the element is (decided by script) */
-@media (min-width: ($threshold-max-width + 1px)) {
-    .tooltiptext-below .tooltip-bubble:not(.tooltip-note) {
-        top: 100%;
-        left: 0%;
-    }
-    .tooltiptext-above .tooltip-bubble:not(.tooltip-note) {
-        bottom: 100%;
-        left: 0%;
-    }
-    .tooltiptext-left .tooltip-bubble:not(.tooltip-note) {
-        top: 0%;
-        right: 100%;
-    }
-    .tooltiptext-right .tooltip-bubble:not(.tooltip-note) {
-        top: 0%;
-        left: 100%;
-    }
 }

@@ -16,14 +16,14 @@ const { addClass = "", category, name, tagline, path, linkText, notes } = Astro.
 <span class={"tooltip "+addClass}>
     <slot />
     <span class="tooltiptext" aria-label="tooltip">
-        <div class="tooltip-bubble">
-            <div class="comment-name">
+        <span class="tooltip-bubble">
+            <span class="comment-name">
                 {category}
-            </div>
-            <h3 set:html={name}></h3>
-            {tagline}
-            {(!!linkText)?(<a href={path}>{linkText}</a>):null}
-        </div>
+            </span>
+            <span class="tooltip-name" set:html={name}></span>
+            <span set:html={tagline}></span>
+            {(!!linkText)?(<br/><a href={path}>{linkText}</a>):null}
+        </span>
         {
             !!notes ? (Array.isArray(notes)
                 ? <TooltipNoteMulti notes={notes} />

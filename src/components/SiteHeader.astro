@@ -28,10 +28,12 @@ import favicon from '/favicon.svg'
                 <a href="./author-list">Authors</a>
                 <a href="./corkboard" style="color:black">Corkboard [WIP]</a>
             </NavDropdown>
-            <li style="width:60%">
+            <li style="width:100%; padding-right:6px">
                 <form action="/search.html">
                     <label for="searchbar" style="display: none;">Search</label>
-                    <input type="text" autocomplete="off" name="query" id="searchbar"/>
+                    <div id="searchbar-holder">
+                        <input type="text" autocomplete="off" name="query" id="searchbar"/>
+                    </div>
                     <input type="submit" style="display: none;"/>
                 </form>
             </li>   

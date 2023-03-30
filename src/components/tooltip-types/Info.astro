@@ -16,35 +16,36 @@ import staff from "../../../public/data/staff.json";
 import taskForces from "../../../public/data/task-forces.json";
 
 interface Props {
-    type: string;
-    id: string;
+    code: string;
 }
-const { type, id } = Astro.props;
+const { code } = Astro.props;
+const prefix = code.substring(0, code.indexOf("-"));
+console.log(`${code}: ${prefix}`);
 
-switch (type) {
+switch (prefix) {
     case "site":
         list = containmentSites;
-        sharedInfo = { category:"Containment Site", path:`/info/containment-sites.html#${id}`, linkText:"" };
+        sharedInfo = { category:"Containment Site", path:`/info/containment-sites.html#${code}`, linkText:"" };
         break;
     case "ocp":
         list = objects;
-        sharedInfo = { category:"Anomalous Object", path:`/objects/${id.substring(id.indexOf("ocp-")+1)}.html`, linkText:"read document" };
+        sharedInfo = { category:"Anomalous Object", path:`/objects/${code.substring(code.indexOf("ocp-")+1)}.html`, linkText:"read document" };
         break;
     case "staff":
         list = staff;
-        sharedInfo = { category:"Staff Member", path:`/info/staff.html#${id}`, linkText:"" };
+        sharedInfo = { category:"Staff Member", path:`/info/staff.html#${code}`, linkText:"" };
         break;
     case "mtf":
         list = taskForces;
-        sharedInfo = { category:"Mobile Task Force", path:`/info/task-forces.html#${id}`, linkText:"" };
+        sharedInfo = { category:"Mobile Task Force", path:`/info/task-forces.html#${code}`, linkText:"" };
         break;
 
     default:
-        throw new Error(`Type "${type}" is not specialized`);
+        throw new Error(`Type "${prefix}" is not specialized`);
 }
 
-const tryInfo: ITooltipBase|undefined = list.find(element => element.id == id);
-if (tryInfo === undefined) throw new Error(`Cannot find "${id}" in ${type} json`);
+const tryInfo: ITooltipBase|undefined = list.find(element => element.id == code);
+if (tryInfo === undefined) throw new Error(`Cannot find "${code}" in ${prefix} json`);
 const info: ITooltipBase = tryInfo;
 ---
 <Tooltip category={sharedInfo.category} name={info.name} tagline={info.tagline} path={sharedInfo.path} linkText={sharedInfo.linkText}>

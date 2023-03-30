@@ -1,6 +1,6 @@
 [
     {
-        "id":"z5-1",
+        "id":"staff-z5-1",
         "name":"Z5-1",
         "tagline":"Anantashesha<br>A member of the Z5 Council.<br>Z5-1 holds the most power.",
         "notes":[
@@ -10,7 +10,7 @@
         ]
     },
     {
-        "id":"z5-2",
+        "id":"staff-z5-2",
         "name":"Z5-2",
         "tagline":"Prism<br>A member of the Z5 Council.",
         "notes":[
@@ -18,22 +18,22 @@
         ]
     },
     {
-        "id":"z5-3",
+        "id":"staff-z5-3",
         "name":"Z5-3",
         "tagline":"A member of the Z5 Council."
     },
     {
-        "id":"z5-4",
+        "id":"staff-z5-4",
         "name":"Z5-4",
         "tagline":"A member of the Z5 Council."
     },
     {
-        "id":"z5-5",
+        "id":"staff-z5-5",
         "name":"Z5-5",
         "tagline":"A member of the Z5 Council."
     },
     {
-        "id":"z5-9",
+        "id":"staff-z5-9",
         "name":"Z5-9",
         "tagline":"Crash<br>A member of the Z5 Council.",
         "notes":[
@@ -44,12 +44,12 @@
         ]
     },
     {
-        "id":"z5-council",
+        "id":"staff-z5-council",
         "name":"Z5 Council",
         "tagline":"A group of several high ranking officials of the OCP Federation"
     },
     {
-        "id":"ozzwitch",
+        "id":"staff-ozzwitch",
         "name":"Captain Ozzwitch",
         "tagline":"",
         "notes":[
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "id":"dr-lastname",
+        "id":"staff-dr-lastname",
         "name":"Dr. <r>Lastname</r>",
         "tagline":"The researcher heading the examination of OCP-90, OCP-350, and OCP-351."
     }

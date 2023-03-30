@@ -97,7 +97,7 @@ body {
                 align-items: center;
             }
     
-            li a, .dropbtn {
+            li a, .dropbtn, #searchbar {
                 display: inline-block;
                 padding: 3px 10px;
             }
@@ -149,7 +149,7 @@ body {
             overflow: visible;
         }
 
-        aside {
+        aside.document-outline {
             background-color: #eee;
             border: 1px solid #ccc;
             position: fixed;
@@ -240,18 +240,16 @@ body {
                     right: 0;
 
                     .sticky-heading {
-                        $border-width: 1px;
                         $widen: 10px;
                         position: sticky;
                         position: -webkit-sticky;
                         top: 0;
-                        border: $border-width solid #ccc;
                         background-color: white;
                         z-index: 1;
                         width: 100%;
                         border-radius: 5px;
-                        padding-left: ($widen - $border-width);
-                        padding-right: ($widen - $border-width);
+                        padding-left: $widen;
+                        padding-right: $widen;
                         margin-left: ($widen * -1);
                         margin-right: ($widen * -1);
 
