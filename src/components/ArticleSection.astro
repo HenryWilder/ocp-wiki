@@ -9,5 +9,7 @@ const id = name
     .toLowerCase()
     .replaceAll(" ", "-");
 ---
-<OutlineAnchor hash={id} outlineName={name} depth={0}/>
-<a href={"#"+id}><h2 class="sticky-heading">{name}:</h2></a>
+<OutlineAnchor hash={id} outlineName={name} depth={0}>
+    <a href={"#"+id}><h2 class="sticky-heading">{name}:</h2></a>
+    <slot />
+</OutlineAnchor>

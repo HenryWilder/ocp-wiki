@@ -8,12 +8,12 @@
     </ul>
 
     <script>
-        const depthClass = (e: HTMLElement): string => e.classList[1];
+        const depthClass = (e: HTMLElement): string => e.classList[2]; // Should be the class with the depth number
         const depth = (e: HTMLElement): number => Number(depthClass(e).at(-1)); // Change this if we start getting double-digits.
 
         const sections: HTMLElement[] = [...(document.querySelectorAll(".show-in-outline"))] as HTMLElement[];
         if (sections.length === 0) {
-            document.querySelector("aside")!.remove();
+            document.querySelector("aside.document-outline")!.remove();
         } else {
             document.querySelector("#document-outline")!.innerHTML =
                 sections.map(e => `<li class="${depthClass(e)}"><a href="#${e.id}">${"&nbsp;&nbsp;".repeat(Math.max(depth(e)-1,0))+(depth(e) > 0 ? "└ " : "")+e.title}</a></li>`).join("\n");

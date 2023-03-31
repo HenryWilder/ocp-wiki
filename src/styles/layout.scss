@@ -217,6 +217,7 @@ body {
             @include page-width-container-for-centered-stuff;
             overflow-y: scroll;
             overflow-x: hidden;
+            scroll-behavior: smooth;
             width: 100vw;
 
             &::-webkit-scrollbar {

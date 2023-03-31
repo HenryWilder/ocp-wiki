@@ -6,4 +6,6 @@ interface Props {
 }
 const { hash, outlineName, depth } = Astro.props;
 ---
-<span id={hash} class={"show-in-outline outline-depth"+depth} title={outlineName}></span>
+<section id={hash} class={"highlight-on-jump show-in-outline outline-depth"+depth} title={outlineName}>
+    <slot />
+</section>
