@@ -1,6 +1,6 @@
 @use "../layout.scss";
 
-section {
+section.card, footer section {
     margin-bottom: 1em;
     background-color: white;
     border-radius: 15px;
