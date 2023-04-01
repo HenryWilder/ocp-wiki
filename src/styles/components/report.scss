@@ -2,38 +2,39 @@
 .report {
     -webkit-print-color-adjust: exact; /*Chrome, Safari */
     color-adjust: exact; /*Firefox*/
-    
+    color: var(--color-report-foreground);
+
     border-collapse: collapse;
 
     tr, td, th {
-        border: 1px solid black;
+        border: 1px solid var(--color-report-border);
         border-collapse: collapse;
         padding: 0.069in;
         font-size: 12pt;
     }
 
     tr, td {
-        background-color: white;
+        background-color: var(--color-report-background);
         font-weight: normal;
     }
 
     th {
-        background-color: #ccc;
+        background-color: var(--color-report-header-background);
         font-weight: bold;
     }
 }
 summary.report {
     list-style: none;
     cursor: pointer;
-    background-color: #ccc;
+    background-color: var(--color-report-header-background);
     transition: background-color 0.25s, box-shadow 0.25s;
     &:hover {
-        background-color: #bbb;
+        background-color: var(--color-report-header-background-hover);
         box-shadow: 0 3px 4px rgba(0,0,0,0.15);
     }
     font-weight: bold;
     font-size: 16px;
-    border: 1px solid black;
+    border: 1px solid var(--color-report-border);
     text-align: center;
     padding: 0.069in;
     box-sizing: border-box;
@@ -106,7 +107,7 @@ table.report {
 
     background-attachment: scroll;
     background-clip: border-box;
-    background: transparent linear-gradient(to top, #6d9eeb 0%, #fff2cc 8%);
+    background: transparent linear-gradient(to top, var(--color-notepad-background-rule) 0%, var(--color-notepad-background-primary) 8%);
     background-origin: padding-box;
     background-position: 0px 4px;
     background-repeat: repeat;
@@ -123,9 +124,5 @@ table.report {
     p, ul {
         line-height: 1.15rem;
         margin: 0;
-    }
-
-    @media print {
-        background-image: linear-gradient(to top, #6d9eeb 0%, white 8%);
     }
 }
