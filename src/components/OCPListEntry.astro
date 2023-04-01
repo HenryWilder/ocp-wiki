@@ -15,7 +15,7 @@ const objectTitleVisibility = (if_normal: any, is_wip: any, if_censored: any) =>
     }
 }
 ---
-{(anomalyInfo.vis!="hide") && (<li><a href={`./objects/${anomalyInfo.code}.html`} set:html={anomalyInfo.name}></a> <span aria-hidden="true">-</span> {
+{(anomalyInfo.vis!="hide") && (<li><a href={`/objects/${anomalyInfo.code}.html`} set:html={anomalyInfo.name}></a> <span aria-hidden="true">-</span> {
     objectTitleVisibility(
         anomalyInfo.tagline,
         <Blurred>{anomalyInfo.tagline}</Blurred>,
