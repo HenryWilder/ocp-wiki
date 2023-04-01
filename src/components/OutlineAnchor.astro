@@ -1,9 +1,10 @@
 ---
 interface Props {
+    addClass?: string[];
     hash: string;
-    outlineName: string;
-    depth: number;
 }
-const { hash } = Astro.props;
+const { addClass = [], hash } = Astro.props;
 ---
-<section id={hash} class:list={['highlight-on-jump', 'show-in-outline']}><slot /></section>
+<section id={hash} class:list={['highlight-on-jump', 'show-in-outline', ...addClass]}>
+    <slot />
+</section>

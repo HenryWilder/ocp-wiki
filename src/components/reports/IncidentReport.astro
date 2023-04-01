@@ -9,7 +9,7 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
-<OutlineAnchor hash={item.id} outlineName={`Incident Report ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}>
+<OutlineAnchor hash={item.id}>
     <details>
         <summary class="report incident-report">
             INCIDENT REPORT {item.objectNumber ?? <Redacted>*****</Redacted>} {item.instance}
