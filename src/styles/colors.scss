@@ -1,0 +1,29 @@
+// Shared between all themes
+.light, .dark, .amoled {
+    --color-banner-light: rgb(239, 156, 66);
+    --color-banner-dark: rgb(237, 147, 59);
+}
+// Shared between light and dark themes
+.light, .dark {
+    --color-nav: #444;
+    --gradient-nav: linear-gradient(to bottom, #444, #222);
+}
+// Light theme only
+.light {
+    --color-foreground: black;
+    --color-background: white;
+}
+// Shared between dark themes
+.dark, .amoled {
+    --color-foreground: white;
+}
+// Dark theme only
+.dark {
+    --color-background: #333;
+}
+// AMOLED theme only
+.amoled {
+    --color-background: black;
+    --color-nav: black;
+    --gradient-nav: black;
+}

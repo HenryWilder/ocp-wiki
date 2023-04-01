@@ -1,22 +1,30 @@
 ---
 
 ---
-<aside class="document-outline">
+<aside class="document-outline" style="display: none;">
     <h2>Jump to</h2>
     <hr>
     <ul id="document-outline">
     </ul>
-
-    <script>
-        const depthClass = (e: HTMLElement): string => e.classList[2]; // Should be the class with the depth number
-        const depth = (e: HTMLElement): number => Number(depthClass(e).at(-1)); // Change this if we start getting double-digits.
-
-        const sections: HTMLElement[] = [...(document.querySelectorAll(".show-in-outline"))] as HTMLElement[];
-        if (sections.length === 0) {
-            document.querySelector("aside.document-outline")!.remove();
-        } else {
-            document.querySelector("#document-outline")!.innerHTML =
-                sections.map(e => `<li class="${depthClass(e)}"><a href="#${e.id}">${e.title}</a></li>`).join("\n");
-        }
-    </script>
 </aside>
+<script>
+    const depthClass = (e: HTMLElement): string => e.classList[2]; // Should be the class with the depth number
+    const depth = (e: HTMLElement): number => Number(depthClass(e).at(-1)); // Change this if we start getting double-digits.
+
+    const sections: HTMLElement[] = [...(document.querySelectorAll(".show-in-outline"))] as HTMLElement[];
+    if (sections.length === 0) {
+        // Remove empty outlines
+        document.querySelector("aside.document-outline")!.remove();
+    } else {
+        const outlineElement: HTMLElement|null = document.querySelector("aside.document-outline");
+        if (outlineElement === null) throw new Error("Document outline missing, but script in tact. What did you do...");
+        outlineElement!.style.display = "unset";
+
+        // Add element to outline
+        document.querySelector("#document-outline")!.innerHTML =
+            sections.map(e => `<li class="${depthClass(e)}"><a href="#${e.id}">${e.title}</a></li>`).join("\n");
+
+        // Remove titles because they are only used to pass data, and they interfere with tooltips.
+        sections.forEach(e => { e.title = ""; });
+    }
+</script>

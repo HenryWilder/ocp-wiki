@@ -218,6 +218,12 @@ body {
             overflow-y: scroll;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            @media (prefers-reduced-motion: reduce) {
+                scroll-behavior: unset;
+            }
+            @media (prefers-reduced-motion: no-preference) {
+                scroll-behavior: smooth;
+            }
             scroll-padding-top: 22px;
             width: 100vw;
 

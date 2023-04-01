@@ -47,4 +47,4 @@ const tryInfo: ITooltipBase|undefined = list.find(element => element.id == code)
 if (tryInfo === undefined) throw new Error(`Cannot find "${code}" in ${prefix} json`);
 const info: ITooltipBase = tryInfo;
 ---
-<Tooltip category={sharedInfo.category} name={info.name} tagline={info.tagline} path={sharedInfo.path} linkText={sharedInfo.linkText}><slot /></Tooltip>
+<Tooltip category={sharedInfo.category} name={info.name} tagline={info.tagline} path={sharedInfo.path} linkText={sharedInfo.linkText} notes={info.notes}><slot /></Tooltip>

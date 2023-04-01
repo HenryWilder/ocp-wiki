@@ -4,16 +4,16 @@ import OCPListEntry from "../components/OCPListEntry.astro";
 
 ---
 <ArticleLayout url="search" title="Search" name="Search Results" desc="Obscure, Classify, Preserve">
-    <p><strong>Showing results for: </strong>&quot;<span id="query-text"></span>&quot;</p>
-    <div class="comment-name">Found <span id="result-count"></span> results in <span id="result-time"></span>.</div>
+    <p><strong>Showing results for: </strong><span id="query-text"><noscript>n/a</noscript></span></p>
+    <div class="comment-name">Found <span id="result-count"><noscript>no</noscript></span> results in <span id="result-time"><noscript>n/a seconds</noscript></span>.</div>
 
-    <ul class="card-list" id="search-results"></ul>
+    <ul class="card-list" id="search-results"><noscript>Search cannot work if script is disabled.</noscript></ul>
 
     <script>
         import type { PageLink } from "../scripts/search";
         import { queryPages } from "../scripts/search";
         const query = location.search.substring(location.search.indexOf("=")+1);
-        document.querySelector("#query-text")!.outerHTML = query;
+        document.querySelector("#query-text")!.outerHTML = `&quot;${query}&quot;`;
 
         const timeStart: number = performance.now();
         const results: PageLink[] = queryPages(query);

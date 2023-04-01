@@ -7,22 +7,35 @@
     &>#searchbar {
         all: unset;
         width: inherit;
+        &::placeholder {
+            font-weight: bold;
+            color: white;
+            transition: 1s ease;
+        }
     }
     font-family: monospace;
-    background-color: #888;
+    background-color: transparent;
     border: 0;
     border-radius: 999px;
     width: 5rem;
     transition: 0.6s;
     transition-timing-function: ease;
     &:hover {
-        background-color: #ddd;
+        background-color: white;
     }
     &:focus-within {
         transition: 0.3s;
         background-color: white;
+        background:
+            linear-gradient(to right, white 8ch, transparent),
+            repeating-linear-gradient(45deg, gold 0px 15px, transparent 15px 30px);
         width: 100%;
         outline: 2px solid orange;
+    }
+    &:hover>#searchbar::placeholder,
+    &>#searchbar:focus::placeholder {
+        font-weight: normal;
+        color: #777;
     }
 }
 
