@@ -1,29 +1,122 @@
 // Shared between all themes
-.light, .dark, .amoled {
-    --color-banner-light: rgb(239, 156, 66);
-    --color-banner-dark: rgb(237, 147, 59);
+@mixin all-themes {
+    --color-comment-outline: #bf9000;
+    --color-accent-light: orange;
+    --color-accent: darkorange;
+    --color-accent-dark: chocolate;
 }
 // Shared between light and dark themes
-.light, .dark {
+@mixin colorful-themes {
+    --color-banner-light: rgb(239, 156, 66);
+    --color-banner-dark: rgb(237, 147, 59);
     --color-nav: #444;
     --gradient-nav: linear-gradient(to bottom, #444, #222);
+
+    --color-report-foreground: black;
+    --color-report-background: white;
+    --color-report-border: black;
+    --color-report-header-background: #ccc;
+    --color-report-header-background-hover: #bbb;
+
+    --color-notepad-background-primary: #fff2cc;
+    --color-notepad-background-rule: #6d9eeb;
 }
 // Light theme only
-.light {
+@mixin light-theme {
     --color-foreground: black;
     --color-background: white;
+    
+    --color-component-background: #eee;
+    --color-component-background-hover: #ddd;
+    --color-component-border: #aaa;
+
+    --color-comment-background: #fff2cc;
+    --color-comment-name: #666;
+
+    --color-tooltip-highlight: yellow;
 }
 // Shared between dark themes
-.dark, .amoled {
-    --color-foreground: white;
+@mixin lowlight-themes {
 }
 // Dark theme only
-.dark {
+@mixin dark-theme {
+    --color-foreground: #dedede;
     --color-background: #333;
+
+    --color-component-background: #444;
+    --color-component-background-hover: #333;
+    --color-component-border: #222;
+
+    --color-comment-background: #52441a;
+    --color-comment-name: #999;
+
+    --color-tooltip-highlight: rgb(146, 146, 16);
 }
 // AMOLED theme only
-.amoled {
+@mixin amoled-theme {
+    --color-foreground: white;
+    --color-banner-light: rgb(33, 33, 33);
+    --color-banner-dark: rgb(29, 29, 29);
     --color-background: black;
+
     --color-nav: black;
-    --gradient-nav: black;
+    --gradient-nav: linear-gradient(to top, #222 0px 1px, black 1px 100%);
+
+    --color-comment-background: black;
+    --color-comment-name: #666;
+
+    --color-tooltip-highlight: #220;
+
+    --color-component-background: black;
+    --color-component-background-hover: #111;
+    --color-component-border: #333;
+
+    --color-report-foreground: white;
+    --color-report-background: black;
+    --color-report-border: #444;
+    --color-report-header-background: #111;
+    --color-report-header-background-hover: #222;
+
+    --color-notepad-background-primary: #080808;
+    --color-notepad-background-rule: #333;
+}
+// Printer-friendly theme
+@mixin print-theme {
+    --color-component-background: transparent;
+    --color-component-border: gray;
+    --color-notepad-background-primary: white;
+    --color-notepad-background-rule: #6d9eeb;
+
+    --color-report-foreground: black;
+    --color-report-background: white;
+    --color-report-border: black;
+    --color-report-header-background: #ccc;
+    --color-report-header-background-hover: #bbb;
+}
+
+@media screen {
+    .light {
+        @include all-themes();
+        @include colorful-themes();
+        @include light-theme();
+    }
+    .dark {
+        @include all-themes();
+        @include colorful-themes();
+        @include lowlight-themes();
+        @include dark-theme();
+    }
+    .amoled {
+        @include all-themes();
+        @include lowlight-themes();
+        @include amoled-theme();
+    }
+}
+// Override all themes when printing
+@media print {
+    .light, .dark, .amoled {
+        @include all-themes();
+        @include print-theme();
+        @include light-theme();
+    }
 }

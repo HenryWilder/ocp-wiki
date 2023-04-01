@@ -10,7 +10,7 @@
 
         &:hover {
             border-bottom: 1px dotted transparent;
-            background-color: yellow;
+            background-color: var(--color-tooltip-highlight);
         }
     }
 
@@ -22,7 +22,8 @@
         position: absolute;
         z-index: 2;
         font-size: 16px;
-        display: grid;
+        display: flex;
+        flex-flow: column nowrap;
         gap: 1ch;
         left: 0;
 
@@ -60,7 +61,8 @@
     }
 
     .tooltip-bubble {
-        display: block;
+        flex-flow: column nowrap;
+        gap: 0.5ch;
         backdrop-filter: blur(5px);
         background-color: rgba(255,255,255,0.8);
         /* box-shadow: 0 0 8px rgba(0,0,0,0.2); */
@@ -72,9 +74,7 @@
         text-align: center;
         line-height: normal;
         cursor: default;
-    }
 
-    .tooltip-bubble {
         // Take up the screen width if it is small enough
         @media (max-width: $threshold-max-width) {
             position: fixed;
@@ -85,6 +85,7 @@
 }
 
 .tooltip-note {
+    display: flex;
     background-color: rgba(238,238,238, 0.9) !important;
     border-radius: 1ch !important;
 }

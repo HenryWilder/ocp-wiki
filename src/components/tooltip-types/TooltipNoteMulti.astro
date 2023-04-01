@@ -5,6 +5,6 @@ interface Props {
 const { notes } = Astro.props;
 ---
 <span class="tooltip-bubble tooltip-note">
-    <span class="comment-name">Notes:</span><br>
+    <span class="comment-name">Notes:</span>
     {notes.map((note) => <span class="tooltip-bubble tooltip-note" set:html={note}></span>)}
 </span>

@@ -12,6 +12,7 @@ html {
         --banner-height: 75px;
     }
     --nav-height: 25px;
+    
 }
 
 html, body {
@@ -46,6 +47,9 @@ body {
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+
     @media print {
         overflow: visible;
     }
@@ -154,8 +158,8 @@ body {
 
         aside.document-outline {
             box-sizing: border-box;
-            background-color: #eee;
-            border: 1px solid #ccc;
+            background-color: var(--color-component-background);
+            border: 1px solid var(--color-component-border);
             position: fixed;
             top: 0;
             left: 0;
@@ -164,9 +168,11 @@ body {
             width: $aside-width;
             @media (max-width: ($article-width + $aside-width * 2 + 1in)) {
                 display: none;
+                visibility: collapse;
             }
             @media print {
                 display: none;
+                visibility: collapse;
             }
             margin: 10px;
             border-radius: 1ch;
@@ -178,7 +184,7 @@ body {
 
             hr {
                 border: none;
-                border-top: 1px solid #ccc;
+                border-top: 1px solid var(--color-component-border);
             }
 
             ul {
@@ -199,7 +205,7 @@ body {
                         background-color: transparent;
                         transition: 200ms;
                         &:hover {
-                            background-color: #ddd;
+                            background-color: var(--color-component-background-hover);
                             transition: 0ms;
                         }
                     }
@@ -229,10 +235,10 @@ body {
 
             &::-webkit-scrollbar {
                 width: 8px;
-                background-color: #ccc;
+                background-color: var(--color-component-border);
             }
             &::-webkit-scrollbar-thumb {
-                background: #444;
+                background: var(--color-foreground);
             }
 
             @media print {
@@ -253,7 +259,7 @@ body {
                         position: sticky;
                         position: -webkit-sticky;
                         top: 0;
-                        background-color: white;
+                        background-color: var(--color-background);
                         z-index: 1;
                         width: 100%;
                         border-radius: 5px;

@@ -1,6 +1,6 @@
 .comment {
-    background-color: #fff2cc;
-    border: 1px dashed #bf9000;
+    background-color: var(--color-comment-background);
+    border: 1px dashed var(--color-comment-outline);
     padding: 10px;
     border-radius: 3px;
     margin-top: 1em;
@@ -8,12 +8,12 @@
 }
 .comment-name {
     font-size: 10pt;
-    color: #666;
+    color: var(--color-comment-name);
 }
 
 .update {
-    background-color: #eee;
-    border: 1px solid gray;
+    background-color: var(--color-component-background);
+    border: 1px solid var(--color-component-border);
     padding: 10px;
     padding-top: 0;
     border-radius: 1px;
@@ -25,7 +25,7 @@
 }
 
 ul.card-list {
-    background-color: white;
+    background-color: var(--color-background);
     box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 1px 20px rgba(0,0,0,0.25);
     border-radius: 2ch;
     padding: 2ch;
@@ -33,8 +33,8 @@ ul.card-list {
 }
 
 .warning {
-    background-color: #eee;
-    border: 2px dashed #999;
+    background-color: var(--color-component-background);
+    border: 2px dashed var(--color-component-border);
     font-weight: bold;
     font-family: Courier;
     text-align: center;
@@ -103,7 +103,7 @@ ul.card-list {
         left: 0;
         transform: translate(80px, -50%);
         h2 {
-            color: darkorange;
+            color: var(--color-accent);
             font-weight: bold;
         }
     }
@@ -114,8 +114,8 @@ section.highlight-on-jump:target {
     animation: glow 2s;
     @keyframes glow {
         from {
-            background-color: gold;
-            box-shadow: 0 0 20px 3px gold;
+            background-color: var(--color-tooltip-highlight);
+            box-shadow: 0 0 20px 3px var(--color-tooltip-highlight);
         }
         to {
             background-color: transparent;

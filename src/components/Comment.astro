@@ -5,6 +5,6 @@ interface Props {
 const { name } = Astro.props;
 ---
 <div class="comment">
-    <div class="comment-name"><slot name="name">Note:</slot></div>
+    <span class="comment-name"><slot name="name">Note</slot>:</span><br>
     <slot />
 </div>
