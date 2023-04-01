@@ -16,7 +16,7 @@
             document.querySelector("aside.document-outline")!.remove();
         } else {
             document.querySelector("#document-outline")!.innerHTML =
-                sections.map(e => `<li class="${depthClass(e)}"><a href="#${e.id}">${"&nbsp;&nbsp;".repeat(Math.max(depth(e)-1,0))+(depth(e) > 0 ? "└ " : "")+e.title}</a></li>`).join("\n");
+                sections.map(e => `<li class="${depthClass(e)}"><a href="#${e.id}">${e.title}</a></li>`).join("\n");
         }
     </script>
 </aside>

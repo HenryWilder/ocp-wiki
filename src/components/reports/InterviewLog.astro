@@ -10,27 +10,28 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
-<OutlineAnchor hash={item.id} outlineName={`Interview Log ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}/>
-<details>
-    <summary class="report interview-log">
-        INTERVIEW LOG {item.objectNumber ?? <Redacted>????</Redacted>} {item.instance}
-    </summary>
-    <table class="report interview-log" id={item.id}>
-        <tbody>
-            <tr class="interview-body"><td>
-                <b>Interviewer:</b> <slot name="interviewerName"><Redacted>***********</Redacted></slot><br>
-                <b>Subject:</b> <slot name="subjectName"><Redacted>********</Redacted></slot><br>
-                <b>Topic:</b> <slot name="topic"><Redacted>*****************</Redacted></slot>
-                <hr>
-                {item.interview.body.map(line => (line.speaker === undefined)
-                    ? <InterviewSpeakerless content={line.content} />
-                    : <InterviewSpokenLine member={item.interview.members[line.speaker]} content={line.content} />)}
-            </td></tr>
+<OutlineAnchor hash={item.id} outlineName={`Interview Log ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}>
+    <details>
+        <summary class="report interview-log">
+            INTERVIEW LOG {item.objectNumber ?? <Redacted>????</Redacted>} {item.instance}
+        </summary>
+        <table class="report interview-log" id={item.id}>
+            <tbody>
+                <tr class="interview-body"><td>
+                    <b>Interviewer:</b> <slot name="interviewerName"><Redacted>***********</Redacted></slot><br>
+                    <b>Subject:</b> <slot name="subjectName"><Redacted>********</Redacted></slot><br>
+                    <b>Topic:</b> <slot name="topic"><Redacted>*****************</Redacted></slot>
+                    <hr>
+                    {item.interview.body.map(line => (line.speaker === undefined)
+                        ? <InterviewSpeakerless content={line.content} />
+                        : <InterviewSpokenLine member={item.interview.members[line.speaker]} content={line.content} />)}
+                </td></tr>
 
-            <tr><th>INTERVIEWER NOTES</th></tr>
-            <tr><td class="notepad" style="border:none">
-                <slot name="notes">Nothing to note</slot>
-            </td></tr>
-        </tbody>
-    </table>
-</details>
+                <tr><th>INTERVIEWER NOTES</th></tr>
+                <tr><td class="notepad" style="border:none">
+                    <slot name="notes">Nothing to note</slot>
+                </td></tr>
+            </tbody>
+        </table>
+    </details>
+</OutlineAnchor>

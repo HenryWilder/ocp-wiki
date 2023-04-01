@@ -206,7 +206,7 @@ body {
 
                     &:not(.outline-depth0) a {
                         padding: 0;
-                        padding-left: 1ch;
+                        padding-left: 2ch;
                         font-weight: normal;
                     }
                 }
@@ -218,6 +218,7 @@ body {
             overflow-y: scroll;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            scroll-padding-top: 22px;
             width: 100vw;
 
             &::-webkit-scrollbar {
@@ -239,10 +240,7 @@ body {
                 // A relative element for sticky elements to stick to
                 .sticky-sticker {
                     position: relative;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
+                    inset: 0;
 
                     .sticky-heading {
                         $widen: 10px;
@@ -253,17 +251,13 @@ body {
                         z-index: 1;
                         width: 100%;
                         border-radius: 5px;
-                        padding-left: $widen;
-                        padding-right: $widen;
-                        margin-left: ($widen * -1);
-                        margin-right: ($widen * -1);
+                        padding-inline: $widen;
+                        margin-inline: ($widen * -1);
 
                         @media print {
                             border: none;
-                            padding-left: 0;
-                            padding-right: 0;
-                            margin-left: 0;
-                            margin-right: 0;
+                            padding-inline: 0;
+                            margin-inline: 0;
                         }
                     }
                 }

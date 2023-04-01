@@ -9,34 +9,35 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
-<OutlineAnchor hash={item.id} outlineName={`Incident Report ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}/>
-<details>
-    <summary class="report incident-report">
-        INCIDENT REPORT {item.objectNumber ?? <Redacted>*****</Redacted>} {item.instance}
-    </summary>
-    <table class="report incident-report" id={item.id}>
-        <tbody>
-            <tr>
-                <td style="width:50%"><b>Date:</b> <slot name="date"><RedactedDate /></slot></td>
-                <td><b>Incident Type:</b> <slot name="incidentType"><Redacted>*********</Redacted></slot></td>
-            </tr>
-            <tr>
-                <td><b>Time:</b> <slot name="time"><Redacted>####</Redacted>hrs</slot></td>
-                <td><b>Reported By:</b> <slot name="reportedBy"><Redacted>********</Redacted></slot></td>
-            </tr>
-            <tr>
-                <td><b>Location:</b> <slot name="location"><Redacted>********</Redacted></slot></td>
-                <td><b>Object:</b> OCP-<slot name="object"><Redacted>####</Redacted></slot></td>
-            </tr>
+<OutlineAnchor hash={item.id} outlineName={`Incident Report ${item.objectNumber ?? "&#9632;&#9632;&#9632;&#9632;"} ${item.instance}`} depth={1}>
+    <details>
+        <summary class="report incident-report">
+            INCIDENT REPORT {item.objectNumber ?? <Redacted>*****</Redacted>} {item.instance}
+        </summary>
+        <table class="report incident-report" id={item.id}>
+            <tbody>
+                <tr>
+                    <td style="width:50%"><b>Date:</b> <slot name="date"><RedactedDate /></slot></td>
+                    <td><b>Incident Type:</b> <slot name="incidentType"><Redacted>*********</Redacted></slot></td>
+                </tr>
+                <tr>
+                    <td><b>Time:</b> <slot name="time"><Redacted>####</Redacted>hrs</slot></td>
+                    <td><b>Reported By:</b> <slot name="reportedBy"><Redacted>********</Redacted></slot></td>
+                </tr>
+                <tr>
+                    <td><b>Location:</b> <slot name="location"><Redacted>********</Redacted></slot></td>
+                    <td><b>Object:</b> OCP-<slot name="object"><Redacted>####</Redacted></slot></td>
+                </tr>
 
-            <tr><th colspan="2">DESCRIPTION OF INCIDENT</th></tr>
-            <tr><td colspan="2"><slot name="description">n/a</slot></td></tr>
+                <tr><th colspan="2">DESCRIPTION OF INCIDENT</th></tr>
+                <tr><td colspan="2"><slot name="description">n/a</slot></td></tr>
 
-            <tr><th colspan="2">WITNESS EXPLANATION</th></tr>
-            <tr><td colspan="2"><slot name="witnessExplanation">n/a</slot></td></tr>
+                <tr><th colspan="2">WITNESS EXPLANATION</th></tr>
+                <tr><td colspan="2"><slot name="witnessExplanation">n/a</slot></td></tr>
 
-            <tr><th colspan="2">FOLLOW UP</th></tr>
-            <tr><td colspan="2"><slot name="followup">n/a</slot></td></tr>
-        </tbody>
-    </table>
-</details>
+                <tr><th colspan="2">FOLLOW UP</th></tr>
+                <tr><td colspan="2"><slot name="followup">n/a</slot></td></tr>
+            </tbody>
+        </table>
+    </details>
+</OutlineAnchor>

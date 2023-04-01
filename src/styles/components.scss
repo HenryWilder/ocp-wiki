@@ -110,5 +110,16 @@ ul.card-list {
 }
 
 section.highlight-on-jump:target {
-    background-color: yellow;
+    box-shadow: none;
+    animation: glow 2s;
+    @keyframes glow {
+        from {
+            background-color: gold;
+            box-shadow: 0 0 20px 3px gold;
+        }
+        to {
+            background-color: transparent;
+            box-shadow: 0 0 0 transparent;
+        }
+    }
 }
