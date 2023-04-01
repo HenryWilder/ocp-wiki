@@ -8,9 +8,26 @@ import AnomalyEntry from '../../layouts/AnomalyEntry.astro';
 import Comment from '../../components/Comment.astro';
 import Info from '../../components/tooltip-types/Info.astro';
 import ArticleSection from '../../components/ArticleSection.astro';
+import PageOutline from '../../components/PageOutline.astro';
+const outline = [
+    { name:"Optimal Containment Protocols" },
 
+    { name:"Description" },
+
+    { name:"Test Logs" },
+        { name:"Test Log 000 1", depth:1 },
+        { name:"Test Log 000 2", depth:1 },
+
+    { name:"Incident Reports" },
+        { name:"Incident Report 000 1", depth:1 },
+
+    { name:"Interview Logs" },
+        { name:"Interview Log 000 1", depth:1 }
+];
 ---
-<AnomalyEntry url="./objects/000" ocpNumber="000" ocpName="A Website" containmentClass="Verj">
+<AnomalyEntry ocpNumber="000" ocpName="A Website" containmentClass="Verj" containmentClassPrev="Catastrophic">
+    <Fragment slot="outline"><PageOutline list={outline}/></Fragment>
+
     <ArticleSection name="Optimal Containment Protocols">
         <p><s>OCP-000 is held at <Info code="site-03">Site-03</Info> in a shoebox.</s></p>
         <p>OCP-000 is to be posted on the OCP site in order to confirm the functional operation of the OCP database. No other protocols are needed at this time.</p>

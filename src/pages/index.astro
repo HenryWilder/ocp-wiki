@@ -5,8 +5,7 @@ import type { IObjectEntry } from '../scripts/index';
 import objects from '../../public/data/objects.json'
 const objectList: IObjectEntry[] = objects;
 ---
-
-<ArticleLayout url="index" title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
+<ArticleLayout title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
 <ul class="card-list">
 	 {objectList.map((item) => <OCPListEntry anomalyInfo={item} />)}
 </ul>

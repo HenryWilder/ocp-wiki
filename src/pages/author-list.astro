@@ -6,7 +6,7 @@ import authors from '../../public/data/authors.json';
 const authorList: IAuthor[] = authors;
 ---
 
-<ArticleLayout url="author-list" title="Authors" name="Author List" desc="Obscure, Classify, Preserve">
+<ArticleLayout title="Authors" name="Author List" desc="Obscure, Classify, Preserve">
 <ul>
 	{authorList.map(author => <AuthorCard authorData={author} />)}
 </ul>

@@ -2,7 +2,6 @@
 import ArticleLayout from "./ArticleLayout.astro";
 import type { IObjectEntry } from "../scripts/index";
 interface Props {
-  url: string;
   ocpNumber: string;
   /**
    * In case ocpNumber is unsafe
@@ -12,7 +11,7 @@ interface Props {
   containmentClass: string;
   containmentClassPrev?: string;
 }
-const { url, ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
+const { ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
 import objects from "../../public/data/objects.json";
 import ContainmentClass from "../components/tooltip-types/ContainmentClass.astro";
 const objectList: IObjectEntry[] = objects;
@@ -20,11 +19,14 @@ const index: number = objectList.findIndex((element) => element.id == ocpId);
 const prev: IObjectEntry = objectList.at(index - 1) ?? objectList[0];
 const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
 ---
-<ArticleLayout url={url} title={"OCP-"+ocpNumber} desc={ocpName+" ("+containmentClass+")"}>
+<ArticleLayout title={`OCP-${ocpNumber}`} desc={`${ocpName} (${containmentClass})`}>
+  <Fragment slot="outline"><slot name="outline" /></Fragment>
+
   <div style="display: flex; flex-flow: row nowrap ">
     <b>{ocpNumber}:&nbsp;</b>
     {ocpName}
     (<ContainmentClass id={containmentClass.toLowerCase()}>{containmentClass}</ContainmentClass>)
+    {containmentClassPrev && <Fragment>(previously&nbsp;<ContainmentClass id={containmentClassPrev.toLowerCase()}>{containmentClassPrev}</ContainmentClass>)</Fragment>}
   </div>
 
   <div class="sticky-sticker">
@@ -32,9 +34,9 @@ const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
     <slot />
   </div>
 
-  <span slot="footer">
+  <Fragment slot="footer">
     <section>
       &laquo; <a href={`./objects/${prev.code}.html`} set:html={prev.name}></a> prev &bull; next <a href={`./objects/${next.code}.html`} set:html={next.name}></a> &raquo;
     </section>
-  </span>
+  </Fragment>
 </ArticleLayout>

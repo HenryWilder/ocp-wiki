@@ -60,7 +60,7 @@ header {
             overflow: hidden;
         }
 
-        li a, .dropbtn {
+        li a, li button, .dropbtn {
             color: white;
             text-align: center;
             font-weight: bold;
@@ -85,7 +85,8 @@ header {
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
 
-                a {
+                a, button {
+                    cursor: pointer;
                     color: white;
                     text-decoration: none;
                     text-align: left;

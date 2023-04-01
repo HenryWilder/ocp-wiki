@@ -4,8 +4,6 @@ interface Props {
     outlineName: string;
     depth: number;
 }
-const { hash, outlineName, depth } = Astro.props;
+const { hash } = Astro.props;
 ---
-<section id={hash} class={"highlight-on-jump show-in-outline outline-depth"+depth} title={outlineName}>
-    <slot />
-</section>
+<section id={hash} class:list={['highlight-on-jump', 'show-in-outline']}><slot /></section>

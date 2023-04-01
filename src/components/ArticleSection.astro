@@ -5,9 +5,7 @@ interface Props {
     name: string;
 }
 const { name } = Astro.props;
-const id = name
-    .toLowerCase()
-    .replaceAll(" ", "-");
+const id = name.toLowerCase().replaceAll(" ", "-");
 ---
 <OutlineAnchor hash={id} outlineName={name} depth={0}>
     <a href={"#"+id}><h2 class="sticky-heading">{name}:</h2></a>

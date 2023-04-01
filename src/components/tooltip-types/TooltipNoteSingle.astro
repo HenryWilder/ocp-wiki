@@ -6,5 +6,5 @@ const { note } = Astro.props;
 ---
 <span class="tooltip-bubble tooltip-note">
     <span class="comment-name">Note:</span>
-    <span set:html={note}></span>
+    <Fragment set:html={note}></Fragment>
 </span>

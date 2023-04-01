@@ -2,15 +2,20 @@
 import Meta from '../components/Meta.astro';
 import SiteHeader from '../components/SiteHeader.astro'
 interface Props {
-  url: string;
   title: string;
   desc: string;
 }
-const { url, title, desc } = Astro.props
+const { title, desc } = Astro.props
 ---
-<html lang="en" class="light">
+<html lang="en" class="theme-default">
+
+  <script>
+    import { loadTheme } from '../scripts/themeset';
+    loadTheme();
+  </script>
+
   <head>
-    <Meta title={title} url={url} desc={desc} />
+    <Meta title={title} desc={desc} />
   </head>
   <body>
     <SiteHeader />

@@ -1,4 +1,6 @@
 ---
+import Redacted from './Redacted.astro';
+
 interface Props {
     year?: number;
     month?: number;
@@ -18,7 +20,7 @@ if (dayStr) while (dayStr.length < 2) dayStr = "0" + dayStr;
 
 ---
 <span aria-label={readAs ?? "redacted date"}>
-    <span class="redacted-date-group" aria-hidden="true">
-        {yearStr ?? <span class="redacted">0000</span>}|{monthStr ?? <span class="redacted">00</span>}|{dayStr ?? <span class="redacted">00</span>}
-    </span>
+    <time class="redacted-date-group" aria-hidden="true" datetime={`${yearStr??"0000"}-${monthStr??"00"}-${dayStr??"00"}`}>
+        {yearStr ?? <Redacted>0000</Redacted>}|{monthStr ?? <Redacted>00</Redacted>}|{dayStr ?? <Redacted>00</Redacted>}
+    </time>
 </span>

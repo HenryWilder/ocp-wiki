@@ -34,6 +34,9 @@
     --color-comment-name: #666;
 
     --color-tooltip-highlight: yellow;
+    --color-tooltip-bubble-main: rgba(255,255,255,0.8);
+    --color-tooltip-bubble-notes: rgba(238,238,238, 0.9);
+    --color-tooltip-border: #aaa;
 }
 // Shared between dark themes
 @mixin lowlight-themes {
@@ -51,6 +54,9 @@
     --color-comment-name: #999;
 
     --color-tooltip-highlight: rgb(146, 146, 16);
+    --color-tooltip-bubble-main: rgba(60,60,60,0.8);
+    --color-tooltip-bubble-notes: rgba(30,30,30, 0.97);
+    --color-tooltip-border: #aaa;
 }
 // AMOLED theme only
 @mixin amoled-theme {
@@ -66,6 +72,9 @@
     --color-comment-name: #666;
 
     --color-tooltip-highlight: #220;
+    --color-tooltip-bubble-main: rgba(0,0,0,0.8);
+    --color-tooltip-bubble-notes: rgba(0,0,0,1.0);
+    --color-tooltip-border: #444;
 
     --color-component-background: black;
     --color-component-background-hover: #111;
@@ -94,6 +103,20 @@
     --color-report-header-background-hover: #bbb;
 }
 
+// Prior to selecting actual theme
+.theme-default {
+    @media (prefers-color-scheme: dark) {
+        @include all-themes();
+        @include colorful-themes();
+        @include lowlight-themes();
+        @include dark-theme();
+    }
+    @media (prefers-color-scheme: light) {
+        @include all-themes();
+        @include colorful-themes();
+        @include light-theme();
+    }
+}
 @media screen {
     .light {
         @include all-themes();

@@ -28,6 +28,23 @@ import favicon from '/favicon.svg'
                 <a href="./author-list">Authors</a>
                 <a href="./corkboard" style="color:black">Corkboard [WIP]</a>
             </NavDropdown>
+            <Fragment>
+                <NavDropdown name="Theme">
+                    <a id="themebutton-light"  href="javascript:void(0)">Light</a>
+                    <a id="themebutton-dark"   href="javascript:void(0)">Dark</a>
+                    <a id="themebutton-amoled" href="javascript:void(0)">AMOLED</a>
+                    <script>
+                        import { setTheme } from '../scripts/themeset';
+                        const buttonLight:  HTMLAnchorElement = document.getElementById("themebutton-light")  as HTMLAnchorElement;
+                        const buttonDark:   HTMLAnchorElement = document.getElementById("themebutton-dark")   as HTMLAnchorElement;
+                        const buttonAMOLED: HTMLAnchorElement = document.getElementById("themebutton-amoled") as HTMLAnchorElement;
+
+                        buttonLight  .addEventListener('click', () => setTheme("light"));
+                        buttonDark   .addEventListener('click', () => setTheme("dark"));
+                        buttonAMOLED .addEventListener('click', () => setTheme("amoled"));
+                    </script>
+                </NavDropdown>
+            </Fragment>
             <li style="width:100%; padding-right:6px">
                 <form action="/search.html">
                     <label for="searchbar" style="display: none;">Search</label>
@@ -36,7 +53,7 @@ import favicon from '/favicon.svg'
                     </div>
                     <input type="submit" style="display: none;"/>
                 </form>
-            </li>   
+            </li>
         </ul>
     </nav>
 </header>

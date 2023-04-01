@@ -102,29 +102,29 @@ body {
                 flex-flow: row nowrap;
                 justify-content: flex-start;
                 align-items: center;
-            }
-    
-            li a, .dropbtn, #searchbar {
-                display: inline-block;
-                padding: 3px 10px;
-            }
-    
-            li.dropdown {
-                display: inline-block;
-            
-                &:hover .dropdown-content {
-                    display: block;
+
+                li a, li button, .dropbtn, #searchbar {
+                    display: inline-block;
+                    padding: 3px 10px;
                 }
+        
+                li.dropdown {
+                    display: inline-block;
                 
-                .dropdown-content {
-                    display: none;
-                    position: absolute;
-                    min-width: 160px;
-    
-                    a {
-                        padding: 1px 8px;
-                        margin: 2px 2px;
+                    &:hover .dropdown-content {
                         display: block;
+                    }
+                    
+                    .dropdown-content {
+                        display: none;
+                        position: absolute;
+                        width: max-content;
+        
+                        a, button {
+                            padding: 1px 8px;
+                            margin: 2px 2px;
+                            display: block;
+                        }
                     }
                 }
             }

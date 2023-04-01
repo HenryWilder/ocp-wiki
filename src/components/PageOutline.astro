@@ -1,30 +1,23 @@
 ---
-
+interface OutlineElement {
+    name: string;
+    depth?: number;
+}
+interface Props {
+    list?: OutlineElement[];
+}
+const { list } = Astro.props;
 ---
-<aside class="document-outline" style="display: none;">
-    <h2>Jump to</h2>
-    <hr>
-    <ul id="document-outline">
-    </ul>
-</aside>
-<script>
-    const depthClass = (e: HTMLElement): string => e.classList[2]; // Should be the class with the depth number
-    const depth = (e: HTMLElement): number => Number(depthClass(e).at(-1)); // Change this if we start getting double-digits.
-
-    const sections: HTMLElement[] = [...(document.querySelectorAll(".show-in-outline"))] as HTMLElement[];
-    if (sections.length === 0) {
-        // Remove empty outlines
-        document.querySelector("aside.document-outline")!.remove();
-    } else {
-        const outlineElement: HTMLElement|null = document.querySelector("aside.document-outline");
-        if (outlineElement === null) throw new Error("Document outline missing, but script in tact. What did you do...");
-        outlineElement!.style.display = "unset";
-
-        // Add element to outline
-        document.querySelector("#document-outline")!.innerHTML =
-            sections.map(e => `<li class="${depthClass(e)}"><a href="#${e.id}">${e.title}</a></li>`).join("\n");
-
-        // Remove titles because they are only used to pass data, and they interfere with tooltips.
-        sections.forEach(e => { e.title = ""; });
-    }
-</script>
+{ (list != null) &&
+    <aside class="document-outline">
+        <h2>Jump to</h2>
+        <hr/>
+        <ul id="document-outline">
+            {
+                list.map(({name, depth}) =>
+                    <li class={`outline-depth${depth??0}`}><a href={`#${name.toLowerCase().replaceAll(" ","-")}`}>{name}</a></li>
+                )
+            }
+        </ul>
+    </aside>
+}

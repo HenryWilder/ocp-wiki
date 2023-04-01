@@ -1,18 +1,20 @@
 ---
 import Redacted from '../../components/Redacted.astro';
-import Blurred from '../../components/Blurred.astro';
-import IncidentReport from '../../components/reports/IncidentReport.astro';
-import InterviewLog from '../../components/reports/InterviewLog.astro';
-import TestLog from '../../components/reports/TestLog.astro';
 import AnomalyEntry from '../../layouts/AnomalyEntry.astro';
 import Comment from '../../components/Comment.astro';
 import ArticleSection from '../../components/ArticleSection.astro';
 import Info from '../../components/tooltip-types/Info.astro';
 import Tooltip from '../../components/tooltip-types/Tooltip.astro';
 import RedactedDate from '../../components/RedactedDate.astro';
-
+import PageOutline from '../../components/PageOutline.astro';
+const outline = [
+    { name:"Optimal Containment Protocols" },
+    { name:"Description" }
+];
 ---
-<AnomalyEntry url="./objects/001" ocpNumber="001" ocpName="Time's Treasures" containmentClass="Aleatory">
+<AnomalyEntry ocpNumber="001" ocpName="Time's Treasures" containmentClass="Aleatory">
+    <Fragment slot="outline"><PageOutline list={outline}/></Fragment>
+
     <ArticleSection name="Optimal Containment Protocols">
         <p>
             OCP-001 is to be kept in a 5m x 5m x 5m hyperbolic time chamber set to 1:0.00001 scale (1 second outside is 0.00001 inside).
