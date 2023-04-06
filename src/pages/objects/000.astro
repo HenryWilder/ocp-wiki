@@ -9,6 +9,7 @@ import Comment from '../../components/Comment.astro';
 import Info from '../../components/tooltip-types/Info.astro';
 import ArticleSection from '../../components/ArticleSection.astro';
 import PageOutline from '../../components/PageOutline.astro';
+
 const outline = [
     { name:"Optimal Containment Protocols" },
 
@@ -25,7 +26,7 @@ const outline = [
         { name:"Interview Log 000 1", depth:1 }
 ];
 ---
-<AnomalyEntry ocpNumber="000" ocpName="A Website" containmentClass="Verj" containmentClassPrev="Catastrophic">
+<AnomalyEntry id="ocp000">
     <Fragment slot="outline"><PageOutline list={outline}/></Fragment>
 
     <ArticleSection name="Optimal Containment Protocols">

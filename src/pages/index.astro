@@ -3,7 +3,7 @@ import ArticleLayout from '../layouts/ArticleLayout.astro';
 import OCPListEntry from '../components/OCPListEntry.astro';
 import type { IObjectEntry } from '../scripts/index';
 import objects from '../../public/data/objects.json'
-const objectList: IObjectEntry[] = objects;
+const objectList: IObjectEntry[] = Object.values(objects);
 ---
 <ArticleLayout title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
 <ul class="card-list">

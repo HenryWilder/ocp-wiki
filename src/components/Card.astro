@@ -1,0 +1,16 @@
+---
+import type { ICardBase } from '../scripts';
+import OutlineAnchor from './OutlineAnchor.astro';
+import ContainmentClass from './tooltip-types/ContainmentClass.astro';
+
+interface Props {
+    item: ICardBase;
+    isContClass: boolean;
+}
+const { item, isContClass } = Astro.props;
+---
+<OutlineAnchor hash={item.id} addClass={["card"]}>
+    <h2>{isContClass ? (<ContainmentClass id={item.id}>{item.name}</ContainmentClass>) : item.name}</h2>
+    <strong>{item.tagline}</strong>
+    <p>{item.desc}</p>
+</OutlineAnchor>

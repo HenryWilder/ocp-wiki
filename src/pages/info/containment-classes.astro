@@ -7,6 +7,7 @@ import ArticleSection from '../../components/ArticleSection.astro';
 import OutlineAnchor from '../../components/OutlineAnchor.astro';
 import PageOutline from '../../components/PageOutline.astro';
 import ContainmentClass from '../../components/tooltip-types/ContainmentClass.astro';
+import Card from '../../components/Card.astro';
 const classList: ICardBase[] = classes as ICardBase[];
 ---
 <ArticleLayout title="Containment Classes" name="Containment Classes" desc="OCP Federation Containment Classes">
@@ -15,10 +16,7 @@ const classList: ICardBase[] = classes as ICardBase[];
     }/>
     <ul>
         { classList.map((item: ICardBase) =>
-            <OutlineAnchor addClass={["card"]} hash={item.id}>
-                <h2><ContainmentClass id={item.id}>{item.name}</ContainmentClass></h2>
-                {item.desc}
-            </OutlineAnchor>
+            <Card item={item} isContClass={true} />
         )}
     </ul>
 </ArticleLayout>

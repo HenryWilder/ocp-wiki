@@ -1,32 +1,35 @@
 ---
+import ContainmentClass from "../components/tooltip-types/ContainmentClass.astro";
 import ArticleLayout from "./ArticleLayout.astro";
 import type { IObjectEntry } from "../scripts/index";
-interface Props {
-  ocpNumber: string;
-  /**
-   * In case ocpNumber is unsafe
-   */
-  ocpId?: string;
-  ocpName: string;
-  containmentClass: string;
-  containmentClassPrev?: string;
-}
-const { ocpNumber, ocpId = "ocp-"+ocpNumber, ocpName, containmentClass, containmentClassPrev } = Astro.props;
 import objects from "../../public/data/objects.json";
-import ContainmentClass from "../components/tooltip-types/ContainmentClass.astro";
-const objectList: IObjectEntry[] = objects;
-const index: number = objectList.findIndex((element) => element.id == ocpId);
-const prev: IObjectEntry = objectList.at(index - 1) ?? objectList[0];
-const next: IObjectEntry = objectList.at(index + 1) ?? objectList[0];
+interface ObjectMap {
+  [key: string]: IObjectEntry;
+};
+const objectList: ObjectMap = objects;
+
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const ocp: IObjectEntry = objectList[id];
+const keys = Object.keys(objectList);
+const index: number = keys.indexOf(id);
+const prev: IObjectEntry = objectList[(index - 1) >= 0          ? index - 1 : 0];
+const next: IObjectEntry = objectList[(index + 1) < keys.length ? index + 1 : 0];
+
+const toTitleCase = (str: string) => str.replace(/\w\S*/g, (txt: string) => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase());
+const currClass: string = ocp.classHistory.at(-1)!;
+const prevClass: string|undefined = (ocp.classHistory.length > 1 ? ocp.classHistory.at(-2) : undefined);
 ---
-<ArticleLayout title={`OCP-${ocpNumber}`} desc={`${ocpName} (${containmentClass})`}>
+<ArticleLayout title={`OCP-${ocp.code}: ${ocp.name}`} desc={`${ocp.name} (${currClass})`}>
   <Fragment slot="outline"><slot name="outline" /></Fragment>
 
   <div style="display: flex; flex-flow: row nowrap ">
-    <b>{ocpNumber}:&nbsp;</b>
-    {ocpName}
-    (<ContainmentClass id={containmentClass.toLowerCase()}>{containmentClass}</ContainmentClass>)
-    {containmentClassPrev && <Fragment>(previously&nbsp;<ContainmentClass id={containmentClassPrev.toLowerCase()}>{containmentClassPrev}</ContainmentClass>)</Fragment>}
+    <b>{ocp.code}:&nbsp;</b>
+    {ocp.name}
+    (<ContainmentClass id={currClass}>{toTitleCase(currClass)}</ContainmentClass>)
+    {prevClass && <Fragment>(previously&nbsp;<ContainmentClass id={prevClass.toLowerCase()}>{toTitleCase(prevClass)}</ContainmentClass>)</Fragment>}
   </div>
 
   <div class="sticky-sticker">

@@ -7,11 +7,11 @@ export interface IAuthor {
 
 // Interfaces that have info appear when hovered
 export interface ITooltipBase {
-    id: string; // The id associated with the element, both in the JSON and in the Info component
     name: string; 
     tagline: string;
     notes?: string|string[];
 }
+
 // Interfaces that appear in a card on an "info/" page
 export interface ICardBase extends ITooltipBase {
     desc: string;
@@ -22,6 +22,7 @@ export interface ITaskForce extends ICardBase {}
 export interface IObjectEntry extends ITooltipBase {
     vis?: string; // undefined = normal
 	code: string;
+    classHistory: string[];
 }
 export interface IRealityBender extends ICardBase {
     color: string;
