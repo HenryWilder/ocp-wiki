@@ -1,8 +1,12 @@
 ---
 import Tooltip from "./Tooltip.astro";
-
 import type { ITooltipBase } from "../../scripts/index";
-let list: ITooltipBase[] = [];
+
+import containmentSites from "../../../public/data/containment-sites.json";
+import objects from "../../../public/data/objects.json";
+import staff from "../../../public/data/staff.json";
+import taskForces from "../../../public/data/task-forces.json";
+
 interface ISharedTooltipInfo {
     category: string;
     path: string;
@@ -10,41 +14,27 @@ interface ISharedTooltipInfo {
 }
 let sharedInfo: ISharedTooltipInfo = { category:"", path:"", linkText:"" };
 
-import containmentSites from "../../../public/data/containment-sites.json";
-import objects from "../../../public/data/objects.json";
-import staff from "../../../public/data/staff.json";
-import taskForces from "../../../public/data/task-forces.json";
-
 interface Props {
     code: string;
 }
 const { code } = Astro.props;
-const prefix = code.substring(0, code.indexOf("-"));
 
-switch (prefix) {
-    case "site":
-        list = containmentSites;
-        sharedInfo = { category:"Containment Site", path:`/info/containment-sites.html#${code}`, linkText:"" };
-        break;
-    case "ocp":
-        list = objects;
-        sharedInfo = { category:"Anomalous Object", path:`/objects/${code.substring(code.indexOf("ocp-")+1)}.html`, linkText:"read document" };
-        break;
-    case "staff":
-        list = staff;
-        sharedInfo = { category:"Staff Member", path:`/info/staff.html#${code}`, linkText:"" };
-        break;
-    case "mtf":
-        list = taskForces;
-        sharedInfo = { category:"Mobile Task Force", path:`/info/task-forces.html#${code}`, linkText:"" };
-        break;
+// The above switch statement as a series of if statements:
 
-    default:
-        throw new Error(`Type "${prefix}" is not specialized`);
-}
+// Think of a good name for this
+const sharedInfoOptions =
+    [{ src:containmentSites as ITooltipBase[], prefix:"site",  category:"Containment Site",  path:`/info/containment-sites.html#${code}`, linkText:"" },
+     { src:objects as ITooltipBase[],          prefix:"ocp",   category:"Anomalous Object",  path:`/objects/${code.substring(4)}.html`,   linkText:"read document" },
+     { src:staff as ITooltipBase[],            prefix:"staff", category:"Staff Member",      path:`/info/staff.html#${code}`,             linkText:"" },
+     { src:taskForces as ITooltipBase[],       prefix:"mtf",   category:"Mobile Task Force", path:`/info/task-forces.html#${code}`,       linkText:"" }];
 
-const tryInfo: ITooltipBase|undefined = list.find(element => element.id == code);
-if (tryInfo === undefined) throw new Error(`Cannot find "${code}" in ${prefix} json`);
-const info: ITooltipBase = tryInfo;
+sharedInfoOptions.forEach(option => {
+    if (code.substring(0, option.prefix.length) == option.prefix) {
+        info = option.src[code];
+        sharedInfo = { category:option.category, path:option.path, linkText:option.linkText };
+    }
+});
+if (sharedInfo.category == "") throw new Error(`Type "${code}" is not specialized`);
+
 ---
 <Tooltip category={sharedInfo.category} name={info.name} tagline={info.tagline} path={sharedInfo.path} linkText={sharedInfo.linkText} notes={info.notes}><slot /></Tooltip>

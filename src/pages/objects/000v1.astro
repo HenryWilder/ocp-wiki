@@ -6,7 +6,6 @@ import InterviewLog from '../../components/reports/InterviewLog.astro';
 import TestLog from '../../components/reports/TestLog.astro';
 import AnomalyEntry from '../../layouts/AnomalyEntry.astro';
 import Comment from '../../components/Comment.astro';
-import Info from '../../components/tooltip-types/Info.astro';
 import ArticleSection from '../../components/ArticleSection.astro';
 import PageOutline from '../../components/PageOutline.astro';
 
@@ -30,7 +29,7 @@ const outline = [
     <Fragment slot="outline"><PageOutline list={outline}/></Fragment>
 
     <ArticleSection name="Optimal Containment Protocols">
-        <p><s>OCP-000 is held at <Info code="site-03">Site-03</Info> in a shoebox.</s></p>
+        <p><s>OCP-000 is held at Site-03 in a shoebox.</s></p>
         <p>OCP-000 is to be posted on the OCP site in order to confirm the functional operation of the OCP database. No other protocols are needed at this time.</p>
         <div class="update">
             <h3>UPDATE:</h3>
@@ -38,13 +37,13 @@ const outline = [
         </div>
         <div class="comment">
             <div class="comment-name">Comment from Dr. <Redacted>Lastname</Redacted>:</div>
-            I had no idea there were even containment protocols for documents. Has <Info code="staff-z5-1">Annie</Info> lost his mind?
+            I had no idea there were even containment protocols for documents. Has Annie lost his mind?
         </div>
     </ArticleSection>
 
     <ArticleSection name="Description">
-        <p><Blurred>OCP-000 is a paper document regarding the task force <Info code="mtf-k-nis">K-nis (Bloodhounds)</Info>. Its origin is unknown, as it was never written by any past nor present researcher at the Federation.</Blurred></p>
-        <p><Blurred>What is known is that it mentions a hybrid between <Info code="ocp-051">OCP-051</Info> and a hitherto unknown OCP described as a bat.</Blurred></p>
+        <p><Blurred>OCP-000 is a paper document regarding the task force K-nis (Bloodhounds). Its origin is unknown, as it was never written by any past nor present researcher at the Federation.</Blurred></p>
+        <p><Blurred>What is known is that it mentions a hybrid between OCP-051 and a hitherto unknown OCP described as a bat.</Blurred></p>
         <p>OCP-000 is a test document uploaded to the OCP wiki as a test to make sure the formatting looks right. It is written in <Redacted>HTML</Redacted> and contains multiple tags.</p>
     </ArticleSection>
 
@@ -132,14 +131,13 @@ const outline = [
             <span slot="subjectName">OCP-000</span>
             <span slot="topic">Reason for hostility</span>
             <span slot="notes">
-                I'm pretending to write something down
-                <br><br>
-                blah blah blah blah
-                <br><br>
-                Are they still watching?
-                <br><br>
-                This <Redacted>thing</Redacted> freaks me out. I don't wanna have to work with it anymore.
-                I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore...
+                <p>I'm pretending to write something down</p>
+                <p>blah blah blah blah</p>
+                <p>Are they still watching?</p>
+                <p>
+                    This <Redacted>thing</Redacted> freaks me out. I don't wanna have to work with it anymore.
+                    I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore...
+                </p>
             </span>
         </InterviewLog>
     </ArticleSection>

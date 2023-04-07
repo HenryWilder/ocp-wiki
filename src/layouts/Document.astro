@@ -1,0 +1,18 @@
+---
+import Meta from '../components/Meta.astro';
+import SiteHeader from '../components/SiteHeader.astro'
+interface Props {
+  title: string;
+  desc: string;
+}
+const { title, desc } = Astro.props
+---
+<html lang="en" class="theme-default">
+  <head>
+    <Meta title={title} desc={desc} />
+  </head>
+  <body>
+    <SiteHeader />
+    <slot />
+  </body>
+</html>
