@@ -7,7 +7,7 @@ interface Props {
     href: string;
 }
 const { href } = Astro.props;
-console.log(href);
+console.log("ref: " + href);
 
 // Get frontmatter data from the markdown file at the given path.
 const src: CollectionEntry<'objects'>|undefined = await getCollection('objects', e => { e.slug == href })[0];
@@ -31,4 +31,4 @@ const exists: boolean = src !== undefined;
         }
     </span>
 </span>
-) : <a href={href}><slot/></a>}
+) : <a href={href} style="text-decoration: 1px dotted underline;"><slot/></a>}
