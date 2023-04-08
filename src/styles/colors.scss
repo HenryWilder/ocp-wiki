@@ -1,100 +1,83 @@
-// Light theme
-@mixin light-theme {
-    --color-foreground: black;
-    --color-background: white;
-    --color-banner-light: rgb(239, 156, 66);
-    --color-banner-dark: rgb(237, 147, 59);
-
-    --color-nav: #444;
-    --gradient-nav: linear-gradient(to bottom, #444, #222);
-
-    --color-report-foreground: black;
-    --color-report-background: white;
-    --color-report-border: black;
-    --color-report-header-background: #ccc;
-    --color-report-header-background-hover: #bbb;
-
-    --color-notepad-background-primary: #fff2cc;
-    --color-notepad-background-rule: #6d9eeb;
-    
-    --color-component-background: #eee;
-    --color-component-background-hover: #ddd;
-    --color-component-border: #aaa;
-
-    --color-comment-background: #fff;
-    --color-comment-border: #ccc;
-
-    --color-tooltip-highlight: yellow;
-    --color-tooltip-bubble-main: rgba(255,255,255,0.8);
-    --color-tooltip-bubble-notes: rgba(238,238,238, 0.9);
-    --color-tooltip-border: #aaa;
-}
-
-// AMOLED theme
-@mixin dark-theme {
-    --color-foreground: white;
-    --color-banner-light: rgb(33, 33, 33);
-    --color-banner-dark: rgb(29, 29, 29);
-    --color-background: black;
-
-    --color-nav: black;
-    --gradient-nav: linear-gradient(to top, #222 0px 1px, black 1px 100%);
-
-    --color-comment-background: black;
-    --color-comment-border: #444;
-
-    --color-tooltip-highlight: #220;
-    --color-tooltip-bubble-main: rgba(0,0,0,0.8);
-    --color-tooltip-bubble-notes: rgba(0,0,0,1.0);
-    --color-tooltip-border: #444;
-
-    --color-component-background: black;
-    --color-component-background-hover: #111;
-    --color-component-border: #333;
-
-    --color-report-foreground: white;
-    --color-report-background: black;
-    --color-report-border: #444;
-    --color-report-header-background: #111;
-    --color-report-header-background-hover: #222;
-
-    --color-notepad-background-primary: #080808;
-    --color-notepad-background-rule: #333;
-}
-
-// Printer-friendly theme
-@mixin print-theme {
-    --color-component-background: transparent;
-    --color-component-border: gray;
-    --color-notepad-background-primary: white;
-    --color-notepad-background-rule: #6d9eeb;
-
-    --color-report-foreground: black;
-    --color-report-background: white;
-    --color-report-border: black;
-    --color-report-header-background: #ccc;
-    --color-report-header-background-hover: #bbb;
-}
-
 :root {
     --color-accent-light: orange;
     --color-accent: darkorange;
     --color-accent-dark: chocolate;
+    
+    // Light theme
+    @media (prefers-color-scheme: light) {
+        --color-foreground: black;
+        --color-background: white;
+        --color-banner-light: rgb(239, 156, 66);
+        --color-banner-dark: rgb(237, 147, 59);
 
-    @media screen {
-        // Dark theme
-        @media not print and (prefers-color-scheme: dark) {
-            @include dark-theme();
-        }
+        --color-nav: #444;
+        --gradient-nav: linear-gradient(to bottom, #444, #222);
 
-        // Light theme
-        @media not print and (prefers-color-scheme: light) {
-            @include light-theme();
-        }
+        --color-report-foreground: black;
+        --color-report-background: white;
+        --color-report-border: black;
+        --color-report-header-background: #ccc;
+        --color-report-header-background-hover: #bbb;
+
+        --color-notepad-background-primary: #fff2cc;
+        --color-notepad-background-rule: #6d9eeb;
+        
+        --color-component-background: #eee;
+        --color-component-background-hover: #ddd;
+        --color-component-border: #aaa;
+
+        --color-comment-background: #fff;
+        --color-comment-border: #ccc;
+
+        --color-tooltip-highlight: yellow;
+        --color-tooltip-bubble-main: rgba(255,255,255,0.8);
+        --color-tooltip-bubble-notes: rgba(238,238,238, 0.9);
+        --color-tooltip-border: #aaa;
     }
 
+    // AMOLED theme
+    @media (prefers-color-scheme: dark) {
+        --color-foreground: white;
+        --color-banner-light: rgb(33, 33, 33);
+        --color-banner-dark: rgb(29, 29, 29);
+        --color-background: black;
+
+        --color-nav: black;
+        --gradient-nav: linear-gradient(to top, #222 0px 1px, black 1px 100%);
+
+        --color-comment-background: black;
+        --color-comment-border: #444;
+
+        --color-tooltip-highlight: #220;
+        --color-tooltip-bubble-main: rgba(0,0,0,0.8);
+        --color-tooltip-bubble-notes: rgba(0,0,0,1.0);
+        --color-tooltip-border: #444;
+
+        --color-component-background: black;
+        --color-component-background-hover: #111;
+        --color-component-border: #333;
+
+        --color-report-foreground: white;
+        --color-report-background: black;
+        --color-report-border: #444;
+        --color-report-header-background: #111;
+        --color-report-header-background-hover: #222;
+
+        --color-notepad-background-primary: #080808;
+        --color-notepad-background-rule: #333;
+    }
+
+    // Printer-friendly theme
     @media print {
-        @include light-theme();
-        @include print-theme();
+        --color-component-background: transparent;
+        --color-component-border: gray;
+        --color-notepad-background-primary: white;
+        --color-notepad-background-rule: #6d9eeb;
+
+        --color-report-foreground: black;
+        --color-report-background: white;
+        --color-report-border: black;
+        --color-report-header-background: #ccc;
+        --color-report-header-background-hover: #bbb;
     }
 }

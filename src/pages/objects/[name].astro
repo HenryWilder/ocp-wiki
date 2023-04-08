@@ -42,7 +42,7 @@ const headings = ast.children
     <aside id="outline">
       <h2>{entry.data.title}</h2>
       <ol>
-        {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat(heading.depth * 2)}/>{heading.name}</a></li>)}
+        {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat((heading.depth - 1) * 2)}/>{heading.name}</a></li>)}
       </ol>
     </aside>
 
@@ -61,8 +61,9 @@ const headings = ast.children
       <p><b>{entry.data.name}:</b> {entry.data.title} ({entry.data.category})</p>
 
       <Content/>
+      {entry.data.reports?.map(e => e.render())}
 
-      <footer style="text-align: center;">&laquo; <a href={prevEntry.slug}>Prev</a> &bull; <a href={nextEntry.slug}>Next</a> &raquo;</footer>
+      <footer style="text-align: center;margin-block:2em">&laquo; <a href={prevEntry.slug}>Prev</a> &bull; <a href={nextEntry.slug}>Next</a> &raquo;</footer>
     </article>
 
     <aside id="comments">
@@ -75,14 +76,12 @@ const headings = ast.children
     const main = document.querySelector('main');
     const mainTop = main.offsetTop;
     const commentSection = document.getElementById('comments');
-    const commentSectionTop = commentSection.offsetTop;
     const comments = document.querySelectorAll('.comment');
-    let mustClear = 0;
+    let mustClear = mainTop;
     comments.forEach((comment: HTMLElement, i: number) => {
-      // Get the object before the comment
-      const prev: HTMLElement = comment.previousElementSibling as HTMLElement;
+      comment.style.position = 'absolute';
       // Get the offset height of the object
-      const offset = (prev.offsetTop - mainTop) ?? 0;
+      const offset = comment.offsetTop - mainTop - comment.offsetHeight / 2;
       commentSection.appendChild(comment)
       comment.style.top = offset+'px';
       // Move down if overlapping the previous comment

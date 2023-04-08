@@ -12,7 +12,7 @@ main {
     overflow-y: auto;
 }
 #hrgroup {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--color-foreground);
     margin: 0;
     padding-block: 1em;
     margin-bottom: 0.5em;
@@ -85,6 +85,9 @@ article {
     // Top should be the height of the header
     top: 0.25in;
     left: 0;
+    border: 1px solid var(--color-component-border);
+    background-color: var(--color-component-background);
+    border-radius: 1.5em;
     h2 {
         margin: 0;
         padding: layout.$horizontal-padding;
@@ -98,11 +101,13 @@ article {
             a {
                 // Should be a borderless block that takes up the width of the outline
                 display: block;
-                padding-block: layout.$horizontal-padding;
+                padding-block: 0.5em;
                 text-decoration: none;
                 transition: 0.25s;
+                border-top: 1px solid var(--color-component-background-hover);
                 &:hover {
-                    background-color: var(--color-component-background);
+                    background-color: var(--color-component-background-hover);
+                    font-weight: bold;
                 }
             }
         }

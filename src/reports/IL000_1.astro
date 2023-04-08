@@ -1,0 +1,39 @@
+---
+import InterviewLog from "../components/reports/InterviewLog.astro";
+import Redacted from "../components/typography/Redacted.astro";
+
+---
+<InterviewLog item={{
+    id: "interview-log-000-1",
+    objectNumber: "000",
+    instance: "1",
+    interview: {
+        members:[
+            {name: "Interviewer", color: "#840"},
+            {name: "Subject", color: "#900"}
+        ],
+        body:[
+            { speaker: 0, content: "Why are you hostile?" },
+            { content: "various growls and vocalizations of grumpiness" },
+            { speaker: 0, content: "Please calm down. There is no need for hostility." },
+            { speaker: 1, content: "<Redacted>I'm going to eat your lunch money and then fold your laundry with my baby hands</Redacted>" },
+            { content: "interviewer is silent" },
+            { speaker: 0, content: "I think we're done here." }
+        ]
+    }
+}}>
+    <Fragment slot="interviewerName">Jr RSR <Redacted>*******</Redacted></Fragment>
+    <Fragment slot="subjectName">OCP-000</Fragment>
+    <Fragment slot="topic">Reason for hostility</Fragment>
+
+    <Fragment slot="notes">
+        I'm pretending to write something down
+        <br><br>
+        blah blah blah blah
+        <br><br>
+        Are they still watching?
+        <br><br>
+        This <Redacted>thing</Redacted> freaks me out. I don't wanna have to work with it anymore.
+        I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore...
+    </Fragment>
+</InterviewLog>

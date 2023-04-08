@@ -9,6 +9,7 @@ const objectCollection = defineCollection({
     category: z.string(),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
+    reports: z.array(z.string()).optional(),
     draft: z.boolean().default(false),
     visibility: z.enum(['visible','blurred','redacted','hidden']).default('visible'),
   }),
