@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+import Document from '../../layouts/Document.astro';
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('objects');
+  return blogEntries.map(entry => ({
+    params: { name: entry.slug }, props: { entry },
+  }));
+}
+
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<Document title={entry.data.title} desc={entry.data.desc} addKeywords={entry.data.tags} >
+  <style>
+    main {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: stretch;
+    }
+    h1 {
+      border-bottom: 1px solid var(--color-component-border);
+      margin: 0;
+      padding-block: 0.125in;
+    }
+    article {
+      width: 8in;
+      min-width: 8in;
+      padding-inline: 0.25in;
+    }
+    #outline, #comments {
+      min-width: 3in;
+      max-width: 3in;
+      margin: 0.25in;
+      border: 1px dotted magenta;
+    }
+    /* Hide outline and comments if the screen isn't wide enough to display them */
+    @media (max-width: 14.5in) {
+      #outline {
+        display: none;
+      }
+    }
+    /* Hide outline and comments if the screen isn't wide enough to display them */
+    @media (max-width: 11.5in) {
+      #outline, #comments {
+        display: none;
+      }
+    }
+    /* Hide outline and comments if the screen isn't wide enough to display them */
+    @media (max-width: 8in) {
+      main {
+        display: block;
+        width: 100%;
+      }
+      article {
+        width: 100%;
+        min-width: unset;
+        padding-inline: 0.125in;
+      }
+    }
+  </style>
+  <!-- Inline styling to make two sidebars around a 7.5in article -->
+  <main>
+    <aside id="outline">
+      <h2>Outline</h2>
+    </aside>
+
+    <article>
+      <h1>{entry.data.title}</h1>
+      <p><b>{entry.data.name}:</b> {entry.data.title} ({entry.data.category})</p>
+      <Content/>
+
+      <footer style="text-align: center;">&laquo; Prev &bull; Next &raquo;</footer>
+    </article>
+
+    <aside id="comments">
+      {entry.data.comments}
+    </aside>
+  </main>
+</Document>

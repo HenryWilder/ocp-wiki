@@ -224,12 +224,6 @@ body {
             overflow-y: scroll;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            @media (prefers-reduced-motion: reduce) {
-                scroll-behavior: unset;
-            }
-            @media (prefers-reduced-motion: no-preference) {
-                scroll-behavior: smooth;
-            }
             scroll-padding-top: 22px;
             width: 100vw;
 
@@ -248,33 +242,8 @@ body {
             article {
                 @include centered-on-page;
                 margin-bottom: 0.5in;
-
-                // A relative element for sticky elements to stick to
-                .sticky-sticker {
-                    position: relative;
-                    inset: 0;
-
-                    .sticky-heading {
-                        $widen: 10px;
-                        position: sticky;
-                        position: -webkit-sticky;
-                        top: 0;
-                        background-color: var(--color-background);
-                        z-index: 1;
-                        width: 100%;
-                        border-radius: 5px;
-                        padding-inline: $widen;
-                        margin-inline: ($widen * -1);
-
-                        @media print {
-                            border: none;
-                            padding-inline: 0;
-                            margin-inline: 0;
-                        }
-                    }
-                }
             }
-
+            
             footer {
                 @media print {
                     display: none !important;

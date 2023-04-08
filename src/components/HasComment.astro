@@ -1,6 +1,0 @@
----
-// Uses the line number of this component as the comment ID
-const commentId = (new Error()).stack.split('\n')[1].match(/:(\d+):/)[1];
----
-<span id={`comment-${commentId}`} class="has-comment"><slot></slot></span>
-<span id={`comment-${commentId}`} class="comment"><slot name="comment"></slot></span>

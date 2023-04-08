@@ -1,12 +1,15 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
 import OCPListEntry from '../components/OCPListEntry.astro';
-import type { IObjectEntry } from '../scripts/index';
-import objects from '../../public/data/objects.json'
-const objectList: IObjectEntry[] = Object.values(objects);
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+const allObjectPages: CollectionEntry<'objects'>[] = await getCollection('objects');
+const latestObjectPages: CollectionEntry<'objects'>[] = allObjectPages.filter(
+	e => e.data.version === Math.max(...allObjectPages.filter(e => e.data.name === e.data.name).map(e => e.data.version))
+);
 ---
 <ArticleLayout title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
 <ul class="card-list">
-	 {objectList.map((item) => <OCPListEntry anomalyInfo={item} />)}
+	{latestObjectPages.map((item) => <li><a href={`objects/${item.slug}`}>{item.data.name}</a> - {item.data.title} ({item.data.category})</li>)}
 </ul>
 </ArticleLayout>

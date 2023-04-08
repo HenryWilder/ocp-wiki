@@ -4,12 +4,13 @@ import SiteHeader from '../components/SiteHeader.astro'
 interface Props {
   title: string;
   desc: string;
+  addKeywords?: string[];
 }
-const { title, desc } = Astro.props
+const { title, desc, addKeywords } = Astro.props
 ---
-<html lang="en" class="theme-default">
+<html lang="en">
   <head>
-    <Meta title={title} desc={desc} />
+    <Meta title={title} desc={desc} addKeywords={addKeywords} />
   </head>
   <body>
     <SiteHeader />
