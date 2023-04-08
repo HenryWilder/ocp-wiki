@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 import Document from '../../layouts/Document.astro';
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('objects');
-  return blogEntries.map(entry => ({
+  const objectEntries = await getCollection('objects');
+  return objectEntries.map(entry => ({
     params: { name: entry.slug }, props: { entry },
   }));
 }
@@ -12,6 +12,12 @@ export async function getStaticPaths() {
 // 2. When it's time to render, you can get the entry directly from the prop
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+// Get list of all entries with the same name as the current entry
+// Sort ascending by version number
+const objectVersions = await getCollection('objects', e => e.data.name == entry.data.name);
+const sortedVersions = objectVersions.sort((a, b) => a.data.version - b.data.version);
+const isOldVersion = sortedVersions[sortedVersions.length - 1].slug != entry.slug;
 ---
 <Document title={entry.data.title} desc={entry.data.desc} addKeywords={entry.data.tags} >
   <style>
@@ -21,10 +27,59 @@ const { Content } = await entry.render();
       justify-content: space-evenly;
       align-items: stretch;
     }
-    h1 {
-      border-bottom: 1px solid var(--color-component-border);
+    #hrgroup {
+      border-bottom: 1px solid black;
       margin: 0;
-      padding-block: 0.125in;
+      padding-block: 1em;
+      margin-bottom: 0.5em;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-block: 0.25em;
+    }
+    #file-history {
+      display: flex;
+      flex-flow: row;
+      gap: 1ch;
+    }
+    /* inside of hgroup, h1 should be on the left side and file-history-container should be on the right side */
+    #hrgroup {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    #file-history {
+      display: flex;
+      flex-flow: row;
+      align-items: flex-end;
+    }
+
+    #file-history a {
+      text-decoration: none;
+      display: inline-block;
+      color: black;
+      background-color: white;
+      padding: 0.125em 0.5em;
+      border: 1px solid #aaa;
+      border-radius: 0.5em;
+      transition: 0.25s;
+    }
+    #file-history a:hover {
+      color: #33d;
+      font-weight: bold;
+      background-color: #eee;
+      border-color: #888;
+    }
+    #file-history a[href="example.html"],
+    #file-history a[href="example.html"]:hover {
+      color: black;
+      font-weight: bold;
+      background-color: #eee;
+      border-color: #888;
     }
     article {
       width: 8in;
@@ -36,6 +91,21 @@ const { Content } = await entry.render();
       max-width: 3in;
       margin: 0.25in;
       border: 1px dotted magenta;
+    }
+    /* The outline should be fixed, while the comments are absolute. */
+    #outline {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: auto;
+    }
+    #comments {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      overflow-y: auto;
     }
     /* Hide outline and comments if the screen isn't wide enough to display them */
     @media (max-width: 14.5in) {
@@ -69,8 +139,19 @@ const { Content } = await entry.render();
     </aside>
 
     <article>
-      <h1>{entry.data.title}</h1>
+      <div id="hrgroup">
+        <h1>{entry.data.title}</h1>
+
+        {isOldVersion &&
+            <b style="font-size:smaller">NOTICE: You are reading an outdated version of this document</b>
+        }
+
+        <span id="file-history">
+          {sortedVersions.map(v => <a href={v.slug}>V{v.data.version}</a>)}
+        </span>
+      </div>
       <p><b>{entry.data.name}:</b> {entry.data.title} ({entry.data.category})</p>
+
       <Content/>
 
       <footer style="text-align: center;">&laquo; Prev &bull; Next &raquo;</footer>
