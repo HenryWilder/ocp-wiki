@@ -1,11 +1,34 @@
 @use "../layout.scss";
 
-header {
-    background-color: var(--color-banner-light);
-    background:
-        repeating-linear-gradient(45deg, var(--color-banner-light) 0px, var(--color-banner-light) 15px, transparent 15px 30px),
-        linear-gradient(179deg, var(--color-banner-dark), var(--color-banner-light));
+$scrolling-background-size: (1.41421356 * 120px);
 
+// continuous scrolling banner background
+@keyframes scrolling-banner {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: $scrolling-background-size;
+    }
+}
+
+#banner {
+    position: relative;
+    inset: 0;
+    background-color: var(--color-banner-dark);
+    background: linear-gradient(179deg, var(--color-banner-dark), var(--color-banner-light));
+
+    #banner-scrolling {
+        position: absolute;
+        inset: 0;
+        background-color: var(--color-banner-dark);
+        background: repeating-linear-gradient(45deg, var(--color-banner-dark) 0px, var(--color-banner-dark) 15px, transparent 15px 30px);
+        background-size: $scrolling-background-size;
+        // continuous scrolling banner background
+        animation: scrolling-banner 10s linear infinite;
+    }
+}
+header {
     transition: 200ms;
 
     z-index: 30;
