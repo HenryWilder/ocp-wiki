@@ -1,27 +1,35 @@
 ---
-import Document from "../../layouts/Document.astro";
+import Meta from "../../components/Meta.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
 ---
-<Document title="Error - OCP Federation" desc="This page does not exist." addKeywords={['Error']} >
+<!-- #page-real should be centered on the screen -->
+<!-- #offscreen should be offscreen to the right, and allow scrolling to the right but not vertically -->
+<!-- #exit-screen should be able to exceed #page-real horizontally -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <Meta title="Error" desc="This page does not exist."/>
     <link rel="stylesheet" href="/src/styles/error.scss" />
+</head>
+<body>
     <div id="page-real">
-        <main>
-            <article>
-                <br>
-                <h1 style="display:inline;">OCP-<span class="jumble" style="display:inline;">???</span></h1>
-                <hr>
-                <p><b><span class="jumble">???</span>:</b> The <span class="jumble">???</span>th Object (<span class="verj">Verj</span>)</p>
-                <h2>Optimal Containment Protocols:</h2>
-                <p><b>ERROR:</b> Data regarding OCP-<span class="jumble">???</span> is either corrupted or does not exist. Please leave the page.</p>
-                <p><b>NOTICE:</b> This page does not exist.</p>
-                <p><b>WARNING:</b> This page may contain memetic hazards and does not exist.</p>
-                <p>This page does not exist.</p>
-                <p>This page does not exist.</p>
-                <p>This page does not exist.</p>
-                <!-- This page does not exist. -->
-                <h2>Description:</h2>
-                <p>OCP-<span class="jumble">???</span> is<span style="position:relative"><span class="redacted" id="exit-screen">ERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERROR</span></span></p>
-            </article>
-        </main>
+        <SiteHeader/>
+        <article>
+            <br>
+            <h1 style="display:inline;">OCP-<span class="jumble" style="display:inline;">???</span></h1>
+            <hr>
+            <p><b><span class="jumble">???</span>:</b> The <span class="jumble">???</span>th Object (Verj)</p>
+            <h2>Optimal Containment Protocols:</h2>
+            <p><b>ERROR:</b> Data regarding OCP-<span class="jumble">???</span> is either corrupted or does not exist. Please leave the page.</p>
+            <p><b>NOTICE:</b> This page does not exist.</p>
+            <p><b>WARNING:</b> This page may contain memetic hazards and does not exist.</p>
+            <p>This page does not exist.</p>
+            <p>This page does not exist.</p>
+            <p>This page does not exist.</p>
+            <!-- This page does not exist. -->
+            <h2>Description:</h2>
+            <p>OCP-<span class="jumble">???</span> is<span style="position:relative"><span class="redacted" id="exit-screen">{'ERROR'.repeat(20)}</span></span></p>
+        </article>
     </div>
     <div id="offscreen">
         <div style="position:relative;height: 100%;">
@@ -54,4 +62,5 @@ import Document from "../../layouts/Document.astro";
             <div id="warning">!!! WARNING: THIS PAGE IS CORRUPTED AND CANNOT BE SCRUBBED OF MEMETIC HAZARDS !!!</div>
         </div>
     </div>
-</Document>
+</body>
+</html>

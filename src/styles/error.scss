@@ -1,13 +1,35 @@
+// #page-real should be centered on the screen
+// #offscreen should be offscreen to the right, and allow scrolling to the right but not vertically
+// #exit-screen should be able to exceed #page-real horizontally
+
 body {
     width: 400vw;
     display: flex;
     flex-flow: row nowrap;
-    height: 100%;
+    // Body should be scrollable horizontally
+    overflow-x: scroll;
+    // Body should not be scrollable vertically
+    overflow-y: hidden;
+    // Body should be left on the screen
+    justify-content: flex-start;
 }
 #page-real {
     width: 100vw;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    article {
+        $article-width: 8in;
+        width: $article-width;
+        min-width: $article-width;
+        max-width: $article-width;
+        padding-inline: 0.125in;
+    }
 }
 #offscreen {
+    position: absolute;
+    left: 100vw;
     flex-grow: 1;
     background: linear-gradient(to right, transparent 0%, black 75% 100%);
     background-repeat: repeat-y;
@@ -21,12 +43,18 @@ body {
     width: 350vw;
 }
 
+// Ideally, each .gost-text should have a different parallax speed
 .ghost-text {
     position: absolute;
     transform-origin: 0 0;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    // The parallax speed can be handled using perspective
+    perspective: 1000px;
+    perspective-origin: 0 0;
+    transform-style: preserve-3d;
 }
 
+// The warning should be displayed on top of everything else, but not fixed
 #warning {
     width: 100vw;
     background-color: red;

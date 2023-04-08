@@ -40,9 +40,9 @@ const headings = ast.children
 <Document title={entry.data.title} desc={entry.data.desc} addKeywords={entry.data.tags} >
   <main>
     <aside id="outline">
-      <h2>Outline</h2>
+      <h2>{entry.data.title}</h2>
       <ol>
-        {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat(heading.depth)}/>{heading.name}</a></li>)}
+        {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat(heading.depth * 2)}/>{heading.name}</a></li>)}
       </ol>
     </aside>
 
@@ -55,18 +55,45 @@ const headings = ast.children
         }
 
         <span id="file-history">
-          {sortedVersions.map(v => <a href={v.slug!=entry.slug ? v.slug : ""}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
+          {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? v.slug : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
         </span>
       </div>
       <p><b>{entry.data.name}:</b> {entry.data.title} ({entry.data.category})</p>
 
       <Content/>
 
-      <footer style="text-align: center;">&laquo; <a href={prevEntry.slug}>Prev</a> &bull; Next &raquo;</footer>
+      <footer style="text-align: center;">&laquo; <a href={prevEntry.slug}>Prev</a> &bull; <a href={nextEntry.slug}>Next</a> &raquo;</footer>
     </article>
 
     <aside id="comments">
       {entry.data.comments}
     </aside>
   </main>
+  <script>
+    // Move comments to the 'comments' aside
+    // Make sure comments are at the same offset height as they appear in the markdown
+    const main = document.querySelector('main');
+    const mainTop = main.offsetTop;
+    const commentSection = document.getElementById('comments');
+    const commentSectionTop = commentSection.offsetTop;
+    const comments = document.querySelectorAll('.comment');
+    let mustClear = 0;
+    comments.forEach((comment: HTMLElement, i: number) => {
+      // Get the object before the comment
+      const prev: HTMLElement = comment.previousElementSibling as HTMLElement;
+      // Get the offset height of the object
+      const offset = (prev.offsetTop - mainTop) ?? 0;
+      commentSection.appendChild(comment)
+      comment.style.top = offset+'px';
+      // Move down if overlapping the previous comment
+      if (i > 0) {
+        const prevComment = comments[i-1] as HTMLElement;
+        if (mustClear < prevComment.offsetTop) mustClear = prevComment.offsetTop;
+        mustClear += prevComment.offsetHeight + 10;
+        if (comment.offsetTop < mustClear) {
+          comment.style.top = mustClear+'px';
+        }
+      }
+    });
+  </script>
 </Document>

@@ -1,14 +1,31 @@
+// Comments should look similar to the comments on Google Docs
 .comment {
     background-color: var(--color-comment-background);
-    border: 1px dashed var(--color-comment-outline);
-    padding: 10px;
-    border-radius: 3px;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    border: 1px solid var(--color-comment-border);
+    padding: 0.125em 1.25em;
+    border-radius: 2em;
+    margin-block: 1em;
+    width: 100%;
+    position: absolute;
+    transition: 0.5s ease-in-out;
 }
-.comment-name {
-    font-size: 10pt;
-    color: var(--color-comment-name);
+.user::before {
+    content: '👤';
+    width: 16px;
+    max-width: 16px;
+    height: 16px;
+    max-height: 16px;
+    background-color: #ccc;
+    border-radius: 999px;
+    padding: 2px;
+    display: inline;
+    margin-right: 1ch;
+}
+.comment:hover {
+    background-color: var(--color-component-background);
+    border-color: var(--color-component-background);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    transition: 0.25s ease-in-out;
 }
 
 .update {

@@ -21,8 +21,8 @@
     --color-component-background-hover: #ddd;
     --color-component-border: #aaa;
 
-    --color-comment-background: #fff2cc;
-    --color-comment-name: #666;
+    --color-comment-background: #fff;
+    --color-comment-border: #ccc;
 
     --color-tooltip-highlight: yellow;
     --color-tooltip-bubble-main: rgba(255,255,255,0.8);
@@ -41,7 +41,7 @@
     --gradient-nav: linear-gradient(to top, #222 0px 1px, black 1px 100%);
 
     --color-comment-background: black;
-    --color-comment-name: #666;
+    --color-comment-border: #444;
 
     --color-tooltip-highlight: #220;
     --color-tooltip-bubble-main: rgba(0,0,0,0.8);
@@ -77,7 +77,6 @@
 }
 
 :root {
-    --color-comment-outline: #bf9000;
     --color-accent-light: orange;
     --color-accent: darkorange;
     --color-accent-dark: chocolate;

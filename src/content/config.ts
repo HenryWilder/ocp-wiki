@@ -10,6 +10,7 @@ const objectCollection = defineCollection({
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
     draft: z.boolean().default(false),
+    visibility: z.enum(['visible','blurred','redacted','hidden']).default('visible'),
   }),
 });
 

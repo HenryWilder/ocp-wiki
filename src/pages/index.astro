@@ -1,12 +1,11 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
-import OCPListEntry from '../components/OCPListEntry.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 const allObjectPages: CollectionEntry<'objects'>[] = await getCollection('objects');
-const latestObjectPages: CollectionEntry<'objects'>[] = allObjectPages.filter(
-	e => e.data.version === Math.max(...allObjectPages.filter(e => e.data.name === e.data.name).map(e => e.data.version))
-);
+// Only show the latest version of each object
+// Exclude hidden objects
+const latestObjectPages: CollectionEntry<'objects'>[] = allObjectPages.filter((item, index, self) => self.findIndex(e => e.data.name === item.data.name) === index && item.data.visibility != 'hidden');
 ---
 <ArticleLayout title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
 <ul class="card-list">

@@ -2,6 +2,17 @@ $article-width: 8in;
 $horizontal-padding: 0.125in;
 $threshold-max-width: ($article-width + $horizontal-padding);
 
+@mixin article-align {
+    width: $article-width;
+    min-width: $article-width;
+    max-width: $article-width;
+    padding-inline: $horizontal-padding;
+    @media (max-width: $threshold-max-width) {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
