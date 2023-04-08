@@ -1,0 +1,39 @@
+body {
+    width: 400vw;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+}
+#page-real {
+    width: 100vw;
+}
+#offscreen {
+    flex-grow: 1;
+    background: linear-gradient(to right, transparent 0%, black 75% 100%);
+    background-repeat: repeat-y;
+    z-index: 1;
+    height: 100%;
+}
+#exit-screen {
+    position: absolute;
+    left: 1ch;
+    overflow: hidden;
+    width: 350vw;
+}
+
+.ghost-text {
+    position: absolute;
+    transform-origin: 0 0;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+#warning {
+    width: 100vw;
+    background-color: red;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    padding: 0.5in 0;
+    font-size: 40px;
+    margin: auto;
+}

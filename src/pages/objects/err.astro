@@ -1,74 +1,27 @@
 ---
-import Meta from "../../components/Meta.astro";
-
-
+import Document from "../../layouts/Document.astro";
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <Meta title="Error - OCP Federation" desc="This page does not exist." />
-    <style>
-        body {
-            width: 400vw;
-            display: flex;
-            flex-flow: row nowrap;
-            height: 100%;
-        }
-        #page-real {
-            width: 100vw;
-        }
-        #offscreen {
-            flex-grow: 1;
-            background: linear-gradient(to right, transparent 0%, black 75% 100%);
-            background-repeat: repeat-y;
-            z-index: 1;
-            height: 100%;
-        }
-        #exit-screen {
-            position: absolute;
-            left: 1ch;
-            overflow: hidden;
-            width: 350vw;
-        }
-        
-        .ghost-text {
-            position: absolute;
-            transform-origin: 0 0;
-            text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-        }
-        
-        #warning {
-            width: 100vw;
-            background-color: red;
-            z-index: 2;
-            color: white;
-            text-align: center;
-            padding: 0.5in 0;
-            font-size: 40px;
-            margin: auto;
-        }
-    </style>
-</head>
-<body>
+<Document title="Error - OCP Federation" desc="This page does not exist." addKeywords={['Error']} >
+    <link rel="stylesheet" href="/src/styles/error.scss" />
     <div id="page-real">
-        <header id="banner-placeholder"><div id="banner"></div><nav></nav></header>
-
-        <article>
-            <br>
-            <h1 style="display:inline;">OCP-<span class="jumble" style="display:inline;">???</span></h1>
-            <hr>
-            <p><b><span class="jumble">???</span>:</b> The <span class="jumble">???</span>th Object (<span class="verj">Verj</span>)</p>
-            <h2>Optimal Containment Protocols:</h2>
-            <p><b>ERROR:</b> Data regarding OCP-<span class="jumble">???</span> is either corrupted or does not exist. Please leave the page.</p>
-            <p><b>NOTICE:</b> This page does not exist.</p>
-            <p><b>WARNING:</b> This page may contain memetic hazards and does not exist.</p>
-            <p>This page does not exist.</p>
-            <p>This page does not exist.</p>
-            <p>This page does not exist.</p>
-            <!-- This page does not exist. -->
-            <h2>Description:</h2>
-            <p>OCP-<span class="jumble">???</span> is<span style="position:relative"><span class="redacted" id="exit-screen">ERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERROR</span></span></p>
-        </article>
+        <main>
+            <article>
+                <br>
+                <h1 style="display:inline;">OCP-<span class="jumble" style="display:inline;">???</span></h1>
+                <hr>
+                <p><b><span class="jumble">???</span>:</b> The <span class="jumble">???</span>th Object (<span class="verj">Verj</span>)</p>
+                <h2>Optimal Containment Protocols:</h2>
+                <p><b>ERROR:</b> Data regarding OCP-<span class="jumble">???</span> is either corrupted or does not exist. Please leave the page.</p>
+                <p><b>NOTICE:</b> This page does not exist.</p>
+                <p><b>WARNING:</b> This page may contain memetic hazards and does not exist.</p>
+                <p>This page does not exist.</p>
+                <p>This page does not exist.</p>
+                <p>This page does not exist.</p>
+                <!-- This page does not exist. -->
+                <h2>Description:</h2>
+                <p>OCP-<span class="jumble">???</span> is<span style="position:relative"><span class="redacted" id="exit-screen">ERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERRORERROR</span></span></p>
+            </article>
+        </main>
     </div>
     <div id="offscreen">
         <div style="position:relative;height: 100%;">
@@ -101,5 +54,4 @@ import Meta from "../../components/Meta.astro";
             <div id="warning">!!! WARNING: THIS PAGE IS CORRUPTED AND CANNOT BE SCRUBBED OF MEMETIC HAZARDS !!!</div>
         </div>
     </div>
-</body>
-</html>
+</Document>

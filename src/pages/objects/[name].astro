@@ -1,6 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import { CollectionEntry, getCollection } from 'astro:content';
 import Document from '../../layouts/Document.astro';
+
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const objectEntries = await getCollection('objects');
@@ -13,129 +14,36 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
+// Find next and previous entry in the collection
+// Only includes entries whose slug does not end with "vX"
+const objectEntries = await getCollection('objects', (e) => e.slug.match(/v\d+$/) == null);
+const currentIndex = objectEntries.findIndex((e: { slug: any; }) => e.slug == entry.slug);
+const prevEntry: CollectionEntry<'objects'> = objectEntries[currentIndex - 1] ?? objectEntries.find((e) => e.data.name == 'err');
+const nextEntry = objectEntries[currentIndex + 1] ?? objectEntries.find((e) => e.data.name == 'err');
+
 // Get list of all entries with the same name as the current entry
 // Sort ascending by version number
 const objectVersions = await getCollection('objects', e => e.data.name == entry.data.name);
 const sortedVersions = objectVersions.sort((a, b) => a.data.version - b.data.version);
-const isOldVersion = sortedVersions[sortedVersions.length - 1].slug != entry.slug;
+const latestVersionSlug = sortedVersions[sortedVersions.length - 1].slug;
+const isOldVersion = entry.slug != latestVersionSlug;
+
+import { remark } from 'remark';
+import remarkMdx from 'remark-mdx';
+
+const ast = remark().use(remarkMdx).parse(entry.body);
+const headings = ast.children
+  .map(node => (node.type == 'heading' && node.children[0].type == 'text') ?
+    { depth:node.depth, name:node.children[0].value, link:'#'+node.children[0].value.replaceAll(' ', '-').toLowerCase() } : null)
+  .filter(result => result !== null);
 ---
 <Document title={entry.data.title} desc={entry.data.desc} addKeywords={entry.data.tags} >
-  <style>
-    main {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: stretch;
-    }
-    #hrgroup {
-      border-bottom: 1px solid black;
-      margin: 0;
-      padding-block: 1em;
-      margin-bottom: 0.5em;
-    }
-    h2 {
-      font-size: 1.5em;
-      margin-block: 0.25em;
-    }
-    #file-history {
-      display: flex;
-      flex-flow: row;
-      gap: 1ch;
-    }
-    /* inside of hgroup, h1 should be on the left side and file-history-container should be on the right side */
-    #hrgroup {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-    h1 {
-      margin: 0;
-    }
-    #file-history {
-      display: flex;
-      flex-flow: row;
-      align-items: flex-end;
-    }
-
-    #file-history a {
-      text-decoration: none;
-      display: inline-block;
-      color: black;
-      background-color: white;
-      padding: 0.125em 0.5em;
-      border: 1px solid #aaa;
-      border-radius: 0.5em;
-      transition: 0.25s;
-    }
-    #file-history a:hover {
-      color: #33d;
-      font-weight: bold;
-      background-color: #eee;
-      border-color: #888;
-    }
-    #file-history a[href="example.html"],
-    #file-history a[href="example.html"]:hover {
-      color: black;
-      font-weight: bold;
-      background-color: #eee;
-      border-color: #888;
-    }
-    article {
-      width: 8in;
-      min-width: 8in;
-      padding-inline: 0.25in;
-    }
-    #outline, #comments {
-      min-width: 3in;
-      max-width: 3in;
-      margin: 0.25in;
-      border: 1px dotted magenta;
-    }
-    /* The outline should be fixed, while the comments are absolute. */
-    #outline {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      overflow-y: auto;
-    }
-    #comments {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      overflow-y: auto;
-    }
-    /* Hide outline and comments if the screen isn't wide enough to display them */
-    @media (max-width: 14.5in) {
-      #outline {
-        display: none;
-      }
-    }
-    /* Hide outline and comments if the screen isn't wide enough to display them */
-    @media (max-width: 11.5in) {
-      #outline, #comments {
-        display: none;
-      }
-    }
-    /* Hide outline and comments if the screen isn't wide enough to display them */
-    @media (max-width: 8in) {
-      main {
-        display: block;
-        width: 100%;
-      }
-      article {
-        width: 100%;
-        min-width: unset;
-        padding-inline: 0.125in;
-      }
-    }
-  </style>
-  <!-- Inline styling to make two sidebars around a 7.5in article -->
   <main>
     <aside id="outline">
       <h2>Outline</h2>
+      <ol>
+        {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat(heading.depth)}/>{heading.name}</a></li>)}
+      </ol>
     </aside>
 
     <article>
@@ -147,14 +55,14 @@ const isOldVersion = sortedVersions[sortedVersions.length - 1].slug != entry.slu
         }
 
         <span id="file-history">
-          {sortedVersions.map(v => <a href={v.slug}>V{v.data.version}</a>)}
+          {sortedVersions.map(v => <a href={v.slug!=entry.slug ? v.slug : ""}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
         </span>
       </div>
       <p><b>{entry.data.name}:</b> {entry.data.title} ({entry.data.category})</p>
 
       <Content/>
 
-      <footer style="text-align: center;">&laquo; Prev &bull; Next &raquo;</footer>
+      <footer style="text-align: center;">&laquo; <a href={prevEntry.slug}>Prev</a> &bull; Next &raquo;</footer>
     </article>
 
     <aside id="comments">
