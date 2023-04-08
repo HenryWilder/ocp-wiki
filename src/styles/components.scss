@@ -51,16 +51,13 @@
     p {
         border-radius: 1em;
         margin-inline: -1px;
+        margin-top: -1px;
         transition: 0.25s ease-in-out;
 
         &:not(:last-child) {
             border: 1px solid var(--color-comment-border);
         }
-
-        &:first-child {
-            margin-top: -1px;
-        }
-
+        
         &:hover {
             background-color: var(--color-component-background-hover);
             border-color: var(--color-component-background-hover);
