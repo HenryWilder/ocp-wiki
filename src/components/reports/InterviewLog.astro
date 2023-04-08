@@ -22,9 +22,7 @@ const { item } = Astro.props;
                     <b>Subject:</b> <slot name="subjectName"/><br>
                     <b>Topic:</b> <slot name="topic"/>
                     <hr>
-                    {item.interview.body.map(line => (line.speaker === undefined)
-                        ? <InterviewSpeakerless content={line.content} />
-                        : <InterviewSpokenLine member={item.interview.members[line.speaker]} content={line.content} />)}
+                    <slot name="body"/>
                 </td></tr>
 
                 <tr><th>INTERVIEWER NOTES</th></tr>

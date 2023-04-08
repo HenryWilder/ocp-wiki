@@ -3,19 +3,28 @@ import IncidentReport from "../components/reports/IncidentReport.astro";
 import Blurred from "../components/typography/Blurred.astro";
 import Comment from "../components/typography/Comment.astro";
 import Redacted from "../components/typography/Redacted.astro";
-
----
-<IncidentReport item={{
+import RedactedDate from "../components/typography/RedactedDate.astro";
+import { IIncidentReport } from "../scripts";
+const item: IIncidentReport = {
     id: "incident-report-000-1",
     objectNumber: "000",
-    instance: "1"}}>
-    <span slot="incidentType">Containment Breach</span>
-    <span slot="location">Site-20</span>
-    <span slot="object">000</span>
-    <span slot="description">
+    instance: "1"
+};
+---
+<IncidentReport item={item}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="location">Site-20</Fragment>
+
+    <Fragment slot="incidentType">Containment Breach</Fragment>
+    <Fragment slot="reportedBy"><Redacted>**********</Redacted></Fragment>
+    <Fragment slot="object">000</Fragment>
+
+    <Fragment slot="description">
         We have absolutely no idea what happened.
-    </span>
-    <span slot="witnessExplanation">
+    </Fragment>
+
+    <Fragment slot="witnessExplanation">
         ...So I'm sitting there, <Redacted>mustard on my titties</Redacted>, when this <Blurred>document</Blurred>
         jumps me and starts emptying my pockets of all my candy wrappers! I have no <Blurred>bloody</Blurred> clue why.
         Frankly, I don't even remember putting any candy wrappers in my pockets, but it was managing to pull them out anyway.
@@ -33,8 +42,9 @@ import Redacted from "../components/typography/Redacted.astro";
                 For the record, can we please not let the interns write the cover stories anymore?
             </p>
         </Comment>
-    </span>
-    <span slot="followup">
+    </Fragment>
+
+    <Fragment slot="followup">
         A janitor put a wet floor sign by the corner of the room.
-    </span>
+    </Fragment>
 </IncidentReport>

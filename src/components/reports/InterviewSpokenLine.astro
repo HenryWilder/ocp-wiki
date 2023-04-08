@@ -1,9 +1,8 @@
 ---
 import type { IInterviewMember } from '../../scripts';
 interface Props {
-    member: IInterviewMember,
-    content: string
+    member: IInterviewMember
 }
-const { member, content } = Astro.props;
+const { member } = Astro.props;
 ---
-<p><b style={"color:" + (member.color ?? "black")}>{member.name ?? <r>*****</r>}:</b> <span set:html={content}></span></p>
+<p><b style={"color:" + (member.color ?? "var(--color-foreground)")}>member.name:</b>&nbsp;<slot/></p>

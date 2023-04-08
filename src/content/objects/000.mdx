@@ -8,13 +8,16 @@ description: 'A Website'
 tags: ['Verj', 'Website']
 draft: false
 ---
+import IR000_1 from '../../reports/IR000_1.astro';
+import IL000_1 from '../../reports/IL000_1.astro';
 import TL000_1 from '../../reports/TL000_1.astro';
 import TL000_2 from '../../reports/TL000_2.astro';
 import Redacted from '../../components/typography/Redacted.astro';
 import Blurred from '../../components/typography/Blurred.astro';
 import HasComment from '../../components/typography/HasComment.astro';
 import Comment from '../../components/typography/Comment.astro';
-export const components = {blockquote: Comment}
+import Tooltip from '../../components/tooltip-types/AnchorTooltip.astro';
+export const components = {blockquote: Comment, a: Tooltip};
 
 ## Optimal Containment Protocols
 
@@ -38,7 +41,12 @@ In the event of a containment breach involving <Blurred>high casualties</Blurred
 OCP-000 is a test document uploaded to the OCP wiki as a test to make sure the formatting looks right.
 It is written in <Redacted>HTML</Redacted> and contains multiple tags.
 
-## Files
-### Test Logs
+## Incident Reports
+<IR000_1/>
+
+## Interview Logs
+<IL000_1/>
+
+## Test Logs
 <TL000_1/>
 <TL000_2/>

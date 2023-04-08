@@ -1,31 +1,31 @@
 ---
 import InterviewLog from "../components/reports/InterviewLog.astro";
+import InterviewSpeakerless from "../components/reports/InterviewSpeakerless.astro";
+import InterviewSpokenLine from "../components/reports/InterviewSpokenLine.astro";
 import Redacted from "../components/typography/Redacted.astro";
+import { IInterviewLog } from "../scripts";
 
----
-<InterviewLog item={{
+const interviewer = {name: "Interviewer", color: "#840"};
+const subject = {name: "Subject", color: "#900"};
+
+const item: IInterviewLog = {
     id: "interview-log-000-1",
     objectNumber: "000",
-    instance: "1",
-    interview: {
-        members:[
-            {name: "Interviewer", color: "#840"},
-            {name: "Subject", color: "#900"}
-        ],
-        body:[
-            { speaker: 0, content: "Why are you hostile?" },
-            { content: "various growls and vocalizations of grumpiness" },
-            { speaker: 0, content: "Please calm down. There is no need for hostility." },
-            { speaker: 1, content: "<Redacted>I'm going to eat your lunch money and then fold your laundry with my baby hands</Redacted>" },
-            { content: "interviewer is silent" },
-            { speaker: 0, content: "I think we're done here." }
-        ]
-    }
-}}>
+    instance: "1"
+};
+---
+<InterviewLog item={item}>
     <Fragment slot="interviewerName">Jr RSR <Redacted>*******</Redacted></Fragment>
     <Fragment slot="subjectName">OCP-000</Fragment>
     <Fragment slot="topic">Reason for hostility</Fragment>
-
+    <Fragment slot="body">
+        <InterviewSpokenLine member={interviewer}>Why are you hostile?</InterviewSpokenLine>
+        <InterviewSpeakerless>various growls and vocalizations of grumpiness</InterviewSpeakerless>
+        <InterviewSpokenLine member={interviewer}>Please calm down. There is no need for hostility.</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}><Redacted>I'm going to eat your lunch money and then fold your laundry with my baby hands</Redacted></InterviewSpokenLine>
+        <InterviewSpeakerless>interviewer is silent</InterviewSpeakerless>
+        <InterviewSpokenLine member={interviewer}>I think we're done here.</InterviewSpokenLine>
+    </Fragment>
     <Fragment slot="notes">
         I'm pretending to write something down
         <br><br>

@@ -36,11 +36,10 @@ export interface IReportBase {
 }
 
 export interface IInterviewMember {
-    // [0] is Interviewer
-    // [1] is Subject
-    name?: string; // Default is redacted
-    color?: string; // Default is black
+    name: string;
+    color?: string; // Default is foreground
 }
+// Deprecated
 export interface IInterviewLine {
     speaker?: number; // If omitted, becomes "speakerless" (description of action)
     content: string;
@@ -50,7 +49,7 @@ export interface IInterview {
     body: IInterviewLine[]
 }
 export interface IInterviewLog extends IReportBase {
-    interview: IInterview;
+    // interview: IInterview;
     /* Slots:
     interviewerTitle?: string; // Default is blank
     interviewerName?: string; // Default is redacted

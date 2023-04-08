@@ -10,6 +10,7 @@ main {
     justify-content: space-evenly;
     align-items: stretch;
     overflow-y: auto;
+    height: 100%;
 }
 #hrgroup {
     border-bottom: 1px solid var(--color-foreground);
