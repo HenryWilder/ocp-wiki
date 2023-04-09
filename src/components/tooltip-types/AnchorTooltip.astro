@@ -5,7 +5,7 @@ import tooltipInfo from '../../../public/data/reference.json';
 interface Info {
     name: string;
     description: string;
-    link: string;
+    link?: string;
     notes?: string|string[];
 }
 const tooltipInfoMap: { [category: string]: { category: string, items:{ [id: string]: Info } } } = tooltipInfo;
@@ -32,8 +32,10 @@ if (exists) {
                 <span class="comment-name">{category}</span>
                 <span class="tooltip-name" set:html={src.name}></span>
                 <Fragment set:html={src.description}></Fragment>
-                <br/>
-                <a href={src.link}>read document</a>
+                {src.link &&
+                    <br/>
+                    <a href={src.link}>read document</a>
+                }
             </span>
             {src.notes &&
                 (Array.isArray(src.notes)
