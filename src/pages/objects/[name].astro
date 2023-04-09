@@ -30,6 +30,7 @@ const isOldVersion = entry.slug != latestVersionSlug;
 
 import { remark } from 'remark';
 import remarkMdx from 'remark-mdx';
+import AnchorTooltip from '../../components/tooltip-types/AnchorTooltip.astro';
 
 const ast = remark().use(remarkMdx).parse(entry.body);
 const headings = ast.children
@@ -68,7 +69,7 @@ const headings = ast.children
           {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? v.slug : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
         </span>
       </div>
-      <p><b>{entry.data.name}:</b> {entry.data.title} ({entry.data.category})</p>
+      <p><b>{entry.data.name}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)</p>
 
       <Content/>
       {entry.data.reports?.map(e => e.render())}
