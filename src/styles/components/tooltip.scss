@@ -2,16 +2,17 @@
 .tooltip {
     position: relative;
     display: inline;
+    width: fit-content;
 
-    &:not(.containment-class) {
+    #tooltip-name {
         border-bottom: 1px dotted;
         transition: 100ms;
         cursor: default;
+    }
 
-        &:hover {
-            border-bottom-color: transparent;
-            background-color: var(--color-tooltip-highlight);
-        }
+    &:hover #tooltip-name {
+        border-bottom-color: transparent;
+        background-color: var(--color-tooltip-highlight);
     }
 
     /* Tooltip text */

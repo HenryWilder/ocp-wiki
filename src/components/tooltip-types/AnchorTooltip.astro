@@ -17,13 +17,26 @@ for (let e of tooltips) {
     }
 }
 const exists: boolean = src !== undefined;
+let category = 'unknown';
+
+if (exists) {
+    // Before first slash is category, after is name
+    const categoryPrefix = src.slug.split('/')[0];
+    switch (categoryPrefix) {
+        case 'ocp': category = 'Anomalous Object'; break;
+        case 'staff': category = 'Staff'; break;
+        case 'mtf': category = 'Task Force'; break;
+        case 'site': category = 'Containment Site'; break;
+        default: category = 'unknown'; break;
+    }
+}
 ---
 {exists ? (
     <span class='tooltip'>
-        <slot />
+        <span id='tooltip-name'><slot /></span>
         <span class="tooltiptext" aria-label="tooltip">
             <span class="tooltip-bubble">
-                <span class="comment-name">{src.data.category}</span>
+                <span class="comment-name">{category}</span>
                 <span class="tooltip-name" set:html={src.data.name}></span>
                 <Fragment set:html={src.data.description}></Fragment>
                 <br/>

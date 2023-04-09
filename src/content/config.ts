@@ -29,7 +29,6 @@ const authorCollection = defineCollection({
 
 const tooltipCollection = defineCollection({
   schema: z.object({
-    category: z.string(),
     name: z.string(),
     description: z.string(),
     link: z.string().optional(),

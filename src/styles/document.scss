@@ -97,7 +97,7 @@ article {
     margin: $aside-margin-size;
 
     /* Hide outline and comments if the screen isn't wide enough to display them */
-    @media (max-width: ($aside-size + $aside-margin-size * 2 + layout.$horizontal-padding * 2 + layout.$article-width)) {
+    @media (max-width: ($aside-size * 2 + $aside-margin-size * 4 + layout.$horizontal-padding * 2 + layout.$article-width)) {
         display: none;
     }
 }
