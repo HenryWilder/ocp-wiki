@@ -1,4 +1,5 @@
 ---
+import CommentHeading from "../components/CommentHeading.astro";
 import IncidentReport from "../components/reports/IncidentReport.astro";
 import Blurred from "../components/typography/Blurred.astro";
 import Comment from "../components/typography/Comment.astro";
@@ -32,8 +33,8 @@ const item: IIncidentReport = {
         That's when
         <Comment>
             <p>
-                <span class="user">Sr RSR <Redacted>Lastname</Redacted></span><br>
-                <sup>Commenting on Incident Report 000 1 witness explanation</sup><br>
+                <span class="user"><img class="icon" src="/favicon.svg"/><b>Sr RSR <Redacted>Lastname</Redacted></b></span>
+                <span class="context">Commenting on Incident Report 000 1 witness explanation</span>
                 This part gets cut off.<br>
                 The witness started screming and pointing at an empty corner of the room.
                 A security officer was asked to examine the space. Within moments, the guard vanished into a cloud of black smoke.

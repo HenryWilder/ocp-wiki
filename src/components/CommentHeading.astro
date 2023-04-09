@@ -1,0 +1,9 @@
+---
+import users from '../../public/data/users.json';
+interface UserMap { [key: string]: { pfp: string, username: string } };
+const userList: UserMap = users;
+const { user } = Astro.props;
+const data = userList[user];
+---
+<span class="user"><img alt="profile image" src={data.pfp}/><Fragment set:html={data.username}></Fragment></span>
+<span class="context"><slot/></span>
