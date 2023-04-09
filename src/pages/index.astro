@@ -1,14 +1,23 @@
 ---
-import ArticleLayout from '../layouts/ArticleLayout.astro';
-import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
-const allObjectPages: CollectionEntry<'objects'>[] = await getCollection('objects');
-// Only show the latest version of each object
-// Exclude hidden objects
-const latestObjectPages: CollectionEntry<'objects'>[] = allObjectPages.filter((item, index, self) => self.findIndex(e => e.data.name === item.data.name) === index && item.data.visibility != 'hidden');
+import Document from '../layouts/Document.astro';
 ---
-<ArticleLayout title="Main" name="Anomaly List" desc="Obscure, Classify, Preserve">
-<ul class="card-list">
-	{latestObjectPages.map((item) => <li><a href={`objects/${item.slug}`}>{item.data.name}</a> - {item.data.title} ({item.data.category})</li>)}
-</ul>
-</ArticleLayout>
+<Document title="Main" desc="Obscure, Classify, Preserve">
+	<main>
+		<article>
+			<div id="hrgroup">
+				<h1>OCP Federation</h1>
+			</div>
+			<ul class="list-of-cards">
+				<li>
+					<a href="/objects/">Object List</a>
+				</li>
+				<li>
+					<a href="/info/">Information</a>
+				</li>
+				<li>
+					<a href="/about/">About</a>
+				</li>
+			</ul>
+		</article>
+	</main>
+</Document>

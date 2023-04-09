@@ -2,38 +2,44 @@
     "ocp":{
         "category":"Anomalous Object",
         "items":{
-            "000":    { "name":"OCP-000",     "description":"A Website",        "link":"/objects/000"                                             },
-            "001":    { "name":"OCP-001",     "description":"Time's Treasures", "link":"/objects/001"                                             },
-            "001-1":  { "name":"OCP-001-1",   "description":"Gold coins",       "link":"/objects/001#ocp-001-1",   "notes":"Reduce age by a day"  },
-            "001-2-a":{ "name":"OCP-001-2-A", "description":"Saphiers",         "link":"/objects/001#ocp-001-2-a", "notes":"Show your next meal"  },
-            "001-2-b":{ "name":"OCP-001-2-B", "description":"Pearls",           "link":"/objects/001#ocp-001-2-b", "notes":"Inflict past disease" },
-            "001-3":  { "name":"OCP-001-3",   "description":"Gold Candelabras", "link":"/objects/001#ocp-001-3",   "notes":"Alter thermodynamics" },
-            "001-4":  { "name":"OCP-001-4",   "description":"Unknown",          "link":"/objects/001#ocp-001-4",   "notes":"Uncontained"          }
+            "000":    { "name":"OCP-000",     "description":"A Website",        "link":"/objects/000/"                                             },
+            "001":    { "name":"OCP-001",     "description":"Time's Treasures", "link":"/objects/001/"                                             },
+            "001-1":  { "name":"OCP-001-1",   "description":"Gold coins",       "link":"/objects/001/#ocp-001-1",   "notes":"Reduce age by a day"  },
+            "001-2-a":{ "name":"OCP-001-2-A", "description":"Saphiers",         "link":"/objects/001/#ocp-001-2-a", "notes":"Show your next meal"  },
+            "001-2-b":{ "name":"OCP-001-2-B", "description":"Pearls",           "link":"/objects/001/#ocp-001-2-b", "notes":"Inflict past disease" },
+            "001-3":  { "name":"OCP-001-3",   "description":"Gold Candelabras", "link":"/objects/001/#ocp-001-3",   "notes":"Alter thermodynamics" },
+            "001-4":  { "name":"OCP-001-4",   "description":"",                 "link":"/objects/001/#ocp-001-4"                                   }
         }
     },
     "mtf":{
         "category":"Mobile Task Force",
         "items":{
-            "k-nis":{ "name":"K-Nis", "description":"Bloodhouns", "link":"/mtf/k-nis" }
+            "k-nis":{ "name":"K-Nis", "description":"Bloodhounds", "link":"/mtf/k-nis/" }
         }
     },
     "class":{
         "category":"Containment Class",
         "items":{
-            "contained":   { "name":"Contained",    "description":"The object is contained"                                 },
-            "fuse":        { "name":"Fuse",         "description":"The object is beneficial"                                },
-            "verj":        { "name":"Verj",         "description":"The object may be uncontainable"                         },
-            "carmine":     { "name":"Carmine",      "description":"The object is missing"                                   },
-            "destroyed":   { "name":"Destroyed",    "description":"The object is no longer anomalous"                       },
-            "symphony":    { "name":"Symphony",     "description":"The anomaly is unlikely to reoccur"                      },
-            "empyrean":    { "name":"Empyrean",     "description":"The object is a high-value asset"                        },
-            "aleatory":    { "name":"Aleatory",     "description":"The object is unpredictable but beneficial"              },
-            "irrelevant":  { "name":"Irrelevant",   "description":"The object is mundane"                                   },
-            "centripetal": { "name":"Centripetal",  "description":"The anomaly is a fact of nature"                         },
-            "catastrophic":{ "name":"Catastrophic", "description":"The object is extremely dangerous"                       },
-            "esau":        { "name":"Esau",         "description":"The object was beneficial but was found to be dangerous" },
-            "yaaqov":      { "name":"Yaaqov",       "description":"The object exploits its own containment protocol"        },
-            "apollyon":    { "name":"Apollyon",     "description":"The object is extremely dangerous and unstoppable"       }
+            "contained":   { "name":"Contained",    "description":"The object is contained",                                 "link":"/info/containment-classes/contained/"    },
+            "fuse":        { "name":"Fuse",         "description":"The object is beneficial",                                "link":"/info/containment-classes/fuse/"         },
+            "verj":        { "name":"Verj",         "description":"The object may be uncontainable",                         "link":"/info/containment-classes/verj/"         },
+            "carmine":     { "name":"Carmine",      "description":"The object is missing",                                   "link":"/info/containment-classes/carmine/"      },
+            "destroyed":   { "name":"Destroyed",    "description":"The object is no longer anomalous",                       "link":"/info/containment-classes/destroyed/"    },
+            "symphony":    { "name":"Symphony",     "description":"The anomaly is unlikely to reoccur",                      "link":"/info/containment-classes/symphony/"     },
+            "empyrean":    { "name":"Empyrean",     "description":"The object is a high-value asset",                        "link":"/info/containment-classes/empyrean/"     },
+            "aleatory":    { "name":"Aleatory",     "description":"The object is unpredictable but beneficial",              "link":"/info/containment-classes/aleatory/"     },
+            "irrelevant":  { "name":"Irrelevant",   "description":"The object is mundane",                                   "link":"/info/containment-classes/irrelevant/"   },
+            "centripetal": { "name":"Centripetal",  "description":"The anomaly is a fact of nature",                         "link":"/info/containment-classes/centripetal/"  },
+            "catastrophic":{ "name":"Catastrophic", "description":"The object is extremely dangerous",                       "link":"/info/containment-classes/catastrophic/" },
+            "esau":        { "name":"Esau",         "description":"The object was beneficial but was found to be dangerous", "link":"/info/containment-classes/esau/"         },
+            "yaaqov":      { "name":"Yaaqov",       "description":"The object exploits its own containment protocol",        "link":"/info/containment-classes/yaaqov/"       },
+            "apollyon":    { "name":"Apollyon",     "description":"The object is extremely dangerous and unstoppable",       "link":"/info/containment-classes/apollyon/"     }
+        }
+    },
+    "staff":{
+        "category":"Staff",
+        "items":{
+            "drLastname":{ "name":"Z5-1", "description":"" }
         }
     }
 }

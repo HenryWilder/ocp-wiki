@@ -1,0 +1,36 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import Document from '../../../layouts/Document.astro';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const classEntries: CollectionEntry<'classes'>[] = await getCollection('classes');
+  return classEntries.map(entry => ({
+    params: { class: entry.slug }, props: { entry },
+  }));
+}
+
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const classObjectEntries: CollectionEntry<'objects'>[] = await getCollection('objects', o => o.data.category === entry.data.name);
+
+---
+<Document title={entry.data.name} desc={entry.data.description}>
+    <main>
+        <article>
+            <div id="hrgroup">
+                <h1>{entry.data.name}</h1>
+                <h2>{entry.data.description}</h2>
+            </div>
+            <Content/>
+            <ul class="card-list">
+                <h2>{entry.data.name}-Class Anomalies</h2>
+                {classObjectEntries.length > 0
+                    ? classObjectEntries.map(o => <li><a href={o.slug}>{o.data.name}</a> - {o.data.title} <small>[v{o.data.version}]</small></li>)
+                    : <li>No {entry.data.name}-class anomalies found.</li>
+                }
+            </ul>
+        </article>
+    </main>
+</Document>

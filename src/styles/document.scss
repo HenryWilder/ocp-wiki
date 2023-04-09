@@ -157,3 +157,38 @@ article {
         width: 100%;
     }
 }
+
+ul.list-of-cards, ol.list-of-cards {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    gap: 1em;
+    padding: 0;
+    list-style: none;
+    &>li {
+        flex: 1 1 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 1px solid var(--color-component-border);
+        border-radius: 1em;
+        background-color: var(--color-component-background);
+        transition: 0.25s;
+        &:hover {
+            background-color: var(--color-component-background-hover);
+        }
+        a {
+            font-size: 16px;
+            display: block;
+            padding: 1em;
+            text-decoration: none;
+            color: var(--color-foreground);
+            transition: 0.25s;
+            &:hover {
+                color: var(--color-accent);
+                font-weight: bold;
+            }
+        }
+    }
+}

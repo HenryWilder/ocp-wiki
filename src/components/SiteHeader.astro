@@ -8,11 +8,11 @@ import favicon from '/favicon.svg'
         <div id="banner-scrolling"></div>
         <!-- The smaller box containing the name and logo -->
         <div id="banner-content">
-            <a href="/index.html" class="header-logo" style="height:fit-content">
+            <a href="/" class="header-logo" style="height:fit-content">
                 <img src={favicon} alt="Site icon: a padlocked chain with acronym O.C.P.">
             </a>
             <div id="banner-titlebox">
-                <a id="banner-title" href="/index.html">OCP Federation</a>
+                <a id="banner-title" href="/">OCP Federation</a>
                 <span id="banner-description">Obscure, Classify, Preserve</span>
             </div>
         </div>
@@ -20,17 +20,23 @@ import favicon from '/favicon.svg'
     <!-- The bar containing links to informational pages of the site -->
     <nav>
         <ul id="link-list">
-            <NavDropdown name="Info">
-                <a href="/info/containment-classes">Containment Classes</a>
-                <a href="/info/containment-sites">Federation Sites</a>
-                <a href="/info/task-forces">Task Forces</a>
-            </NavDropdown>
-            <NavDropdown name="About">
-                <a href="/author-list">Authors</a>
-                <a href="/corkboard" style="color:black">Corkboard [WIP]</a>
-            </NavDropdown>
+            <li class="dropdown">
+                <a href="/info/" class="dropbtn">Info</a>
+                <div class="dropdown-content">
+                    <a href="/info/containment-classes/">Containment Classes</a>
+                    <a href="/info/containment-sites/">Federation Sites</a>
+                    <a href="/info/task-forces/">Task Forces</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="/about/" class="dropbtn">About</a>
+                <div class="dropdown-content">
+                    <a href="/about/authors/">Authors</a>
+                    <!-- <a href="/about/corkboard" style="color:black">Corkboard [WIP]</a> -->
+                </div>
+            </li>
             <li style="width:100%; padding-right:6px">
-                <form action="/search.html">
+                <form action="/search">
                     <label for="searchbar" style="display: none;">Search</label>
                     <div id="searchbar-holder">
                         <input type="text" autocomplete="off" name="query" id="searchbar" placeholder="Search"/>

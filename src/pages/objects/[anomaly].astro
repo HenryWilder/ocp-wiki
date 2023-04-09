@@ -6,7 +6,7 @@ import Document from '../../layouts/Document.astro';
 export async function getStaticPaths() {
   const objectEntries = await getCollection('objects');
   return objectEntries.map(entry => ({
-    params: { name: entry.slug }, props: { entry },
+    params: { anomaly: entry.slug }, props: { entry },
   }));
 }
 

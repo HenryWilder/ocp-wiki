@@ -1,4 +1,5 @@
 ---
+import '../styles/document.scss';
 import Meta from '../components/Meta.astro';
 import SiteHeader from '../components/SiteHeader.astro'
 interface Props {
@@ -11,7 +12,6 @@ const { title, desc, addKeywords } = Astro.props
 <html lang="en">
   <head>
     <Meta title={title} desc={desc} addKeywords={addKeywords} />
-    <link rel="stylesheet" href="/src/styles/document.scss" />
   </head>
   <body>
     <SiteHeader />

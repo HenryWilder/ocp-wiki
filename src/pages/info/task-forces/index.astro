@@ -1,0 +1,23 @@
+---
+import Document from "../../../layouts/Document.astro";
+import { CollectionEntry, getCollection } from 'astro:content';
+
+const forceEntries: CollectionEntry<'forces'>[] = await getCollection('forces');
+---
+<Document title="Info" desc="Information about the federation" addKeywords={["task force","mtf"]}>
+    <main>
+        <article>
+            <div id="hrgroup">
+                <h1>Information</h1>
+            </div>
+            {forceEntries.map(entry =>
+                <a href={entry.slug}>
+                    <section class="card">
+                        <h2>{entry.data.name}</h2>
+                        <b>{entry.data.blurb}</b>
+                    </section>
+                </a>
+            )}
+        </article>
+    </main>
+</Document>

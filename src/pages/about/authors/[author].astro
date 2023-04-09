@@ -1,0 +1,32 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import Document from '../../../layouts/Document.astro';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const authorEntries = await getCollection('authors');
+  return authorEntries.map(entry => ({
+    params: { author: entry.slug }, props: { entry },
+  }));
+}
+
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const authorObjectEntries = await getCollection('objects', o => entry.data.name === o.data.author);
+const latestAuthorObjects: CollectionEntry<'objects'>[] = authorObjectEntries.filter((item, index, self) => self.findIndex(e => e.data.name === item.data.name) === index);
+---
+<Document title={entry.data.name} desc={entry.data.description}>
+    <main>
+        <article>
+            <div id="hrgroup">
+                <h1>{entry.data.name}</h1>
+                <h2>{entry.data.description}</h2>
+            </div>
+            <ul class="card-list">
+                {latestAuthorObjects.map(o =>
+                    <li><a href={`/objects/${o.slug}/`}>{o.data.name}</a> - {o.data.title}</li>
+                )}
+            </ul>
+        </article>
+    </main>
+</Document>

@@ -2,7 +2,6 @@ export interface IAuthor {
     name: string;
     path: string;
     iconPath: string;
-    entries: string[];
 }
 
 // Interfaces that have info appear when hovered

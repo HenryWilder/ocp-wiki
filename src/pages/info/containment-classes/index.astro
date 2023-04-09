@@ -1,0 +1,23 @@
+---
+import Document from "../../../layouts/Document.astro";
+import { CollectionEntry, getCollection } from 'astro:content';
+
+const classEntries: CollectionEntry<'classes'>[] = await getCollection('classes');
+---
+<Document title="Info" desc="Information about the federation" addKeywords={["containment class","class","category","classification"]}>
+    <main>
+        <article>
+            <div id="hrgroup">
+                <h1>Information</h1>
+            </div>
+            {classEntries.sort((a,b) => a.data.order - b.data.order).map(entry =>
+                <a href={entry.slug}>
+                    <section class="card">
+                        <h2>{entry.data.name}</h2>
+                        <b>{entry.data.blurb}</b>
+                    </section>
+                </a>
+            )}
+        </article>
+    </main>
+</Document>

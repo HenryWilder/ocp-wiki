@@ -1,10 +1,14 @@
 ---
 import type { IAuthor } from '../scripts/index';
+import { CollectionEntry, getCollection } from 'astro:content';
+
 interface Props {
     authorData: IAuthor
 }
 const { authorData } = Astro.props;
-const entryCount = authorData.entries.length;
+
+const authorObjectEntries: CollectionEntry<'objects'>[] = await getCollection('objects', e => e.data.author === authorData.name);
+const entryCount = authorObjectEntries.length;
 ---
 <a href={authorData.path}>
     <section class="card author-card">
