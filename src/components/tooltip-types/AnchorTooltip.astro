@@ -8,26 +8,32 @@ interface Props {
 }
 const { href } = Astro.props;
 
-// Get frontmatter data from the markdown file at the given path.
-const src: CollectionEntry<'objects'>|undefined = await getCollection('objects', e => { e.slug == href })[0];
+const tooltips: CollectionEntry<'tooltips'>[] = await getCollection('tooltips');
+let src: CollectionEntry<'tooltips'>|undefined = undefined;
+for (let e of tooltips) {
+    if (e.slug == href) {
+        src = e;
+        break;
+    }
+}
 const exists: boolean = src !== undefined;
 ---
 {exists ? (
-<span class='tooltip'>
-    <slot />
-    <span class="tooltiptext" aria-label="tooltip">
-        <span class="tooltip-bubble">
-            <span class="comment-name">{src.data.category}</span>
-            <span class="tooltip-name" set:html={src.data.name}></span>
-            <Fragment set:html={src.data.title}></Fragment>
-            <br/>
-            <a href={href}>read document</a>
+    <span class='tooltip'>
+        <slot />
+        <span class="tooltiptext" aria-label="tooltip">
+            <span class="tooltip-bubble">
+                <span class="comment-name">{src.data.category}</span>
+                <span class="tooltip-name" set:html={src.data.name}></span>
+                <Fragment set:html={src.data.description}></Fragment>
+                <br/>
+                <a href={src.data.link}>read document</a>
+            </span>
+            {src.data.notes &&
+                (Array.isArray(src.data.notes)
+                    ? <TooltipNoteMulti notes={src.data.notes} />
+                    : <TooltipNoteSingle note={src.data.notes} />)
+            }
         </span>
-        {
-            !!src.data.notes ? (Array.isArray(src.data.notes)
-                ? <TooltipNoteMulti notes={src.data.notes} />
-                : <TooltipNoteSingle note={src.data.notes} />) : null
-        }
     </span>
-</span>
 ) : <a href={href} style="text-decoration: 1px dotted underline;"><slot/></a>}
