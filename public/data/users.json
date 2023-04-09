@@ -1,10 +1,26 @@
 {
     "drLastname": {
-        "pfp": "/favicon.svg",
+        "pfp": "/user-icons/dr-lastname.jpg",
         "username": "Dr. <span class='redacted'>Lastname</span>"
     },
     "generic1": {
-        "pfp": "/favicon.svg",
+        "pfp": "/user-icons/detective.jpg",
         "username": "RSR <span class='redacted'>xxxxxx</span>"
+    },
+    "srRsrBlank": {
+        "pfp": "/user-icons/suit-guy.jpg",
+        "username": "Sr RSR <span class='redacted'>xxxxxxxx</span>"
+    },
+    "z5_1": {
+        "pfp": "/user-icons/z5-3.jpg",
+        "username": "Z5-1"
+    },
+    "z5_9": {
+        "pfp": "/user-icons/z5-4.jpg",
+        "username": "Z5-9"
+    },
+    "cptOzzwitch": {
+        "pfp": "/user-icons/military-captain.jpg",
+        "username": "Z5-9"
     }
 }

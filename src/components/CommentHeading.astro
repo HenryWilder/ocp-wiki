@@ -5,5 +5,5 @@ const userList: UserMap = users;
 const { user } = Astro.props;
 const data = userList[user];
 ---
-<span class="user"><img alt="profile image" src={data.pfp}/><Fragment set:html={data.username}></Fragment></span>
+<span class="user"><img class="icon" alt="profile image" src={data.pfp}/><b set:html={data.username}></b></span>
 <span class="context"><slot/></span>
