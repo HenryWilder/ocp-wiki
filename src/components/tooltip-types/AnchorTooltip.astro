@@ -1,34 +1,27 @@
 ---
 import TooltipNoteSingle from './TooltipNoteSingle.astro';
 import TooltipNoteMulti from './TooltipNoteMulti.astro';
-import { CollectionEntry, getCollection } from 'astro:content';
+import tooltipInfo from '../../../public/data/reference.json';
+interface Info {
+    name: string;
+    description: string;
+    link: string;
+    notes?: string|string[];
+}
+const tooltipInfoMap: { [category: string]: { category: string, items:{ [id: string]: Info } } } = tooltipInfo;
 
 interface Props {
     href: string;
 }
 const { href } = Astro.props;
+const jsonPath = href.split('/');
 
-const tooltips: CollectionEntry<'tooltips'>[] = await getCollection('tooltips');
-let src: CollectionEntry<'tooltips'>|undefined = undefined;
-for (let e of tooltips) {
-    if (e.slug == href) {
-        src = e;
-        break;
-    }
-}
-const exists: boolean = src !== undefined;
+const src: Info|undefined = tooltipInfoMap[jsonPath[0]]?.items[jsonPath[1]];
+const exists = src !== undefined;
+
 let category = 'unknown';
-
 if (exists) {
-    // Before first slash is category, after is name
-    const categoryPrefix = src.slug.split('/')[0];
-    switch (categoryPrefix) {
-        case 'ocp': category = 'Anomalous Object'; break;
-        case 'staff': category = 'Staff'; break;
-        case 'mtf': category = 'Task Force'; break;
-        case 'site': category = 'Containment Site'; break;
-        default: category = 'unknown'; break;
-    }
+    category = tooltipInfoMap[jsonPath[0]].category;
 }
 ---
 {exists ? (
@@ -37,15 +30,15 @@ if (exists) {
         <span class="tooltiptext" aria-label="tooltip">
             <span class="tooltip-bubble">
                 <span class="comment-name">{category}</span>
-                <span class="tooltip-name" set:html={src.data.name}></span>
-                <Fragment set:html={src.data.description}></Fragment>
+                <span class="tooltip-name" set:html={src.name}></span>
+                <Fragment set:html={src.description}></Fragment>
                 <br/>
-                <a href={src.data.link}>read document</a>
+                <a href={src.link}>read document</a>
             </span>
-            {src.data.notes &&
-                (Array.isArray(src.data.notes)
-                    ? <TooltipNoteMulti notes={src.data.notes} />
-                    : <TooltipNoteSingle note={src.data.notes} />)
+            {src.notes &&
+                (Array.isArray(src.notes)
+                    ? <TooltipNoteMulti notes={src.notes} />
+                    : <TooltipNoteSingle note={src.notes} />)
             }
         </span>
     </span>

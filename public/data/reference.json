@@ -1,0 +1,20 @@
+{
+    "ocp":{
+        "category":"Anomalous Object",
+        "items":{
+            "000":{ "name":"OCP-000", "description":"A Website", "link":"/objects/000" },
+            "001":{ "name":"OCP-001", "description":"Time's Treasures", "link":"/objects/001" },
+            "001-1":{ "name":"OCP-001-1", "description":"Gold coins", "link":"/objects/001#ocp-001-1", "notes":"Reduce age by a day" },
+            "001-2-a":{ "name":"OCP-001-2-A", "description":"Saphiers", "link":"/objects/001#ocp-001-2-a", "notes":"Show your next meal" },
+            "001-2-b":{ "name":"OCP-001-2-B", "description":"Pearls", "link":"/objects/001#ocp-001-2-b", "notes":"Inflict past disease" },
+            "001-3":{ "name":"OCP-001-3", "description":"Gold Candelabras", "link":"/objects/001#ocp-001-3", "notes":"Alter thermodynamics" },
+            "001-4":{ "name":"OCP-001-4", "description":"Unknown", "link":"/objects/001#ocp-001-4", "notes":"Uncontained" }
+        }
+    },
+    "mtf":{
+        "category":"Mobile Task Force",
+        "items":{
+            "k-nis":{ "name":"K-Nis", "description":"Bloodhouns", "link":"/mtf/k-nis" }
+        }
+    }
+}
