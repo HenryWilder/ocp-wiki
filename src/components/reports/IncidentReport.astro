@@ -1,7 +1,5 @@
 ---
 import type { IIncidentReport } from '../../scripts/index';
-import OutlineAnchor from '../OutlineAnchor.astro';
-import RedactedDate from '../typography/RedactedDate.astro';
 import Redacted from '../typography/Redacted.astro';
 
 interface Props {
@@ -9,12 +7,12 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
-<OutlineAnchor hash={item.id}>
+<section class="highlight-on-jump">
     <details>
         <summary class="report incident-report">
             INCIDENT REPORT {item.objectNumber ?? <Redacted>*****</Redacted>} {item.instance}
         </summary>
-        <table class="report incident-report" id={item.id}>
+        <table class="report incident-report">
             <tbody>
                 <tr>
                     <td style="width:50%"><b>Date:</b> <slot name="date"/></td>
@@ -40,4 +38,4 @@ const { item } = Astro.props;
             </tbody>
         </table>
     </details>
-</OutlineAnchor>
+</section>

@@ -3,6 +3,8 @@
 
 // Use $article-width from layout.scss
 @use 'layout' as layout;
+$aside-size: 3.5in;
+$aside-margin-size: 0.25in;
 
 main {
     display: flex;
@@ -69,29 +71,47 @@ article {
 }
 #outline, #comments {
     position: relative;
-    min-width: 3in;
-    max-width: 3in;
-    width: 3in;
-    margin: 0.25in;
+    min-width: $aside-size;
+    width: 100%;
+    margin: $aside-margin-size;
     /* Hide outline and comments if the screen isn't wide enough to display them */
-    @media (max-width: 11.5in) {
+    @media (max-width: ($aside-size + $aside-margin-size * 2 + layout.$horizontal-padding * 2 + layout.$article-width)) {
+        display: none;
+    }
+}
+#left {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: sticky;
+    top: 0.25in;
+    left: 0;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: $aside-size;
+    min-width: $aside-size;
+    max-width: $aside-size;
+    margin: $aside-margin-size;
+
+    /* Hide outline and comments if the screen isn't wide enough to display them */
+    @media (max-width: ($aside-size + $aside-margin-size * 2 + layout.$horizontal-padding * 2 + layout.$article-width)) {
         display: none;
     }
 }
 /* The outline should be fixed, while the comments are absolute. */
-#outline {
-    overflow-y: auto;
-    position: sticky;
-    height: fit-content;
-    // Top should be the height of the header
-    top: 0.25in;
-    left: 0;
+#outline, #related {
+    overflow: clip;
     border: 1px solid var(--color-component-border);
     background-color: var(--color-component-background);
     border-radius: 1.5em;
+    width: 100%;
     h2 {
+        font-size: 18px;
         margin: 0;
-        padding: layout.$horizontal-padding;
+        padding: 0.5em layout.$horizontal-padding;
         border-bottom: 1px solid var(--color-component-border);
     }
     ol {
@@ -103,6 +123,7 @@ article {
                 // Should be a borderless block that takes up the width of the outline
                 display: block;
                 padding-block: 0.5em;
+                padding-inline: layout.$horizontal-padding;
                 text-decoration: none;
                 transition: 0.25s;
                 border-top: 1px solid var(--color-component-background-hover);
@@ -113,22 +134,23 @@ article {
             }
         }
     }
-
-    /* Hide outline and comments if the screen isn't wide enough to display them */
-    @media (max-width: 14.5in) {
-        display: none;
-    }
 }
+
 // Comments should be aligned with article
 #comments {
     left: 0;
     top: 0;
     height: 100%;
     padding: 0;
-    margin: 0;
+    margin-block: 0;
     flex: 0 0 0;
+    max-width: ($aside-size * 2);
+    
+    /* Hide outline and comments if the screen isn't wide enough to display them */
+    @media (max-width: ($aside-size * 2 + $aside-margin-size * 4 + layout.$horizontal-padding * 2 + layout.$article-width)) {
+        flex-grow: 1;
+    }
 }
-/* Hide outline and comments if the screen isn't wide enough to display them */
 @media (max-width: 8in) {
     main {
         display: block;

@@ -3,7 +3,10 @@ import InterviewLog from "../components/reports/InterviewLog.astro";
 import InterviewSpeakerless from "../components/reports/InterviewSpeakerless.astro";
 import InterviewSpokenLine from "../components/reports/InterviewSpokenLine.astro";
 import Redacted from "../components/typography/Redacted.astro";
+import Comment from "../components/typography/Comment.astro";
+import CommentHeading from "../components/CommentHeading.astro";
 import { IInterviewLog } from "../scripts";
+import AnchorTooltip from "../components/tooltip-types/AnchorTooltip.astro";
 
 const interviewer = {name: "Interviewer", color: "#840"};
 const subject = {name: "Subject", color: "#900"};
@@ -37,3 +40,13 @@ const item: IInterviewLog = {
         I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore...
     </Fragment>
 </InterviewLog>
+<Comment>
+    <p>
+        <CommentHeading user="drLastname">Commented on "I'm gonna say in my log that..."</CommentHeading>
+        <AnchorTooltip href="#interview-log-000-1">@jrRsr<Redacted>Xxxxxxxx</Redacted></AnchorTooltip>, care to explain?
+    </p>
+    <p>
+        <CommentHeading user="jrRsrBlank">Replied</CommentHeading>
+        Oh... Oh you guys are able to see that...
+    </p>
+</Comment>

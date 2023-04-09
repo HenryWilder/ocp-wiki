@@ -1,6 +1,5 @@
 ---
 import type { ITestLog } from '../../scripts/index';
-import OutlineAnchor from '../OutlineAnchor.astro';
 import Redacted from '../typography/Redacted.astro';
 
 interface Props {
@@ -8,12 +7,12 @@ interface Props {
 }
 const { item } = Astro.props;
 ---
-<OutlineAnchor hash={item.id}>
+<section class="highlight-on-jump">
     <details>
         <summary class="report test-log">
             TEST LOG {item.objectNumber ?? <Redacted>????</Redacted>} {item.instance}
         </summary>
-        <table class="report test-log" id={item.id}>
+        <table class="report test-log">
             <tbody>
                 <!-- Side by side -->
                 <tr>
@@ -52,5 +51,4 @@ const { item } = Astro.props;
             </tbody>
         </table>
     </details>
-</OutlineAnchor>
-<br/>
+</section>

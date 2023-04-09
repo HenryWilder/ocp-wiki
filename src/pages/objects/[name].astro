@@ -39,11 +39,21 @@ const headings = ast.children
 ---
 <Document title={entry.data.title} desc={entry.data.desc} addKeywords={entry.data.tags} >
   <main>
-    <aside id="outline">
-      <h2>{entry.data.title}</h2>
-      <ol>
-        {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat((heading.depth - 1) * 2)}/>{heading.name}</a></li>)}
-      </ol>
+    <aside id="left">
+      <section id="outline">
+        <h2>{entry.data.title}</h2>
+        <ol>
+          {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat((heading.depth - 2) * 2)}/>{heading.name}</a></li>)}
+        </ol>
+      </section>
+      {entry.data.related.length > 0 &&
+        <section id="related">
+          <h2>Related</h2>
+          <ol>
+            {entry.data.related.map((rel: { link: string; name: string; }) => <li><a href={rel.link}>{rel.name}</a></li>)}
+          </ol>
+        </section>
+      }
     </aside>
 
     <article>

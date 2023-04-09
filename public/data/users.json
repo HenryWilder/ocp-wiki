@@ -7,6 +7,10 @@
         "pfp": "/user-icons/detective.jpg",
         "username": "RSR <span class='redacted'>xxxxxx</span>"
     },
+    "jrRsrBlank": {
+        "pfp": "/user-icons/intern.jpg",
+        "username": "Jr RSR <span class='redacted'>xxxxxxx</span>"
+    },
     "srRsrBlank": {
         "pfp": "/user-icons/suit-guy.jpg",
         "username": "Sr RSR <span class='redacted'>xxxxxxxx</span>"

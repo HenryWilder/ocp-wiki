@@ -7,7 +7,11 @@ const objectCollection = defineCollection({
     version: z.number(),
     title: z.string(),
     category: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()),
+    related: z.array(z.object({
+      name:z.string(),
+      link:z.string(),
+    })),
     image: z.string().optional(),
     notes: z.array(z.string()).optional(),
     draft: z.boolean().default(false),

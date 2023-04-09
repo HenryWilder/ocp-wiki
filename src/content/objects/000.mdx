@@ -6,6 +6,7 @@ version: 2
 category: 'Verj'
 description: 'A Website'
 tags: ['Verj', 'Website']
+related: []
 draft: false
 ---
 import IR000_1 from '../../reports/IR000_1.astro';
@@ -15,6 +16,7 @@ import TL000_2 from '../../reports/TL000_2.astro';
 import Redacted from '../../components/typography/Redacted.astro';
 import Blurred from '../../components/typography/Blurred.astro';
 import Comment from '../../components/typography/Comment.astro';
+import CommentHeading from '../../components/CommentHeading.astro';
 import Tooltip from '../../components/tooltip-types/AnchorTooltip.astro';
 export const components = {blockquote: Comment, a: Tooltip};
 
@@ -25,8 +27,11 @@ export const components = {blockquote: Comment, a: Tooltip};
 OCP-000 is to be posted on the OCP site in order to confirm the functional operation of the OCP database. No other protocols are needed at this time.
 
 <Comment>
-    <CommentHeading user="drLastname">Commented on "OCP-000"</CommentHeading>
-    I had no idea there were even containment protocols for documents. Has Annie lost his mind?
+    <CommentHeading user="drLastname">Commented on "OCP-000 is to be..."</CommentHeading>
+    I had no idea there were even containment protocols for documents. Has <Blurred>Annie</Blurred> lost his mind?
+
+    <p><CommentHeading user="z5_1">Replied</CommentHeading>
+    <Redacted>You say that like I had one to begin with.</Redacted></p>
 </Comment>
 
 In the event of a containment breach involving <Blurred>high casualties</Blurred>, OCP-000 is to be <Redacted>deleted until further notice</Redacted>.
@@ -42,11 +47,15 @@ OCP-000 is a test document uploaded to the OCP wiki as a test to make sure the f
 It is written in <Redacted>HTML</Redacted> and contains multiple tags.
 
 ## Incident Reports
+### Incident Report 000 1
 <IR000_1/>
 
 ## Interview Logs
+### Interview Log 000 1
 <IL000_1/>
 
 ## Test Logs
+### Test Log 000 1
 <TL000_1/>
+### Test Log 000 2
 <TL000_2/>
