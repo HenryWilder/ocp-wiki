@@ -12,8 +12,7 @@ interface Props {
 const {
     title,
     desc,
-    thumb = "/images/thumbnail0",
-    secureurl = "https://i.ibb.co/Nrx3mCT/ocp-wiki-thumb.png",
+    thumb = "/thumbnail0.png", // We're secure now! :D
     addKeywords = ["index"]
 } = Astro.props;
 ---
@@ -25,7 +24,7 @@ const {
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:image" content={thumb} />
-<meta property="og:image:secure_url" content={secureurl} />
+<meta property="og:image:secure_url" content={thumb} />
 <meta property="og:description" content={desc} />
 <meta name="theme-color" content="darkorange">
 <meta name="twitter:card" content="summary_large_image">
