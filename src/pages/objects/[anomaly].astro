@@ -19,7 +19,7 @@ const { Content } = await entry.render();
 const objectEntries = await getCollection('objects', (e) => e.slug.match(/v\d+$/) == null);
 const currentIndex = objectEntries.findIndex((e: { slug: any; }) => e.slug == entry.slug);
 const prevEntry: CollectionEntry<'objects'> = objectEntries[currentIndex - 1] ?? objectEntries.find((e) => e.data.name == 'err');
-const nextEntry = objectEntries[currentIndex + 1] ?? objectEntries.find((e) => e.data.name == 'err');
+const nextEntry: CollectionEntry<'objects'> = objectEntries[currentIndex + 1] ?? objectEntries.find((e) => e.data.name == 'err');
 
 // Get list of all entries with the same name as the current entry
 // Sort ascending by version number
@@ -66,7 +66,7 @@ const headings = ast.children
         }
 
         <span id="file-history">
-          {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? v.slug : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
+          {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? `/objects/${v.slug}/` : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
         </span>
       </div>
       <p><b>{entry.data.name}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)</p>

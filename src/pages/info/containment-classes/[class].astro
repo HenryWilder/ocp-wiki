@@ -27,7 +27,7 @@ const classObjectEntries: CollectionEntry<'objects'>[] = await getCollection('ob
             <ul class="card-list">
                 <h2>{entry.data.name}-Class Anomalies</h2>
                 {classObjectEntries.length > 0
-                    ? classObjectEntries.map(o => <li><a href={o.slug}>{o.data.name}</a> - {o.data.title} <small>[v{o.data.version}]</small></li>)
+                    ? classObjectEntries.map(o => <li><a href={`/objects/${o.slug}/`}>{o.data.name}</a> - {o.data.title} <small>[v{o.data.version}]</small></li>)
                     : <li>No {entry.data.name}-class anomalies found.</li>
                 }
             </ul>
