@@ -7,7 +7,6 @@ import Redacted from "../components/typography/Redacted.astro";
 import RedactedDate from "../components/typography/RedactedDate.astro";
 import { IIncidentReport } from "../scripts";
 const item: IIncidentReport = {
-    id: "incident-report-000-1",
     objectNumber: "000",
     instance: "1"
 };
@@ -17,7 +16,7 @@ const item: IIncidentReport = {
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
     <Fragment slot="location">Site-20</Fragment>
 
-    <Fragment slot="incidentType">Containment Breach</Fragment>
+    <Fragment slot="incidentType">Personnel Disappearance</Fragment>
     <Fragment slot="reportedBy"><Redacted>**********</Redacted></Fragment>
     <Fragment slot="object">000</Fragment>
 

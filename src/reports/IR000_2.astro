@@ -1,0 +1,35 @@
+---
+import Comment from "../components/CommentGroup.astro";
+import CommentHeading from "../components/CommentHeading.astro";
+import IncidentReport from "../components/reports/IncidentReport.astro";
+import AnchorTooltip from "../components/tooltip-types/AnchorTooltip.astro";
+import Blurred from "../components/typography/Blurred.astro";
+import Redacted from "../components/typography/Redacted.astro";
+import RedactedDate from "../components/typography/RedactedDate.astro";
+import { IIncidentReport } from "../scripts";
+const item: IIncidentReport = {
+    objectNumber: "000",
+    instance: "2"
+};
+---
+<IncidentReport item={item}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="location">Site-20</Fragment>
+
+    <Fragment slot="incidentType">Containment Breach</Fragment>
+    <Fragment slot="reportedBy"><Redacted>**********</Redacted></Fragment>
+    <Fragment slot="object">000</Fragment>
+
+    <Fragment slot="description">
+        Object disappeared from containment.
+    </Fragment>
+
+    <Fragment slot="witnessExplanation">
+        N/A. No witness present.
+    </Fragment>
+
+    <Fragment slot="followup">
+        A digital backup copy of the object was kept. No data is lost, but the anomaly's location is unknown. Containment class updated to <AnchorTooltip href="class/carmine">Carmine</AnchorTooltip>.
+    </Fragment>
+</IncidentReport>

@@ -29,7 +29,7 @@ export interface IRealityBender extends ICardBase {
 export interface IStaffMember extends ITooltipBase {}
 
 export interface IReportBase {
-    id: string;
+    // id: string;
     objectNumber: string;
     instance: string;
 }

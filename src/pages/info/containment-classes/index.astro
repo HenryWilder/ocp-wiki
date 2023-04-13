@@ -2,7 +2,7 @@
 import Document from "../../../layouts/Document.astro";
 import { CollectionEntry, getCollection } from 'astro:content';
 
-const classEntries: CollectionEntry<'classes'>[] = await getCollection('classes');
+const classEntries: CollectionEntry<'containment-classes'>[] = await getCollection('containment-classes');
 ---
 <Document title="Info" desc="Information about the federation" addKeywords={["containment class","class","category","classification"]}>
     <main>

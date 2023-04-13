@@ -29,7 +29,7 @@ export const collections = {
       })
     }),
 
-    'classes': defineCollection({
+    'containment-classes': defineCollection({
       schema: z.object({
         name: z.string(),
         blurb: z.string(),
@@ -37,14 +37,14 @@ export const collections = {
       })
     }),
 
-    'sites':   defineCollection({
+    'containment-sites':   defineCollection({
       schema: z.object({
         name: z.string(),
         blurb: z.string(),
       })
     }),
 
-    'forces':  defineCollection({
+    'task-forces':  defineCollection({
       schema: z.object({
         name: z.string(),
         title: z.string(),

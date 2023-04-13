@@ -8,13 +8,21 @@
             "001-2-a":{ "name":"OCP-001-2-A", "description":"Saphiers",         "link":"/objects/001/#ocp-001-2-a", "notes":"Show your next meal"  },
             "001-2-b":{ "name":"OCP-001-2-B", "description":"Pearls",           "link":"/objects/001/#ocp-001-2-b", "notes":"Inflict past disease" },
             "001-3":  { "name":"OCP-001-3",   "description":"Gold Candelabras", "link":"/objects/001/#ocp-001-3",   "notes":"Alter thermodynamics" },
-            "001-4":  { "name":"OCP-001-4",   "description":"",                 "link":"/objects/001/#ocp-001-4"                                   }
+            "001-4":  { "name":"OCP-001-4",   "description":"",                 "link":"/objects/001/#ocp-001-4"                                   },
+            "051":    { "name":"OCP-051",     "description":"Old Blind Dogs",   "link":"/objects/051/"                                             }
         }
     },
     "mtf":{
         "category":"Mobile Task Force",
         "items":{
-            "k-nis":{ "name":"K-Nis", "description":"Bloodhounds", "link":"/mtf/k-nis/" }
+            "k-nis":{ "name":"K-Nis (Bloodhounds)",            "description":"The de facto &quot;hunters&quot; of the Federation.",                                                                   "link":"/info/task-forces/k-nis/" },
+            "4dot3":{ "name":"4.3 (Hot Potatoes)",             "description":"Deal with anomalies that pertain to temperature and time.",                                                             "link":"/info/task-forces/4dot3/" },
+            "h25":  { "name":"H25 (God's Noose)",              "description":"The team that is used when the Federation wants something done. It is composed entirely of immortal android soldiers.", "link":"/info/task-forces/h25/"   },
+            "2kmi": { "name":"2KMi (The Bigger Boat)",         "description":"Deal with anomalies that pose threats to oceanic travel and contain most aquatic OCPs.",                                "link":"/info/task-forces/2kmi/"  },
+            "aetp": { "name":"&AElig;TP (Sick Nasty Crazies)", "description":"The most hazardous, utilizing biohazard OCPs.",                                                                         "link":"/info/task-forces/aetp/"  },
+            "pi-5": { "name":"Pi-5 (La La Landers)",           "description":"A team of agents who have willingly gone through an undisclosed process, turning them into imaginary concepts.",        "link":"/info/task-forces/pi-5/"  },
+            "020":  { "name":"020 (The Red King's Guards)",    "description":"The coverup crafters.",                                                                                                 "link":"/info/task-forces/020/"   },
+            "e-55": { "name":"E-55 (Question and Answering)",  "description":"This team works to uncover the mysteries Federation has to offer.",                                                     "link":"/info/task-forces/e-55/"  }
         }
     },
     "class":{
@@ -34,6 +42,39 @@
             "esau":        { "name":"Esau",         "description":"The object was beneficial but was found to be dangerous", "link":"/info/containment-classes/esau/"         },
             "yaaqov":      { "name":"Yaaqov",       "description":"The object exploits its own containment protocol",        "link":"/info/containment-classes/yaaqov/"       },
             "apollyon":    { "name":"Apollyon",     "description":"The object is extremely dangerous and unstoppable",       "link":"/info/containment-classes/apollyon/"     }
+        }
+    },
+    "site":{
+        "category":"Federation Site",
+        "items":{
+            "00":{ "name":"Site-00", "description":"Unknown",                                     "link":"/info/containment-site/00/" },
+            "01":{ "name":"Site-01", "description":"Unknown",                                     "link":"/info/containment-site/01/" },
+            "02":{ "name":"Site-02", "description":"Unknown",                                     "link":"/info/containment-site/02/" },
+            "03":{ "name":"Site-03", "description":"Small inanimate object containment",          "link":"/info/containment-site/03/" },
+            "04":{ "name":"Site-04", "description":"Large inanimate object containment",          "link":"/info/containment-site/04/" },
+            "05":{ "name":"Site-05", "description":"Structural anomaly studies",                  "link":"/info/containment-site/05/" },
+            "06":{ "name":"Site-06", "description":"Thaumaturgy anomaly research",                "link":"/info/containment-site/06/" },
+            "07":{ "name":"Site-07", "description":"Carmine research and tracking",               "link":"/info/containment-site/07/" },
+            "08":{ "name":"Site-08", "description":"Initial inanimate object containment",        "link":"/info/containment-site/08/" },
+            "09":{ "name":"Site-09", "description":"Perishable foods longevity research",         "link":"/info/containment-site/09/" },
+            "10":{ "name":"Site-10", "description":"Inanimate botany containment",                "link":"/info/containment-site/10/" },
+            "11":{ "name":"Site-11", "description":"Diverse livestock containment",               "link":"/info/containment-site/11/" },
+            "12":{ "name":"Site-12", "description":"Paranormal entity research and containment",  "link":"/info/containment-site/12/" },
+            "13":{ "name":"Site-13", "description":"Chaos Theory studies",                        "link":"/info/containment-site/13/" },
+            "14":{ "name":"Site-14", "description":"Live specimen containment",                   "link":"/info/containment-site/14/" },
+            "15":{ "name":"Site-15", "description":"Deceased and decomposing matter disposal",    "link":"/info/containment-site/15/" },
+            "16":{ "name":"Site-16", "description":"Benign byproduct storage",                    "link":"/info/containment-site/16/" },
+            "17":{ "name":"Site-17", "description":"Hostile item containment",                    "link":"/info/containment-site/17/" },
+            "18":{ "name":"Site-18", "description":"Cognitohazard technology development",        "link":"/info/containment-site/18/" },
+            "19":{ "name":"Site-19", "description":"Interdimensional communications and studies", "link":"/info/containment-site/19/" },
+            "20":{ "name":"Site-20", "description":"Documentation editing and approval",          "link":"/info/containment-site/20/" },
+            "21":{ "name":"Site-21", "description":"Reality bender containment",                  "link":"/info/containment-site/21/" },
+            "22":{ "name":"Site-22", "description":"Site management",                             "link":"/info/containment-site/22/" },
+            "23":{ "name":"Site-23", "description":"Pataphysics studies and containment",         "link":"/info/containment-site/23/" },
+            "24":{ "name":"Site-24", "description":"Cafeteria services",                          "link":"/info/containment-site/24/" },
+            "25":{ "name":"Site-25", "description":"Healthcare department",                       "link":"/info/containment-site/25/" },
+            "26":{ "name":"Site-26", "description":"MTF organization and recruitment",            "link":"/info/containment-site/26/" },
+            "27":{ "name":"Site-27", "description":"High depth storage",                          "link":"/info/containment-site/27/" }
         }
     },
     "staff":{

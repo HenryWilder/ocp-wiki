@@ -2,7 +2,7 @@
 import Document from "../../../layouts/Document.astro";
 import { CollectionEntry, getCollection } from 'astro:content';
 
-const siteEntries: CollectionEntry<'sites'>[] = await getCollection('sites');
+const siteEntries: CollectionEntry<'containment-sites'>[] = await getCollection('containment-sites');
 ---
 <Document title="Info" desc="Information about the federation" addKeywords={["sites","containment sites"]}>
     <main>

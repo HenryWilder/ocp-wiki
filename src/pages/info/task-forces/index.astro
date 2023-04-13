@@ -2,7 +2,7 @@
 import Document from "../../../layouts/Document.astro";
 import { CollectionEntry, getCollection } from 'astro:content';
 
-const forceEntries: CollectionEntry<'forces'>[] = await getCollection('forces');
+const forceEntries: CollectionEntry<'task-forces'>[] = await getCollection('task-forces');
 ---
 <Document title="Info" desc="Information about the federation" addKeywords={["task force","mtf"]}>
     <main>

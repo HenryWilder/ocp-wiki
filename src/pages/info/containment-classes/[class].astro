@@ -4,7 +4,7 @@ import Document from '../../../layouts/Document.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const classEntries: CollectionEntry<'classes'>[] = await getCollection('classes');
+  const classEntries: CollectionEntry<'containment-classes'>[] = await getCollection('containment-classes');
   return classEntries.map(entry => ({
     params: { class: entry.slug }, props: { entry },
   }));
