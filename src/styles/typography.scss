@@ -31,59 +31,41 @@ h3, h4 {
 }
 
 .redacted {
-    position: relative;
-    display: inline-block;
-    &::after {
-        content:"";
-        display: inline-block;
-        position: absolute;
-        inset: 0;
+    display: inline;
+    border-radius: 3px;
+    transition: 0.5s;
+    color: transparent;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    -moz-background-inline-policy: clone;
+
+    &:not(.secret) {
         background-color: #222;
-        border-radius: 3px;
-        color: transparent;
-        transition: 0.5s;
-        cursor: default;
-    }
-    &:not([type="secret"]) {
         -webkit-user-select: none; /* Safari */
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
-    }
-    &:hover::after {
-        border-radius: 0px;
-        background-color: black;
-    }
+        cursor: default;
+        &:hover {
+            border-radius: 0px;
+            background-color: black;
+        }
 
-    @media print {
-        background-color: #222;
-        border-radius: 0;
-        -webkit-print-color-adjust: exact; /*Chrome, Safari */
-        color-adjust: exact; /*Firefox*/
+        @media print {
+            background-color: #222;
+            border-radius: 0;
+            -webkit-print-color-adjust: exact; /*Chrome, Safari */
+            color-adjust: exact; /*Firefox*/
+        }
     }
     
     /* Read on hover */
     &.secret {
-        &::after {
-            background-color: rgba(0,0,0,0.9);
-            margin: 0 -2.5px;
-            padding: 0 2.5px;
-            user-select: text;
-            cursor: auto;
+        background-color: #444;
 
-            /* Use blurring instead if supported */
-            @supports (backdrop-filter: blur(4px)) {
-                backdrop-filter: blur(4px);
-                background-color: rgba(0,0,0,0.15);
-            }
-        }
-
-        &:hover::after {
-            backdrop-filter: blur(0px);
+        &:hover {
             border-radius: 3px;
-            background-color: rgba(0,0,0,0.0);
-            border: 1px dashed #444;
+            background-color: rgba(0,0,0,0.1);
             color: black;
-            pointer-events: none;
         }
 
         @media print {
@@ -96,7 +78,7 @@ h3, h4 {
         }
     }
 }
-.redacted-date-group:hover .redacted::after {
+.redacted-date-group:hover .redacted {
     border-radius: 0px;
     background-color: black;
 }
