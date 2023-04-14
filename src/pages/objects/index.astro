@@ -5,6 +5,7 @@ import Document from '../../layouts/Document.astro';
 const allObjectPages: CollectionEntry<'objects'>[] = await getCollection('objects');
 // Only show the latest version of each object
 // Exclude hidden objects
+// Consider replacing the "newest version" logic with the visibility, so that newer versions can be hidden
 const latestObjectPages: CollectionEntry<'objects'>[] = allObjectPages.filter((item, index, self) => self.findIndex(e => e.data.name === item.data.name) === index && item.data.visibility != 'hidden');
 ---
 <Document title="Anomaly List" desc="Obscure, Classify, Preserve">

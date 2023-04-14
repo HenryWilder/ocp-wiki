@@ -38,7 +38,7 @@ const headings = ast.children
     { depth:node.depth, name:node.children[0].value, link:'#'+node.children[0].value.replaceAll(' ', '-').toLowerCase() } : null)
   .filter(result => result !== null);
 ---
-<Document title={entry.data.title} desc={entry.data.desc} addKeywords={entry.data.tags} >
+<Document title={entry.data.title} desc={entry.data.description} addKeywords={entry.data.tags} >
   <main>
     <aside id="left">
       <section id="outline">
