@@ -12,6 +12,9 @@ main {
     justify-content: space-evenly;
     align-items: stretch;
     overflow-y: auto;
+    @media print {
+        overflow-y: visible;
+    }
     height: 100%;
 }
 #hrgroup {

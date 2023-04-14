@@ -9,7 +9,11 @@
             "001-2-b":{ "name":"OCP-001-2-B", "description":"Pearls",           "link":"/objects/001/#ocp-001-2-b", "notes":"Inflict past disease" },
             "001-3":  { "name":"OCP-001-3",   "description":"Gold Candelabras", "link":"/objects/001/#ocp-001-3",   "notes":"Alter thermodynamics" },
             "001-4":  { "name":"OCP-001-4",   "description":"",                 "link":"/objects/001/#ocp-001-4"                                   },
-            "051":    { "name":"OCP-051",     "description":"Old Blind Dogs",   "link":"/objects/051/"                                             }
+            "051":    { "name":"OCP-051",     "description":"Old Blind Dogs",   "link":"/objects/051/"                                             },
+            "350":    { "name":"OCP-350",     "description":"Quantum Slime",    "link":"/objects/350/"                                             },
+            "350-1":  { "name":"OCP-350-1",   "description":"Amity",            "link":"/objects/051/#ocp-350-1"                                   },
+            "350-2":  { "name":"OCP-350-1",   "description":"Bloodgoop",        "link":"/objects/051/#ocp-350-2"                                   },
+            "350-3":  { "name":"OCP-350-1",   "description":"Bloodgoop Nodes",  "link":"/objects/051/#ocp-350-3"                                   }
         }
     },
     "mtf":{

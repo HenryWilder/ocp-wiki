@@ -47,7 +47,7 @@ h3, h4 {
         cursor: default;
         &:hover {
             border-radius: 0px;
-            background-color: black;
+            background-color: var(--color-foreground);
         }
 
         @media print {
@@ -64,8 +64,8 @@ h3, h4 {
 
         &:hover {
             border-radius: 3px;
-            background-color: rgba(0,0,0,0.1);
-            color: black;
+            background-color: rgba(127,127,127,0.2);
+            color: var(--color-foreground);
         }
 
         @media print {

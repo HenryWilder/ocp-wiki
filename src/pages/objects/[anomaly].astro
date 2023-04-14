@@ -74,7 +74,7 @@ const headings = ast.children
       <Content/>
       {entry.data.reports?.map(e => e.render())}
 
-      <footer style="text-align: center;margin-block:2em">&laquo; <a href={prevEntry.slug}>Prev</a> &bull; <a href={nextEntry.slug}>Next</a> &raquo;</footer>
+      <footer style="text-align: center;margin-block:2em">&laquo; <a href={`/objects/${prevEntry.slug}/`}>{prevEntry.data.name}</a> &bull; <a href={`/objects/${nextEntry.slug}/`}>{nextEntry.data.name}</a> &raquo;</footer>
     </article>
 
     <aside id="comments">
