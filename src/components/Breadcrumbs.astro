@@ -1,9 +1,6 @@
 ---
 const url = Astro.url;
-let trail: string[] = [];
-for (let el of url.toString().substring(url.origin.length+1).split('/').filter(p => p.length > 0)) {
-    trail.push(el);
-}
+const trail: string[] = url.toString().substring(url.origin.length+1).split('/').filter(p => p.length > 0 && !p.endsWith('.html'));
 const getPathBefore = (n: number): string => {
     let path = '';
     for (let i = 0; i <= n; ++i) {
