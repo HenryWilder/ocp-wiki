@@ -14,19 +14,24 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-// Find next and previous entry in the collection
-// Only includes entries whose slug does not end with "vX"
-const objectEntries = await getCollection('objects', (e) => e.slug.match(/v\d+$/) == null);
-const currentIndex = objectEntries.findIndex((e: { slug: any; }) => e.slug == entry.slug);
-const prevEntry: CollectionEntry<'objects'> = objectEntries[currentIndex - 1] ?? objectEntries.find((e) => e.data.name == 'err');
-const nextEntry: CollectionEntry<'objects'> = objectEntries[currentIndex + 1] ?? objectEntries.find((e) => e.data.name == 'err');
+const allObjects = await getCollection('objects');
 
 // Get list of all entries with the same name as the current entry
 // Sort ascending by version number
-const objectVersions = await getCollection('objects', e => e.data.name == entry.data.name);
+const displayName = entry.data.name.replaceAll('.','');
+const objectVersions = allObjects.filter((e) => e.data.name == displayName);
 const sortedVersions = objectVersions.sort((a, b) => a.data.version - b.data.version);
-const latestVersionSlug = sortedVersions[sortedVersions.length - 1].slug;
-const isOldVersion = entry.slug != latestVersionSlug;
+const latestVersion = sortedVersions[sortedVersions.length - 1];
+const latestVersionSlug = latestVersion.slug;
+const isOldVersion = entry.data.version != latestVersion.data.version;
+
+// Find next and previous entry in the collection
+// Only includes entries whose slug does not end with "vX"
+const objectEntries = allObjects.filter((e) => e.slug.match(/v\d+$/) === null);
+const visibleEntries = objectEntries.filter((e) => e.data.visibility === 'visible' || e.data.visibility === undefined);
+const currentIndex = visibleEntries.findIndex((e) => e.slug == latestVersionSlug);
+const prevEntry: CollectionEntry<'objects'>|undefined = visibleEntries[currentIndex - 1];
+const nextEntry: CollectionEntry<'objects'>|undefined = visibleEntries[currentIndex + 1];
 
 import { remark } from 'remark';
 import remarkMdx from 'remark-mdx';
@@ -37,8 +42,16 @@ const headings = ast.children
   .map(node => (node.type == 'heading' && node.children[0].type == 'text') ?
     { depth:node.depth, name:node.children[0].value, link:'#'+node.children[0].value.replaceAll(' ', '-').toLowerCase() } : null)
   .filter(result => result !== null);
+
+let typeThumb: string|undefined = undefined;
+switch (entry.data.category) {
+  case 'Catastrophic': typeThumb = '/thumbnail-catastrophic.png'; break;
+  case 'Apollyon': typeThumb = '/thumbnail-apollyon.png'; break;
+  case 'Easu': typeThumb = '/thumbnail-easu.png'; break;
+  case 'Yaaqov': typeThumb = '/thumbnail-yaaqov.png'; break;
+}
 ---
-<Document title={entry.data.title} desc={entry.data.description} addKeywords={entry.data.tags} >
+<Document title={entry.data.title} desc={entry.data.description} addKeywords={entry.data.tags} thumb={typeThumb}>
   <main>
     <aside id="left">
       <section id="outline">
@@ -70,19 +83,28 @@ const headings = ast.children
         </span>
       </div>
       <p>
-        <b>{entry.data.name}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)
+        <b>{displayName}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)
       </p>
 
       <Content/>
-      {entry.data.reports?.map(e => e.render())}
+      <!-- {entry.data.reports?.map(e => e.render())} -->
 
-      <footer style="text-align: center;margin-block:2em">&laquo; <a href={`/objects/${prevEntry.slug}/`}>{prevEntry.data.name}</a> prev &bull; next <a href={`/objects/${nextEntry.slug}/`}>{nextEntry.data.name}</a> &raquo;</footer>
+      <footer style="text-align: center;margin-block:2em">
+        { prevEntry &&
+          <>&laquo; <a href={`/objects/${prevEntry.slug}/`}>{prevEntry.data.name}</a> prev</>
+        }
+        &bull;
+        { nextEntry &&
+          <>next <a href={`/objects/${nextEntry.slug}/`}>{nextEntry.data.name}</a> &raquo;</>
+        }
+      </footer>
     </article>
 
     <aside id="comments">
       {entry.data.comments}
     </aside>
   </main>
+
   <script>
     // Move comments to the 'comments' aside
     // Make sure comments are at the same offset height as they appear in the markdown

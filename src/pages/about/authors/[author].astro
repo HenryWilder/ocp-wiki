@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const authorObjectEntries = await getCollection('objects', o => entry.data.name === o.data.author);
 ---
-<Document title={entry.data.name} desc={entry.data.description}>
+<Document title={entry.data.name} desc={entry.data.description} thumb="/thumbnail-info.png">
     <main>
         <article>
             <div id="hrgroup">

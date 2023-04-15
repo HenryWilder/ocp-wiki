@@ -16,7 +16,7 @@ const { Content } = await entry.render();
 const classObjectEntries: CollectionEntry<'objects'>[] = await getCollection('objects', o => o.data.category === entry.data.name);
 
 ---
-<Document title={entry.data.name} desc={entry.data.blurb}>
+<Document title={entry.data.name} desc={entry.data.blurb} thumb="/thumbnail-info.png">
     <main>
         <article>
             <div id="hrgroup">

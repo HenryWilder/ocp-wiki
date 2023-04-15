@@ -1,9 +1,16 @@
-<div class="warning" onclick="this.remove()">
+---
+interface Props {
+    onclick: string;
+    eventDesc: string;
+}
+const { onclick = "this.remove()", eventDesc = "click to dismiss this warning" } = Astro.props;
+---
+<div class="warning" onclick={onclick}>
     <span>!!!</span>
     <div>
         <slot/>
         <br/>
-        <span style="color:red; font-size:medium">click to dismiss this warning</span>
+        <span style="color:red; font-size:medium">{eventDesc}</span>
     </div>
     <span>!!!</span>
 </div>
