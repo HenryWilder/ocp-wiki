@@ -24,10 +24,10 @@ const authorObjectEntries = await getCollection('objects', o => entry.data.name 
         </div>
         <ul class="card-list">
             {authorObjectEntries
-                .sort((a, b) => (a.data.name+'.'+a.data.version).localeCompare((b.data.name+'.'+b.data.version)))
+                .sort((a, b) => (a.data.name.replaceAll('.','')+'.'+a.data.version).localeCompare((b.data.name.replaceAll('.','')+'.'+b.data.version)))
                 .map(o =>
                     <li>
-                        <a href={`/objects/${o.slug}/`}>{o.data.name}{<Fragment set:html={'&nbsp;'.repeat(6-o.data.name.length)}/>}v{o.data.version}</a>
+                        <a href={`/objects/${o.slug}/`}>{o.data.name}{<Fragment set:html={'&nbsp;'.repeat(5-o.data.name.length)}/>}v{o.data.version}</a>
                         -
                         {o.data.title}
                         ({o.data.category})

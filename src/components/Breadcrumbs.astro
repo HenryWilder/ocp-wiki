@@ -13,7 +13,7 @@ const getPathBefore = (n: number): string => {
 }
 ---
 <div>
-    {trail.map((e, i) =>
-        <>/ <a class="breadcrumb" href={getPathBefore(i)}>{e}</a> </>
+    <b><a class="breadcrumb" href="/index.html">OCP Federation</a></b> {trail.map((e, i) =>
+        <>&gt; <b><a class="breadcrumb" href={getPathBefore(i)}>{e}</a></b> </>
     )}
 </div>
