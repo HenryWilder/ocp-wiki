@@ -19,7 +19,7 @@ const shouldLink: boolean = (Astro.url.toString() != path);
             <div></div>
             <div>
                 {title} {data.objectNumber ?? <Redacted>????</Redacted>} {data.instance}
-                {data.label && <><br/>{data.label}</>}
+                {data.label && <><br/>"{data.label}"</>}
             </div>
             {shouldLink ? <a href={`/reports/${slug}/`} target="_blank">&#10212;</a> : <div></div>}
         </summary>

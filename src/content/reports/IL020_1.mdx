@@ -10,7 +10,8 @@ import InterviewSpokenLine from "../../components/reports/InterviewSpokenLine.as
 import Redacted from "../../components/typography/Redacted.astro";
 import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
-import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
 
 export const interviewer = { name:"Interviewer", color:"#840" };
 export const subject = { name:"Subject", color:"#900" };
@@ -21,7 +22,7 @@ export const item = {
 };
 
 <InterviewLog item={item} slug={frontmatter.slug}>
-    <Fragment slot="interviewerName"><AnchorTooltip href="staff/z5-9">Z5-9</AnchorTooltip></Fragment>
+    <Fragment slot="interviewerName">[Z5-9](staff/z5-9)</Fragment>
     <Fragment slot="subjectName">OCP-020</Fragment>
     <Fragment slot="topic">n/a</Fragment>
     <Fragment slot="body">

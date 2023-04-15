@@ -8,6 +8,8 @@ slug: incident-report/002/4
 import IncidentReport from "../../components/reports/IncidentReport.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
 
 export const item = {
     objectNumber: frontmatter.object,
@@ -22,15 +24,7 @@ export const item = {
     <Fragment slot="reportedBy"><Redacted>xxxxxxxxx</Redacted></Fragment>
     <Fragment slot="location"><Redacted>xxxxxxxxxxx</Redacted></Fragment>
     <Fragment slot="object">002</Fragment>
-    <Fragment slot="description">
-        All methods of communication, including physical gestures and facial expressions, have been compromised within <Redacted>xxxxxxx</Redacted> County.
-        The Federation is unable to maintain containment or protection protocols due to the inability to convey necessary survival information.
-        Estimated <Redacted>#,###</Redacted> casualties so far.
-    </Fragment>
-    <Fragment slot="witnessExplanation">
-        N/A
-    </Fragment>
-    <Fragment slot="followup">
-        <Redacted>xxxxx xxx xxxxxx xx xxx xxxxxx x xx xxxxx xx xx xxxxxxxx xxxx xx xxxx xxx xxxx xxxxxxxxxx xx xxx</Redacted>
-    </Fragment>
+    <Fragment slot="description">All methods of communication, including physical gestures and facial expressions, have been compromised within <Redacted>xxxxxxx</Redacted> County. The Federation is unable to maintain containment or protection protocols due to the inability to convey necessary survival information. Estimated <Redacted>#,###</Redacted> casualties so far.</Fragment>
+    <Fragment slot="witnessExplanation">N/A</Fragment>
+    <Fragment slot="followup"><Redacted>xxxxx xxx xxxxxx xx xxx xxxxxx x xx xxxxx xx xx xxxxxxxx xxxx xx xxxx xxx xxxx xxxxxxxxxx xx xxx</Redacted></Fragment>
 </IncidentReport>

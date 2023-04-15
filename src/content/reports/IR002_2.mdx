@@ -9,6 +9,8 @@ import IncidentReport from "../../components/reports/IncidentReport.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
 import Warning from "../../components/Warning.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
 
 export const item = {
     objectNumber: frontmatter.object,
@@ -27,12 +29,8 @@ export const item = {
         <Warning>WARNING: TURN THE TERMINAL OFF IMMEDIATELY</Warning>
         Other mediums of communication are being corrupted within the area of <Redacted>xxxxxxx</Redacted> County,
         including mailed letters, newspapers, cereal boxes, and certain words when spoken aloud.
-        EIK-Class status has been confirmed.
+        [EIK-Class](?/eik) status has been confirmed.
     </Fragment>
-    <Fragment slot="witnessExplanation">
-        N/A
-    </Fragment>
-    <Fragment slot="followup">
-        Continued monitoring
-    </Fragment>
+    <Fragment slot="witnessExplanation">N/A</Fragment>
+    <Fragment slot="followup">Continued monitoring</Fragment>
 </IncidentReport>

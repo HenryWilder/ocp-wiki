@@ -9,8 +9,8 @@ import CommentHeading from "../../components/CommentHeading.astro";
 import TestLog from "../../components/reports/TestLog.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
-import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
-import HasComment from "../../components/typography/HasComment.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
 
 export const item = {
     objectNumber: frontmatter.object,
@@ -30,27 +30,18 @@ export const item = {
     <Fragment slot="goal">Conceal OCP-010</Fragment>
     <Fragment slot="procedure">
         Conceal within titanium weave jeans.
-        <Comment>
-            <p>
-                <CommentHeading user="generic1">Noted on Test Log 010 3</CommentHeading>
-                Test subject is Cpt. Ozzwitch
-            </p>
-        </Comment>
+        > <CommentHeading user="generic1">Noted on Test Log 010 3</CommentHeading>
+        > Test subject is Cpt. Ozzwitch
     </Fragment>
 
-    <Fragment slot="results">
-        All clothing on the subject spontaneously disintegrate, leaving <AnchorTooltip href="staff/ozzwitch">Cpt. Ozzwitch</AnchorTooltip> almost completely naked.
-        <s>This also had a minor memetic effect on all observers with a history of male attraction, eliciting feelings of</s>
-        Disregard the previous, <AnchorTooltip href="staff/ozzwitch">Cpt. Ozzwitch</AnchorTooltip> is just that attractive.
-    </Fragment>
+    <Fragment slot="results">All clothing on the subject spontaneously disintegrate, leaving [Cpt. Ozzwitch](staff/ozzwitch) almost completely naked.
+        ~~This also had a minor memetic effect on all observers with a history of male attraction, eliciting feelings of~~
+        Disregard the previous, [Cpt. Ozzwitch](staff/ozzwitch) is just that attractive.</Fragment>
+
     <Fragment slot="comments">
-        While the pose <AnchorTooltip href="staff/ozzwitch">Cpt. Ozzwitch</AnchorTooltip> made during the test was entirely unnecessary, it was very much appreciated.
-        <HasComment>Also, shouldn't this be a -j?</HasComment>
-        <Comment>
-            <p>
-                <CommentHeading user="z5_1">Commented on "shouldn't this be a -j?"</CommentHeading>
-                I can see why you'd think that.
-            </p>
-        </Comment>
+        While the pose [Cpt. Ozzwitch](staff/ozzwitch) made during the test was entirely unnecessary, it was very much appreciated.
+        Also, shouldn't this be a -j?
+        > <CommentHeading user="z5_1">Commented on "shouldn't this be a -j?"</CommentHeading>
+        > I can see why you'd think that.
     </Fragment>
 </TestLog>

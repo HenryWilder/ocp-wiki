@@ -10,6 +10,8 @@ import RedactedDate from "../../components/typography/RedactedDate.astro";
 import Blurred from "../../components/typography/Blurred.astro";
 import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
 
 export const item = {
     objectNumber: frontmatter.object,
@@ -23,12 +25,10 @@ export const item = {
     <Fragment slot="location">Site-20</Fragment>
 
     <Fragment slot="incidentType">Personnel Disappearance</Fragment>
-    <Fragment slot="reportedBy"><Redacted>**********</Redacted></Fragment>
+    <Fragment slot="reportedBy"><Redacted>xxxxxxxxxx</Redacted></Fragment>
     <Fragment slot="object">000</Fragment>
 
-    <Fragment slot="description">
-        We have absolutely no idea what happened.
-    </Fragment>
+    <Fragment slot="description">We have absolutely no idea what happened.</Fragment>
 
     <Fragment slot="witnessExplanation">
         ...So I'm sitting there, <Redacted>mustard on my titties</Redacted>, when this <Blurred>document</Blurred>
@@ -36,19 +36,14 @@ export const item = {
         Frankly, I don't even remember putting any candy wrappers in my pockets, but it was managing to pull them out anyway.
         I didn't wany those wrappers or anything, they're just trash, but I definitely didn't want it GETTING them so I started grabbing for em myself!
         That's when
-        <Comment>
-            <CommentHeading user="drLastname">Commented on Incident Report 000 1 witness explanation</CommentHeading>
-            This part gets cut off.
-            
-            The witness started screming and pointing at an empty corner of the room.
-            A security officer was asked to examine the space. Within moments, the guard vanished into a cloud of black smoke.
-            His next of kin were told the cause of death was smoke inhalation followed by spontaneous physical dissolvement.
-
-            For the record, can we please not let the interns write the cover stories anymore?
-        </Comment>
+        > <CommentHeading user="drLastname">Commented on Incident Report 000 1 witness explanation</CommentHeading>
+        > This part gets cut off.\
+        > The witness started screming and pointing at an empty corner of the room.
+        > A security officer was asked to examine the space. Within moments, the guard vanished into a cloud of black smoke.
+        > His next of kin were told the cause of death was smoke inhalation followed by spontaneous physical dissolvement.\
+        > \
+        > For the record, can we please not let the interns write the cover stories anymore?
     </Fragment>
 
-    <Fragment slot="followup">
-        A janitor put a wet floor sign by the corner of the room.
-    </Fragment>
+    <Fragment slot="followup">A janitor put a wet floor sign by the corner of the room.</Fragment>
 </IncidentReport>

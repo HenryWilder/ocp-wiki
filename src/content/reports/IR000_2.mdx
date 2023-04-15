@@ -7,7 +7,8 @@ slug: incident-report/000/2
 import IncidentReport from "../../components/reports/IncidentReport.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
-import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
 
 export const item = {
     objectNumber: frontmatter.object,
@@ -24,15 +25,9 @@ export const item = {
     <Fragment slot="reportedBy"><Redacted>**********</Redacted></Fragment>
     <Fragment slot="object">000</Fragment>
 
-    <Fragment slot="description">
-        Object disappeared from containment.
-    </Fragment>
+    <Fragment slot="description">Object disappeared from containment.</Fragment>
 
-    <Fragment slot="witnessExplanation">
-        N/A. No witness present.
-    </Fragment>
+    <Fragment slot="witnessExplanation">N/A. No witness present.</Fragment>
 
-    <Fragment slot="followup">
-        A digital backup copy of the object was kept. No data is lost, but the anomaly's location is unknown. Containment class updated to <AnchorTooltip href="class/carmine">Carmine</AnchorTooltip>.
-    </Fragment>
+    <Fragment slot="followup">A digital backup copy of the object was kept. No data is lost, but the anomaly's location is unknown. Containment class updated to [Carmine](class/carmine).</Fragment>
 </IncidentReport>

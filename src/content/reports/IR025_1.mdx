@@ -1,15 +1,15 @@
 ---
 type: Incident Report
-object: '002'
-instance: '3'
-slug: incident-report/002/3
+object: '025'
+instance: '1'
+label: "Dust to Dust"
+slug: incident-report/025/1
 ---
 import IncidentReport from "../../components/reports/IncidentReport.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
-import Warning from "../../components/Warning.astro";
 import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
-export const components = {blockquote: Comment, a: Tooltip};
+export const components = {a: Tooltip};
 
 export const item = {
     objectNumber: frontmatter.object,
@@ -24,8 +24,7 @@ export const item = {
     <Fragment slot="reportedBy"><Redacted>xxxxxxxxx</Redacted></Fragment>
     <Fragment slot="location"><Redacted>xxxxxxxxxxx</Redacted></Fragment>
     <Fragment slot="object">002</Fragment>
-    <Fragment slot="description"><Warning>WARNING: TURN THE TERMINAL OFF IMMEDIATELY</Warning></Fragment>
-    <Fragment slot="witnessExplanation"><Warning>WARNING: TURN THE TERMINAL OFF IMMEDIATELY</Warning></Fragment>
-    <Fragment slot="followup"><Warning>WARNING: TURN THE TERMINAL OFF IMMEDIATELY</Warning>
-    <Warning>INFOHAZARD DETECTED, INFORMATION REDACTED</Warning></Fragment>
+    <Fragment slot="description">The Federation attempted to dispose of OCP-025 via aerial bombardment. However, the bombs were transmuted to dust mid-air.</Fragment>
+    <Fragment slot="witnessExplanation">N/A</Fragment>
+    <Fragment slot="followup">Further destruction attempts have been halted until the exact nature of OCP-025 is better understood.</Fragment>
 </IncidentReport>
