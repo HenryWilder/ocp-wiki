@@ -12,7 +12,7 @@ export const item = {
     instance: frontmatter.instance
 };
 
-<TestLog item={item} alwaysOpenOnSlug={frontmatter.slug}>
+<TestLog item={item} slug={frontmatter.slug}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
     <Fragment slot="location"><Redacted>***********</Redacted></Fragment>

@@ -15,7 +15,7 @@ export const item = {
     instance:frontmatter.instance
 };
 
-<IncidentReport item={item} alwaysOpenOnSlug={frontmatter.slug}>
+<IncidentReport item={item} slug={frontmatter.slug}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
     <Fragment slot="location">Site-20</Fragment>

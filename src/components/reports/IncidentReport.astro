@@ -4,11 +4,11 @@ import ReportBase from './ReportBase.astro';
 
 interface Props {
     item: IIncidentReport;
-    alwaysOpenOnSlug?: string;
+    slug: string;
 }
-const { item, alwaysOpenOnSlug } = Astro.props;
+const { item, slug } = Astro.props;
 ---
-<ReportBase type='Incident Report' data={item} alwaysOpenOnSlug={alwaysOpenOnSlug}>
+<ReportBase type='Incident Report' data={item} slug={slug}>
     <tr>
         <td style="width:50%"><b>Date:</b> <slot name="date"/></td>
         <td><b>Incident Type:</b> <slot name="incidentType"/></td>

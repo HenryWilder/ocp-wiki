@@ -5,14 +5,13 @@ import Details from './Details.astro';
 interface Props {
     type: 'Incident Report' | 'Interview Log' | 'Test Log';
     data: IReportBase;
-    alwaysOpenOnSlug?: string;
+    slug: string;
 }
-const { type, data, alwaysOpenOnSlug } = Astro.props;
-const slug: string = `/reports/${type.match(/[A-Z]/g).join('').toLowerCase()}${data.objectNumber}-${data.instance}/`;
-const objectSlug: string = `/objects/${data.objectNumber}/`;
+const { type, data, slug } = Astro.props;
 const className: string = type.toLowerCase().replaceAll(' ','-');
 const title = type.toUpperCase();
-const shouldLink: boolean = (Astro.url.toString() != `${Astro.url.origin}/reports/${alwaysOpenOnSlug}/`);
+const path = `${Astro.url.origin}/reports/${slug}/`;
+const shouldLink: boolean = (Astro.url.toString() != path);
 ---
 <section class="highlight-on-jump">
     <Details openState={shouldLink ? 'normal' : 'alwaysOpen'}>
@@ -22,7 +21,7 @@ const shouldLink: boolean = (Astro.url.toString() != `${Astro.url.origin}/report
                 {title} {data.objectNumber ?? <Redacted>????</Redacted>} {data.instance}
                 {data.label && <><br/>{data.label}</>}
             </div>
-            {shouldLink ? <a href={slug} target="_blank">&#10212;</a> : <div></div>}
+            {shouldLink ? <a href={`/reports/${slug}/`} target="_blank">&#10212;</a> : <div></div>}
         </summary>
         <table class:list={['report',className]}>
             <tbody>

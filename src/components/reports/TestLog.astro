@@ -5,11 +5,11 @@ import Details from './Details.astro';
 import ReportBase from './ReportBase.astro';
 interface Props {
     item: ITestLog;
-    alwaysOpenOnSlug?: string;
+    slug: string;
 }
-const { item, alwaysOpenOnSlug} = Astro.props;
+const { item, slug} = Astro.props;
 ---
-<ReportBase type='Test Log' data={item} alwaysOpenOnSlug={alwaysOpenOnSlug}>
+<ReportBase type='Test Log' data={item} slug={slug}>
     <!-- Side by side -->
     <tr>
         <td colspan="2"><b>Date:</b> <slot name="date"/></td>

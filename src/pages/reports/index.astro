@@ -3,7 +3,15 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Document from '../../layouts/Document.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-const reportEntries: CollectionEntry<'reports'>[] = await getCollection('reports');
+const incidentReports: CollectionEntry<'reports'>[] = await getCollection('reports', e => e.data.type === 'Incident Report');
+const interviewLogs: CollectionEntry<'reports'>[] = await getCollection('reports', e => e.data.type === 'Interview Log');
+const testLogs: CollectionEntry<'reports'>[] = await getCollection('reports', e => e.data.type === 'Test Log');
+
+const allEntries: { title:string, entries:CollectionEntry<'reports'>[] }[] = [
+    {title: "Incident Reports", entries: incidentReports },
+    {title: "Interview Logs", entries: interviewLogs },
+    {title: "Test Logs", entries: testLogs },
+];
 ---
 <Document title="Anomaly List" desc="Obscure, Classify, Preserve">
 	<article>
@@ -12,11 +20,16 @@ const reportEntries: CollectionEntry<'reports'>[] = await getCollection('reports
 			<h1>Report File List</h1>
 		</div>
 		<ul class="card-list">
-			{reportEntries.map((item) =>
-                <li>
-                    <a href={`/reports/${item.slug}/`} target="_blank">{item.data.type} {item.data.object} {item.data.instance}</a>
-                    {item.data.label && <>&quot;{item.data.label}&quot;</>}
-                </li>
+			{allEntries.map((group) =>
+                <section>
+                <h2>{group.title}</h2>
+                { group.entries.map((item) =>
+                    <li>
+                        <a href={`/reports/${item.slug}/`} target="_blank">{item.data.type} {item.data.object} {item.data.instance}</a>
+                        {item.data.label && <>&quot;{item.data.label}&quot;</>}
+                    </li>
+                )}
+                <br/></section>
             )}
 		</ul>
 	</article>
