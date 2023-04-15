@@ -5,7 +5,6 @@ interface Props {
     title: string;
     desc: string;
     thumb?: string;
-    secureurl?: string;
     addKeywords?: string[];
 }
 
@@ -25,7 +24,7 @@ const {
 <meta property="og:url" content={Astro.url} />
 <meta property="og:image" content={thumb} />
 <meta property="og:image:secure_url" content={thumb} />
-<meta property="og:description" content={desc} />
+<meta property="og:description" content={""+desc} />
 <meta name="theme-color" content="darkorange">
 <meta name="twitter:card" content="summary_large_image">
 

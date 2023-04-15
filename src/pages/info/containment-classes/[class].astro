@@ -16,12 +16,12 @@ const { Content } = await entry.render();
 const classObjectEntries: CollectionEntry<'objects'>[] = await getCollection('objects', o => o.data.category === entry.data.name);
 
 ---
-<Document title={entry.data.name} desc={entry.data.description}>
+<Document title={entry.data.name} desc={entry.data.blurb}>
     <main>
         <article>
             <div id="hrgroup">
                 <h1>{entry.data.name}</h1>
-                <h2>{entry.data.description}</h2>
+                <h2>{entry.data.blurb}</h2>
             </div>
             <Content/>
             <ul class="card-list">

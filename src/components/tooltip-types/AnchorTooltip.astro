@@ -24,7 +24,7 @@ if (exists) {
     category = tooltipInfoMap[jsonPath[0]].category;
 }
 ---
-{exists ? (<span class='tooltip'><span class='tooltip-text'><slot/></span><span class="tooltip-content" aria-label="tooltip">
+{exists ? <span class='tooltip'><span class='tooltip-text'><slot/></span><span class="tooltip-content" aria-label="tooltip">
             <span class="tooltip-bubble">
                 <span class="comment-name">{category}</span>
                 <span class="tooltip-name" set:html={src.name}></span>
@@ -40,4 +40,4 @@ if (exists) {
                     : <TooltipNoteSingle note={src.notes}/>)
             }
         </span></span>
-) : <Fragment><!-- e --><slot/></Fragment>}
+ : <Fragment><!-- e --><slot/></Fragment>}

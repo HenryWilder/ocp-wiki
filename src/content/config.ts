@@ -8,6 +8,7 @@ export const collections = {
         version: z.number(),
         title: z.string(),
         category: z.string(),
+        description: z.string(),
         tags: z.array(z.string()),
         related: z.array(z.object({
           name:z.string(),

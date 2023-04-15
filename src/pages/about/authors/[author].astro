@@ -13,7 +13,6 @@ export async function getStaticPaths() {
 // 2. When it's time to render, you can get the entry directly from the prop
 const { entry } = Astro.props;
 const authorObjectEntries = await getCollection('objects', o => entry.data.name === o.data.author);
-const latestAuthorObjects: CollectionEntry<'objects'>[] = authorObjectEntries.filter((item, index, self) => self.findIndex(e => e.data.name === item.data.name) === index);
 ---
 <Document title={entry.data.name} desc={entry.data.description}>
     <main>
@@ -23,8 +22,15 @@ const latestAuthorObjects: CollectionEntry<'objects'>[] = authorObjectEntries.fi
                 <h2>{entry.data.description}</h2>
             </div>
             <ul class="card-list">
-                {latestAuthorObjects.map(o =>
-                    <li><a href={`/objects/${o.slug}/`}>{o.data.name}</a> - {o.data.title}</li>
+                {authorObjectEntries
+                    .sort((a, b) => (a.data.name+'.'+a.data.version).localeCompare((b.data.name+'.'+b.data.version)))
+                    .map(o =>
+                        <li>
+                            <a href={`/objects/${o.slug}/`}>{o.data.name}{<Fragment set:html={'&nbsp;'.repeat(4-o.data.name.length)}/>}v{o.data.version}</a>
+                            -
+                            {o.data.title}
+                            ({o.data.category})
+                        </li>
                 )}
             </ul>
         </article>
