@@ -1,32 +1,23 @@
 ---
-import type { IInterviewLog } from '../../scripts';
-import Redacted from '../typography/Redacted.astro';
-
+import type { IIncidentReport } from '../../scripts';
+import ReportBase from './ReportBase.astro';
 interface Props {
-    item: IInterviewLog
+    item: IIncidentReport;
+    alwaysOpenOnSlug?: string;
 }
-const { item } = Astro.props;
+const { item, alwaysOpenOnSlug } = Astro.props;
 ---
-<section class="highlight-on-jump">
-    <details>
-        <summary class="report interview-log">
-            INTERVIEW LOG {item.objectNumber ?? <Redacted>????</Redacted>} {item.instance}
-        </summary>
-        <table class="report interview-log">
-            <tbody>
-                <tr class="interview-body"><td>
-                    <b>Interviewer:</b> <slot name="interviewerName"/><br>
-                    <b>Subject:</b> <slot name="subjectName"/><br>
-                    <b>Topic:</b> <slot name="topic"/>
-                    <hr>
-                    <slot name="body"/>
-                </td></tr>
+<ReportBase type='Interview Log' data={item} alwaysOpenOnSlug={alwaysOpenOnSlug}>
+    <tr class="interview-body"><td>
+        <b>Interviewer:</b> <slot name="interviewerName"/><br>
+        <b>Subject:</b> <slot name="subjectName"/><br>
+        <b>Topic:</b> <slot name="topic"/>
+        <hr>
+        <slot name="body"/>
+    </td></tr>
 
-                <tr><th>INTERVIEWER NOTES</th></tr>
-                <tr><td class="notepad" style="border:none">
-                    <slot name="notes"/>
-                </td></tr>
-            </tbody>
-        </table>
-    </details>
-</section>
+    <tr><th>INTERVIEWER NOTES</th></tr>
+    <tr><td class="notepad" style="border:none">
+        <slot name="notes"/>
+    </td></tr>
+</ReportBase>

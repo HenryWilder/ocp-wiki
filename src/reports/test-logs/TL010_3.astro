@@ -11,8 +11,12 @@ const item: ITestLog = {
     objectNumber: '010',
     instance: '3'
 };
+interface Props {
+    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
+}
+const { openState = 'normal' } = Astro.props;
 ---
-<TestLog item={item}>
+<TestLog item={item} openState={openState}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
     <Fragment slot="location"><Redacted>xxxxxxxxxxxx</Redacted></Fragment>

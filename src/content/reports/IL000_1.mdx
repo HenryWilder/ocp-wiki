@@ -1,26 +1,23 @@
 ---
+type: Interview Log
+object: '000'
+instance: '1'
+slug: interview-log/000/1
+---
 import InterviewLog from "../../components/reports/InterviewLog.astro";
 import InterviewSpeakerless from "../../components/reports/InterviewSpeakerless.astro";
 import InterviewSpokenLine from "../../components/reports/InterviewSpokenLine.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
-import { IInterviewLog } from "../../scripts";
+import { IInterviewLog, IInterviewMember } from "../../scripts";
 import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
 
-const interviewer = {name: "Interviewer", color: "#840"};
-const subject = {name: "Subject", color: "#900"};
+export const interviewer = { name:"Jr RSR", color:"#840" };
+export const subject = { name:"OCP-000", color:"#900" };
+export const item = { objectNumber:frontmatter.object, instance:frontmatter.instance };
 
-const item: IInterviewLog = {
-    objectNumber: "000",
-    instance: "1"
-};
-interface Props {
-    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
-}
-const { openState = 'normal' } = Astro.props;
----
-<InterviewLog item={item} openState={openState}>
+<InterviewLog item={item} alwaysOpenOnSlug={frontmatter.slug}>
     <Fragment slot="interviewerName">Jr RSR <Redacted>*******</Redacted></Fragment>
     <Fragment slot="subjectName">OCP-000</Fragment>
     <Fragment slot="topic">Reason for hostility</Fragment>
@@ -34,22 +31,19 @@ const { openState = 'normal' } = Astro.props;
     </Fragment>
     <Fragment slot="notes">
         I'm pretending to write something down
-        <br><br>
+        <br/>
         blah blah blah blah
-        <br><br>
+        <br/>
         Are they still watching?
-        <br><br>
+        <br/>
         This <Redacted>thing</Redacted> freaks me out. I don't wanna have to work with it anymore.
         I'm gonna say in my log that it ate my notes. Maybe then I won't have to go near this thing anymore...
     </Fragment>
 </InterviewLog>
 <Comment>
-    <p>
-        <CommentHeading user="drLastname">Commented on "I'm gonna say in my log that..."</CommentHeading>
-        <AnchorTooltip href="#interview-log-000-1">@jrRsr<Redacted>Xxxxxxxx</Redacted></AnchorTooltip>, care to explain?
-    </p>
-    <p>
-        <CommentHeading user="jrRsrBlank">Replied</CommentHeading>
-        Oh... Oh you guys are able to see that...
-    </p>
+    <CommentHeading user="drLastname">Commented on "I'm gonna say in my log that..."</CommentHeading>
+    <AnchorTooltip href="#interview-log-000-1">@jrRsr<Redacted>Xxxxxxxx</Redacted></AnchorTooltip>, care to explain?
+
+    <CommentHeading user="jrRsrBlank">Replied</CommentHeading>
+    Oh... Oh you guys are able to see that...
 </Comment>

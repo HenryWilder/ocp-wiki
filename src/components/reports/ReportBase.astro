@@ -1,0 +1,33 @@
+---
+import { IReportBase } from '../../scripts';
+import Redacted from '../typography/Redacted.astro';
+import Details from './Details.astro';
+interface Props {
+    type: 'Incident Report' | 'Interview Log' | 'Test Log';
+    data: IReportBase;
+    alwaysOpenOnSlug?: string;
+}
+const { type, data, alwaysOpenOnSlug } = Astro.props;
+const slug: string = `/reports/${type.match(/[A-Z]/g).join('').toLowerCase()}${data.objectNumber}-${data.instance}/`;
+const objectSlug: string = `/objects/${data.objectNumber}/`;
+const className: string = type.toLowerCase().replaceAll(' ','-');
+const title = type.toUpperCase();
+const shouldLink: boolean = (Astro.url.toString() != `${Astro.url.origin}/reports/${alwaysOpenOnSlug}/`);
+---
+<section class="highlight-on-jump">
+    <Details openState={shouldLink ? 'normal' : 'alwaysOpen'}>
+        <summary class:list={['report',className]} style="display:flex;justify-content:space-between;align-items:center;">
+            <div></div>
+            <div>
+                {title} {data.objectNumber ?? <Redacted>????</Redacted>} {data.instance}
+                {data.label && <><br/>{data.label}</>}
+            </div>
+            {shouldLink ? <a href={slug} target="_blank">&#10212;</a> : <div></div>}
+        </summary>
+        <table class:list={['report',className]}>
+            <tbody>
+                <slot/>
+            </tbody>
+        </table>
+    </Details>
+</section>

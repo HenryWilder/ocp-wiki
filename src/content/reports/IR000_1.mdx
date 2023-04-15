@@ -1,4 +1,9 @@
 ---
+type: Incident Report
+object: '000'
+instance: '1'
+slug: incident-report/000/1
+---
 import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
 import IncidentReport from "../../components/reports/IncidentReport.astro";
@@ -6,16 +11,9 @@ import Blurred from "../../components/typography/Blurred.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
 import { IIncidentReport } from "../../scripts";
-const item: IIncidentReport = {
-    objectNumber: "000",
-    instance: "1"
-};
-interface Props {
-    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
-}
-const { openState = 'normal' } = Astro.props;
----
-<IncidentReport item={item} openState={openState}>
+export const item = {objectNumber:{frontmatter.object},instance:{frontmatter.instance}};
+
+<IncidentReport item={item} alwaysOpenOnSlug={frontmatter.slug}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
     <Fragment slot="location">Site-20</Fragment>
@@ -35,15 +33,14 @@ const { openState = 'normal' } = Astro.props;
         I didn't wany those wrappers or anything, they're just trash, but I definitely didn't want it GETTING them so I started grabbing for em myself!
         That's when
         <Comment>
-            <p>
-                <CommentHeading user="drLastname">Commented on Incident Report 000 1 witness explanation</CommentHeading>
-                This part gets cut off.<br>
-                The witness started screming and pointing at an empty corner of the room.
-                A security officer was asked to examine the space. Within moments, the guard vanished into a cloud of black smoke.
-                His next of kin were told the cause of death was smoke inhalation followed by spontaneous physical dissolvement.
-                <br><br>
-                For the record, can we please not let the interns write the cover stories anymore?
-            </p>
+            <CommentHeading user="drLastname">Commented on Incident Report 000 1 witness explanation</CommentHeading>
+            This part gets cut off.
+            
+            The witness started screming and pointing at an empty corner of the room.
+            A security officer was asked to examine the space. Within moments, the guard vanished into a cloud of black smoke.
+            His next of kin were told the cause of death was smoke inhalation followed by spontaneous physical dissolvement.
+
+            For the record, can we please not let the interns write the cover stories anymore?
         </Comment>
     </Fragment>
 

@@ -1,0 +1,18 @@
+---
+interface Props {
+    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
+}
+const { openState = 'normal' } = Astro.props;
+const resolve = (normalHTML, startOpenHTML, alwaysOpenHTML) => {
+    switch (openState) {
+        case 'normal': return normalHTML;
+        case 'startOpen': return startOpenHTML;
+        case 'alwaysOpen': return alwaysOpenHTML;
+    }
+}
+---
+{resolve(
+    <details><slot/></details>,
+    <details open><slot/></details>,
+    <details open onclick="return false;"><slot/></details>
+)}

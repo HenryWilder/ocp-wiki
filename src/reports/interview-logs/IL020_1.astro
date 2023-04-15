@@ -1,0 +1,43 @@
+---
+import InterviewLog from "../../components/reports/InterviewLog.astro";
+import InterviewSpeakerless from "../../components/reports/InterviewSpeakerless.astro";
+import InterviewSpokenLine from "../../components/reports/InterviewSpokenLine.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import Comment from "../../components/CommentGroup.astro";
+import CommentHeading from "../../components/CommentHeading.astro";
+import { IInterviewLog } from "../../scripts";
+import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+
+const interviewer = {name: "Interviewer", color: "#840"};
+const subject = {name: "Subject", color: "#900"};
+
+const item: IInterviewLog = {
+    objectNumber: "020",
+    instance: "1"
+};
+interface Props {
+    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
+}
+const { openState = 'normal' } = Astro.props;
+---
+<InterviewLog item={item} openState={openState}>
+    <Fragment slot="interviewerName"><AnchorTooltip href="staff/z5-9">Z5-9</AnchorTooltip></Fragment>
+    <Fragment slot="subjectName">OCP-000</Fragment>
+    <Fragment slot="topic">n/a</Fragment>
+    <Fragment slot="body">
+        <InterviewSpeakerless>subject turns off a light in an empty house; the occupants have left for dinner</InterviewSpeakerless>
+        <InterviewSpeakerless>subject sighs</InterviewSpeakerless>
+        <InterviewSpokenLine member={subject}>We aren't made of money, guys...</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Excuse me, sir?</InterviewSpokenLine>
+        <InterviewSpeakerless>subject turns to face the interviewer</InterviewSpeakerless>
+        <InterviewSpokenLine member={interviewer}>I was wondering if you'd be willing to answer some questions?</InterviewSpokenLine>
+        <InterviewSpeakerless>interviewer is cut off as the subject pulls the interviewer into a hug</InterviewSpeakerless>
+        <InterviewSpokenLine member={interviewer}>Um... sir? I uh... um.</InterviewSpokenLine>
+        <InterviewSpeakerless>subject continues to embrace the interviewer for several minutes, during which the interviewer begins to cry.</InterviewSpeakerless>
+        <InterviewSpokenLine member={subject}>My name is 'Father', and I'm very proud of you, <Redacted>Crash</Redacted>.</InterviewSpokenLine>
+    </Fragment>
+    <Fragment slot="notes">
+        Oh yeah, -9 had his eye cut out by his bio-dad and that guy's like the worst sonova bitch I've seen in a while.
+        Well I'm too lazy to send in anyone else, so I guess I'll leave it at that.
+    </Fragment>
+</InterviewLog>

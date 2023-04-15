@@ -8,8 +8,12 @@ const item: IIncidentReport = {
     objectNumber: "000",
     instance: "2"
 };
+interface Props {
+    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
+}
+const { openState = 'normal' } = Astro.props;
 ---
-<IncidentReport item={item}>
+<IncidentReport item={item} openState={openState}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
     <Fragment slot="location">Site-20</Fragment>

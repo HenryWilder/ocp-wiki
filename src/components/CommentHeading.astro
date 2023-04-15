@@ -2,8 +2,11 @@
 import users from '../../public/data/users.json';
 interface UserMap { [key: string]: { pfp: string, username: string } };
 const userList: UserMap = users;
+interface Props {
+    user?: string;
+}
 const { user } = Astro.props;
 const data = userList[user];
 ---
-<span class="user"><img class="icon" alt="profile image" src={data.pfp}/><b set:html={data.username}></b></span>
+{user && <span class="user"><img class="icon" alt="profile image" src={data.pfp}/><b set:html={data.username}></b></span>}
 <span class="context"><slot/></span>

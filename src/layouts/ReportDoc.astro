@@ -1,0 +1,16 @@
+---
+import Document from './Document.astro';
+interface Props {
+    type: 'Incident Report' | 'Interview Log' | 'Test Log';
+    object: string;
+    instance: string;
+}
+const { type, object, instance } = Astro.props;
+const slug = type.match(/[A-Z]/g).join('');
+---
+<Document title={`${slug} ${object} ${instance}`} desc={`OCP-${object} ${type} ${instance}`} excludeHeader={true}>
+    <article>
+        <br/>
+        <slot/>
+    </article>
+</Document>

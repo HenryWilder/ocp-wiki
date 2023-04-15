@@ -6,10 +6,15 @@ import { IIncidentReport } from "../../scripts";
 
 const item: IIncidentReport = {
     objectNumber: '002',
-    instance: '4 "We Consume What We Behold"'
+    instance: '4',
+    label: "We Consume What We Behold"
 };
+interface Props {
+    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
+}
+const { openState = 'normal' } = Astro.props;
 ---
-<IncidentReport item={item}>
+<IncidentReport item={item} openState={openState}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="incidentType"><Redacted>xxxxxxxxxxx</Redacted></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>

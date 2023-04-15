@@ -7,15 +7,16 @@ interface Props {
   desc: string;
   addKeywords?: string[];
   thumb?: string;
+  excludeHeader?: boolean;
 }
-const { title, desc, addKeywords, thumb } = Astro.props
+const { title, desc, addKeywords, thumb, excludeHeader = false } = Astro.props
 ---
 <html lang="en">
   <head>
     <Meta title={title} desc={desc} addKeywords={addKeywords} thumb={thumb} />
   </head>
   <body>
-    <SiteHeader />
+    {!excludeHeader && <SiteHeader />}
     <main>
       <slot />
     </main>

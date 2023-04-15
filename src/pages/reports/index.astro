@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Document from '../../layouts/Document.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+const reportEntries: CollectionEntry<'reports'>[] = await getCollection('reports');
+---
+<Document title="Anomaly List" desc="Obscure, Classify, Preserve">
+	<article>
+		<Breadcrumbs/>
+		<div id="hrgroup">
+			<h1>Report File List</h1>
+		</div>
+		<ul class="card-list">
+			{reportEntries.map((item) =>
+                <li>
+                    <a href={`/reports/${item.slug}/`} target="_blank">{item.data.type} {item.data.object} {item.data.instance}</a>
+                    {item.data.label && <>&quot;{item.data.label}&quot;</>}
+                </li>
+            )}
+		</ul>
+	</article>
+</Document>

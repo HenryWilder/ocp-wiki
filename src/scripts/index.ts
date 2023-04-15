@@ -32,6 +32,7 @@ export interface IReportBase {
     // id: string;
     objectNumber: string;
     instance: string;
+    label?: string; // Default is blank
 }
 
 export interface IInterviewMember {

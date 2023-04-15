@@ -1,54 +1,47 @@
 ---
 import type { ITestLog } from '../../scripts/index';
 import Redacted from '../typography/Redacted.astro';
-
+import Details from './Details.astro';
+import ReportBase from './ReportBase.astro';
 interface Props {
-    item: ITestLog
+    item: ITestLog;
+    alwaysOpenOnSlug?: string;
 }
-const { item } = Astro.props;
+const { item, alwaysOpenOnSlug} = Astro.props;
 ---
-<section class="highlight-on-jump">
-    <details>
-        <summary class="report test-log">
-            TEST LOG {item.objectNumber ?? <Redacted>????</Redacted>} {item.instance}
-        </summary>
-        <table class="report test-log">
-            <tbody>
-                <!-- Side by side -->
-                <tr>
-                    <td colspan="2"><b>Date:</b> <slot name="date"/></td>
-                    <td style="width:50%"><b>Researcher:</b> <slot name="researcher"/></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>Time:</b> <slot name="time"/></td>
-                    <td><b>Object:</b> OCP-<slot name="object"/></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>Location:</b> <slot name="location"/></td>
-                    <td><b>Approved By:</b> <slot name="approver"/></td>
-                </tr>
+<ReportBase type='Test Log' data={item} alwaysOpenOnSlug={alwaysOpenOnSlug}>
+    <!-- Side by side -->
+    <tr>
+        <td colspan="2"><b>Date:</b> <slot name="date"/></td>
+        <td style="width:50%"><b>Researcher:</b> <slot name="researcher"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Time:</b> <slot name="time"/></td>
+        <td><b>Object:</b> OCP-<slot name="object"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Location:</b> <slot name="location"/></td>
+        <td><b>Approved By:</b> <slot name="approver"/></td>
+    </tr>
 
-                <!-- Lower section -->
-                <tr><th colspan="3">REQUEST</th></tr>
-                <tr>
-                    <td class="test-log-label" style="width:1.19in">Goal</td>
-                    <td colspan="2"><slot name="goal"/></td>
-                </tr>
-                <tr>
-                    <td class="test-log-label">Procedure</td>
-                    <td colspan="2"><slot name="procedure"/></td>
-                </tr>
+    <!-- Lower section -->
+    <tr><th colspan="3">REQUEST</th></tr>
+    <tr>
+        <td class="test-log-label" style="width:1.19in">Goal</td>
+        <td colspan="2"><slot name="goal"/></td>
+    </tr>
+    <tr>
+        <td class="test-log-label">Procedure</td>
+        <td colspan="2"><slot name="procedure"/></td>
+    </tr>
 
-                <tr><th colspan="3">REPORT</th></tr>
-                <tr>
-                    <td class="test-log-label">Results</td>
-                    <td colspan="2"><slot name="results"/></td>
-                </tr>
-                <tr>
-                    <td class="test-log-label">Comments</td>
-                    <td colspan="2"><slot name="comments"/></td>
-                </tr>
-            </tbody>
-        </table>
-    </details>
-</section>
+    <tr><th colspan="3">REPORT</th></tr>
+    <tr>
+        <td class="test-log-label">Results</td>
+        <td colspan="2"><slot name="results"/></td>
+    </tr>
+    <tr>
+        <td class="test-log-label">Comments</td>
+        <td colspan="2"><slot name="comments"/></td>
+    </tr>
+</ReportBase>

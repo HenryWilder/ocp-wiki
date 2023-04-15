@@ -52,4 +52,13 @@ export const collections = {
         blurb: z.string(),
       })
     }),
+
+    'reports':  defineCollection({
+      schema: z.object({
+        type: z.string(),
+        object: z.string(),
+        instance: z.string(),
+        label: z.string().optional(),
+      })
+    }),
   };

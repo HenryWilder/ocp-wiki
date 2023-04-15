@@ -1,41 +1,33 @@
 ---
 import type { IIncidentReport } from '../../scripts/index';
-import Redacted from '../typography/Redacted.astro';
+import ReportBase from './ReportBase.astro';
 
 interface Props {
-    item: IIncidentReport
+    item: IIncidentReport;
+    alwaysOpenOnSlug?: string;
 }
-const { item } = Astro.props;
+const { item, alwaysOpenOnSlug } = Astro.props;
 ---
-<section class="highlight-on-jump">
-    <details>
-        <summary class="report incident-report">
-            INCIDENT REPORT {item.objectNumber ?? <Redacted>*****</Redacted>} {item.instance}
-        </summary>
-        <table class="report incident-report">
-            <tbody>
-                <tr>
-                    <td style="width:50%"><b>Date:</b> <slot name="date"/></td>
-                    <td><b>Incident Type:</b> <slot name="incidentType"/></td>
-                </tr>
-                <tr>
-                    <td><b>Time:</b> <slot name="time"/></td>
-                    <td><b>Reported By:</b> <slot name="reportedBy"/></td>
-                </tr>
-                <tr>
-                    <td><b>Location:</b> <slot name="location"/></td>
-                    <td><b>Object:</b> OCP-<slot name="object"/></td>
-                </tr>
+<ReportBase type='Incident Report' data={item} alwaysOpenOnSlug={alwaysOpenOnSlug}>
+    <tr>
+        <td style="width:50%"><b>Date:</b> <slot name="date"/></td>
+        <td><b>Incident Type:</b> <slot name="incidentType"/></td>
+    </tr>
+    <tr>
+        <td><b>Time:</b> <slot name="time"/></td>
+        <td><b>Reported By:</b> <slot name="reportedBy"/></td>
+    </tr>
+    <tr>
+        <td><b>Location:</b> <slot name="location"/></td>
+        <td><b>Object:</b> OCP-<slot name="object"/></td>
+    </tr>
 
-                <tr><th colspan="2">DESCRIPTION OF INCIDENT</th></tr>
-                <tr><td colspan="2"><slot name="description"/></td></tr>
+    <tr><th colspan="2">DESCRIPTION OF INCIDENT</th></tr>
+    <tr><td colspan="2"><slot name="description"/></td></tr>
 
-                <tr><th colspan="2">WITNESS EXPLANATION</th></tr>
-                <tr><td colspan="2"><slot name="witnessExplanation"/></td></tr>
+    <tr><th colspan="2">WITNESS EXPLANATION</th></tr>
+    <tr><td colspan="2"><slot name="witnessExplanation"/></td></tr>
 
-                <tr><th colspan="2">FOLLOW UP</th></tr>
-                <tr><td colspan="2"><slot name="followup"/></td></tr>
-            </tbody>
-        </table>
-    </details>
-</section>
+    <tr><th colspan="2">FOLLOW UP</th></tr>
+    <tr><td colspan="2"><slot name="followup"/></td></tr>
+</ReportBase>
