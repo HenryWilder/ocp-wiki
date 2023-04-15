@@ -46,13 +46,13 @@ h3, h4 {
         user-select: none; /* Standard syntax */
         cursor: default;
         &:hover {
-            border-radius: 0px;
+            border-radius: 1px;
             background-color: var(--color-foreground);
         }
 
         @media print {
             background-color: #222;
-            border-radius: 0;
+            border-radius: 1px;
             -webkit-print-color-adjust: exact; /*Chrome, Safari */
             color-adjust: exact; /*Firefox*/
         }
@@ -79,8 +79,8 @@ h3, h4 {
     }
 }
 .redacted-date-group:hover .redacted {
-    border-radius: 0px;
-    background-color: black;
+    border-radius: 1px;
+    background-color: var(--color-foreground);
 }
 
 ul.card-list a, footer a {

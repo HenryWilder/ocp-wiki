@@ -2,89 +2,109 @@
     "ocp":{
         "category":"Anomalous Object",
         "items":{
-            "000":    { "name":"OCP-000",     "description":"A Website",        "link":"/objects/000/"                                             },
-            "001":    { "name":"OCP-001",     "description":"Time's Treasures", "link":"/objects/001/"                                             },
-            "001-1":  { "name":"OCP-001-1",   "description":"Gold coins",       "link":"/objects/001/#ocp-001-1",   "notes":"Reduce age by a day"  },
-            "001-2-a":{ "name":"OCP-001-2-A", "description":"Saphiers",         "link":"/objects/001/#ocp-001-2-a", "notes":"Show your next meal"  },
-            "001-2-b":{ "name":"OCP-001-2-B", "description":"Pearls",           "link":"/objects/001/#ocp-001-2-b", "notes":"Inflict past disease" },
-            "001-3":  { "name":"OCP-001-3",   "description":"Gold Candelabras", "link":"/objects/001/#ocp-001-3",   "notes":"Alter thermodynamics" },
-            "001-4":  { "name":"OCP-001-4",   "description":"",                 "link":"/objects/001/#ocp-001-4"                                   },
-            "051":    { "name":"OCP-051",     "description":"Old Blind Dogs",   "link":"/objects/051/"                                             },
-            "350":    { "name":"OCP-350",     "description":"Quantum Slime",    "link":"/objects/350/"                                             },
-            "350-1":  { "name":"OCP-350-1",   "description":"Amity",            "link":"/objects/051/#ocp-350-1"                                   },
-            "350-2":  { "name":"OCP-350-1",   "description":"Bloodgoop",        "link":"/objects/051/#ocp-350-2"                                   },
-            "350-3":  { "name":"OCP-350-1",   "description":"Bloodgoop Nodes",  "link":"/objects/051/#ocp-350-3"                                   }
+            "000":    { "name":"OCP-000",     "link":"/objects/000/",             "description":"A Website" },
+            "001":    { "name":"OCP-001",     "link":"/objects/001/",             "description":"Time's Treasures" },
+            "001-1":  { "name":"OCP-001-1",   "link":"/objects/001/#ocp-001-1",   "description":"Time's Treasures - Gold coins", "notes":"Reduce age by a day" },
+            "001-2-a":{ "name":"OCP-001-2-A", "link":"/objects/001/#ocp-001-2-a", "description":"Time's Treasures - Saphiers", "notes":"Show your next meal" },
+            "001-2-b":{ "name":"OCP-001-2-B", "link":"/objects/001/#ocp-001-2-b", "description":"Time's Treasures - Pearls", "notes":"Inflict past disease" },
+            "001-3":  { "name":"OCP-001-3",   "link":"/objects/001/#ocp-001-3",   "description":"Time's Treasures - Gold Candelabras", "notes":"Alter thermodynamics" },
+            "001-4":  { "name":"OCP-001-4",   "link":"/objects/001/#ocp-001-4",   "description":"" },
+            "003":    { "name":"OCP-003",     "link":"/objects/003/",             "description":"Un-Unseen", "notes":"An anomalous magnifying glass" },
+            "004":    { "name":"OCP-004",     "link":"/objects/004/",             "description":"The Highway 66 Mystery" },
+            "004-1":  { "name":"OCP-004-1",   "link":"/objects/004/#ocp-004-1",   "description":"Highway 66 - Young girl" },
+            "004-2":  { "name":"OCP-004-2",   "link":"/objects/004/#ocp-004-2",   "description":"Highway 66 - Wooden grave" },
+            "004-3":  { "name":"OCP-004-3",   "link":"/objects/004/#ocp-004-3",   "description":"Highway 66 - Wooden cabin" },
+            "004-4":  { "name":"OCP-004-4",   "link":"/objects/004/#ocp-004-4",   "description":"Highway 66 - (Unintelligible)" },
+   
+            "051":    { "name":"OCP-051",     "link":"/objects/051/",             "description":"Old Blind Dogs" },
+   
+            "350":    { "name":"OCP-350",     "link":"/objects/350/"          ,   "description":"Quantum Slime" },
+            "350-1":  { "name":"OCP-350-1",   "link":"/objects/051/#ocp-350-1",   "description":"Amity" },
+            "350-2":  { "name":"OCP-350-2",   "link":"/objects/051/#ocp-350-2",   "description":"Bloodgoop" },
+            "350-3":  { "name":"OCP-350-3",   "link":"/objects/051/#ocp-350-3",   "description":"Bloodgoop Nodes" }
         }
     },
     "mtf":{
         "category":"Mobile Task Force",
         "items":{
-            "k-nis":{ "name":"K-Nis (Bloodhounds)",            "description":"The de facto &quot;hunters&quot; of the Federation.",                                                                   "link":"/info/task-forces/k-nis/" },
-            "4dot3":{ "name":"4.3 (Hot Potatoes)",             "description":"Deal with anomalies that pertain to temperature and time.",                                                             "link":"/info/task-forces/4dot3/" },
-            "h25":  { "name":"H25 (God's Noose)",              "description":"The team that is used when the Federation wants something done. It is composed entirely of immortal android soldiers.", "link":"/info/task-forces/h25/"   },
-            "2kmi": { "name":"2KMi (The Bigger Boat)",         "description":"Deal with anomalies that pose threats to oceanic travel and contain most aquatic OCPs.",                                "link":"/info/task-forces/2kmi/"  },
-            "aetp": { "name":"&AElig;TP (Sick Nasty Crazies)", "description":"The most hazardous, utilizing biohazard OCPs.",                                                                         "link":"/info/task-forces/aetp/"  },
-            "pi-5": { "name":"Pi-5 (La La Landers)",           "description":"A team of agents who have willingly gone through an undisclosed process, turning them into imaginary concepts.",        "link":"/info/task-forces/pi-5/"  },
-            "020":  { "name":"020 (The Red King's Guards)",    "description":"The coverup crafters.",                                                                                                 "link":"/info/task-forces/020/"   },
-            "e-55": { "name":"E-55 (Question and Answering)",  "description":"This team works to uncover the mysteries Federation has to offer.",                                                     "link":"/info/task-forces/e-55/"  }
+            "k-nis":{ "name":"K-Nis (Bloodhounds)",            "link":"/info/task-forces/k-nis/", "description":"The de facto &quot;hunters&quot; of the Federation." },
+            "4dot3":{ "name":"4.3 (Hot Potatoes)",             "link":"/info/task-forces/4dot3/", "description":"Deal with anomalies that pertain to temperature and time." },
+            "h25":  { "name":"H25 (God's Noose)",              "link":"/info/task-forces/h25/",   "description":"The team that is used when the Federation wants something done. It is composed entirely of immortal android soldiers." },
+            "2kmi": { "name":"2KMi (The Bigger Boat)",         "link":"/info/task-forces/2kmi/",  "description":"Deal with anomalies that pose threats to oceanic travel and contain most aquatic OCPs." },
+            "aetp": { "name":"&AElig;TP (Sick Nasty Crazies)", "link":"/info/task-forces/aetp/",  "description":"The most hazardous, utilizing biohazard OCPs." },
+            "pi-5": { "name":"Pi-5 (La La Landers)",           "link":"/info/task-forces/pi-5/",  "description":"A team of agents who have willingly gone through an undisclosed process, turning them into imaginary concepts." },
+            "020":  { "name":"020 (The Red King's Guards)",    "link":"/info/task-forces/020/",   "description":"The coverup crafters." },
+            "e-55": { "name":"E-55 (Question and Answering)",  "link":"/info/task-forces/e-55/",  "description":"This team works to uncover the mysteries Federation has to offer." }
         }
     },
     "class":{
         "category":"Containment Class",
         "items":{
-            "contained":   { "name":"Contained",    "description":"The object is contained",                                 "link":"/info/containment-classes/contained/"    },
-            "fuse":        { "name":"Fuse",         "description":"The object is beneficial",                                "link":"/info/containment-classes/fuse/"         },
-            "verj":        { "name":"Verj",         "description":"The object may be uncontainable",                         "link":"/info/containment-classes/verj/"         },
-            "carmine":     { "name":"Carmine",      "description":"The object is missing",                                   "link":"/info/containment-classes/carmine/"      },
-            "destroyed":   { "name":"Destroyed",    "description":"The object is no longer anomalous",                       "link":"/info/containment-classes/destroyed/"    },
-            "symphony":    { "name":"Symphony",     "description":"The anomaly is unlikely to reoccur",                      "link":"/info/containment-classes/symphony/"     },
-            "empyrean":    { "name":"Empyrean",     "description":"The object is a high-value asset",                        "link":"/info/containment-classes/empyrean/"     },
-            "aleatory":    { "name":"Aleatory",     "description":"The object is unpredictable but beneficial",              "link":"/info/containment-classes/aleatory/"     },
-            "irrelevant":  { "name":"Irrelevant",   "description":"The object is mundane",                                   "link":"/info/containment-classes/irrelevant/"   },
-            "centripetal": { "name":"Centripetal",  "description":"The anomaly is a fact of nature",                         "link":"/info/containment-classes/centripetal/"  },
-            "catastrophic":{ "name":"Catastrophic", "description":"The object is extremely dangerous",                       "link":"/info/containment-classes/catastrophic/" },
-            "esau":        { "name":"Esau",         "description":"The object was beneficial but was found to be dangerous", "link":"/info/containment-classes/esau/"         },
-            "yaaqov":      { "name":"Yaaqov",       "description":"The object exploits its own containment protocol",        "link":"/info/containment-classes/yaaqov/"       },
-            "apollyon":    { "name":"Apollyon",     "description":"The object is extremely dangerous and unstoppable",       "link":"/info/containment-classes/apollyon/"     }
+            "contained":   { "name":"Contained",    "link":"/info/containment-classes/contained/",    "description":"The object is contained"                                  },
+            "fuse":        { "name":"Fuse",         "link":"/info/containment-classes/fuse/",         "description":"The object is beneficial"                                 },
+            "verj":        { "name":"Verj",         "link":"/info/containment-classes/verj/",         "description":"The object may be uncontainable"                          },
+            "carmine":     { "name":"Carmine",      "link":"/info/containment-classes/carmine/",      "description":"The object is missing"                                    },
+            "destroyed":   { "name":"Destroyed",    "link":"/info/containment-classes/destroyed/",    "description":"The object is no longer anomalous"                        },
+            "symphony":    { "name":"Symphony",     "link":"/info/containment-classes/symphony/",     "description":"The anomaly is unlikely to reoccur"                       },
+            "empyrean":    { "name":"Empyrean",     "link":"/info/containment-classes/empyrean/",     "description":"The object is a high-value asset"                         },
+            "aleatory":    { "name":"Aleatory",     "link":"/info/containment-classes/aleatory/",     "description":"The object is unpredictable but beneficial"               },
+            "irrelevant":  { "name":"Irrelevant",   "link":"/info/containment-classes/irrelevant/",   "description":"The object is mundane"                                    },
+            "centripetal": { "name":"Centripetal",  "link":"/info/containment-classes/centripetal/",  "description":"The anomaly is a fact of nature"                          },
+            "catastrophic":{ "name":"Catastrophic", "link":"/info/containment-classes/catastrophic/", "description":"The object is extremely dangerous"                        },
+            "esau":        { "name":"Esau",         "link":"/info/containment-classes/esau/",         "description":"The object was beneficial but was found to be dangerous"  },
+            "yaaqov":      { "name":"Yaaqov",       "link":"/info/containment-classes/yaaqov/",       "description":"The object exploits its own containment protocol"         },
+            "apollyon":    { "name":"Apollyon",     "link":"/info/containment-classes/apollyon/",     "description":"The object is extremely dangerous and unstoppable"        }
         }
     },
     "site":{
         "category":"Federation Site",
         "items":{
-            "00":{ "name":"Site-00", "description":"Unknown",                                     "link":"/info/containment-site/00/" },
-            "01":{ "name":"Site-01", "description":"Unknown",                                     "link":"/info/containment-site/01/" },
-            "02":{ "name":"Site-02", "description":"Unknown",                                     "link":"/info/containment-site/02/" },
-            "03":{ "name":"Site-03", "description":"Small inanimate object containment",          "link":"/info/containment-site/03/" },
-            "04":{ "name":"Site-04", "description":"Large inanimate object containment",          "link":"/info/containment-site/04/" },
-            "05":{ "name":"Site-05", "description":"Structural anomaly studies",                  "link":"/info/containment-site/05/" },
-            "06":{ "name":"Site-06", "description":"Thaumaturgy anomaly research",                "link":"/info/containment-site/06/" },
-            "07":{ "name":"Site-07", "description":"Carmine research and tracking",               "link":"/info/containment-site/07/" },
-            "08":{ "name":"Site-08", "description":"Initial inanimate object containment",        "link":"/info/containment-site/08/" },
-            "09":{ "name":"Site-09", "description":"Perishable foods longevity research",         "link":"/info/containment-site/09/" },
-            "10":{ "name":"Site-10", "description":"Inanimate botany containment",                "link":"/info/containment-site/10/" },
-            "11":{ "name":"Site-11", "description":"Diverse livestock containment",               "link":"/info/containment-site/11/" },
-            "12":{ "name":"Site-12", "description":"Paranormal entity research and containment",  "link":"/info/containment-site/12/" },
-            "13":{ "name":"Site-13", "description":"Chaos Theory studies",                        "link":"/info/containment-site/13/" },
-            "14":{ "name":"Site-14", "description":"Live specimen containment",                   "link":"/info/containment-site/14/" },
-            "15":{ "name":"Site-15", "description":"Deceased and decomposing matter disposal",    "link":"/info/containment-site/15/" },
-            "16":{ "name":"Site-16", "description":"Benign byproduct storage",                    "link":"/info/containment-site/16/" },
-            "17":{ "name":"Site-17", "description":"Hostile item containment",                    "link":"/info/containment-site/17/" },
-            "18":{ "name":"Site-18", "description":"Cognitohazard technology development",        "link":"/info/containment-site/18/" },
-            "19":{ "name":"Site-19", "description":"Interdimensional communications and studies", "link":"/info/containment-site/19/" },
-            "20":{ "name":"Site-20", "description":"Documentation editing and approval",          "link":"/info/containment-site/20/" },
-            "21":{ "name":"Site-21", "description":"Reality bender containment",                  "link":"/info/containment-site/21/" },
-            "22":{ "name":"Site-22", "description":"Site management",                             "link":"/info/containment-site/22/" },
-            "23":{ "name":"Site-23", "description":"Pataphysics studies and containment",         "link":"/info/containment-site/23/" },
-            "24":{ "name":"Site-24", "description":"Cafeteria services",                          "link":"/info/containment-site/24/" },
-            "25":{ "name":"Site-25", "description":"Healthcare department",                       "link":"/info/containment-site/25/" },
-            "26":{ "name":"Site-26", "description":"MTF organization and recruitment",            "link":"/info/containment-site/26/" },
-            "27":{ "name":"Site-27", "description":"High depth storage",                          "link":"/info/containment-site/27/" }
+            "00":{ "name":"Site-00", "link":"/info/containment-site/00/", "description":"Unknown" },
+            "01":{ "name":"Site-01", "link":"/info/containment-site/01/", "description":"Unknown" },
+            "02":{ "name":"Site-02", "link":"/info/containment-site/02/", "description":"Unknown" },
+            "03":{ "name":"Site-03", "link":"/info/containment-site/03/", "description":"Small inanimate object containment" },
+            "04":{ "name":"Site-04", "link":"/info/containment-site/04/", "description":"Large inanimate object containment" },
+            "05":{ "name":"Site-05", "link":"/info/containment-site/05/", "description":"Structural anomaly studies" },
+            "06":{ "name":"Site-06", "link":"/info/containment-site/06/", "description":"Thaumaturgy anomaly research" },
+            "07":{ "name":"Site-07", "link":"/info/containment-site/07/", "description":"Carmine research and tracking" },
+            "08":{ "name":"Site-08", "link":"/info/containment-site/08/", "description":"Initial inanimate object containment" },
+            "09":{ "name":"Site-09", "link":"/info/containment-site/09/", "description":"Perishable foods longevity research" },
+            "10":{ "name":"Site-10", "link":"/info/containment-site/10/", "description":"Inanimate botany containment" },
+            "11":{ "name":"Site-11", "link":"/info/containment-site/11/", "description":"Diverse livestock containment" },
+            "12":{ "name":"Site-12", "link":"/info/containment-site/12/", "description":"Paranormal entity research and containment" },
+            "13":{ "name":"Site-13", "link":"/info/containment-site/13/", "description":"Chaos Theory studies" },
+            "14":{ "name":"Site-14", "link":"/info/containment-site/14/", "description":"Live specimen containment" },
+            "15":{ "name":"Site-15", "link":"/info/containment-site/15/", "description":"Deceased and decomposing matter disposal" },
+            "16":{ "name":"Site-16", "link":"/info/containment-site/16/", "description":"Benign byproduct storage" },
+            "17":{ "name":"Site-17", "link":"/info/containment-site/17/", "description":"Hostile item containment" },
+            "18":{ "name":"Site-18", "link":"/info/containment-site/18/", "description":"Cognitohazard technology development" },
+            "19":{ "name":"Site-19", "link":"/info/containment-site/19/", "description":"Interdimensional communications and studies" },
+            "20":{ "name":"Site-20", "link":"/info/containment-site/20/", "description":"Documentation editing and approval" },
+            "21":{ "name":"Site-21", "link":"/info/containment-site/21/", "description":"Reality bender containment" },
+            "22":{ "name":"Site-22", "link":"/info/containment-site/22/", "description":"Site management" },
+            "23":{ "name":"Site-23", "link":"/info/containment-site/23/", "description":"Pataphysics studies and containment" },
+            "24":{ "name":"Site-24", "link":"/info/containment-site/24/", "description":"Cafeteria services" },
+            "25":{ "name":"Site-25", "link":"/info/containment-site/25/", "description":"Healthcare department" },
+            "26":{ "name":"Site-26", "link":"/info/containment-site/26/", "description":"MTF organization and recruitment" },
+            "27":{ "name":"Site-27", "link":"/info/containment-site/27/", "description":"High depth storage" }
+        }
+    },
+    "ctz":{
+        "category":"Citizen class",
+        "items":{
+            "s": { "name":"S Class",  "description":"Essentially the dictator. Luckily Annie is a benevolent entity" },
+            "a": { "name":"A Class",  "description":"High ranking individual with great influence and access to resources" },
+            "b": { "name":"B Class",  "description":"Those who work directly under A class citizens or relay orders" },
+            "c": { "name":"C Class",  "description":"Standard citizenship" },
+            "d": { "name":"D Class",  "description":"Criminals and prisoners" },
+            "e": { "name":"E Class",  "description":"Individuals who have caused great pain or damage" },
+            "e+":{ "name":"E+ Class", "description":"E class citizens who are used to fulfill a specific role that a higher ranking citizen can/should not" }
         }
     },
     "staff":{
         "category":"Staff",
         "items":{
-            "drLastname":{ "name":"Z5-1", "description":"" }
+            "tbd":{ "name":"<span class='redacted'>xxxxxx xxxx</span>", "description":"<span class='redacted'>xxxxxxxxx xxxxx xxxxxx xxx xxxxxxx xx xxxxxxxx</span>" }
         }
     }
 }

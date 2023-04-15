@@ -5,4 +5,4 @@ interface Props {
 }
 const { member } = Astro.props;
 ---
-<p><b style={"color:" + (member.color ?? "var(--color-foreground)")}>member.name:</b>&nbsp;<slot/></p>
+<p><b style={"color:" + (member.color ?? "var(--color-foreground)")}>{member.name}:</b>&nbsp;<slot/></p>

@@ -69,7 +69,9 @@ const headings = ast.children
           {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? `/objects/${v.slug}/` : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
         </span>
       </div>
-      <p><b>{entry.data.name}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)</p>
+      <p>
+        <b>{entry.data.name}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)
+      </p>
 
       <Content/>
       {entry.data.reports?.map(e => e.render())}
