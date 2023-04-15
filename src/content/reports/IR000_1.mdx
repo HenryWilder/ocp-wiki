@@ -4,14 +4,16 @@ object: '000'
 instance: '1'
 slug: incident-report/000/1
 ---
-import Comment from "../../components/CommentGroup.astro";
-import CommentHeading from "../../components/CommentHeading.astro";
 import IncidentReport from "../../components/reports/IncidentReport.astro";
-import Blurred from "../../components/typography/Blurred.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
-import { IIncidentReport } from "../../scripts";
-export const item = {objectNumber:{frontmatter.object},instance:{frontmatter.instance}};
+import Blurred from "../../components/typography/Blurred.astro";
+import Comment from "../../components/CommentGroup.astro";
+import CommentHeading from "../../components/CommentHeading.astro";
+export const item = {
+    objectNumber:frontmatter.object,
+    instance:frontmatter.instance
+};
 
 <IncidentReport item={item} alwaysOpenOnSlug={frontmatter.slug}>
     <Fragment slot="date"><RedactedDate/></Fragment>

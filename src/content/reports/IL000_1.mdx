@@ -10,12 +10,14 @@ import InterviewSpokenLine from "../../components/reports/InterviewSpokenLine.as
 import Redacted from "../../components/typography/Redacted.astro";
 import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
-import { IInterviewLog, IInterviewMember } from "../../scripts";
 import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
 
 export const interviewer = { name:"Jr RSR", color:"#840" };
 export const subject = { name:"OCP-000", color:"#900" };
-export const item = { objectNumber:frontmatter.object, instance:frontmatter.instance };
+export const item = {
+    objectNumber:frontmatter.object,
+    instance:frontmatter.instance
+};
 
 <InterviewLog item={item} alwaysOpenOnSlug={frontmatter.slug}>
     <Fragment slot="interviewerName">Jr RSR <Redacted>*******</Redacted></Fragment>
