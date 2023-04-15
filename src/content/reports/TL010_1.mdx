@@ -1,18 +1,20 @@
 ---
+type: Test Log
+object: '010'
+instance: '1'
+slug: test-log/010/1
+---
 import TestLog from "../../components/reports/TestLog.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
-import type { ITestLog } from '../../scripts/index';
-const item: ITestLog = {
-    objectNumber: '010',
-    instance: '1'
+
+export const item = {
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
 };
-interface Props {
-    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
-}
-const { openState = 'normal' } = Astro.props;
----
-<TestLog item={item} openState={openState}>
+
+<TestLog item={item} slug={frontmatter.slug}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
     <Fragment slot="location"><Redacted>xxxxxxxxxxxx</Redacted></Fragment>

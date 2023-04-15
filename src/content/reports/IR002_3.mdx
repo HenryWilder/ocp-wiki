@@ -1,20 +1,21 @@
 ---
+type: Incident Report
+object: '002'
+instance: '3'
+slug: incident-report/002/3
+---
 import IncidentReport from "../../components/reports/IncidentReport.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
 import Warning from "../../components/Warning.astro";
-import { IIncidentReport } from "../../scripts";
 
-const item: IIncidentReport = {
-    objectNumber: '002',
-    instance: '3'
+export const item = {
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
 };
-interface Props {
-    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
-}
-const { openState = 'normal' } = Astro.props;
----
-<IncidentReport item={item} openState={openState}>
+
+<IncidentReport item={item} slug={frontmatter.slug}>
     <Fragment slot="date"><RedactedDate/></Fragment>
     <Fragment slot="incidentType"><Redacted>xxxxxxxxxxx</Redacted></Fragment>
     <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>

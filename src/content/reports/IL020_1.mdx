@@ -1,28 +1,27 @@
 ---
+type: Interview Log
+object: '020'
+instance: '1'
+slug: interview-log/020/1
+---
 import InterviewLog from "../../components/reports/InterviewLog.astro";
 import InterviewSpeakerless from "../../components/reports/InterviewSpeakerless.astro";
 import InterviewSpokenLine from "../../components/reports/InterviewSpokenLine.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
-import { IInterviewLog } from "../../scripts";
 import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
 
-const interviewer = {name: "Interviewer", color: "#840"};
-const subject = {name: "Subject", color: "#900"};
-
-const item: IInterviewLog = {
-    objectNumber: "020",
-    instance: "1"
+export const interviewer = {name: "Interviewer", color: "#840"};
+export const subject = {name: "Subject", color: "#900"};
+export const item = {
+    objectNumber:frontmatter.object,
+    instance:frontmatter.instance
 };
-interface Props {
-    openState?: 'normal' | 'startOpen' | 'alwaysOpen';
-}
-const { openState = 'normal' } = Astro.props;
----
-<InterviewLog item={item} openState={openState}>
+
+<InterviewLog item={item} slug={frontmatter.slug}>
     <Fragment slot="interviewerName"><AnchorTooltip href="staff/z5-9">Z5-9</AnchorTooltip></Fragment>
-    <Fragment slot="subjectName">OCP-000</Fragment>
+    <Fragment slot="subjectName">OCP-020</Fragment>
     <Fragment slot="topic">n/a</Fragment>
     <Fragment slot="body">
         <InterviewSpeakerless>subject turns off a light in an empty house; the occupants have left for dinner</InterviewSpeakerless>

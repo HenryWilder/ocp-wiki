@@ -7,9 +7,11 @@ slug: test-log/000/2
 import TestLog from "../../components/reports/TestLog.astro";
 import Redacted from "../../components/typography/Redacted.astro";
 import RedactedDate from "../../components/typography/RedactedDate.astro";
+
 export const item = {
     objectNumber: frontmatter.object,
-    instance: frontmatter.instance
+    instance: frontmatter.instance,
+    label: frontmatter.label
 };
 
 <TestLog item={item} slug={frontmatter.slug}>
