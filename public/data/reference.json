@@ -2,6 +2,7 @@
     "ocp":{
         "category":"Anomalous Object",
         "items":{
+            "00":     { "name":"OCP-00",      "link":"/objects/00/",              "description":"Fast Fax Facts" },
             "000":    { "name":"OCP-000",     "link":"/objects/000/",             "description":"A Website" },
             "001":    { "name":"OCP-001",     "link":"/objects/001/",             "description":"Time's Treasures" },
             "001-1":  { "name":"OCP-001-1",   "link":"/objects/001/#ocp-001-1",   "description":"Time's Treasures - Gold coins", "notes":"Reduce age by a day" },
@@ -104,7 +105,17 @@
     "staff":{
         "category":"Staff",
         "items":{
-            "tbd":{ "name":"<span class='redacted'>xxxxxx xxxx</span>", "description":"<span class='redacted'>xxxxxxxxx xxxxx xxxxxx xxx xxxxxxx xx xxxxxxxx</span>" }
+            "tbd":{ "name":"<span class='redacted'>xxxxxx xxxx</span>", "description":"<span class='redacted'>xxxxxxxxx xxxxx xxxxxx xxx xxxxxxx xx xxxxxxxx</span>" },
+
+            "z5-1":       { "name":"Z5-1",                "description":"Anantashesha<br/>A member of the Z5 Council.<br/>Z5-1 holds the most power.", "notes":["Goes by &quot;Annie&quot; for short", "At least a little protective of Z5-9", "Best friends with Cpt. Ozzwitch"] },
+            "z5-2":       { "name":"Z5-2",                "description":"Prism<br/>A member of the Z5 Council.", "notes":["She has OCP-016 in their office."] },
+            "z5-3":       { "name":"Z5-3",                "description":"A member of the Z5 Council." },
+            "z5-4":       { "name":"Z5-4",                "description":"A member of the Z5 Council." },
+            "z5-5":       { "name":"Z5-5",                "description":"A member of the Z5 Council." },
+            "z5-9":       { "name":"Z5-9",                "description":"Crash<br/>A member of the Z5 Council.", "notes":["Has (or had) a husband", "Has &quot;been through enough&quot;", "Has a history with Z5-1", "His bio-dad cut out his eye"] },
+            "z5-council": { "name":"Z5 Council",          "description":"A group of several high ranking officials of the OCP Federation" },
+            "ozzwitch":   { "name":"Captain Ozzwitch",    "description":"", "notes":["Very attractive.", "Best friends with Z5-1"] },
+            "dr-lastname":{ "name":"Dr. <r>Lastname</r>", "description":"The researcher heading the examination of OCP-90, OCP-350, and OCP-351." }
         }
     }
 }

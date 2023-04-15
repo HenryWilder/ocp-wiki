@@ -6,7 +6,7 @@
     box-decoration-break: clone;
 
     .tooltip-text {
-        text-decoration: dotted underline;
+        border-bottom: 1px dotted;
         transition: 100ms;
     }
 
@@ -43,6 +43,7 @@
             flex-flow: column;
             text-align: center;
             justify-content: center;
+            gap: 1ch;
             background-color: var(--color-background);
             border: 1px solid var(--color-tooltip-border);
             border-radius: 1ch;
@@ -82,7 +83,7 @@
     /* Show the tooltip text when you mouse over the tooltip container */
     &:hover {
         .tooltip-text {
-            text-decoration: none;
+            border-bottom-color: transparent;
             background-color: var(--color-tooltip-highlight);
         }
 
