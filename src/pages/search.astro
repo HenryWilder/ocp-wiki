@@ -1,13 +1,17 @@
 ---
-import ArticleLayout from "../layouts/ArticleLayout.astro";
-import OCPListEntry from "../components/OCPListEntry.astro";
-
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Document from "../layouts/Document.astro";
 ---
-<ArticleLayout title="Search" name="Search Results" desc="Obscure, Classify, Preserve">
-    <p><strong>Showing results for: </strong><span id="query-text"><noscript>n/a</noscript></span></p>
-    <div class="comment-name">Found <span id="result-count"><noscript>no</noscript></span> results in <span id="result-time"><noscript>n/a seconds</noscript></span>.</div>
+<Document title="Search" desc="Obscure, Classify, Preserve">
+    <article>
+        <p><strong>Showing results for: </strong><span id="query-text"><noscript>n/a</noscript></span></p>
+        <div class="comment-name">Found <span id="result-count"><noscript>no</noscript></span> results in <span id="result-time"><noscript>n/a seconds</noscript></span>.</div>
 
-    <ul class="card-list" id="search-results"><noscript>Search cannot work if script is disabled.</noscript></ul>
+        <ul class="card-list" id="search-results"><noscript>Search cannot work if script is disabled.</noscript></ul>
+
+        UNDER CONSTRUCTION
+    </article>
 
     <script>
         import type { PageLink } from "../scripts/search";
@@ -29,4 +33,4 @@ import OCPListEntry from "../components/OCPListEntry.astro";
 
         document.querySelector("#search-results")!.innerHTML = results.map((e) => `<a href="${e.path}">${e.name}</a> (${e.type})`).join("\n");
     </script>
-</ArticleLayout>
+</Document>

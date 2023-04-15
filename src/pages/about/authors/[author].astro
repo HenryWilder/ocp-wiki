@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
 import Document from '../../../layouts/Document.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -15,24 +16,23 @@ const { entry } = Astro.props;
 const authorObjectEntries = await getCollection('objects', o => entry.data.name === o.data.author);
 ---
 <Document title={entry.data.name} desc={entry.data.description} thumb="/thumbnail-info.png">
-    <main>
-        <article>
-            <div id="hrgroup">
-                <h1>{entry.data.name}</h1>
-                <h2>{entry.data.description}</h2>
-            </div>
-            <ul class="card-list">
-                {authorObjectEntries
-                    .sort((a, b) => (a.data.name+'.'+a.data.version).localeCompare((b.data.name+'.'+b.data.version)))
-                    .map(o =>
-                        <li>
-                            <a href={`/objects/${o.slug}/`}>{o.data.name}{<Fragment set:html={'&nbsp;'.repeat(6-o.data.name.length)}/>}v{o.data.version}</a>
-                            -
-                            {o.data.title}
-                            ({o.data.category})
-                        </li>
-                )}
-            </ul>
-        </article>
-    </main>
+    <article>
+        <Breadcrumbs/>
+        <div id="hrgroup">
+            <h1>{entry.data.name}</h1>
+            <h2>{entry.data.description}</h2>
+        </div>
+        <ul class="card-list">
+            {authorObjectEntries
+                .sort((a, b) => (a.data.name+'.'+a.data.version).localeCompare((b.data.name+'.'+b.data.version)))
+                .map(o =>
+                    <li>
+                        <a href={`/objects/${o.slug}/`}>{o.data.name}{<Fragment set:html={'&nbsp;'.repeat(6-o.data.name.length)}/>}v{o.data.version}</a>
+                        -
+                        {o.data.title}
+                        ({o.data.category})
+                    </li>
+            )}
+        </ul>
+    </article>
 </Document>

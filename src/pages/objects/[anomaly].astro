@@ -36,6 +36,7 @@ const nextEntry: CollectionEntry<'objects'>|undefined = visibleEntries[currentIn
 import { remark } from 'remark';
 import remarkMdx from 'remark-mdx';
 import AnchorTooltip from '../../components/tooltip-types/AnchorTooltip.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 const ast = remark().use(remarkMdx).parse(entry.body);
 const headings = ast.children
@@ -52,58 +53,57 @@ switch (entry.data.category) {
 }
 ---
 <Document title={entry.data.title} desc={entry.data.description} addKeywords={entry.data.tags} thumb={typeThumb}>
-  <main>
-    <aside id="left">
-      <section id="outline">
-        <h2>{entry.data.title}</h2>
+  <aside id="left">
+    <section id="outline">
+      <h2>{entry.data.title}</h2>
+      <ol>
+        {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat((heading.depth - 2) * 2)}/>{heading.name}</a></li>)}
+      </ol>
+    </section>
+    {entry.data.related.length > 0 &&
+      <section id="related">
+        <h2>Related</h2>
         <ol>
-          {headings.map(heading => <li><a href={heading.link}><Fragment set:html={'&nbsp;'.repeat((heading.depth - 2) * 2)}/>{heading.name}</a></li>)}
+          {entry.data.related.map((rel: { link: string; name: string; }) => <li><a href={rel.link}>{rel.name}</a></li>)}
         </ol>
       </section>
-      {entry.data.related.length > 0 &&
-        <section id="related">
-          <h2>Related</h2>
-          <ol>
-            {entry.data.related.map((rel: { link: string; name: string; }) => <li><a href={rel.link}>{rel.name}</a></li>)}
-          </ol>
-        </section>
+    }
+  </aside>
+
+  <article>
+    <Breadcrumbs/>
+    <div id="hrgroup">
+      <h1>{entry.data.title}</h1>
+
+      {isOldVersion &&
+          <b style="font-size:smaller">NOTICE: You are reading an outdated version of this document</b>
       }
-    </aside>
 
-    <article>
-      <div id="hrgroup">
-        <h1>{entry.data.title}</h1>
+      <span id="file-history">
+        {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? `/objects/${v.slug}/` : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
+      </span>
+    </div>
+    <p>
+      <b>{displayName}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)
+    </p>
 
-        {isOldVersion &&
-            <b style="font-size:smaller">NOTICE: You are reading an outdated version of this document</b>
-        }
+    <Content/>
+    <!-- {entry.data.reports?.map(e => e.render())} -->
 
-        <span id="file-history">
-          {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? `/objects/${v.slug}/` : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
-        </span>
-      </div>
-      <p>
-        <b>{displayName}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)
-      </p>
+    <footer style="text-align: center;margin-block:2em">
+      { prevEntry &&
+        <>&laquo; <a href={`/objects/${prevEntry.slug}/`}>{prevEntry.data.name}</a> prev</>
+      }
+      &bull;
+      { nextEntry &&
+        <>next <a href={`/objects/${nextEntry.slug}/`}>{nextEntry.data.name}</a> &raquo;</>
+      }
+    </footer>
+  </article>
 
-      <Content/>
-      <!-- {entry.data.reports?.map(e => e.render())} -->
-
-      <footer style="text-align: center;margin-block:2em">
-        { prevEntry &&
-          <>&laquo; <a href={`/objects/${prevEntry.slug}/`}>{prevEntry.data.name}</a> prev</>
-        }
-        &bull;
-        { nextEntry &&
-          <>next <a href={`/objects/${nextEntry.slug}/`}>{nextEntry.data.name}</a> &raquo;</>
-        }
-      </footer>
-    </article>
-
-    <aside id="comments">
-      {entry.data.comments}
-    </aside>
-  </main>
+  <aside id="comments">
+    {entry.data.comments}
+  </aside>
 
   <!-- <script>
     // Move comments to the 'comments' aside

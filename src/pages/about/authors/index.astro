@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
 import Document from '../../../layouts/Document.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 let authorEntries: CollectionEntry<'authors'>[] = await getCollection('authors');
 const objectEntries: CollectionEntry<'objects'>[] = await getCollection('objects');
@@ -10,22 +11,21 @@ const getAuthorEntryCount = (name: string) => authorEntryCount.find(e => e.name 
 authorEntries = authorEntries.sort((a, b) => getAuthorEntryCount(b.data.name) - getAuthorEntryCount(a.data.name));
 ---
 <Document title="Authors" desc="List of OCP authors" thumb="/thumbnail-info.png">
-    <main>
-        <article>
-            <div id="hrgroup">
-                <h1>Authors</h1>
-            </div>
-                {authorEntries.map(author =>
-                    <a href={author.slug}>
-                        <section class="card author-card" style={`background: linear-gradient(to right, ${author.data.ambient} 64px, var(--color-background))`}>
-                            <img src={author.data.icon} />
-                            <div class="text">
-                                <h2>{author.data.name}</h2>
-                                <span style="color: white;text-shadow: 0 0 3px black">{getAuthorEntryCount(author.data.name)} entries</span>
-                            </div>
-                        </section>
-                    </a>
-                )}
-        </article>
-    </main>
+    <article>
+        <Breadcrumbs/>
+        <div id="hrgroup">
+            <h1>Authors</h1>
+        </div>
+            {authorEntries.map(author =>
+                <a href={`/about/authors/${author.slug}/`}>
+                    <section class="card author-card" style={`background: linear-gradient(to right, ${author.data.ambient} 64px, var(--color-background))`}>
+                        <img src={author.data.icon} />
+                        <div class="text">
+                            <h2>{author.data.name}</h2>
+                            <span style="color: white;text-shadow: 0 0 3px black">{getAuthorEntryCount(author.data.name)} entries</span>
+                        </div>
+                    </section>
+                </a>
+            )}
+    </article>
 </Document>

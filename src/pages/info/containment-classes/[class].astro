@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
 import Document from '../../../layouts/Document.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -17,20 +18,19 @@ const classObjectEntries: CollectionEntry<'objects'>[] = await getCollection('ob
 
 ---
 <Document title={entry.data.name} desc={entry.data.blurb} thumb="/thumbnail-info.png">
-    <main>
-        <article>
-            <div id="hrgroup">
-                <h1>{entry.data.name}</h1>
-                <h2>{entry.data.blurb}</h2>
-            </div>
-            <Content/>
-            <ul class="card-list">
-                <h2>{entry.data.name}-Class Anomalies</h2>
-                {classObjectEntries.length > 0
-                    ? classObjectEntries.map(o => <li><a href={`/objects/${o.slug}/`}>{o.data.name}</a> - {o.data.title} <small>[v{o.data.version}]</small></li>)
-                    : <li>No {entry.data.name}-class anomalies found.</li>
-                }
-            </ul>
-        </article>
-    </main>
+    <article>
+        <Breadcrumbs/>
+        <div id="hrgroup">
+            <h1>{entry.data.name}</h1>
+            <h2>{entry.data.blurb}</h2>
+        </div>
+        <Content/>
+        <ul class="card-list">
+            <h2>{entry.data.name}-Class Anomalies</h2>
+            {classObjectEntries.length > 0
+                ? classObjectEntries.map(o => <li><a href={`/objects/${o.slug}/`}>{o.data.name}</a> - {o.data.title} <small>[v{o.data.version}]</small></li>)
+                : <li>No {entry.data.name}-class anomalies found.</li>
+            }
+        </ul>
+    </article>
 </Document>

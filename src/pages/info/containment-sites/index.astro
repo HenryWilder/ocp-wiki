@@ -1,23 +1,23 @@
 ---
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Document from "../../../layouts/Document.astro";
 import { CollectionEntry, getCollection } from 'astro:content';
 
 const siteEntries: CollectionEntry<'containment-sites'>[] = await getCollection('containment-sites');
 ---
 <Document title="Info" desc="Information about the federation" addKeywords={["sites","containment sites"]} thumb="/thumbnail-info.png">
-    <main>
-        <article>
-            <div id="hrgroup">
-                <h1>Information</h1>
-            </div>
-            {siteEntries.map(entry =>
-                <a href={entry.slug}>
-                    <section class="card">
-                        <h2>{entry.data.name}</h2>
-                        <b>{entry.data.blurb}</b>
-                    </section>
-                </a>
-            )}
-        </article>
-    </main>
+    <article>
+        <Breadcrumbs/>
+        <div id="hrgroup">
+            <h1>Information</h1>
+        </div>
+        {siteEntries.map(entry =>
+            <a href={`/info/containment-sites/${entry.slug}/`}>
+                <section class="card">
+                    <h2>{entry.data.name}</h2>
+                    <b>{entry.data.blurb}</b>
+                </section>
+            </a>
+        )}
+    </article>
 </Document>
