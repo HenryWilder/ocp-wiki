@@ -40,4 +40,4 @@ if (exists) {
                     : <TooltipNoteSingle note={src.notes}/>)
             }
         </span></span>
- : <Fragment><!-- e --><slot/></Fragment>}
+ : <Fragment set:html={`<!-- TODO: Add '${href.substring(0, href.indexOf('/'))}["${href.substring(href.indexOf('/')+1)}"]' to reference.json -->`}></Fragment><slot/>}

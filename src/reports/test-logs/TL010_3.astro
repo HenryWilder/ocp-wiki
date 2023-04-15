@@ -1,0 +1,50 @@
+---
+import Comment from "../../components/CommentGroup.astro";
+import CommentHeading from "../../components/CommentHeading.astro";
+import TestLog from "../../components/reports/TestLog.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import RedactedDate from "../../components/typography/RedactedDate.astro";
+import type { ITestLog } from '../../scripts/index';
+import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+import HasComment from "../../components/typography/HasComment.astro";
+const item: ITestLog = {
+    objectNumber: '010',
+    instance: '3'
+};
+---
+<TestLog item={item}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="location"><Redacted>xxxxxxxxxxxx</Redacted></Fragment>
+
+    <Fragment slot="researcher"><Redacted>xxxxxxxx</Redacted></Fragment>
+    <Fragment slot="object">000</Fragment>
+    <Fragment slot="approver">n/a</Fragment>
+
+    <Fragment slot="goal">Conceal OCP-010</Fragment>
+    <Fragment slot="procedure">
+        Conceal within titanium weave jeans.
+        <Comment>
+            <p>
+                <CommentHeading user="generic1">Noted on Test Log 010 3</CommentHeading>
+                Test subject is Cpt. Ozzwitch
+            </p>
+        </Comment>
+    </Fragment>
+
+    <Fragment slot="results">
+        All clothing on the subject spontaneously disintegrate, leaving <AnchorTooltip href="staff/ozzwitch">Cpt. Ozzwitch</AnchorTooltip> almost completely naked.
+        <s>This also had a minor memetic effect on all observers with a history of male attraction, eliciting feelings of</s>
+        Disregard the previous, <AnchorTooltip href="staff/ozzwitch">Cpt. Ozzwitch</AnchorTooltip> is just that attractive.
+    </Fragment>
+    <Fragment slot="comments">
+        While the pose <AnchorTooltip href="staff/ozzwitch">Cpt. Ozzwitch</AnchorTooltip> made during the test was entirely unnecessary, it was very much appreciated.
+        <HasComment>Also, shouldn't this be a -j?</HasComment>
+        <Comment>
+            <p>
+                <CommentHeading user="z5_1">Commented on "shouldn't this be a -j?"</CommentHeading>
+                I can see why you'd think that.
+            </p>
+        </Comment>
+    </Fragment>
+</TestLog>

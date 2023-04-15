@@ -1,0 +1,25 @@
+---
+import TestLog from "../../components/reports/TestLog.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import RedactedDate from "../../components/typography/RedactedDate.astro";
+import type { ITestLog } from '../../scripts/index';
+const item: ITestLog = {
+    objectNumber: '010',
+    instance: '2'
+};
+---
+<TestLog item={item}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="location"><Redacted>xxxxxxxxxxxx</Redacted></Fragment>
+
+    <Fragment slot="researcher"><Redacted>xxxxxxxx</Redacted></Fragment>
+    <Fragment slot="object">000</Fragment>
+    <Fragment slot="approver">n/a</Fragment>
+
+    <Fragment slot="goal">Conceal OCP-010</Fragment>
+    <Fragment slot="procedure">Conceal within standard jean pants, tailored to the subject's size.</Fragment>
+
+    <Fragment slot="results">After two (2) minutes, the subject's hairpin fell to the floor. Upon attempting to retrieve it, their pants ripped, revealing OCP-010.</Fragment>
+    <Fragment slot="comments"></Fragment>
+</TestLog>

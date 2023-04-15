@@ -8,6 +8,7 @@
     transition: 0.25s ease-in-out;
     overflow: clip;
     cursor: default;
+    margin-block: 1em;
 
     &:hover {
         box-shadow: 0 0 15px rgba(0,0,0,0.25);

@@ -1,7 +1,7 @@
 ---
 interface Props {
-    onclick: string;
-    eventDesc: string;
+    onclick?: string;
+    eventDesc?: string;
 }
 const { onclick = "this.remove()", eventDesc = "click to dismiss this warning" } = Astro.props;
 ---

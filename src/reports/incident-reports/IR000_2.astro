@@ -1,12 +1,9 @@
 ---
-import Comment from "../components/CommentGroup.astro";
-import CommentHeading from "../components/CommentHeading.astro";
-import IncidentReport from "../components/reports/IncidentReport.astro";
-import AnchorTooltip from "../components/tooltip-types/AnchorTooltip.astro";
-import Blurred from "../components/typography/Blurred.astro";
-import Redacted from "../components/typography/Redacted.astro";
-import RedactedDate from "../components/typography/RedactedDate.astro";
-import { IIncidentReport } from "../scripts";
+import IncidentReport from "../../components/reports/IncidentReport.astro";
+import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import RedactedDate from "../../components/typography/RedactedDate.astro";
+import { IIncidentReport } from "../../scripts";
 const item: IIncidentReport = {
     objectNumber: "000",
     instance: "2"

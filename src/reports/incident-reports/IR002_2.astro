@@ -1,13 +1,13 @@
 ---
-import IncidentReport from "../components/reports/IncidentReport.astro";
-import Redacted from "../components/typography/Redacted.astro";
-import RedactedDate from "../components/typography/RedactedDate.astro";
-import Warning from "../components/Warning.astro";
-import { IIncidentReport } from "../scripts";
+import IncidentReport from "../../components/reports/IncidentReport.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import RedactedDate from "../../components/typography/RedactedDate.astro";
+import Warning from "../../components/Warning.astro";
+import { IIncidentReport } from "../../scripts";
 
 const item: IIncidentReport = {
     objectNumber: '002',
-    instance: '3 "Rated M For Macabre"'
+    instance: '2 "Rated M For Macabre"'
 };
 ---
 <IncidentReport item={item}>
@@ -19,12 +19,14 @@ const item: IIncidentReport = {
     <Fragment slot="object">002</Fragment>
     <Fragment slot="description">
         <Warning>WARNING: TURN THE TERMINAL OFF IMMEDIATELY</Warning>
+        Other mediums of communication are being corrupted within the area of <Redacted>xxxxxxx</Redacted> County,
+        including mailed letters, newspapers, cereal boxes, and certain words when spoken aloud.
+        EIK-Class status has been confirmed.
     </Fragment>
     <Fragment slot="witnessExplanation">
-        <Warning>WARNING: TURN THE TERMINAL OFF IMMEDIATELY</Warning>
+        N/A
     </Fragment>
     <Fragment slot="followup">
-        <Warning>WARNING: TURN THE TERMINAL OFF IMMEDIATELY</Warning>
-        <Warning>INFOHAZARD DETECTED, INFORMATION REDACTED</Warning>
+        Continued monitoring
     </Fragment>
 </IncidentReport>
