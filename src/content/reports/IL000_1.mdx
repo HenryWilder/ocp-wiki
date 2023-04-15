@@ -15,8 +15,9 @@ import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
 export const interviewer = { name:"Jr RSR", color:"#840" };
 export const subject = { name:"OCP-000", color:"#900" };
 export const item = {
-    objectNumber:frontmatter.object,
-    instance:frontmatter.instance
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
 };
 
 <InterviewLog item={item} slug={frontmatter.slug}>

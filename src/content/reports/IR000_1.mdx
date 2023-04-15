@@ -12,8 +12,9 @@ import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
 
 export const item = {
-    objectNumber:frontmatter.object,
-    instance:frontmatter.instance
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
 };
 
 <IncidentReport item={item} slug={frontmatter.slug}>

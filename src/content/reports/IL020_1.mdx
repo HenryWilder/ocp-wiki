@@ -12,11 +12,12 @@ import Comment from "../../components/CommentGroup.astro";
 import CommentHeading from "../../components/CommentHeading.astro";
 import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
 
-export const interviewer = {name: "Interviewer", color: "#840"};
-export const subject = {name: "Subject", color: "#900"};
+export const interviewer = { name:"Interviewer", color:"#840" };
+export const subject = { name:"Subject", color:"#900" };
 export const item = {
-    objectNumber:frontmatter.object,
-    instance:frontmatter.instance
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
 };
 
 <InterviewLog item={item} slug={frontmatter.slug}>

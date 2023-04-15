@@ -11,7 +11,8 @@ import AnchorTooltip from "../../components/tooltip-types/AnchorTooltip.astro";
 
 export const item = {
     objectNumber: frontmatter.object,
-    instance: frontmatter.instance
+    instance: frontmatter.instance,
+    label: frontmatter.label
 };
 
 <IncidentReport item={item} slug={frontmatter.slug}>
