@@ -75,14 +75,13 @@ switch (entry.data.category) {
     <div id="hrgroup">
       <h1>{entry.data.title}</h1>
 
-      {isOldVersion &&
-          <b style="font-size:smaller">NOTICE: You are reading an outdated version of this document</b>
-      }
-
       <span id="file-history">
         {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? `/objects/${v.slug}/` : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
       </span>
     </div>
+    {isOldVersion &&
+        <b style="font-size:smaller;color:var(--color-accent-light)">NOTICE: You are reading an outdated version of this document</b>
+    }
     <p>
       <b>{displayName}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)
     </p>
