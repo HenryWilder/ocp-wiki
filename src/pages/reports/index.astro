@@ -25,7 +25,7 @@ const entryGroups: CollectionEntry<'reports'>[][][] = types.map((t, i) => object
             <ul class="card-list">
             {e.map((f, j) =>
                 <section style="margin-block: 0.25em">
-                    <a><b>OCP-{objects[i][j]}</b></a>
+                    <a href={`/objects/${objects[i][j]}/`}><b>OCP-{objects[i][j]}</b></a>
                     <>{f.map((g) =>
                         <li>
                             <a href={`/reports/${g.slug}/`} target="_blank">{g.data.type.match(/[A-Z]/g).join('')} {g.data.object} {g.data.instance}</a>
