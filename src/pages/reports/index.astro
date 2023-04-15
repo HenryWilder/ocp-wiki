@@ -14,7 +14,7 @@ const types: string[] = unique(allReports, (e) => e.data.type).map((e) => e.data
 const objects: string[][] = types.map(t => unique(allReports.filter(e => e.data.type == t), (e) => e.data.object)).map((o) => o.map((e) => e.data.object));
 const entryGroups: CollectionEntry<'reports'>[][][] = types.map((t, i) => objects[i].map((o) => allReports.filter(e => e.data.type == t && e.data.object == o)));
 ---
-<Document title="Anomaly List" desc="Obscure, Classify, Preserve">
+<Document title="Report File List" desc={`Index for report docs (${types.map(t => t.toLowerCase()+'s').join(', ')})`} thumb="/thumbnail-info.png">
 	<article>
 		<Breadcrumbs/>
 		<div id="hrgroup">
