@@ -49,6 +49,10 @@
             border-radius: 1ch;
             padding: 0.5ch;
             box-shadow: 0 10px 20px 3px rgba(0,0,0,0.5);
+            .tooltip-bubble {
+                // Remove shadow from nested bubbles
+                box-shadow: none;
+            }
             color: var(--color-foreground);
             line-height: normal;
             cursor: default;
