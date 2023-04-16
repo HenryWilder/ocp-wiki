@@ -31,6 +31,7 @@ const authorObjectEntries = await getCollection('objects', o => entry.data.name 
                         -
                         {o.data.title}
                         ({o.data.category})
+                        {o.data.draft && <small style="color: red">DRAFT</small>}
                     </li>
             )}
         </ul>
