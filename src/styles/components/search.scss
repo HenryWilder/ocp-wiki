@@ -44,3 +44,33 @@
     background-color: white;
     border-radius: 999px;
 }
+
+#search-results {
+    li {
+        list-style: none;
+        
+        // Link
+        a {
+            display: block;
+            font-size: 1.25em;
+        }
+
+        // Path (green text)
+        a+span {
+            display:block;
+            color: green;
+        }
+
+        // Description
+        a+span+span {
+            display: block;
+            color: gray;
+        }
+            
+        // Debug
+        a+span+span+span {
+            display: block;
+            color: magenta;
+        }
+    }
+}

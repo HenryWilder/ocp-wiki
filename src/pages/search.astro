@@ -6,6 +6,7 @@ const origin = Astro.url.origin;
     <article>
         <p><strong>Showing results for: </strong><span id="query-text"><noscript>n/a</noscript></span></p>
         <div class="comment-name">Found <span id="result-count"><noscript>no</noscript></span> results in <span id="result-time"><noscript>n/a seconds</noscript></span>.</div>
+        <!-- Measured from the time collections are fetched to the moment results are found and ready to render -->
 
         <ul class="card-list" id="search-results">
             <noscript>Search cannot work if script is disabled.</noscript>
@@ -15,119 +16,156 @@ const origin = Astro.url.origin;
     <script>
         import type { CollectionEntry } from 'astro:content';
         import { getCollection } from 'astro:content';
-
-        const queryInit: string[] = location.search.substring(location.search.indexOf("=")+1).toLowerCase().split('+').map((e) => e.replaceAll('%22','"'));
-        const exactMatch: boolean = queryInit.includes('"');
-        const isDebug: boolean = queryInit[0] === 'debug';
-        const query: string[] = exactMatch ? [] : queryInit.filter(e => e !== 'debug');
-        const queryLiteral: string = query.join(' ').replaceAll('"',''); // Higher priority than individual words
-        document.querySelector("#query-text")!.outerHTML = `${query.join(' ')}`;
-
-        interface Result {
-            name: string;
-            path: string;
-            description: string;
-            relevance: number;
-        }
-        let results: Result[] = [];
-
-        const timeStart: number = performance.now();
-
+    
         const objectCollection:    CollectionEntry<'objects'>[]             = await getCollection('objects');
         const authorCollection:    CollectionEntry<'authors'>[]             = await getCollection('authors');
         const classCollection:     CollectionEntry<'containment-classes'>[] = await getCollection('containment-classes');
         const siteCollection:      CollectionEntry<'containment-sites'>[]   = await getCollection('containment-sites');
         const taskForceCollection: CollectionEntry<'task-forces'>[]         = await getCollection('task-forces');
         const reportCollection:    CollectionEntry<'reports'>[]             = await getCollection('reports');
-
+    
+        export interface Searchable {
+            name: string;
+            path: string;
+            description: string;
+            keywords: string[];
+            multiplier: number;
+        }
+    
+        let searchDataRaw: Searchable[] = [];
+    
+        // Object results
+        searchDataRaw = searchDataRaw
+            .concat(objectCollection
+                .map((e) => { return {
+                    name: `OCP-${e.data.name}: ${e.data.title} (${e.data.category}) [V${e.data.version}]`,
+                    path: `/objects/${e.slug}/`,
+                    description: e.data.description,
+                    keywords: [...e.data.tags, e.data.description, e.data.title, 'ocp', `ocp-${e.data.name}`, e.data.name, e.data.category, e.data.author],
+                    multiplier: 1 };
+                })
+            );
+    
+        // Author results
+        searchDataRaw = searchDataRaw
+            .concat(authorCollection
+                .map((e) => { return {
+                    name: e.data.name,
+                    path: `/about/authors/${e.slug}/`,
+                    description: e.data.description,
+                    keywords: [e.data.name, e.data.description],
+                    multiplier: 3 };
+                })
+            );
+    
+        // Class results
+        searchDataRaw = searchDataRaw
+            .concat(classCollection
+                .map((e) => { return {
+                    name: e.data.name,
+                    path: `/info/containment-classes/${e.slug}/`,
+                    description: e.data.blurb,
+                    keywords: [e.data.name, e.data.blurb],
+                    multiplier: 3 };
+                })
+            );
+    
+        // Site results
+        searchDataRaw = searchDataRaw
+            .concat(siteCollection
+                .map((e) => { return {
+                    name: e.data.name,
+                    path: `/info/containment-sites/${e.slug}/`,
+                    description: e.data.blurb,
+                    keywords: ['site', e.data.name, e.data.blurb],
+                    multiplier: 3 };
+                })
+            );
+    
+        // Task force results
+        searchDataRaw = searchDataRaw
+            .concat(taskForceCollection
+                .map((e) => { return {
+                    name: `MTF-${e.data.name}`,
+                    path: `/info/task-forces/${e.slug}/`,
+                    description: e.data.blurb,
+                    keywords: ['task force', 'mtf', e.data.name, e.data.blurb],
+                    multiplier: 3 };
+                })
+            );
+    
+        // Report results
+        searchDataRaw = searchDataRaw
+            .concat(reportCollection
+                .map((e) => { return {
+                    name: `${e.data.type} ${e.data.object} ${e.data.instance}`,
+                    path: `/info/task-forces/${e.slug}/`,
+                    description: `${e.data.type} #${e.data.instance} for OCP-${e.data.object} `,
+                    keywords: ['task force', 'mtf', `${e.data.type} ${e.data.object} ${e.data.instance}`],
+                    multiplier: 1 };
+                })
+            );
+            
+        const searchData: Searchable[] = searchDataRaw;
+    
+        const queryInit: string[] = location.search.substring(location.search.indexOf("=")+1).toLowerCase().split('+').map((e) => e.replaceAll('%22','"'));
+        const exactMatch: boolean = queryInit.includes('"');
+        const isDebug: boolean = queryInit[0] === 'debug';
+        const query: string[] = exactMatch ? [] : queryInit.filter(e => e !== 'debug');
+        const queryLiteral: string = query.join(' ').replaceAll('"',''); // Higher priority than individual words
+        document.querySelector("#query-text")!.outerHTML = `${query.join(' ')}`;
+    
+        interface Result {
+            name: string;
+            path: string;
+            description: string;
+            relevance: number;
+        }
+    
         const countReferences = (src: string[]): number =>
             exactMatch
-            ?   src .map(keyword => keyword.toLowerCase())
-                    .filter((kw: string) => kw.includes(queryLiteral))
-                    .length
-
-            :   src .map(keyword => keyword.toLowerCase())
-                    .filter((kw: string) => kw.includes(queryLiteral))
-                    .length * 3
-                +
-                query.map((q) =>
-                        src .map(keyword => keyword.toLowerCase())
-                            .filter((kw: string) => kw.includes(q))
-                            .length)
-                    .reduce((p, c) => p + c, 0);
-
-        // Object results
-        results = results.concat(objectCollection
-            .map((e) => { return {
-                name: `OCP-${e.data.name}: ${e.data.title} (${e.data.category}) [V${e.data.version}]`,
-                path: `/objects/${e.slug}/`,
-                description: e.data.description,
-                relevance: countReferences([...e.data.tags, e.data.description, e.data.title, e.data.name, e.data.category, e.data.author]) };
-            }));
-
-        // Author results
-        results = results.concat(authorCollection
-            .map((e) => { return {
-                name: `${e.data.name}`,
-                path: `/about/authors/${e.slug}/`,
-                description: e.data.description,
-                relevance: countReferences([e.data.name])*3 };
-            }));
-
-        // Class results
-        results = results.concat(classCollection
-            .map((e) => { return {
-                name: `${e.data.name}`,
-                path: `/info/containment-classes/${e.slug}/`,
-                description: e.data.blurb,
-                relevance: countReferences([e.data.name, e.data.blurb])*3 };
-            }));
-
-        // Site results
-        results = results.concat(siteCollection
-            .map((e) => { return {
-                name: `${e.data.name}`,
-                path: `/info/containment-sites/${e.slug}/`,
-                description: e.data.blurb,
-                relevance: countReferences(['site', e.data.name, e.data.blurb])*3 };
-            }));
-
-        // Task force results
-        results = results.concat(taskForceCollection
-            .map((e) => { return {
-                name: `MTF-${e.data.name}`,
-                path: `/info/task-forces/${e.slug}/`,
-                description: e.data.blurb,
-                relevance: countReferences(['task force', 'mtf', e.data.name, e.data.blurb])*3 };
-            }));
-
-        // Report results
-        results = results.concat(reportCollection
-            .map((e) => { return {
-                name: `${e.data.type} ${e.data.object} ${e.data.instance}`,
-                path: `/info/task-forces/${e.slug}/`,
-                description: `${e.data.type} #${e.data.instance} for OCP-${e.data.object} `,
-                relevance: countReferences(['task force', 'mtf', `${e.data.type} ${e.data.object} ${e.data.instance}`]) };
-            }));
-
-        // Final results
-        results = results
+                ?   src .map(keyword => keyword.toLowerCase())
+                        .filter((kw: string) => kw.includes(queryLiteral))
+                        .length
+    
+                :   src .map(keyword => keyword.toLowerCase())
+                        .filter((kw: string) => kw.includes(queryLiteral))
+                        .length * 3
+                    +
+                    query.map((q) =>
+                            src .map(keyword => keyword.toLowerCase())
+                                .filter((kw: string) => kw.includes(q))
+                                .length)
+                        .reduce((p, c) => p + c, 0);
+    
+        const timeStart: number = performance.now();
+    
+        const results: Result[] = searchData.map(
+            (e) => {
+                const relevance: number = countReferences(e.keywords) * e.multiplier;
+                return {
+                    name: e.name,
+                    path: e.path,
+                    description: e.description,
+                    relevance: relevance
+                };
+            })
             .filter((e) => e.relevance > 0)
             .sort((a, b) => a.name.localeCompare(b.name))
             .sort((a, b) => b.relevance - a.relevance);
-
+    
         const timeFinish: number = performance.now();
-
+    
         // Render results
         document.querySelector('#search-results').innerHTML = results.map((r) =>
-            `<li style="list-style: none;">
-                <a href="${r.path}" style="font-size:1.25em;">${r.name}</a><br/>
-                <span style="color:green">${origin}${r.path}</span><br/>
-                <span style="color:gray">${r.description}</span>
-                ${isDebug ? `<br/><span>[relevance: ${r.relevance}]</span>` : ''}
+            `<li>
+                <a href="${r.path}">${r.name}</a>
+                <span>${origin}${r.path}</span>
+                <span>${r.description}</span>
+                ${isDebug ? `<span>[relevance: ${r.relevance}]</span>` : ''}
             </li>`
         ).join('<br/>\n');
-
+    
         const searchTime: number = timeFinish - timeStart;
         const timeSlot = document.querySelector("#result-time");
         if (searchTime < 1000)
@@ -135,7 +173,7 @@ const origin = Astro.url.origin;
         else
             timeSlot!.outerHTML = (searchTime / 1000).toFixed(2) + " seconds";
         document.querySelector("#result-count")!.outerHTML = results.length.toString();
-
+    
         const searchbar = document.querySelector('#searchbar') as HTMLInputElement;
         searchbar.value = queryInit.join(' ');
         searchbar.focus();
