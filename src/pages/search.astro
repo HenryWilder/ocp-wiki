@@ -17,7 +17,7 @@ const origin = Astro.url.origin;
         import type { CollectionEntry } from 'astro:content';
         import { getCollection } from 'astro:content';
     
-        const objectCollection:    CollectionEntry<'objects'>[]             = await getCollection('objects');
+        const objectCollection:    CollectionEntry<'objects'>[]             = await getCollection('objects', (o) => o.data.visibility != 'hidden');
         const authorCollection:    CollectionEntry<'authors'>[]             = await getCollection('authors');
         const classCollection:     CollectionEntry<'containment-classes'>[] = await getCollection('containment-classes');
         const siteCollection:      CollectionEntry<'containment-sites'>[]   = await getCollection('containment-sites');
