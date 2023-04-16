@@ -85,6 +85,9 @@ body {
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: flex-start;
+                @media (max-width: $threshold-max-width) {
+                    justify-content: center;
+                }
                 align-items: center;
         
                 overflow-x: hidden;
@@ -112,6 +115,10 @@ body {
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: flex-start;
+                @media (max-width: $threshold-max-width) {
+                    width: fit-content;
+                    justify-content: center;
+                }
                 align-items: center;
 
                 li a, li button, .dropbtn, #searchbar {
@@ -275,5 +282,11 @@ body {
                 }
             }
         }
+    }
+}
+
+.hide-on-skinny {
+    @media (max-width: $threshold-max-width) {
+        display: none;
     }
 }

@@ -76,7 +76,7 @@ switch (entry.data.category) {
       <h1>{entry.data.title}</h1>
 
       <span id="file-history">
-        {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? `/objects/${v.slug}/` : ''}>V{v.data.version}{v.slug == latestVersionSlug ? ' (latest)' : ''}</a>)}
+        {sortedVersions.length > 1 && sortedVersions.map(v => <a href={v.slug!=entry.slug ? `/objects/${v.slug}/` : ''}>V{v.data.version}{v.slug == latestVersionSlug ? <span class="hide-on-skinny"> (latest)</span> : ''}</a>)}
       </span>
     </div>
     {isOldVersion &&

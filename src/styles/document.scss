@@ -151,7 +151,8 @@ article {
     
     /* Hide outline and comments if the screen isn't wide enough to display them */
     @media (max-width: ($aside-size * 2 + $aside-margin-size * 4 + layout.$horizontal-padding * 2 + layout.$article-width)) {
-        flex-grow: 1;
+        // flex-grow: 1;
+        display: none;
     }
 }
 @media (max-width: 8in) {
