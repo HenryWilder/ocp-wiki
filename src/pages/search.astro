@@ -1,19 +1,76 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
 import Document from "../layouts/Document.astro";
+const origin = Astro.url.origin;
 ---
 <Document title="Search" desc="[Under construction]">
     <article>
         <p><strong>Showing results for: </strong><span id="query-text"><noscript>n/a</noscript></span></p>
         <div class="comment-name">Found <span id="result-count"><noscript>no</noscript></span> results in <span id="result-time"><noscript>n/a seconds</noscript></span>.</div>
 
-        <ul class="card-list" id="search-results"><noscript>Search cannot work if script is disabled.</noscript></ul>
-
-        UNDER CONSTRUCTION
+        <ul class="card-list" id="search-results">
+            <noscript>Search cannot work if script is disabled.</noscript>
+        </ul>
     </article>
 
     <script>
+        import type { CollectionEntry } from 'astro:content';
+        import { getCollection } from 'astro:content';
+
+        const timeStart: number = performance.now();
+
+        const objectCollection: CollectionEntry<'objects'>[] = await getCollection('objects');
+
+        const query = location.search.substring(location.search.indexOf("=")+1).toLowerCase();
+        document.querySelector("#query-text")!.outerHTML = `&quot;${query}&quot;`;
+
+        interface Result {
+            name: string;
+            path: string;
+            description: string;
+            relevance: number;
+        }
+        let results: Result[] = [];
+
+        const countReferences = (src: string[]): number => {
+            src = src.map(keyword => keyword.toLowerCase());
+            const rel = src.filter((kw: string) => kw.includes(query)).length;
+            return rel;
+        }
+
+        // Object results
+        const objectResults = objectCollection
+            .map((e) => { return {
+                name: `OCP-${e.data.name}: ${e.data.title} (${e.data.category}) [V${e.data.version}]`,
+                path: `/objects/${e.slug}/`,
+                description: e.data.description,
+                relevance: countReferences([...e.data.tags, e.data.description, e.data.title, e.data.name, e.data.category, e.data.author]) };
+            })
+            .filter((e) => e.relevance > 0)
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .sort((a, b) => b.relevance - a.relevance);
+        
+        results = results.concat(objectResults);
+
+        document.querySelector('#search-results').innerHTML = results.map((r) =>
+            `<li style="list-style: none;">
+                <a href="${r.path}" style="font-size:1.25em;">${r.name}</a><br/>
+                <span style="color:green">${origin}${r.path}</span><br/>
+                <span style="color:gray">${r.description}</span>
+                <br/><span>[Debug relevance: ${r.relevance}]</span>
+            </li>`
+        ).join('<br/>\n');
+
+        const timeFinish: number = performance.now();
+        const searchTime: number = timeFinish - timeStart;
+        const timeSlot = document.querySelector("#result-time");
+        if (searchTime < 1000)
+            timeSlot!.outerHTML = searchTime.toFixed(2) + " milliseconds";
+        else
+            timeSlot!.outerHTML = (searchTime / 1000).toFixed(2) + " seconds";
+        document.querySelector("#result-count")!.outerHTML = results.length.toString();
+    </script>
+
+    <!-- <script>
         import type { PageLink } from "../scripts/search";
         import { queryPages } from "../scripts/search";
         const query = location.search.substring(location.search.indexOf("=")+1);
@@ -32,5 +89,5 @@ import Document from "../layouts/Document.astro";
             timeSlot!.outerHTML = (searchTime / 1000).toFixed(2) + " seconds";
 
         document.querySelector("#search-results")!.innerHTML = results.map((e) => `<a href="${e.path}">${e.name}</a> (${e.type})`).join("\n");
-    </script>
+    </script> -->
 </Document>
