@@ -37,6 +37,7 @@ import { remark } from 'remark';
 import remarkMdx from 'remark-mdx';
 import AnchorTooltip from '../../components/tooltip-types/AnchorTooltip.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BannerRecolor from '../../components/BannerRecolor.astro';
 
 const ast = remark().use(remarkMdx).parse(entry.body);
 const headings = ast.children
@@ -53,7 +54,8 @@ switch (entry.data.category) {
 }
 ---
 <Document title={entry.data.title} desc={entry.data.description} addKeywords={entry.data.tags} thumb={typeThumb}>
-  <aside id="left">
+    <BannerRecolor containmentClass={entry.data.category}/>
+    <aside id="left">
     <section id="outline">
       <h2>{entry.data.title}</h2>
       <ol>

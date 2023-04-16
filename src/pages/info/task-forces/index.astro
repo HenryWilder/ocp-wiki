@@ -1,4 +1,5 @@
 ---
+import BannerRecolor from "../../../components/BannerRecolor.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Document from "../../../layouts/Document.astro";
 import { CollectionEntry, getCollection } from 'astro:content';
@@ -6,6 +7,7 @@ import { CollectionEntry, getCollection } from 'astro:content';
 const forceEntries: CollectionEntry<'task-forces'>[] = await getCollection('task-forces');
 ---
 <Document title="Info" desc="Information about the federation" addKeywords={["task force","mtf"]} thumb="/thumbnail-info.png">
+    <BannerRecolor containmentClass="Info"/>
     <article>
         <Breadcrumbs/>
         <div id="hrgroup">

@@ -2,6 +2,7 @@
 import { CollectionEntry, getCollection } from 'astro:content';
 import Document from '../../../layouts/Document.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BannerRecolor from '../../../components/BannerRecolor.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -16,7 +17,8 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 <Document title={entry.data.name} desc={entry.data.blurb} thumb="/thumbnail-info.png">
-  <article>
+    <BannerRecolor containmentClass="Info"/>
+    <article>
     <Breadcrumbs/>
     <div id="hrgroup">
       <h1>{entry.data.name}</h1>

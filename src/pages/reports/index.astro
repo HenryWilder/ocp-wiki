@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Document from '../../layouts/Document.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BannerRecolor from '../../components/BannerRecolor.astro';
 
 const allReports: CollectionEntry<'reports'>[] = await getCollection('reports');
 
@@ -15,6 +16,7 @@ const objects: string[][] = types.map(t => unique(allReports.filter(e => e.data.
 const entryGroups: CollectionEntry<'reports'>[][][] = types.map((t, i) => objects[i].map((o) => allReports.filter(e => e.data.type == t && e.data.object == o)));
 ---
 <Document title="Report File List" desc={`Index for report docs (${types.map(t => t.toLowerCase()+'s').join(', ')})`} thumb="/thumbnail-info.png">
+    <BannerRecolor containmentClass="Info"/>
 	<article>
 		<Breadcrumbs/>
 		<div id="hrgroup">

@@ -21,7 +21,7 @@ const latestObjectPages: CollectionEntry<'objects'>[] = allObjectPages.filter((i
 				<li>
 					<a href={`/objects/${item.slug}/`}>{item.data.name}</a><Fragment set:html={'&nbsp;'.repeat(4 - item.data.name.length)}/>-
 					<AnchorTooltip href={`ocp/${item.data.name}`}>{item.data.title}</AnchorTooltip>
-					({item.data.category})
+					(<span class:list={[item.data.category.toLowerCase()]}>{item.data.category}</span>)
 				</li>
 			)}
 		</ul>

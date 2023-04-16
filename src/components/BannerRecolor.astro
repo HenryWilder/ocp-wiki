@@ -1,0 +1,40 @@
+---
+interface Props {
+    containmentClass: string;
+}
+const { containmentClass } = Astro.props;
+
+let lightBannerColor: string|undefined = undefined;
+let darkBannerColor: string|undefined = undefined;
+switch (containmentClass) {
+    case 'Yaaqov':
+        lightBannerColor = '#6b4c99';
+        darkBannerColor  = '#5a4080';
+        break;
+    case 'Esau':
+        lightBannerColor = '#990099';
+        darkBannerColor  = '#7f0080';
+        break;
+    case 'Catastrophic':
+        // Swap these if they don't look right
+        lightBannerColor = '#5f0e0e';
+        darkBannerColor  = '#3f0808';
+        break;
+    case 'Apollyon':
+        // Swap these if they don't look right
+        lightBannerColor = '#af2a27';
+        darkBannerColor  = '#b42f2f';
+        break;
+    case 'Info':
+        lightBannerColor = '#212121';
+        darkBannerColor  = '#1d1d1d';
+        break;
+}
+---
+{ lightBannerColor !== undefined && darkBannerColor !== undefined &&
+    <style set:text={`
+        :root {
+            --color-banner-light: ${lightBannerColor};
+            --color-banner-dark: ${darkBannerColor}};
+    `}></style>
+}
