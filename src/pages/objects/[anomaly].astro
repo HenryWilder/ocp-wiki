@@ -87,6 +87,7 @@ switch (entry.data.category) {
     </p>
 
     <Content/>
+    {entry.data.draft && <div class="stamp-of-incompletion">DOCUMENT IS INCOMPLETE</div>}
 
     <footer style="text-align: center;margin-block:2em">
       { prevEntry &&
