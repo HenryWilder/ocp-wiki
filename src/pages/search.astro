@@ -120,6 +120,7 @@ const origin = Astro.url.origin;
             path: string;
             description: string;
             relevance: number;
+            multiplier: number; // For debugging
         }
     
         const countReferences = (src: string[]): number =>
@@ -147,7 +148,8 @@ const origin = Astro.url.origin;
                     name: e.name,
                     path: e.path,
                     description: e.description,
-                    relevance: relevance
+                    relevance: relevance,
+                    multiplier: e.multiplier
                 };
             })
             .filter((e) => e.relevance > 0)
@@ -162,7 +164,7 @@ const origin = Astro.url.origin;
                 <a href="${r.path}">${r.name}</a>
                 <span>${origin}${r.path}</span>
                 <span>${r.description}</span>
-                ${isDebug ? `<span>[relevance: ${r.relevance}]</span>` : ''}
+                ${isDebug ? `<span><b>${r.relevance / r.multiplier}</b><sub>(matches)</sub> &bull; <b>${r.multiplier}</b><sub>(multiplier)</sub> = <b>${r.relevance}</b><sub>(relevance)</sub></span>` : ''}
             </li>`
         ).join('<br/>\n');
     
