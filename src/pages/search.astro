@@ -79,7 +79,7 @@ const origin = Astro.url.origin;
                     path: `/info/containment-classes/${e.slug}/`,
                     description: e.data.blurb,
                     iconPath: iconFromCategory(e.data.name),
-                    keywords: [e.data.name, e.data.blurb],
+                    keywords: ['classification', 'category', e.data.name, e.data.blurb],
                     multiplier: 3 };
                 })
             );
