@@ -112,21 +112,44 @@
 
         &:hover {
             box-shadow: 0 0 5px 2px rgba(127,127,127,0.5);
-            transition: box-shadow 0.5s linear, padding-block 0.5s ease-in-out;
+
+            transition: box-shadow 0.25s, padding-block 0.5s ease-in-out;
 
             &.has-icon {
-                padding-top: 2ch;
-                padding-bottom: 100px;
+                box-shadow: 2px 2px 10px 2px inset black;
 
-                .result-text {
-                    transition: 0.5s linear;
+                transition: box-shadow 0.5s ease-in-out, padding-block 0.5s ease-in-out;
+
+                padding-top: 2ch;
+                padding-bottom: 300px;
+
+                img, .result-text {
+                    transition: 0.5s;
                     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
+                }
+
+                animation: bob 4s ease-in-out infinite alternate;
+            }
+
+            @keyframes bob {
+                0% {
+                    background-position-y: 50%;
+                }
+                50% {
+                    background-position-y: 49%;
+                }
+                100% {
+                    background-position-y: 51%;
                 }
             }
 
             a {
                 text-decoration: solid underline;
             }
+        }
+
+        &.has-icon {
+            transition: box-shadow 0.5s ease-in-out, padding-block 0.5s ease-in-out;
         }
     }
 }
