@@ -6,7 +6,7 @@ import { CollectionEntry, getCollection } from 'astro:content';
 
 const siteEntries: CollectionEntry<'containment-sites'>[] = await getCollection('containment-sites');
 ---
-<Document title="Info" desc="Information about the federation" addKeywords={["sites","containment sites"]} thumb="/thumbnail-info.png">
+<Document title="Federation Sites" desc="Feration-controlled containment sites" addKeywords={["sites","containment sites"]} thumb="/thumbnail-info.png">
     <BannerRecolor containmentClass="Info"/>
     <article>
         <Breadcrumbs/>

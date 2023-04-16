@@ -6,7 +6,7 @@ import { CollectionEntry, getCollection } from 'astro:content';
 
 const forceEntries: CollectionEntry<'task-forces'>[] = await getCollection('task-forces');
 ---
-<Document title="Info" desc="Information about the federation" addKeywords={["task force","mtf"]} thumb="/thumbnail-info.png">
+<Document title="Task Forces" desc="Mobile task forces of the OCP Federation" addKeywords={["task force","mtf"]} thumb="/thumbnail-info.png">
     <BannerRecolor containmentClass="Info"/>
     <article>
         <Breadcrumbs/>

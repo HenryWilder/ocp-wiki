@@ -10,7 +10,7 @@ const allObjectPages: CollectionEntry<'objects'>[] = await getCollection('object
 // Consider replacing the "newest version" logic with the visibility, so that newer versions can be hidden
 const latestObjectPages: CollectionEntry<'objects'>[] = allObjectPages.filter((item, index, self) => self.findIndex(e => e.data.name === item.data.name) === index && item.data.visibility != 'hidden');
 ---
-<Document title="Anomaly List" desc="Obscure, Classify, Preserve">
+<Document title="Anomaly List" desc="Index of Federation-held anomalous objects">
 	<article>
 		<Breadcrumbs/>
 		<div id="hrgroup">
