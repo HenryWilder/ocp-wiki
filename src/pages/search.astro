@@ -67,7 +67,7 @@ const origin = Astro.url.origin;
                     description: e.data.description,
                     iconPath: e.data.icon,
                     keywords: ['authors',e.data.name, e.data.description],
-                    multiplier: 3 };
+                    multiplier: 4 };
                 })
             );
     
@@ -103,7 +103,7 @@ const origin = Astro.url.origin;
                     name: `MTF-${e.data.name}`,
                     path: `/info/task-forces/${e.slug}/`,
                     description: e.data.blurb,
-                    keywords: ['task force', 'mtf', e.data.name, e.data.blurb],
+                    keywords: ['task force', 'mtf', e.data.name, e.slug, e.data.blurb],
                     multiplier: 3 };
                 })
             );
