@@ -99,7 +99,8 @@
             "c": { "name":"C Class",  "description":"Standard citizenship" },
             "d": { "name":"D Class",  "description":"Criminals and prisoners" },
             "e": { "name":"E Class",  "description":"Individuals who have caused great pain or damage" },
-            "e+":{ "name":"E+ Class", "description":"E class citizens who are used to fulfill a specific role that a higher ranking citizen can/should not" }
+            "e+":{ "name":"E+ Class", "description":"EF class citizens who are used to fulfill a specific role that a higher ranking citizen can/should not" },
+            "f": { "name":"F Class",  "description":"Individuals who actively made Z5-1's job harder and people's lives worse" }
         }
     },
     "staff":{
