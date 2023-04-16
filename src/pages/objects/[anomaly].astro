@@ -82,6 +82,7 @@ switch (entry.data.category) {
     {isOldVersion &&
         <b style="font-size:smaller;color:var(--color-accent-light)">NOTICE: You are reading an outdated version of this document</b>
     }
+    {entry.data.draft && <div class="stamp-of-incompletion">OOC: THIS DOCUMENT IS A DRAFT.<br/>CONTENTS ARE LIKELY TO CHANGE.</div>}
     <p>
       <b>{displayName}:</b> {entry.data.title} (<AnchorTooltip href={"class/"+entry.data.category.toLowerCase()}>{entry.data.category}</AnchorTooltip>)
     </p>
