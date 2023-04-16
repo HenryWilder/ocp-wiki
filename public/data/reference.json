@@ -34,18 +34,35 @@
             "017":         { "name":"OCP-017",           "link":"/objects/017/",             "description":"Strange Charm", "notes":"A member of the Z5 Council" },
             "018":         { "name":"OCP-018",           "link":"/objects/018/",             "description":"Chicken Pylon" },
             "019":         { "name":"OCP-019",           "link":"/objects/019/",             "description":"Potato?" },
-      
+            "020":         { "name":"OCP-020",           "link":"/objects/020/",             "description":"Father's Love", "notes":"Interviewed by Z5-2" },
+            "021":         { "name":"OCP-021",           "link":"/objects/021/",             "description":"Murder Hornets" },
+            "022":         { "name":"OCP-022",           "link":"/objects/022/",             "description":"Weevils" },
+            "023":         { "name":"OCP-023",           "link":"/objects/023/",             "description":"Sky Bamboo" },
+            "024":         { "name":"OCP-024",           "link":"/objects/024/",             "description":"Wall Consuming" },
+            "025":         { "name":"OCP-025",           "link":"/objects/025/",             "description":"To Dust You Return" },
+            "026":         { "name":"OCP-026",           "link":"/objects/026/",             "description":"Guest Room" },
+
+            "029":         { "name":"OCP-029",           "link":"/objects/029/",             "description":"Coughing Disease" },
+
+            "043":         { "name":"OCP-043",           "link":"/objects/043/",             "description":"Brand-Wagon", "notes":"This one is covered in ads for some reason..." },
+
             "051":         { "name":"OCP-051",           "link":"/objects/051/",             "description":"Old Blind Dogs" },
             "051-1":       { "name":"OCP-051-1",         "link":"/objects/051/",             "description":"Old Blind Dogs - Alpha (Red tag)" },
             "051-2":       { "name":"OCP-051-2",         "link":"/objects/051/",             "description":"Old Blind Dogs - Beta (Blue tag)" },
             "051-3":       { "name":"OCP-051-3",         "link":"/objects/051/",             "description":"Old Blind Dogs - (Green tag)", "notes":"Offspring of alpha and beta" },
             "051-Oslash1": { "name":"OCP-051-&Oslash;1", "link":"/objects/051/",             "description":"Old Blind Dogs - &Oslash;1", "notes":"A bipedal instance of 051 possessing an altered form of OCP-350-2 (quantum slime blood)" },
             "051-Oslash2": { "name":"OCP-051-&Oslash;2", "link":"/objects/051/",             "description":"Old Blind Dogs - &Oslash;2", "notes":"An altered form of OCP-350-2 (quantum slime blood) possessed by OCP-051-&Oslash;1" },
+            
+            "073":         { "name":"OCP-073",           "link":"/objects/073/",             "description":"Wrong Water Cooler" },
+
+            "090":         { "name":"OCP-090",           "link":"/objects/090/",             "description":"Anomalous Stars", "notes":"A disinformation campaign is ongoing to convince the public that black holes and neutron stars are somehow perfectly ordinary and natural." },
    
             "350":         { "name":"OCP-350",           "link":"/objects/350/"          ,   "description":"Quantum Slime" },
             "350-1":       { "name":"OCP-350-1",         "link":"/objects/051/#ocp-350-1",   "description":"Amity" },
             "350-2":       { "name":"OCP-350-2",         "link":"/objects/051/#ocp-350-2",   "description":"Bloodgoop" },
-            "350-3":       { "name":"OCP-350-3",         "link":"/objects/051/#ocp-350-3",   "description":"Bloodgoop Nodes" }
+            "350-3":       { "name":"OCP-350-3",         "link":"/objects/051/#ocp-350-3",   "description":"Bloodgoop Nodes" },
+
+            "351":         { "name":"OCP-351",           "link":"/objects/351/",             "description":"Anomalous Stars" }
         }
     },
     "mtf":{
