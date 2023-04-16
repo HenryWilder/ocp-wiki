@@ -14,7 +14,7 @@ const classEntries: CollectionEntry<'containment-classes'>[] = await getCollecti
         {classEntries.sort((a,b) => a.data.order - b.data.order).map(entry =>
             <a href={`/info/containment-classes/${entry.slug}/`}>
                 <section class="card">
-                    <h2>{entry.data.name}</h2>
+                    <h2><span class={entry.data.name.toLowerCase()}>{entry.data.name}</span></h2>
                     <b>{entry.data.blurb}</b>
                 </section>
             </a>

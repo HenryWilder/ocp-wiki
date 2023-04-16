@@ -23,8 +23,10 @@ let category = 'unknown';
 if (exists) {
     category = tooltipInfoMap[jsonPath[0]].category;
 }
+
+const additionalClasses: string[] = (jsonPath[0] === 'class') ? [jsonPath[1]] : [];
 ---
-{exists ? <span class='tooltip'><span class='tooltip-text'><slot/></span><span class="tooltip-content" aria-label="tooltip">
+{exists ? <span class='tooltip'><span class:list={['tooltip-text',...additionalClasses]}><slot/></span><span class="tooltip-content" aria-label="tooltip">
             <span class="tooltip-bubble">
                 <span class="comment-name">{category}</span>
                 <span class="tooltip-name" set:html={src.name}></span>
