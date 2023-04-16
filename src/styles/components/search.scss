@@ -46,31 +46,72 @@
 }
 
 #search-results {
+    padding: 0.5em;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0;
     li {
         list-style: none;
-        
-        // Link
-        a {
-            display: block;
-            font-size: 1.25em;
+        padding: 0.5em;
+        border-radius: 0.75em;
+        transition: 0;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        gap: 2ch;
+
+        img, .lack-of-image {
+            $result-icon-pad: 4px;
+            $result-icon-size: 24px;
+            width: ($result-icon-size + $result-icon-pad * 2);
+            height: ($result-icon-size + $result-icon-pad * 2);
+            padding: $result-icon-pad;
         }
 
-        // Path (green text)
-        a+span {
-            display:block;
-            color: green;
+        img {
+            object-fit: cover;
+            border-radius: 999px;
+            background-color: gray;
         }
 
-        // Description
-        a+span+span {
-            display: block;
-            color: gray;
+        .result-text {
+
+            // Link
+            a {
+                color: var(--color-accent);
+                display: block;
+                font-size: 1.25em;
+            }
+
+            // Path (green text)
+            a+span {
+                display:block;
+                color: green;
+                font-size: smaller;
+            }
+
+            // Description
+            a+span+span {
+                display: block;
+                color: gray;
+            }
+                
+            // Debug
+            a+span+span+span {
+                display: block;
+                color: magenta;
+            }
         }
-            
-        // Debug
-        a+span+span+span {
-            display: block;
-            color: magenta;
+
+        &:hover {
+            background-color: var(--color-background);
+            box-shadow: 0 0 5px 2px rgba(127,127,127,0.5);
+            transition: 0.25s;
+
+            a {
+                text-decoration: solid underline;
+            }
         }
     }
 }
