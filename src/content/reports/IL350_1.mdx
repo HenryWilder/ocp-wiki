@@ -1,0 +1,22 @@
+---
+type: Interview Log
+object: '350'
+instance: '1'
+slug: interview-log/350/1
+---
+import InterviewLog from "../../components/reports/InterviewLog.astro";
+import InterviewSpeakerless from "../../components/reports/InterviewSpeakerless.astro";
+import InterviewSpokenLine from "../../components/reports/InterviewSpokenLine.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import Comment from "../../components/CommentGroup.astro";
+import CommentHeading from "../../components/CommentHeading.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
+
+export const interviewer = { name:"Interviewer", color:"#840" };
+export const subject = { name:"Subject", color:"#900" };
+export const item = {
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
+};

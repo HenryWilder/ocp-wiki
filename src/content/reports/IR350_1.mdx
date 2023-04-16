@@ -1,0 +1,18 @@
+---
+type: Incident Report
+object: '350'
+instance: '1'
+label: "Dust to Dust"
+slug: incident-report/350/1
+---
+import IncidentReport from "../../components/reports/IncidentReport.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import RedactedDate from "../../components/typography/RedactedDate.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {a: Tooltip};
+
+export const item = {
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
+};
