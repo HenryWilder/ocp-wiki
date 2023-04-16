@@ -1,0 +1,24 @@
+---
+interface Props {
+    mediaSrc: string;
+    sponsor: string;
+    href: string;
+    width?: string;
+    height?: string;
+    isVideo?: boolean;
+}
+const { mediaSrc, sponsor, href, width = "fit-content", height = "fit-content", isVideo = false } = Astro.props
+---
+<!-- Not an actual ad lmao -->
+<ins class="adsbyhenrywilder" style="text-decoration: none;" title={`Advertisement sponsored by ${sponsor}`}>
+    <a class="advert-container" href={href}>
+        <div class="advert-caption">Ad</div>
+        <div style="position:relative">
+            {isVideo
+                ? <iframe class="advert" src={mediaSrc} title={`Advertisement sponsored by ${sponsor}`} allow="encrypted-media" width={width} height={height}/>
+                : <img class="advert" style={`width: ${width}; max-width:100%; height: ${height}; pointer-events: none;`} src={mediaSrc}/>
+            }
+            <span style="position: absolute;left:0.5ch;bottom:0.35rem;color:gray;font-style: italic;font-size:smaller">Sponsored by {sponsor}</span>
+        </div>
+    </a>
+</ins>

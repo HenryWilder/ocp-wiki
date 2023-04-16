@@ -15,6 +15,10 @@
         "pfp": "/user-icons/suit-guy.jpg",
         "username": "Sr RSR <span class='redacted'>xxxxxxxx</span>"
     },
+    "headRsrBlank": {
+        "pfp": "/user-icons/suit-guy.jpg",
+        "username": "Head RSR <span class='redacted'>xxxxxxxxx</span>"
+    },
     "z5_1": {
         "pfp": "/user-icons/z5-3.jpg",
         "username": "Z5-1"
