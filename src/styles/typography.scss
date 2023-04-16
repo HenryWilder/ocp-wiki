@@ -55,6 +55,7 @@ h3, h4 {
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
         cursor: default;
+        
         &:hover {
             border-radius: 1px;
             background-color: var(--color-foreground);
@@ -79,12 +80,10 @@ h3, h4 {
         }
 
         @media print {
-            &.secret {
-                background-color: #eee;
-                color: black;
-                margin: 0;
-                padding: 0;
-            }
+            background-color: #eee;
+            color: black;
+            margin: 0;
+            padding: 0;
         }
     }
 }
@@ -112,28 +111,6 @@ ul.card-list li {
     font: inherit;
 }
 
-a.reference {
-    text-decoration: none;
-    color: inherit;
-    padding: 0px 0px;
-    margin: -1px -1px;
-    font-weight: inherit;
-    border: 1px dotted transparent;
-    border-bottom: 1px dotted;
-    transition: 150ms;
-    transition-timing-function: linear;
-
-    /* To make it easier to identify for removal */
-    color: magenta;
-
-    &:hover {
-        border: 1px solid transparent;
-        padding: 0px 2px;
-        margin: -1px -3px;
-        border-radius: 5px;
-    }
-}
-
 .transparent {
     color: transparent;
     @media print {
@@ -155,9 +132,6 @@ a.reference {
     }
     a {
         text-decoration: none !important;
-    }
-    .reference {
-        border-color: transparent !important;
     }
 
     /* I don't want printed stuff to have shadows */
