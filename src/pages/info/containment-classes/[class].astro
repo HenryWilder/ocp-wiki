@@ -16,8 +16,16 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const classObjectEntries: CollectionEntry<'objects'>[] = await getCollection('objects', o => o.data.category === entry.data.name);
+
+let thumb = "info";
+switch (entry.data.name) {
+    case 'Esau': thumb = "esau"; break;
+    case 'Catastrophic': thumb = "catastrophic"; break;
+    case 'Apollyon': thumb = "apollyon"; break;
+    case 'Yaaqov': thumb = "yaaqov"; break;
+}
 ---
-<Document title={entry.data.name} desc={entry.data.blurb} thumb="/thumbnail-info.png">
+<Document title={entry.data.name} desc={entry.data.blurb} thumb={`/thumbnail-${thumb}.png`}>
     <BannerRecolor containmentClass={entry.data.name}/>
     <article>
         <Breadcrumbs/>
