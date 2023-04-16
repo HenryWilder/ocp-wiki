@@ -52,7 +52,7 @@ const origin = Astro.url.origin;
                     name: `OCP-${e.data.name}: ${e.data.title} (${e.data.category}) [V${e.data.version}]`,
                     path: `/objects/${e.slug}/`,
                     description: e.data.description,
-                    iconPath: iconFromCategory(e.data.category),
+                    iconPath: e.data.image ?? iconFromCategory(e.data.category),
                     keywords: [...e.data.tags, e.data.description, e.data.title, 'objects', 'ocp', `ocp-${e.data.name}`, e.data.name, e.data.category, e.data.author],
                     multiplier: 1 };
                 })
