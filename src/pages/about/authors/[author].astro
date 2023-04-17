@@ -27,7 +27,7 @@ const authorObjectEntries = await getCollection('objects', o => entry.data.name 
                 .sort((a, b) => (a.data.name.replaceAll('.','')+'.'+a.data.version).localeCompare((b.data.name.replaceAll('.','')+'.'+b.data.version)))
                 .map(o =>
                     <li>
-                        <a href={`/objects/${o.slug}/`}>{o.data.name}{<Fragment set:html={'&nbsp;'.repeat(5-o.data.name.length)}/>}v{o.data.version}</a>
+                        <a href={`/objects/${o.slug}/`}>{o.data.name} v{o.data.version}</a>
                         -
                         {o.data.title}
                         ({o.data.category})

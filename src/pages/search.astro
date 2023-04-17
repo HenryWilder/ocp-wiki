@@ -1,8 +1,10 @@
 ---
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Document from "../layouts/Document.astro";
 ---
 <Document title="Search" desc="Find pages by a simple search">
     <article>
+        <Breadcrumbs/>
         <p><strong>Showing results for: </strong><span id="query-text"><noscript>n/a</noscript></span></p>
         <div class="comment-name">Found <span id="result-count"><noscript>no</noscript></span> results in <span id="result-time"><noscript>n/a seconds</noscript></span>.</div>
         <!-- Measured from the time collections are fetched to the moment results are found and ready to render -->
@@ -16,9 +18,7 @@ import Document from "../layouts/Document.astro";
         import type { Searchable } from '../scripts/search-data-helper';
         import { getSearchData } from '../scripts/search-data-helper';
         
-        const search = async () => {
-            const searchData: Searchable[] = await getSearchData();
-        
+        const search = async () => {      
             const queryInit: string[] = location.search.substring(location.search.indexOf("=")+1).toLowerCase().split('+').map((e) => e.replaceAll('%22','"'));
             const exactMatch: boolean = queryInit.includes('"');
             const isDebug: boolean = queryInit[0] === 'debug';
@@ -52,6 +52,8 @@ import Document from "../layouts/Document.astro";
                             .reduce((p, c) => p + c, 0);
         
             const timeStart: number = performance.now();
+            
+            const searchData: Searchable[] = await getSearchData();
         
             const results: Result[] = searchData.map(
                 (e) => {

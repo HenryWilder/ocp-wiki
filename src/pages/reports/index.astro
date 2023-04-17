@@ -11,7 +11,7 @@ const allReports: CollectionEntry<'reports'>[] = await getCollection('reports');
 const unique = (src: CollectionEntry<'reports'>[], get: (e: CollectionEntry<'reports'>) => string) =>
     src.filter((value, index, self) => self.findIndex(e => get(e) === get(value)) === index);
 
-const types: string[] = unique(allReports, (e) => e.data.type).map((e) => e.data.type);
+const types: string[] = unique(allReports, (e) => e.data.type).map((e) => e.data.type).sort((a, b) => a.localeCompare(b));
 const getEntryObject = (e: CollectionEntry<'reports'>) => Array.isArray(e.data.object) ? e.data.object.join(', ') : e.data.object;
 const objects: string[][] = types.map(t =>
     unique(allReports.filter(e => e.data.type == t && e.data.object != undefined), getEntryObject)
@@ -31,19 +31,20 @@ types.forEach(
 			<h1>Report File List</h1>
 		</div>
         {entryGroups.map((category, i) =>
-            <h2>{types[i]+'s'}</h2>
             <ul class="card-list">
-            {category.map((group, j) =>
-                <section style="margin-block: 0.25em">
-                    {objects[i][j] != undefined && <a href={`/objects/${objects[i][j]}/`}><b>OCP-{objects[i][j]}</b></a>}
-                    <>{group.map((entry) =>
-                        <li>
-                            <a href={`/reports/${entry.slug}/`} target="_blank">{entry.data.type.match(/[A-Z]/g).join('')} {entry.data.object} {entry.data.instance}</a>
-                            {entry.data.label && <>&quot;{entry.data.label}&quot;</>}
-                        </li>
-                    )}</>
+            <h2>{types[i]+'s'}</h2>
+            {category.map((group, j) => group.length > 0 &&
+                <section style="margin-top: 1em; border: 1px solid var(--color-card-border); padding: 1ch; border-radius: 1.5ch;">
+                {objects[i][j] != undefined && <a style="font-size: 16px;" href={`/objects/${objects[i][j]}/`}><b>OCP-{objects[i][j]}</b></a>}
+                {group.map((entry) =>
+                    <li>
+                        <a href={`/reports/${entry.slug}/`} target="_blank">{entry.data.type.match(/[A-Z]/g).join('')} {entry.data.object} {entry.data.instance}</a>
+                        {entry.data.label && <>&quot;{entry.data.label}&quot;</>}
+                    </li>
+                )}
                 </section>
-            )}</ul><br/>
+            )}
+            </ul>
         )}
 	</article>
 </Document>

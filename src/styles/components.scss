@@ -120,14 +120,18 @@ ul.card-list {
         box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
+        margin-bottom: 1em !important;
+        border: none !important;
     }
 }
 
-@media (max-width: 7.625in) {
+@media (max-width: $threshold-max-width) {
     .card-list {
         box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
+        margin-bottom: 1em !important;
+        border: none !important;
         ul {
             list-style-type: "";
         }
