@@ -1,6 +1,5 @@
 ---
 import Document from "../layouts/Document.astro";
-const origin = Astro.url.origin;
 ---
 <Document title="Search" desc="[Under construction]">
     <article>
@@ -14,111 +13,10 @@ const origin = Astro.url.origin;
     </article>
 
     <script>
-        import type { CollectionEntry } from 'astro:content';
-        import { getCollection } from 'astro:content';
+        import type { Searchable } from '../scripts/search-data-helper';
+        import { getSearchData } from '../scripts/search-data-helper';
     
-        const objectCollection:    CollectionEntry<'objects'>[]             = await getCollection('objects', (o) => o.data.visibility != 'hidden');
-        const authorCollection:    CollectionEntry<'authors'>[]             = await getCollection('authors');
-        const classCollection:     CollectionEntry<'containment-classes'>[] = await getCollection('containment-classes');
-        const siteCollection:      CollectionEntry<'containment-sites'>[]   = await getCollection('containment-sites');
-        const taskForceCollection: CollectionEntry<'task-forces'>[]         = await getCollection('task-forces');
-        const reportCollection:    CollectionEntry<'reports'>[]             = await getCollection('reports');
-    
-        export interface Searchable {
-            name: string;
-            path: string;
-            description: string;
-            iconPath?: string;
-            keywords: string[];
-            multiplier: number;
-        }
-    
-        let searchDataRaw: Searchable[] = [];
-
-        const iconFromCategory = (category: string): string|undefined => {
-            switch (category) {
-                case 'Apollyon': return '/thumbnail-apollyon.png';
-                case 'Catastrophic': return '/thumbnail-catastrophic.png';
-                case 'Yaaqov': return '/thumbnail-yaaqov.png';
-                case 'Esau': return '/thumbnail-esau.png';
-                default: return undefined;
-            }
-        }
-    
-        // Object results
-        searchDataRaw = searchDataRaw
-            .concat(objectCollection
-                .map((e) => { return {
-                    name: `OCP-${e.data.name}: ${e.data.title} (${e.data.category}) [V${e.data.version}]`,
-                    path: `/objects/${e.slug}/`,
-                    description: e.data.description,
-                    iconPath: e.data.image ?? iconFromCategory(e.data.category),
-                    keywords: [...e.data.tags, e.data.description, e.data.title, 'objects', 'ocp', `ocp-${e.data.name}`, e.data.name, e.data.category, e.data.author],
-                    multiplier: 1 };
-                })
-            );
-    
-        // Author results
-        searchDataRaw = searchDataRaw
-            .concat(authorCollection
-                .map((e) => { return {
-                    name: e.data.name,
-                    path: `/about/authors/${e.slug}/`,
-                    description: e.data.description,
-                    iconPath: e.data.icon,
-                    keywords: ['authors',e.data.name, e.data.description],
-                    multiplier: 4 };
-                })
-            );
-    
-        // Class results
-        searchDataRaw = searchDataRaw
-            .concat(classCollection
-                .map((e) => { return {
-                    name: e.data.name,
-                    path: `/info/containment-classes/${e.slug}/`,
-                    description: e.data.blurb,
-                    iconPath: iconFromCategory(e.data.name),
-                    keywords: ['classification', 'category', e.data.name, e.data.blurb],
-                    multiplier: 3 };
-                })
-            );
-    
-        // Site results
-        searchDataRaw = searchDataRaw
-            .concat(siteCollection
-                .map((e) => { return {
-                    name: e.data.name,
-                    path: `/info/containment-sites/${e.slug}/`,
-                    description: e.data.blurb,
-                    keywords: ['site', e.data.name, e.data.blurb],
-                    multiplier: 3 };
-                })
-            );
-    
-        // Task force results
-        searchDataRaw = searchDataRaw
-            .concat(taskForceCollection
-                .map((e) => { return {
-                    name: `MTF-${e.data.name}`,
-                    path: `/info/task-forces/${e.slug}/`,
-                    description: e.data.blurb,
-                    keywords: ['task force', 'mtf', e.data.name, e.slug, e.data.blurb],
-                    multiplier: 3 };
-                })
-            );
-    
-        // Report results
-        searchDataRaw = searchDataRaw
-            .concat(reportCollection
-                .map((e) => { return {
-                    name: `${e.data.type} ${e.data.object} ${e.data.instance}`,
-                    path: `/info/task-forces/${e.slug}/`,
-                    description: `${e.data.type} #${e.data.instance} for OCP-${e.data.object} `,
-                    keywords: ['report', `${e.data.type} ${e.data.object} ${e.data.instance}`],
-                    multiplier: 1 };
-                })
-            );
+        let searchDataRaw: Searchable[] = await getSearchData();
             
         const searchData: Searchable[] = searchDataRaw;
     
