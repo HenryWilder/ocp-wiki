@@ -1,7 +1,7 @@
 ---
 import Document from "../layouts/Document.astro";
 ---
-<Document title="Search" desc="[Under construction]">
+<Document title="Search" desc="Find pages by a simple search">
     <article>
         <p><strong>Showing results for: </strong><span id="query-text"><noscript>n/a</noscript></span></p>
         <div class="comment-name">Found <span id="result-count"><noscript>no</noscript></span> results in <span id="result-time"><noscript>n/a seconds</noscript></span>.</div>
@@ -15,86 +15,88 @@ import Document from "../layouts/Document.astro";
     <script>
         import type { Searchable } from '../scripts/search-data-helper';
         import { getSearchData } from '../scripts/search-data-helper';
-    
-        let searchDataRaw: Searchable[] = await getSearchData();
-            
-        const searchData: Searchable[] = searchDataRaw;
-    
-        const queryInit: string[] = location.search.substring(location.search.indexOf("=")+1).toLowerCase().split('+').map((e) => e.replaceAll('%22','"'));
-        const exactMatch: boolean = queryInit.includes('"');
-        const isDebug: boolean = queryInit[0] === 'debug';
-        const query: string[] = exactMatch ? [] : queryInit.filter(e => e !== 'debug');
-        const queryLiteral: string = query.join(' ').replaceAll('"',''); // Higher priority than individual words
-        document.querySelector("#query-text")!.outerHTML = `${query.join(' ')}`;
-    
-        interface Result {
-            name: string;
-            path: string;
-            description: string;
-            iconPath?: string;
-            relevance: number;
-            multiplier: number; // For debugging
-        }
-    
-        const countReferences = (src: string[]): number =>
-            exactMatch
-                ?   src .map(keyword => keyword.toLowerCase())
-                        .filter((kw: string) => kw.includes(queryLiteral))
-                        .length
-    
-                :   src .map(keyword => keyword.toLowerCase())
-                        .filter((kw: string) => kw.includes(queryLiteral))
-                        .length * 3
-                    +
-                    query.map((q) =>
-                            src .map(keyword => keyword.toLowerCase())
-                                .filter((kw: string) => kw.includes(q))
-                                .length)
-                        .reduce((p, c) => p + c, 0);
-    
-        const timeStart: number = performance.now();
-    
-        const results: Result[] = searchData.map(
-            (e) => {
-                const relevance: number = countReferences(e.keywords) * e.multiplier;
-                return {
-                    name: e.name,
-                    path: e.path,
-                    description: e.description,
-                    iconPath: e.iconPath,
-                    relevance: relevance,
-                    multiplier: e.multiplier
-                };
-            })
-            .filter((e) => e.relevance > 0)
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .sort((a, b) => b.relevance - a.relevance);
-    
-        const timeFinish: number = performance.now();
-    
-        // Render results
-        document.querySelector('#search-results').innerHTML = results.map((r) =>
-            `<li ${r.iconPath ? `class="has-icon" style="background-image:url(${r.iconPath})"` : ''}>
-                ${r.iconPath !== undefined ? `<img src="${r.iconPath}"/>` : ''}
-                <div class="result-text">
-                    <a href="${r.path}">${r.name}</a>
-                    <span>${r.path.split('/').filter(e => e.length > 0).join(' > ')}</span>
-                    <span>${r.description}</span>
-                    ${isDebug ? `<span><b>${r.relevance / r.multiplier}</b><sub>(matches)</sub> &bull; <b>${r.multiplier}</b><sub>(multiplier)</sub> = <b>${r.relevance}</b><sub>(relevance)</sub></span>` : ''}
-                </div>
-            </li>`
-        ).join('\n');
-    
-        const searchTime: number = timeFinish - timeStart;
-        const timeSlot = document.querySelector("#result-time");
-        if (searchTime < 1000)
-            timeSlot!.outerHTML = searchTime.toFixed(2) + " milliseconds";
-        else
-            timeSlot!.outerHTML = (searchTime / 1000).toFixed(2) + " seconds";
-        document.querySelector("#result-count")!.outerHTML = results.length.toString();
-    
-        const searchbar = document.querySelector('#searchbar') as HTMLInputElement;
-        searchbar.value = queryInit.join(' ');
-        searchbar.focus();
+        
+        const search = async () => {
+            const searchData: Searchable[] = await getSearchData();
+        
+            const queryInit: string[] = location.search.substring(location.search.indexOf("=")+1).toLowerCase().split('+').map((e) => e.replaceAll('%22','"'));
+            const exactMatch: boolean = queryInit.includes('"');
+            const isDebug: boolean = queryInit[0] === 'debug';
+            const query: string[] = exactMatch ? [] : queryInit.filter(e => e !== 'debug');
+            const queryLiteral: string = query.join(' ').replaceAll('"',''); // Higher priority than individual words
+            document.querySelector("#query-text")!.outerHTML = `${query.join(' ')}`;
+        
+            interface Result {
+                name: string;
+                path: string;
+                description: string;
+                iconPath?: string;
+                relevance: number;
+                multiplier: number; // For debugging
+            }
+        
+            const countReferences = (src: string[]): number =>
+                exactMatch
+                    ?   src .map(keyword => keyword.toLowerCase())
+                            .filter((kw: string) => kw.includes(queryLiteral))
+                            .length
+        
+                    :   src .map(keyword => keyword.toLowerCase())
+                            .filter((kw: string) => kw.includes(queryLiteral))
+                            .length * 3
+                        +
+                        query.map((q) =>
+                                src .map(keyword => keyword.toLowerCase())
+                                    .filter((kw: string) => kw.includes(q))
+                                    .length)
+                            .reduce((p, c) => p + c, 0);
+        
+            const timeStart: number = performance.now();
+        
+            const results: Result[] = searchData.map(
+                (e) => {
+                    const relevance: number = countReferences(e.keywords) * e.multiplier;
+                    return {
+                        name: e.name,
+                        path: e.path,
+                        description: e.description,
+                        iconPath: e.iconPath,
+                        relevance: relevance,
+                        multiplier: e.multiplier
+                    };
+                })
+                .filter((e) => e.relevance > 0)
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .sort((a, b) => b.relevance - a.relevance);
+        
+            const timeFinish: number = performance.now();
+        
+            // Render results
+            document.querySelector('#search-results').innerHTML = results.map((r) =>
+                `<li ${r.iconPath ? `class="has-icon" style="background-image:url(${r.iconPath})"` : ''}>
+                    ${r.iconPath !== undefined ? `<img src="${r.iconPath}"/>` : ''}
+                    <div class="result-text">
+                        <a href="${r.path}">${r.name}</a>
+                        <span>${r.path.split('/').filter(e => e.length > 0).join(' > ')}</span>
+                        <span>${r.description}</span>
+                        ${isDebug ? `<span><b>${r.relevance / r.multiplier}</b><sub>(matches)</sub> &bull; <b>${r.multiplier}</b><sub>(multiplier)</sub> = <b>${r.relevance}</b><sub>(relevance)</sub></span>` : ''}
+                    </div>
+                </li>`
+            ).join('\n');
+        
+            const searchTime: number = timeFinish - timeStart;
+            const timeSlot = document.querySelector("#result-time");
+            if (searchTime < 1000)
+                timeSlot!.outerHTML = searchTime.toFixed(2) + " milliseconds";
+            else
+                timeSlot!.outerHTML = (searchTime / 1000).toFixed(2) + " seconds";
+            document.querySelector("#result-count")!.outerHTML = results.length.toString();
+        
+            const searchbar = document.querySelector('#searchbar') as HTMLInputElement;
+            searchbar.value = queryInit.join(' ');
+            searchbar.focus();
+        };
+
+        search();
     </script>
 </Document>
