@@ -14,7 +14,7 @@ const { image } = Astro.props;
             padding: 0;
             margin: 0;
             overflow: hidden;
-            background: linear-gradient(to bottom, var(--color-background) 50vh, rgba(0,0,0,0.0) 200vw, rgba(0,0,0,0.0) 400vw, black 700vw);
+            background: linear-gradient(to bottom, var(--color-background) 50vh, rgba(0,0,0,0.0) 200vw, rgba(0,0,0,0.0) 400vw, blue, white, gold, red, black 600vw);
         }
         #back {
             top: 0;
@@ -23,6 +23,31 @@ const { image } = Astro.props;
             background: url(${image});
             position: absolute;
             z-index: -1;
+            background-size: contain;
+        }
+        #dot {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            font-size: 10px;
+            background-color: white;
+            z-index: 1;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white;
+            animation: pulse 400ms infinite linear alternate;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 1in 2mm blue, 0 0 3px 2px purple, 0 0 5px 1px white;
+                width: 1mm;
+                height: 0.9mm;
+            }
+            100% {
+                box-shadow: 0 0 0in 0px black, 0 0 12px 1px red, 0 0 2px 0px gold;
+                width: 0.9mm;
+                height: 1mm;
+            }
         }
     `}>
     </style>
@@ -30,6 +55,7 @@ const { image } = Astro.props;
     <main id="give-the-doc-more-height">
         <div id="back"></div>
         <slot/>
+        <div id="dot"></div>
     </main>
 
     : <slot/>
