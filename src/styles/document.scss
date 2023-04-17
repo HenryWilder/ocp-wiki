@@ -196,3 +196,30 @@ ul.list-of-cards, ol.list-of-cards {
         }
     }
 }
+
+/* I'm not sure WHY this doesn't take effect if I put it in one of the css files... */
+figure {
+    border: 1px var(--color-component-border) solid;
+    padding: 2px;
+    margin: auto;
+    background-color: var(--color-background);
+    width: min-content;
+    float: right;
+}
+
+figcaption {
+    background-color: var(--color-component-background);
+    color: gray;
+    font-weight: bold;
+    padding: 3px;
+    margin: -2px;
+    text-align: center;
+    border-top: 1px var(--color-component-border) solid;
+    text-overflow: wrap;
+}
+
+@media (max-width: 7.5in) {
+    figure {
+        float: none;
+    }
+}
