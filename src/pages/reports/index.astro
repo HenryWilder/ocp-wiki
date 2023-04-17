@@ -12,8 +12,16 @@ const unique = (src: CollectionEntry<'reports'>[], get: (e: CollectionEntry<'rep
     src.filter((value, index, self) => self.findIndex(e => get(e) === get(value)) === index);
 
 const types: string[] = unique(allReports, (e) => e.data.type).map((e) => e.data.type);
-const objects: string[][] = types.map(t => unique(allReports.filter(e => e.data.type == t), (e) => e.data.object)).map((o) => o.map((e) => e.data.object));
+const getEntryObject = (e: CollectionEntry<'reports'>) => Array.isArray(e.data.object) ? e.data.object.join(', ') : e.data.object;
+const objects: string[][] = types.map(t =>
+    unique(allReports.filter(e => e.data.type == t && e.data.object != undefined), getEntryObject)
+    .map(getEntryObject));
+
 const entryGroups: CollectionEntry<'reports'>[][][] = types.map((t, i) => objects[i].map((o) => allReports.filter(e => e.data.type == t && e.data.object == o)));
+// Add entries that don't have an object
+types.forEach(
+    (t, i) => entryGroups[i].push(allReports.filter(e => e.data.type == t && e.data.object === undefined))
+);
 ---
 <Document title="Report File List" desc={`Index for report docs (${types.map(t => t.toLowerCase()+'s').join(', ')})`} thumb="/thumbnail-info.png">
     <BannerRecolor containmentClass="Info"/>
@@ -22,16 +30,16 @@ const entryGroups: CollectionEntry<'reports'>[][][] = types.map((t, i) => object
 		<div id="hrgroup">
 			<h1>Report File List</h1>
 		</div>
-        {entryGroups.map((e, i) =>
+        {entryGroups.map((category, i) =>
             <h2>{types[i]+'s'}</h2>
             <ul class="card-list">
-            {e.map((f, j) =>
+            {category.map((group, j) =>
                 <section style="margin-block: 0.25em">
-                    <a href={`/objects/${objects[i][j]}/`}><b>OCP-{objects[i][j]}</b></a>
-                    <>{f.map((g) =>
+                    {objects[i][j] != undefined && <a href={`/objects/${objects[i][j]}/`}><b>OCP-{objects[i][j]}</b></a>}
+                    <>{group.map((entry) =>
                         <li>
-                            <a href={`/reports/${g.slug}/`} target="_blank">{g.data.type.match(/[A-Z]/g).join('')} {g.data.object} {g.data.instance}</a>
-                            {g.data.label && <>&quot;{g.data.label}&quot;</>}
+                            <a href={`/reports/${entry.slug}/`} target="_blank">{entry.data.type.match(/[A-Z]/g).join('')} {entry.data.object} {entry.data.instance}</a>
+                            {entry.data.label && <>&quot;{entry.data.label}&quot;</>}
                         </li>
                     )}</>
                 </section>

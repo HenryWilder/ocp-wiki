@@ -84,6 +84,8 @@ header {
         }
 
         li a, li button, .dropbtn {
+            border: 1px solid transparent;
+            border-bottom: none;
             color: white;
             text-align: center;
             font-weight: bold;
@@ -91,7 +93,9 @@ header {
         }
 
         li>a:hover, .dropdown:hover .dropbtn {
-            background-color: #444;
+            background-color: var(--color-nav-hover);
+            border: 1px solid var(--color-nav-border);
+            border-bottom: none;
             color: darkorange;
             border-radius: 0.5rem;
             border-bottom-left-radius: 0;
@@ -100,11 +104,14 @@ header {
 
         li.dropdown {            
             .dropdown-content {
-                background-color: #444;
-                background: linear-gradient(#444, #222);
+                background-color: var(--color-nav-hover);
+                background: var(--gradient-nav-hover);
+                border: 1px solid var(--color-nav-border);
+                border-top: none;
+                margin-top: -0.5px;
                 box-shadow: 0 4px 4px rgba(0,0,0,0.2);
                 z-index: 1;
-                border-radius: 0.6rem;
+                border-radius: 0.95rem;
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
 

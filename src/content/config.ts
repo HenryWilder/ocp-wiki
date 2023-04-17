@@ -57,7 +57,7 @@ export const collections = {
     'reports':  defineCollection({
       schema: z.object({
         type: z.string(),
-        object: z.string(),
+        object: z.string().or(z.array(z.string())).optional(),
         instance: z.string(),
         label: z.string().optional(),
       })

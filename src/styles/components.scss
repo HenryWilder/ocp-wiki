@@ -78,8 +78,9 @@
 }
 
 ul.card-list {
-    background-color: var(--color-background);
+    background-color: var(--color-card-background);
     box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 1px 20px rgba(0,0,0,0.25);
+    border: 1px solid var(--color-card-border);
     border-radius: 2ch;
     padding: 2ch;
     list-style-position: inside;

@@ -111,7 +111,7 @@
         }
 
         &:hover {
-            box-shadow: 0 0 5px 2px rgba(127,127,127,0.5);
+            box-shadow: 0 0 5px 2px var(--color-foreground25);
 
             transition: box-shadow 0.25s, padding-block 0.5s ease-in-out;
 
