@@ -38,6 +38,7 @@ import remarkMdx from 'remark-mdx';
 import AnchorTooltip from '../../components/tooltip-types/AnchorTooltip.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import BannerRecolor from '../../components/BannerRecolor.astro';
+import PostDocWrapper from '../../components/PostDocWrapper.astro';
 
 const ast = remark().use(remarkMdx).parse(entry.body);
 const headings = ast.children
@@ -55,6 +56,8 @@ switch (entry.data.category) {
 ---
 <Document title={entry.data.title} desc={entry.data.description} addKeywords={entry.data.tags} thumb={typeThumb}>
     <BannerRecolor containmentClass={entry.data.category}/>
+
+    <PostDocWrapper image={entry.data.postDocImage}>
     <aside id="left">
     <section id="outline">
       <h2>{entry.data.title}</h2>
@@ -106,7 +109,8 @@ switch (entry.data.category) {
   <aside id="comments">
     {entry.data.comments}
   </aside>
-
+  </PostDocWrapper>
+  
   <!-- <script>
     // Move comments to the 'comments' aside
     // Make sure comments are at the same offset height as they appear in the markdown

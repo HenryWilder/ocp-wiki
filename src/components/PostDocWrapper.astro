@@ -1,0 +1,36 @@
+---
+interface Props {
+    image: string|undefined;
+}
+const { image } = Astro.props;
+---
+{ image
+    ? <style set:text={`
+        #give-the-doc-more-height {
+            position: relative;
+            height: 800vw;
+            width: 100vw;
+            inset: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, var(--color-background) 50vh, rgba(0,0,0,0.0) 200vw, rgba(0,0,0,0.0) 400vw, black 700vw);
+        }
+        #back {
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: url(${image});
+            position: absolute;
+            z-index: -1;
+        }
+    `}>
+    </style>
+
+    <main id="give-the-doc-more-height">
+        <div id="back"></div>
+        <slot/>
+    </main>
+
+    : <slot/>
+}

@@ -15,6 +15,7 @@ export const collections = {
           link:z.string(),
         })),
         image: z.string().optional(),
+        postDocImage: z.string().optional(),
         notes: z.array(z.string()).optional(),
         draft: z.boolean().default(false),
         visibility: z.enum(['visible','blurred','redacted','hidden']).default('visible'),
