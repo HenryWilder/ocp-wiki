@@ -1,0 +1,40 @@
+---
+type: Test Log
+object: '1680'
+instance: '1'
+slug: test-log/350/1
+---
+import Comment from "../../components/CommentGroup.astro";
+import CommentHeading from "../../components/CommentHeading.astro";
+import TestLog from "../../components/reports/TestLog.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import RedactedDate from "../../components/typography/RedactedDate.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
+
+export const item = {
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
+};
+
+<TestLog item={item} slug={frontmatter.slug}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="location"><Redacted>xxxxxxxxxxxx</Redacted></Fragment>
+
+    <Fragment slot="researcher"><Redacted>It doesn't say :c</Redacted></Fragment>
+    <Fragment slot="object">1680</Fragment>
+    <Fragment slot="approver">n/a</Fragment>
+
+    <Fragment slot="goal">Reach OCP-1680.</Fragment>
+
+    <Fragment slot="procedure">Instruct subject to reach OCP-1680.</Fragment>
+
+    <Fragment slot="results">
+        The subject proceeded to walk into the lake, floating to the surface two minutes later having expired due to asphyxiation approximately eight meters from the shore.
+        Autopsy of the body confirmed that the subject did not drown, nor were their air passages restricted.
+    </Fragment>
+
+    <Fragment slot="comments">n/a</Fragment>
+</TestLog>

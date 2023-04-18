@@ -1,0 +1,54 @@
+---
+type: Interview Log
+object: '2000'
+instance: '1'
+slug: interview-log/2000/1
+---
+import InterviewLog from "../../components/reports/InterviewLog.astro";
+import InterviewSpeakerless from "../../components/reports/InterviewSpeakerless.astro";
+import InterviewSpokenLine from "../../components/reports/InterviewSpokenLine.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import Comment from "../../components/CommentGroup.astro";
+import CommentHeading from "../../components/CommentHeading.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
+
+export const interviewer = { name:"Talos", color:"#840" };
+export const subject = { name:"OCP-2000", color:"#900" };
+export const item = {
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
+};
+
+<InterviewLog item={item} slug={frontmatter.slug}>
+    <Fragment slot="interviewerName">Talos</Fragment>
+    <Fragment slot="subjectName">OCP-2000</Fragment>
+    <Fragment slot="topic">n/a</Fragment>
+    <Fragment slot="body">
+        <InterviewSpokenLine member={subject}>Hello Name here, it is nice to meet you.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>How did you-? Oh, right.</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>Yeah, I saw them select you. I saw them hire you. I saw your entire life up until now, yahta yahta yahta.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Did you happen to see the reason they hired me?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>Yes.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Why don't we skip the formalities and get to the interview?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>Proceed.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Do you have any idea as to how you're still alive?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>Well yes and no. Even if I could explain it, you wouldn't understand. I simply am alive because I'm not dead.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Alright. I can't help but notice the odd patterns on the entrance to this place, what do they mean?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>Those were the openings to an automated turret system. They were supposed to shoot you dead the moment you touched the door, but the source meant to power them lost all function after [DATA EXPUNGED]. It's like if electricity suddenly no longer worked, only it wasn't electricity.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>I see... so you really do remember everything, even if it no longer happened within this world's continuity. Does it ever overwhelm you?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>I'm pretty sure the part of my brain that controlled stress rotted before I was activated. I was here a long time before I started recording all this, not sure how long.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Pardon my rudeness, but I can't help but notice your physical condition. Does anything hurt?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>Actually, no. I haven't felt pain in my life, at least not my own. I do know what pain is, and what it feels like, but I've never felt it for myself.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>You seem rather content with your situation.</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>I'm just bored. I don't feel the need to be a normal person, if I could keep documenting the world while I live in it, I would. You are my best bet at that. You are the most technologically advanced civilization I have ever seen. If anyone can help me, it's you.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Are you really ok with us... well... literally picking your brain for information on the universe?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>What point is there in keeping records if no one can read them? Besides, I'm guessing whoever put me here wanted me to share this information.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>Someone put you here?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>That's my theory. I was an anomaly, either unkillable or able to see everything, maybe both, and some group made this and slapped me in. They sent me back in time, here I am. I doubt the group will ever exist anymore, considering how many K-class scenarios have happened.</InterviewSpokenLine>
+        <InterviewSpokenLine member={interviewer}>I... suppose that is plausible. I'm out of questions for today, is there anything you'd like to add?</InterviewSpokenLine>
+        <InterviewSpokenLine member={subject}>Nothing, carry on.</InterviewSpokenLine>
+    </Fragment>
+    <Fragment slot="notes"></Fragment>
+</InterviewLog>

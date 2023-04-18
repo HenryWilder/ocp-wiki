@@ -2,7 +2,6 @@
 type: Incident Report
 object: '350'
 instance: '1'
-label: "Dust to Dust"
 slug: incident-report/350/1
 ---
 import IncidentReport from "../../components/reports/IncidentReport.astro";
@@ -16,3 +15,15 @@ export const item = {
     instance: frontmatter.instance,
     label: frontmatter.label
 };
+
+<IncidentReport item={item} slug={frontmatter.slug}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="incidentType"><Redacted>xxxxxxxxxxx</Redacted></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="reportedBy"><Redacted>xxxxxxxxx</Redacted></Fragment>
+    <Fragment slot="location"><Redacted>xxxxxxxxxxx</Redacted></Fragment>
+    <Fragment slot="object">350-?</Fragment>
+    <Fragment slot="description"></Fragment>
+    <Fragment slot="witnessExplanation"></Fragment>
+    <Fragment slot="followup"></Fragment>
+</IncidentReport>

@@ -1,0 +1,44 @@
+---
+type: Test Log
+object: '1680'
+instance: '2'
+slug: test-log/350/2
+---
+import Comment from "../../components/CommentGroup.astro";
+import CommentHeading from "../../components/CommentHeading.astro";
+import TestLog from "../../components/reports/TestLog.astro";
+import Redacted from "../../components/typography/Redacted.astro";
+import RedactedDate from "../../components/typography/RedactedDate.astro";
+import Tooltip from "../../components/tooltip-types/AnchorTooltip.astro";
+export const components = {blockquote: Comment, a: Tooltip};
+
+export const item = {
+    objectNumber: frontmatter.object,
+    instance: frontmatter.instance,
+    label: frontmatter.label
+};
+
+<TestLog item={item} slug={frontmatter.slug}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="location"><Redacted>xxxxxxxxxxxx</Redacted></Fragment>
+
+    <Fragment slot="researcher"><Redacted>It doesn't say :c</Redacted></Fragment>
+    <Fragment slot="object">1680</Fragment>
+    <Fragment slot="approver">n/a</Fragment>
+
+    <Fragment slot="goal">Cross lake without OCP-1680 interaction.</Fragment>
+
+    <Fragment slot="procedure">
+        Instruct subject to reach a structure on the other side of the <Redacted>[REDACTED]</Redacted> lake without interacting with OCP-1680.
+    </Fragment>
+
+    <Fragment slot="results">
+        Following subject agitatation and protest regarding the futility of swimming that far,
+        the subject was provided Federation grade scuba gear outfitted with automatic adrenaline pumps to prevent exhaustion.
+
+        Subject successfully reached the other side without issue.
+    </Fragment>
+
+    <Fragment slot="comments"></Fragment>
+</TestLog>

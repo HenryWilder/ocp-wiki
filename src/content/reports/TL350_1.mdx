@@ -17,3 +17,33 @@ export const item = {
     instance: frontmatter.instance,
     label: frontmatter.label
 };
+
+<TestLog item={item} slug={frontmatter.slug}>
+    <Fragment slot="date"><RedactedDate/></Fragment>
+    <Fragment slot="time"><Redacted>####</Redacted>hrs</Fragment>
+    <Fragment slot="location"><Redacted>xxxxxxxxxxxx</Redacted></Fragment>
+
+    <Fragment slot="researcher">Dr. <Redacted>Lastname</Redacted></Fragment>
+    <Fragment slot="object">350-1</Fragment>
+    <Fragment slot="approver">n/a</Fragment>
+
+    <Fragment slot="goal">Reproduce the anomaly observed at discovery.</Fragment>
+
+    <Fragment slot="procedure">
+        A partition will be set up in the test room with enough space for OCP-350 to get behind.
+        
+        With OCP-350 in front of the partition, a member of security will fire one (1) shell from a conventional <Redacted>model name</Redacted> shotgun at the object.
+    </Fragment>
+
+    <Fragment slot="results">
+        A puddle of black goo. OCP-350 was found completely unharmed, hiding behind the partition as expected.
+    </Fragment>
+
+    <Fragment slot="comments">
+        The object did, indeed, teleport. Or at least move extremely fast. Either way, it is breaking causality by reaching its destination slightly before leaving its starting point.
+        
+        We made sure the cameras wouldn't get splashed this time. In one frame the object was in front of the partition spraying black goop out everywhere, and in the next frame it was on the other side of the partition just staring at the camera.
+    
+        I am curious why it left behind this black slime. Perhaps it's a diversion, akin to a squid spraying ink.
+    </Fragment>
+</TestLog>

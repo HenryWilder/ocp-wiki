@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&family=Nothing+You+Could+Do&display=swap');
+
 html {
     font-family: "Roboto Mono", monospace;
     font-size: 14px;
@@ -139,4 +141,11 @@ ul.card-list li {
         box-shadow: none !important;
         text-shadow: none !important;
     }
+}
+
+p {
+    margin: 0;
+}
+*+p, p+h1, p+h2 {
+    margin-top: 1em;
 }
